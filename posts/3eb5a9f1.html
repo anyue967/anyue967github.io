@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-09-14-ElasticSearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES">
+<meta property="og:url" content="https://anyu967.github.io/posts/3eb5a9f1.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-09-14-ElasticSearch">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://anyu967.github.io/posts/3eb5a9f1/ELK.jpg">
+<meta property="og:image" content="https://anyu967.github.io/posts/3eb5a9f1/ELK-Filebeat.jpg">
+<meta property="og:image" content="https://anyu967.github.io/posts/3eb5a9f1/ELK.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/3eb5a9f1/ELK01.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/3eb5a9f1/ELK02.png">
+<meta property="article:published_time" content="2019-09-14T00:30:20.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.834Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="ES">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anyu967.github.io/posts/3eb5a9f1/ELK.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>ES - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ES"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-09-14 08:30" pubdate>
+          2019年9月14日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ES</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-09-14-ElasticSearch</p>
+<span id="more"></span>
+
+<h2 id="rsync-同步服务："><a href="#rsync-同步服务：" class="headerlink" title="rsync 同步服务："></a>rsync 同步服务：</h2><h3 id="rsync基本使用："><a href="#rsync基本使用：" class="headerlink" title="rsync基本使用："></a>rsync基本使用：</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>归档模式</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示同步过程</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>传输时压缩</td>
+</tr>
+</tbody></table>
+<ul>
+<li>下载: rsync -avz 服务器IP:&#x2F;服务器目录&#x2F;file &#x2F;本地目录   <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ruby">  rsync -avz root<span class="hljs-variable">@192</span>.<span class="hljs-number">168.37</span>.<span class="hljs-number">10</span><span class="hljs-symbol">:/filesrc/text</span>.txt /filedst/<br>  <span class="hljs-string">``</span><span class="hljs-string">`  </span><br><span class="hljs-string"></span><br><span class="hljs-string">+ 上传: rsync -avz /本地目录/file 服务器IP:/服务器目录/*  </span><br></code></pre></td></tr></table></figure>
+rsync -avz &#x2F;filedst&#x2F;test.txt <a href="mailto:&#x72;&#111;&#111;&#x74;&#x40;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#51;&#55;&#46;&#49;&#x30;">root@192.168.37.10</a>:&#x2F;filesrc&#x2F;<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs csharp">    <br>*ssh-keygen -t rsa -b <span class="hljs-number">2048</span>*  <br>*ssh-copy-id root@<span class="hljs-number">192.168</span><span class="hljs-number">.37</span><span class="hljs-number">.20</span>*  <br><br><span class="hljs-meta">#### rsync服务端(NFS服务器)</span><br>```bash<br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># vim /etc/rsyncd.conf  </span><br>  address = <span class="hljs-number">192.168</span><span class="hljs-number">.37</span><span class="hljs-number">.10</span> <span class="hljs-meta">#rsync服务绑定IP</span><br>  port = <span class="hljs-number">873</span><br>  log <span class="hljs-keyword">file</span> =/<span class="hljs-keyword">var</span>/log/rsyncd.log <br>  pid <span class="hljs-keyword">file</span> = /<span class="hljs-keyword">var</span>/run/rsyncd.pid<br>  [<span class="hljs-meta">web</span>]<br>      comment = web directory backup<br>      path = /filesrc<br>      read only = no<br>      dont commpress = *.gz *.bz2<br>      auth users =user1   <span class="hljs-meta"># 非系统用户, 自行创建</span><br>      secrets <span class="hljs-keyword">file</span> = /etc/rsyncd_users.db<br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># vim /etc/rsyncd_users.db   </span><br>  user1:<span class="hljs-number">123456</span><br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># chmod 600 /etc/rsyncd_users.db </span><br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># rsync --daemon  </span><br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># netstat -antp |grep :873  </span><br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># setfacl -m u:nobody:rwx /filesrc </span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# rsync -avz rsync://user1@192.168.37.10/filesrc /filedst      <span class="hljs-comment"># 下载 </span><br>[root@xy ~]# rsync -avz /filedst/* rsync://user1@192.168.37.10/filesrc`   <span class="hljs-comment"># 上传    </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="rsync-基于xinetd-inotifywait-实现单向实时同步："><a href="#rsync-基于xinetd-inotifywait-实现单向实时同步：" class="headerlink" title="rsync(基于xinetd) + inotifywait 实现单向实时同步："></a>rsync(基于xinetd) + inotifywait 实现单向实时同步：</h3><table>
+<thead>
+<tr>
+<th>inotifywait 命令选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m</td>
+<td>始终保持监听</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归查询目录</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>只打印监控事件信息</td>
+</tr>
+</tbody></table>
+<h4 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h4><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs perl">[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># yum -y install gcc*  </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># tar -xvf inotify-tools-3.14.tar.gz </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># cd inotify-tools-3.14.tar.gz</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># ./configure &amp;&amp; make make install  </span><br><br><span class="hljs-comment"># 监控动作：modify,create,attrib,move,delete </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># inotifywait -mrq -e 监控动作1,监控动作2 /监控目录 &amp;     </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># inotifywait -mrq -e create,delete,modify /filesrc &amp;   </span><br>  <span class="hljs-comment">#!/bin/bash  </span><br>  Inotfiy = <span class="hljs-string">&quot;inotifywait -mrq -e create,delete,modify /filesrc&quot;</span><br>  Rsync = <span class="hljs-string">&quot;rsync -avz /filesrc/* root<span class="hljs-variable">@192</span>.168.37.20:/filedst&quot;</span><br>  <span class="hljs-variable">$Inotfiy</span> | <span class="hljs-keyword">while</span> <span class="hljs-keyword">read</span> directory event file<br>  <span class="hljs-keyword">do</span><br>     <span class="hljs-variable">$Rsync</span><br>  done  <br></code></pre></td></tr></table></figure>
+
+<h3 id="rsync-基于xinetd-unison-inotify-实现双向实时同步："><a href="#rsync-基于xinetd-unison-inotify-实现双向实时同步：" class="headerlink" title="rsync(基于xinetd) + unison + inotify 实现双向实时同步："></a>rsync(基于xinetd) + unison + inotify 实现双向实时同步：</h3><h4 id="服务端-192-168-37-10"><a href="#服务端-192-168-37-10" class="headerlink" title="服务端(192.168.37.10)"></a>服务端(192.168.37.10)</h4><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs perl">[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># tar -xzvf inotify-tools-3.14.tar.gz  </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># cd inotify-tools-3.14</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># ./configure &amp;&amp; make &amp;&amp; make install  </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># tar -xzvf ocaml-3.10.1.tar.gz </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># cd ocmal-3.10.1</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># ./configure</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># make world opt</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># make install</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># tar -xzvf unison-2.13.16.tar.gz</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># cd unison-2.13.16</span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># make UISTYLE=text THREADS=true STATIC=true  </span><br>[root<span class="hljs-variable">@xy</span> ~]<span class="hljs-comment"># cp unison /usr/local/bin </span><br>  <span class="hljs-comment">#!/bin/bash  </span><br>  Inotfiy = <span class="hljs-string">&quot;inotifywait -mrq -e create,delete,modify /filesrc&quot;</span><br>  Unison = <span class="hljs-string">&quot;/usr/local/bin/unison -batch /filesrc ssh://192.168.37.20/filedst&quot;</span><br>  <span class="hljs-variable">$Inotfiy</span> | <span class="hljs-keyword">while</span> <span class="hljs-keyword">read</span> directory event file<br>  <span class="hljs-keyword">do</span><br>     <span class="hljs-variable">$Unison</span><br>  done<br></code></pre></td></tr></table></figure>
+
+<h4 id="客户端-192-168-37-20"><a href="#客户端-192-168-37-20" class="headerlink" title="客户端(192.168.37.20)"></a>客户端(192.168.37.20)</h4><blockquote>
+<p>安装 inotify-tools-3.14.tar.gz，ocaml-3.10.1.tar.gz，unison-2.13.16.tar.gz</p>
+</blockquote>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash  </span><br>Inotfiy = <span class="hljs-string">&quot;inotifywait -mrq -e create,delete,modify /filesrc&quot;</span><br>Unison = <span class="hljs-string">&quot;/usr/local/bin/unison -batch /filedst ssh://192.168.37.10/filesrc&quot;</span><br><span class="hljs-variable">$Inotfiy</span> | <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> directory event file<br><span class="hljs-keyword">do</span><br>  <span class="hljs-variable">$Unison</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Linux-日志概述"><a href="#Linux-日志概述" class="headerlink" title="Linux 日志概述"></a>Linux 日志概述</h2><h3 id="系统常见日志文件"><a href="#系统常见日志文件" class="headerlink" title="系统常见日志文件"></a>系统常见日志文件</h3><ul>
+<li>syslog服务<ul>
+<li>syslogd：系统</li>
+<li>klogd：内核</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>日志文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;var&#x2F;log&#x2F;cron</td>
+<td>定时任务log</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;cpus</td>
+<td>打印信息log</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;dmesg</td>
+<td>内核自检log, <code>dmesg</code></td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;btmp</td>
+<td>错误登录log, 二进制格式, 用<code>lastb</code>查看</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;lastlog</td>
+<td>最后一次登录时间log, <code>lastlog</code>查看</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;mailog</td>
+<td>邮件log</td>
+</tr>
+<tr>
+<td><strong>&#x2F;var&#x2F;log&#x2F;messages</strong></td>
+<td>系统重要信息log</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;secure</td>
+<td>验证与授权log</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;wtmp</td>
+<td>永久记录所有用户登录, <code>last</code>查看</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;run&#x2F;utmp</td>
+<td>当前已经登录用户信息, <code>w who users</code>查看</td>
+</tr>
+<tr>
+<td>&#x2F;var&#x2F;log&#x2F;httpd</td>
+<td>RPM安装apache服务默认日志目录</td>
+</tr>
+</tbody></table>
+<h3 id="日志格式-syslog-服务"><a href="#日志格式-syslog-服务" class="headerlink" title="日志格式: syslog 服务"></a>日志格式: syslog 服务</h3><p>配置路径: <code>/etc/syslog.conf</code><br>配置格式: <code>日志服务[链接符号]日志等级	日志记录位置</code></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">35 </span># Include all config <span class="hljs-keyword">files</span> in /etc/rsyslog.d/<br><span class="hljs-symbol">36 </span>$IncludeConfig /etc/rsyslog.d/*.conf<br><span class="hljs-symbol">54 </span>*.info;mail.none;authpriv.none;cron.none      /var/<span class="hljs-keyword">log</span>/messages <br><span class="hljs-symbol">55 </span>authpriv.*                                   /var/<span class="hljs-keyword">log</span>/secure<br><span class="hljs-symbol">56 </span>*.emerg                                      *   # 每个用户<br><span class="hljs-symbol">60 </span>mail.*                                      -/var/<span class="hljs-keyword">log</span>/maillog    # 异步写入<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>日志等级（从低到高）</th>
+<th>说明(级别越低，信息越详细)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>debug</td>
+<td>一般调试信息</td>
+</tr>
+<tr>
+<td>info</td>
+<td>基本通知信息</td>
+</tr>
+<tr>
+<td>notice</td>
+<td>普通信息</td>
+</tr>
+<tr>
+<td>wraning</td>
+<td>警告信息</td>
+</tr>
+<tr>
+<td>err&#x2F;error</td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>crit</td>
+<td>大于err</td>
+</tr>
+<tr>
+<td>alert</td>
+<td>警告,大于crit</td>
+</tr>
+<tr>
+<td>emerg&#x2F;panic</td>
+<td>会导致系统不可用</td>
+</tr>
+<tr>
+<td>*</td>
+<td>所有日志等级</td>
+</tr>
+<tr>
+<td>none</td>
+<td>和* 相反</td>
+</tr>
+</tbody></table>
+<h3 id="日志轮替-logrotate-切割-轮替"><a href="#日志轮替-logrotate-切割-轮替" class="headerlink" title="日志轮替 logrotate(切割,轮替)"></a>日志轮替 logrotate(切割,轮替)</h3><blockquote>
+<p>旧日志移动开改名,同时建立新的空日志文件,当旧日志文件超出保存范围,会进行删除,系统自带配置文件<code>/etc/logrotate.conf</code>  </p>
+</blockquote>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">20 </span># no packages own wtmp <span class="hljs-keyword">and</span> btmp -- we<span class="hljs-comment">&#x27;ll rotate them here</span><br><span class="hljs-symbol">21 </span>/var/<span class="hljs-keyword">log</span>/wtmp &#123;<br><span class="hljs-symbol">22 </span>    monthly<br><span class="hljs-symbol">23 </span>    create <span class="hljs-number">0664</span> root utmp<br><span class="hljs-symbol">24 </span>    minsize <span class="hljs-number">1</span>M<br><span class="hljs-symbol">25 </span>    rotate <span class="hljs-number">1</span><br><span class="hljs-symbol">26 </span>&#125;<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>配置参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>daily</td>
+<td>日志轮替周期是每天</td>
+</tr>
+<tr>
+<td>weekly</td>
+<td>每周</td>
+</tr>
+<tr>
+<td>monthly</td>
+<td>每月</td>
+</tr>
+<tr>
+<td>compress</td>
+<td>日志轮替时,压缩旧日志</td>
+</tr>
+<tr>
+<td>rotate</td>
+<td>保留日志个数</td>
+</tr>
+<tr>
+<td>create mode owner group</td>
+<td>建立新日志,指定权限与所有者&#x2F;所属组</td>
+</tr>
+<tr>
+<td>mail address</td>
+<td>发送邮件</td>
+</tr>
+<tr>
+<td>missingok</td>
+<td>日志不存在忽略日志警告信息</td>
+</tr>
+<tr>
+<td>notifempty</td>
+<td>若日志为空,不进行轮替</td>
+</tr>
+<tr>
+<td>minsize</td>
+<td>轮替最小值</td>
+</tr>
+<tr>
+<td>size</td>
+<td>大于size才会轮替</td>
+</tr>
+<tr>
+<td>dateext</td>
+<td>使用日期作为轮替文件后缀</td>
+</tr>
+<tr>
+<td>sharedscripts</td>
+<td>此关键字后脚本只执行一次</td>
+</tr>
+<tr>
+<td>prerotate&#x2F;endscript</td>
+<td>轮替前执行脚本</td>
+</tr>
+<tr>
+<td>postrotate&#x2F;endscript</td>
+<td>轮替后执行脚本</td>
+</tr>
+</tbody></table>
+<h2 id="ELK-Elasticsearch-Logstash-Kibana"><a href="#ELK-Elasticsearch-Logstash-Kibana" class="headerlink" title="ELK(Elasticsearch+Logstash+Kibana)"></a>ELK(Elasticsearch+Logstash+Kibana)</h2><h3 id="ELK日志分析："><a href="#ELK日志分析：" class="headerlink" title="ELK日志分析："></a>ELK日志分析：<div id="ELK"></div></h3><blockquote>
+<p><strong>ELK</strong>是三个开源软件的缩写，分别表示：<strong>Elasticsearch、Logstash、Kibana</strong>它们都是开源软件,新增了<strong>FileBeat</strong> ，轻量级的日志收集处理工具；</p>
+</blockquote>
+<ul>
+<li><strong>Filebeat</strong>：属于Beats<ul>
+<li><strong>Filebeat</strong>：搜集文件数据 √</li>
+<li><strong>Packetbeat</strong>：搜集网络流量数据</li>
+<li><strong>Topbeat</strong>：搜集系统、进程和文件系统级别的CPU和内存使用情况  </li>
+<li><strong>Winlogbeat</strong>：搜集Windows事件日志数据</li>
+</ul>
+</li>
+<li><strong>Logstash(5044)</strong>：负责日志的收集、分析、功率，支持大量数据获取方式，C&#x2F;S架构，client 端安装在需要收集日志的主机上，server端负责将收集到的节点日志进行过滤发至Elastiserach上; </li>
+<li><strong>ElastiSearch(9200)</strong>：开源分布式搜索引擎，提供搜集、分析、存储数据三大功能;</li>
+<li><strong>Kibana(5601)</strong>：为 Logstash 和 Elasticserach 提供Web 界面;</li>
+</ul>
+<img src="/posts/3eb5a9f1/ELK.jpg" srcset="/img/loading.gif" lazyload class="" title="[ELK]"> 
+<img src="/posts/3eb5a9f1/ELK-Filebeat.jpg" srcset="/img/loading.gif" lazyload class="" title="[ELK-Filebeat]">  
+
+<h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><h4 id="索引-分片-副本"><a href="#索引-分片-副本" class="headerlink" title="索引 分片 副本"></a>索引 分片 副本</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://my.oschina.net/kenblog/blog/3009800">参考</a></li>
+<li><code>index索引</code>:就类似于关系型数据库的<code>数据库</code>，数据库建立好，然后就把数据存到index中；<ul>
+<li><code>Mapping</code>:定义文档字段的类型；</li>
+<li><code>Settimt</code>:定义不同数据分布；</li>
+</ul>
+</li>
+<li><code>shard分片</code>:对于分布式的搜索引擎, <strong>索引通常都会分解成不同部分</strong>, 而这些分布在不同节点的数据就是分片,<code>一个分片只存储一部分数据</code>，所有分片加起来就是一个完整的索引数据；<ul>
+<li>分片分为primary shard主分片和replica副本分片,一个索引可以创建多个分片数量，es默认创建的就是5个主分片数量，可以根据自己的实际业务确定主分片数量;</li>
+<li>注意的是主分片数量一旦确定创建就无法进行修改。</li>
+</ul>
+</li>
+<li><code>replica副本</code>:就是对主分片（Primary shard）的备份；<ul>
+<li>每个主分片（primary shard）不会和副本分片（replica shard）存在于同一个节点中，有效的保证es的数据高可用性；</li>
+</ul>
+</li>
+</ul>
+<h3 id="ELK-服务端部署-192-168-37-10"><a href="#ELK-服务端部署-192-168-37-10" class="headerlink" title="ELK 服务端部署(192.168.37.10)"></a>ELK 服务端部署(192.168.37.10)</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wo18237095579/article/details/103880397/">Docker部署01</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dalianpai/p/11986481.html">Docker部署02</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cocowool/p/deploy_elk_and_collect_logs_via_filebeat.html">K8S部署</a></li>
+</ul>
+<h4 id="配置JAVA环境"><a href="#配置JAVA环境" class="headerlink" title="配置JAVA环境"></a>配置JAVA环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy elk]# <span class="hljs-built_in">mkdir</span> /usr/local/java<br>[root@xy elk]# tar -xzvf  jdk-8u261-linux-x64.tar.gz -C /usr/local/java<br>[root@xy ~]# vim /etc/profile<br>  <span class="hljs-comment"># JAVA ENVIRONMENT</span><br>  <span class="hljs-built_in">export</span> JAVA_HOME=/usr/local/java/jdk1.8.0_261<br>  <span class="hljs-built_in">export</span> CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/jre/lib/rt.jar:<span class="hljs-variable">$JAVA_HOME</span>/lib/dt.jar:<span class="hljs-variable">$JAVA_HOME</span>/lib/tools.jar<br>  <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$JAVA_HOME</span>/bin<br>[root@xy ~]# <span class="hljs-built_in">source</span> /etc/profile<br>[root@xy ~]# java -version   <span class="hljs-comment"># 验证</span><br></code></pre></td></tr></table></figure>
+<h4 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h4><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@xy</span> ~]<span class="hljs-meta"># mkdir /elk<span class="hljs-comment">;cd /elk  </span></span><br>[root<span class="hljs-symbol">@xy</span> elk]<span class="hljs-meta"># wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.3.tar.gz</span><br>[root<span class="hljs-symbol">@xy</span> elk]<span class="hljs-meta"># wget https://artifacts.elastic.co/downloads/logstash/logstash-6.2.3.tar.gz</span><br>[root<span class="hljs-symbol">@xy</span> elk]<span class="hljs-meta"># wget https://artifacts.elastic.co/downloads/kibana/kibana-6.2.3-linux-x86_64.tar.gz</span><br>[root<span class="hljs-symbol">@xy</span> elk]<span class="hljs-meta"># tar -xzvf elasticsearch-6.2.3.tar.gz </span><br>[root<span class="hljs-symbol">@xy</span> elk]<span class="hljs-meta"># tar -xzvf logstash-6.2.3.tar.gz</span><br>[root<span class="hljs-symbol">@xy</span> elk]<span class="hljs-meta"># tar -xf kibana-6.2.3-linux-x86_64.tar.gz  </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="配置-elasticserch"><a href="#配置-elasticserch" class="headerlink" title="配置 elasticserch"></a>配置 elasticserch</h4><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs crystal">[root<span class="hljs-variable">@xy</span> elk]<span class="hljs-comment"># chown -Rf root:root kibana-6.2.3-linux-x86_64</span><br>[root<span class="hljs-variable">@xy</span> elk]<span class="hljs-comment"># cp -a elasticsearch-6.2.3/ logstash-6.2.3/ kibana-6.2.3-linux-x86_64/ /usr/local</span><br>[root<span class="hljs-variable">@xy</span> elk]<span class="hljs-comment"># yum install -y java-1.8*   # JAVA 环境</span><br>[root<span class="hljs-variable">@xy</span> elk]<span class="hljs-comment"># useradd elasticsearch   </span><br>[root<span class="hljs-variable">@xy</span> elk]<span class="hljs-comment"># chown elasticsearch:elasticsearch /usr/local/elasticsearch-6.2.3/</span><br>[root<span class="hljs-variable">@xy</span> elk]<span class="hljs-comment"># su elasticsearch  # 以elasticsearch 用户运行</span><br>[elasticsearch<span class="hljs-variable">@xy</span> elasticsearch-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-variable">$ </span>./bin/elasticsearch -d  <br>[elasticsearch<span class="hljs-variable">@xy</span> elasticsearch-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-variable">$ </span>netstat -antp  <span class="hljs-comment"># 9200端口  </span><br>[elasticsearch<span class="hljs-variable">@xy</span> elasticsearch-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-variable">$ </span>cat /usr/local/elasticserch-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>/logs/elasticsearch.log<br>[elasticsearch<span class="hljs-variable">@xy</span> elasticsearch-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-variable">$ </span>curl <span class="hljs-symbol">localhost:</span><span class="hljs-number">9200</span>  <br></code></pre></td></tr></table></figure>
+
+<h4 id="配置-logstash"><a href="#配置-logstash" class="headerlink" title="配置 logstash"></a>配置 logstash</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs livescript">[root@xy logstash-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-comment"># vim /vendor/bundle/jruby/2.3.0/gems/logstash-patterns-core-4.1.2/patterns/grok-patterns   </span><br>  <span class="hljs-comment"># Nginx log</span><br>  WZ ([^ ]*)<br>  NGINXACCESS %&#123;IP:remote_ip&#125; <span class="hljs-string">\-</span> <span class="hljs-string">\-</span> <span class="hljs-string">\[%&#123;HTTPDATE:timestamp&#125;\]</span> <span class="hljs-string">&quot;%&#123;WORD:method&#125; %&#123;WZ:request&#125; HTTP/%&#123;NUMBER:httpversion&#125;&quot;</span> %&#123;NUMBER:status&#125; %&#123;NUMBER:bytes&#125; %&#123;QS:referer&#125; %&#123;QS:agent&#125; %&#123;QS:xforward&#125;<br>   <br>[root@xy logstash-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-comment"># vim /usr/local/logstash-6.2.3/default.conf </span><br>  input &#123;<br>      beats&#123;<br>          port =&gt; <span class="hljs-string">&quot;5044&quot;</span><br>      &#125;<br>  &#125;<br>  <span class="hljs-comment"># 数据过滤</span><br>  filter &#123;<br>      grok &#123;<br>          match =&gt; &#123; <span class="hljs-string">&quot;message&quot;</span> =&gt; <span class="hljs-string">&quot;%&#123;NGINXACCESS&#125;&quot;</span> &#125;<br>      &#125;<br>      geoip &#123;<br>          <span class="hljs-comment"># nginx 客户端 ip</span><br>          source =&gt; <span class="hljs-string">&quot;192.168.37.20&quot;</span><br>      &#125;<br>  &#125;<br>  <span class="hljs-comment"># 输出配置为本机的 9200 端口,这是elasticsearch 服务的监听端口</span><br>  output &#123;<br>      elasticsearch &#123;<br>          hosts =&gt; [<span class="hljs-string">&quot;127.0.0.1:9200&quot;</span>]<br>      &#125;<br>  &#125;<br>    <br>[root@xy logstash-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-comment"># nohup ./bin/logstash -f default.conf &amp;</span><br>[root@xy logstash-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-comment"># tail -f nohup.out</span><br>[root@xy logstash-<span class="hljs-number">6.2</span>.<span class="hljs-number">3</span>]<span class="hljs-comment"># netstat -antp | grep 5044    </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="配置-Kibana"><a href="#配置-Kibana" class="headerlink" title="配置 Kibana"></a>配置 Kibana</h4><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs llvm">[root<span class="hljs-title">@xy</span> kibana<span class="hljs-number">-6.2</span>.<span class="hljs-number">3</span>-linux-<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span>]# vim /usr/local/kibana<span class="hljs-number">-6.2</span>.<span class="hljs-number">3</span>-linux-<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span>/config/kibana.yml  <br>  server.host: <span class="hljs-string">&quot;192.168.37.10&quot;</span><br>[root<span class="hljs-title">@xy</span> kibana<span class="hljs-number">-6.2</span>.<span class="hljs-number">3</span>-linux-<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span>]# nohup ./bin/kibana &amp;<br>[root<span class="hljs-title">@xy</span> kibana<span class="hljs-number">-6.2</span>.<span class="hljs-number">3</span>-linux-<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span>]# <span class="hljs-keyword">tail</span> -f nohup.out<br>[root<span class="hljs-title">@xy</span> kibana<span class="hljs-number">-6.2</span>.<span class="hljs-number">3</span>-linux-<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span>]# netstat -antp | grep <span class="hljs-number">5601</span>  <br># 测试：<span class="hljs-number">192.168</span>.<span class="hljs-number">37.10</span>:<span class="hljs-number">5601</span>   # Kibana 测试地址<br></code></pre></td></tr></table></figure>
+
+<h4 id="问题解决："><a href="#问题解决：" class="headerlink" title="问题解决："></a>问题解决：</h4><ul>
+<li><p>max file descriptors [4096] for elasticsearch process is too low, increase to at least [65535]</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stata">[elasticsearch@xy ~]$ sudo vim /etc/security/limits.<span class="hljs-keyword">conf</span><br><span class="hljs-comment">  *		 soft    nofile          65536</span><br><span class="hljs-comment">  *    hard    nofile          65536</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>dockercompose部署ES遇到 Error opening log file ‘logs&#x2F;gc.log’: Permission denied</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15256981/article/details/88605824">参考</a></li>
+</ul>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">- TAKE_FILE_OWNERSHIP=<span class="hljs-literal">true</span>  <span class="hljs-comment">#volumes 挂载权限问题</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Nginx部署-192-168-37-20"><a href="#Nginx部署-192-168-37-20" class="headerlink" title="Nginx部署(192.168.37.20)"></a>Nginx部署(192.168.37.20)</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">[root@xy ~]<span class="hljs-comment"># yum install -y nginx  </span><br>[root@xy ~]<span class="hljs-comment"># wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.2.3-linux-x86_64.tar.gz  </span><br>[root@xy ~]<span class="hljs-comment"># tar -xzf ./filebeat-6.2.3-linux-x86_64.tar.gz -C /usr/local/  </span><br>[root@xy filebeat<span class="hljs-number">-6.2</span><span class="hljs-number">.3</span>-linux-x86_64]<span class="hljs-comment"># vim filebeat.yml  </span><br>  enable：<span class="hljs-literal">false</span>                 <span class="hljs-comment">#修改为true</span><br>  paths：<span class="hljs-regexp">/var/log/</span>*.log         <span class="hljs-comment">#修改为/var/log/nginx/*.log</span><br>  <span class="hljs-comment">#output.elasticsearch:        #将此行注释掉</span><br>  <span class="hljs-comment">#hosts: [&quot;localhost:9200&quot;]    #将此行注释掉</span><br>  output.logstash:              <span class="hljs-comment">#取消此行注释</span><br>  hosts: [<span class="hljs-string">&quot;192.168.37.10:5044&quot;</span>] <span class="hljs-comment">#取消此行注释并修改IP 地址为ELK 服务器地址</span><br>[root@xy filebeat<span class="hljs-number">-6.2</span><span class="hljs-number">.3</span>-linux-x86_64]<span class="hljs-comment"># nohup ./filebeat -e -c filebeat.yml &amp;  </span><br>[root@xy filebeat<span class="hljs-number">-6.2</span><span class="hljs-number">.3</span>-linux-x86_64]<span class="hljs-comment"># tailf nohup.out  </span><br></code></pre></td></tr></table></figure>
+
+<img src="/posts/3eb5a9f1/ELK.png" srcset="/img/loading.gif" lazyload class="" title="[ELK]">  
+<img src="/posts/3eb5a9f1/ELK01.png" srcset="/img/loading.gif" lazyload class="" title="[ELK配置-01]">  
+<img src="/posts/3eb5a9f1/ELK02.png" srcset="/img/loading.gif" lazyload class="" title="[ELK配置-02]">  
+
+<h3 id="设置服务自启动"><a href="#设置服务自启动" class="headerlink" title="设置服务自启动"></a>设置服务自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#!bin/bash</span><br><span class="hljs-comment"># chkconfig: 2345 21  89</span><br><span class="hljs-comment"># description: elasticsearch</span><br><br><span class="hljs-comment"># JAVA_HOME=/usr/local/jdk1.8</span><br>ES_HOME=/usr/local/elasticsearch<br><span class="hljs-keyword">case</span> <span class="hljs-variable">$1</span> <span class="hljs-keyword">in</span><br>    start) <span class="hljs-built_in">sudo</span> -iu elasticsearch <span class="hljs-variable">$ES_HOME</span>/bin/elasticsearch &amp;;;<br>    *)  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;require start&quot;</span>;;<br><span class="hljs-keyword">esac</span><br>------------------------------------<br><br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-comment"># chkconfig: 2345 50  50</span><br><span class="hljs-comment"># description: logstash</span><br><br>LS_HOME=/usr/local/logstash<br><span class="hljs-keyword">case</span> <span class="hljs-variable">$1</span> <span class="hljs-keyword">in</span><br>    start)<span class="hljs-built_in">sudo</span> -iu elasticsearch <span class="hljs-variable">$LS_HOME</span>/bin/logstash -f <span class="hljs-variable">$LS_HOME</span>/config &amp;;;<br>    *) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;require start&quot;</span>;;<br><span class="hljs-keyword">esac</span><br>-----------------------------------<br><br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-comment"># chkconfig: 2345 98  02</span><br><span class="hljs-comment"># description: kibana</span><br><br>KIBANA_HOME=/usr/local/kibana<br><span class="hljs-keyword">case</span> <span class="hljs-variable">$1</span> <span class="hljs-keyword">in</span><br>    start) <span class="hljs-variable">$KIBANA_HOME</span>/bin/kibana &amp;;;<br>    *) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;require start&quot;</span>;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="tomcat-服务自启动"><a href="#tomcat-服务自启动" class="headerlink" title="tomcat 服务自启动"></a>tomcat 服务自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># description: Tomcat8 Start Stop Restart</span><br><span class="hljs-comment"># processname: tomcat8</span><br><span class="hljs-comment"># chkconfig: 234 20 80</span><br><br>CATALINA_HOME=/usr/local/tomcat8/<br><br><span class="hljs-keyword">case</span> <span class="hljs-variable">$1</span> <span class="hljs-keyword">in</span><br>    start)<br>        sh <span class="hljs-variable">$CATALINA_HOME</span>/bin/startup.sh<br>        ;;<br>    stop)<br>        sh <span class="hljs-variable">$CATALINA_HOME</span>/bin/shutdown.sh<br>        ;;<br>    restart)<br>        sh <span class="hljs-variable">$CATALINA_HOME</span>/bin/shutdown.sh<br>        sh <span class="hljs-variable">$CATALINA_HOME</span>/bin/startup.sh<br>        ;;<br>    *)<br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;please use : tomcat &#123;start | stop | restart&#125;&#x27;</span><br>        ;;<br><span class="hljs-keyword">esac</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Devops-linux-ES/" class="category-chain-item">Devops, linux, ES</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/Devops/" class="print-no-link">#Devops</a>
+      
+        <a href="/tags/ES/" class="print-no-link">#ES</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ES</div>
+      <div>https://anyu967.github.io/posts/3eb5a9f1.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年9月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/bae4ff13.html" title="Redis">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Redis</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/a4d4b8b8.html" title="python">
+                        <span class="hidden-mobile">python</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

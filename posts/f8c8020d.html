@@ -1,0 +1,928 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-06-12-集群">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 集群">
+<meta property="og:url" content="https://anyu967.github.io/posts/f8c8020d.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-06-12-集群">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/ARP-Level.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/closearp.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/LVS.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/LVS-NAT.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/LVS-DR.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/LVS-DR-Keepalived.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/f8c8020d/Heartbeat-Nginx.png">
+<meta property="article:published_time" content="2019-06-12T02:50:34.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.755Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anyu967.github.io/posts/f8c8020d/ARP-Level.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux 集群 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux 集群"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-12 10:50" pubdate>
+          2019年6月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux 集群</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-06-12-集群</p>
+<span id="more"></span>
+
+<h2 id="Linux-集群"><a href="#Linux-集群" class="headerlink" title="Linux 集群"></a>Linux 集群</h2><h3 id="1-liunx-集群概述："><a href="#1-liunx-集群概述：" class="headerlink" title="1.liunx 集群概述："></a>1.liunx 集群概述：</h3><h4 id="1-1-集群概念："><a href="#1-1-集群概念：" class="headerlink" title="1.1 集群概念："></a>1.1 集群概念：</h4><blockquote>
+<p>一组协同工作的服务器，对外表现为一个整体，更好的利用现有资源实现服务的高度可用 </p>
+</blockquote>
+<h4 id="1-2-集群-Cluster-的分类："><a href="#1-2-集群-Cluster-的分类：" class="headerlink" title="1.2 集群(Cluster)的分类："></a>1.2 集群(Cluster)的分类：</h4><ul>
+<li>LBC(Load Balancing)：负载均衡集群<ul>
+<li>减轻单台服务器的压力，将用户请求分担给多台主机一起处理</li>
+<li>实现方法：<ul>
+<li>软件：LVS、RAC、Ngnix、</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lipengxiang2009/p/7353373.html">LVS(Linux Virtual Server)</a></li>
+<li>硬件：F5、BIG-IP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HAC(High Availiablity)：高可用集群<ul>
+<li>最大限度的保证用户的应用持久，不间断的提供服务</li>
+<li>实现原理：心跳检测</li>
+<li>实现方法：<ul>
+<li>软件：heartbeat linux-HA、RHCS、ROSE、keepalived</li>
+<li>硬件：F5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HPC(High-performance computing)：高性能运算集群</li>
+</ul>
+<img src="/posts/f8c8020d/ARP-Level.png" srcset="/img/loading.gif" lazyload class="" title="[ARP-Level]">  
+<img src="/posts/f8c8020d/closearp.png" srcset="/img/loading.gif" lazyload class="" title="[closearp]">  
+
+<h3 id="2-负载均衡集群-LBC"><a href="#2-负载均衡集群-LBC" class="headerlink" title="2.负载均衡集群(LBC)"></a>2.负载均衡集群(LBC)</h3><h4 id="2-1LVS-相关原理："><a href="#2-1LVS-相关原理：" class="headerlink" title="2.1LVS 相关原理："></a>2.1LVS 相关原理：</h4><blockquote>
+<p>LVS 运行在系统内核空间<code>netfilter</code>的<code>INPUT</code>钩子上的框架，用户空间无法直接管理，用<strong>IPVSADM命令行工具</strong>管理集群服务；根据用户请求的套接字判断，分流至真实服务器的工作模块  </p>
+</blockquote>
+<ul>
+<li>管理集群服务: 增、改、删<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ipvsadm -A|E -t|u|f service-address [-s,scheduler] [-p [<span class="hljs-built_in">timeout</span>]]  <br>ipvsadm -D -t|u|f service-address  <br>service-address: -t|u|f<br>-s,scheduler: <span class="hljs-comment"># 指定集群调度算法, 默认：WLC</span><br></code></pre></td></tr></table></figure></li>
+<li>管理集群的RS: 增、改、删<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ipvsadm -a|e -t|u|f service-address -r service-address [-g|i|m] [-w,weight]  <br>ipvsadm -d -t|u|f service-address -r service-address<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-2LVS工作模式："><a href="#2-2LVS工作模式：" class="headerlink" title="2.2LVS工作模式："></a>2.2LVS工作模式：</h4><img src="/posts/f8c8020d/LVS.png" srcset="/img/loading.gif" lazyload class="" title="[LVS工作模式]"> 
+
+<ul>
+<li>NAT(多目标的DNAT) ✔<ul>
+<li>模式特点：<ul>
+<li><strong>网络层</strong>，替换目标地址；</li>
+<li>集群节点，必须在一个网络中；</li>
+<li>真实服务器网关必须指向负载调度器；</li>
+<li>RIP通常都是私有IP，仅用于各个集群节点通信；</li>
+<li>负载调度器必须位于客户端和真实服务器之间，充当网关；</li>
+<li>支持端口映射，负载调度器操作系统必须是Linux ，真实服务器可以使用任意系统;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>　</p>
+<img src="/posts/f8c8020d/LVS-NAT.png" srcset="/img/loading.gif" lazyload class="" title="[LVS-NAT]"> 
+<ul>
+<li>DR(Direct Routing) ✔<ul>
+<li>模式特点：<ul>
+<li><strong>数据链路层</strong>，更改MAC地址，关闭ARP广播；</li>
+<li>集群节点，必须在一个网络中；</li>
+<li>真实服务器网关指向路由器；</li>
+<li>RIP既可以是私网地址，又可以是公网地址;</li>
+<li>不支持端口映射;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/f8c8020d/LVS-DR.png" srcset="/img/loading.gif" lazyload class="" title="[LVS-DR]"> 
+<ul>
+<li>TUN<ul>
+<li>模式特点：<ul>
+<li>集群节点不必位于同一个物理网络但必须都拥有公网IP（或都可以被路由）</li>
+<li>真实服务器不能将网管指向负载调度器</li>
+<li>RIP必须是公网地址</li>
+<li>负载调度器只负责入站请求</li>
+<li>不支持端口映射功能</li>
+<li>发送方和接收方必须支持隧道功能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-集群通用算法"><a href="#3-集群通用算法" class="headerlink" title="3.集群通用算法"></a>3.集群通用算法</h3><h4 id="3-1静态调度算法："><a href="#3-1静态调度算法：" class="headerlink" title="3.1静态调度算法："></a>3.1静态调度算法：</h4><ul>
+<li><strong>RR</strong> 轮询算法：第一台服务器开始到N台结束，然后循环        :laughing:   </li>
+<li><strong>WRR</strong> 加权算法：按权重比例实现多台主机之间进行调度        :smile:</li>
+<li><strong>SH</strong> 源地址散列：将同一个IP用户请求，发送给同一个服务器  </li>
+<li><strong>DH</strong> 目标地址散列：将同一个目标地址的用户请求发送给通一个真实服务器(提高缓存服务率)</li>
+</ul>
+<h4 id="3-2动态调度算法："><a href="#3-2动态调度算法：" class="headerlink" title="3.2动态调度算法："></a>3.2动态调度算法：</h4><ul>
+<li><strong>LC</strong>：Lest-connection，最少连接，将新的连接请求，分配给连接数最少的服务器 :smile:<ul>
+<li>活动连接*256 + 非活动连接</li>
+</ul>
+</li>
+<li><strong>WLC</strong>：加权最少连接，特殊的LC算法，权重越大承担请求越多  :smile:<ul>
+<li>（活动连接*256 + 非活动连接）&#x2F; 权重</li>
+</ul>
+</li>
+<li><strong>SED</strong>：最短期望延迟，特殊的WLC算法<ul>
+<li>（活动连接 + 1）*256 &#x2F; 权重</li>
+</ul>
+</li>
+<li><strong>NQ</strong>：无需等待，特殊的SED算法，若有正是服务器的连接数等于0就直接分配不需要运算  </li>
+<li><strong>LBLC</strong>：特殊的DH算法，即提高缓存命中率，有考虑了服务器性能</li>
+<li><strong>LBLCR</strong>：LBLCR缓存，尽可能提高负载均衡和缓存命中率折中方案</li>
+</ul>
+<h4 id="3-3持久化连接-类似于SH优先级最高"><a href="#3-3持久化连接-类似于SH优先级最高" class="headerlink" title="3.3持久化连接(类似于SH优先级最高)"></a>3.3持久化连接(类似于SH优先级最高)</h4><ul>
+<li><strong>PCC</strong>：持久客户端连接<ul>
+<li>将来自于同一个客户端的所有请求统统定向此前选定的RS，只要IP相同，分配的服务器始终相同</li>
+</ul>
+</li>
+<li><strong>PPC</strong>：持久端口连接<ul>
+<li>将来自于同一个客户端对同一个服务(端口)的请求，始终定向此前选定的RS</li>
+</ul>
+</li>
+<li><strong>PMFC</strong>：持久防火墙标记连接<ul>
+<li>将来自同一个客户端指定服务(端口)的请求，始终定向至此选定的RS，不过它可以将2个不相关的端口定义为一个集群服务</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-4ipvsadm编译安装"><a href="#3-4ipvsadm编译安装" class="headerlink" title="3.4ipvsadm编译安装"></a>3.4ipvsadm编译安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -c http://www.linuxvirtualserver.org/software/kernel-2.6/ipvsadm-1.24.tar.gz<br><span class="hljs-built_in">ln</span> -s /usr/local/kernels/2.6.* /usr/local/linux<br>tar -xzvf ipvsadm-1.24.tar.gz<br><span class="hljs-built_in">cd</span> ipvsadm-1.24<br>make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>ipvsadm 命令选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-A</td>
+<td>添加虚拟服务器IP</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>设置调度算法</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>添加真实主机</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>TCP_PORT</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>UDP_PORT</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>标记</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>DR模式(直接路由)</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>NAT模式</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>TUN模式</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>权重</td>
+</tr>
+<tr>
+<td>-Ln</td>
+<td>以数字形式输出地址和端口</td>
+</tr>
+<tr>
+<td>-nS</td>
+<td>重定向保存文件</td>
+</tr>
+<tr>
+<td>-restore</td>
+<td>恢复</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>清空定义所有内容</td>
+</tr>
+<tr>
+<td>-Z</td>
+<td>清空计数器</td>
+</tr>
+</tbody></table>
+<h3 id="4-LVS工作模式构建："><a href="#4-LVS工作模式构建：" class="headerlink" title="4.LVS工作模式构建："></a>4.LVS工作模式构建：</h3><h4 id="4-1-NAT-模式构建："><a href="#4-1-NAT-模式构建：" class="headerlink" title="4.1 NAT 模式构建："></a>4.1 NAT 模式构建：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Client: 172.20.0.123/16  </span><br><span class="hljs-comment"># LVS: eth1:VIP:172.20.0.200   eth0:DIP:192.168.30.200  </span><br><span class="hljs-comment"># RS: 192.168.30.27/24  192.168.30.17/24   GW: 192.168.30.200  </span><br><span class="hljs-comment"># /etc/pki/tls/certs</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="4-2负载调度器配置-VIP-DIP"><a href="#4-2负载调度器配置-VIP-DIP" class="headerlink" title="4.2负载调度器配置(VIP,DIP):"></a>4.2负载调度器配置(VIP,DIP):</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/sysctl.conf  <span class="hljs-comment"># 开启负载调度器路由转发   </span><br>  net.ipv4.ip_forward=1  <br>[root@xy ~]# sysctl -p                <span class="hljs-comment"># 刷新内核参数  </span><br>[root@xy ~]# service iptables start   <span class="hljs-comment"># 开启防火墙  </span><br>[root@xy ~]# chkconfig iptables on    <br>[root@xy ~]# iptables -F              <span class="hljs-comment"># 清空防火墙默认规则  </span><br>[root@xy ~]# iptables -t nat -A POSTROUTING -s 192.168.30.27 -o eth0 -j SNAT -to-source 172.20.0.100<br>[root@xy ~]# iptables -t nat -L<br>[root@xy ~]# ipvsadm -A -t 172.20.0.200:80 -s rr    <span class="hljs-comment"># 添加 ipvsadm TCP集群    </span><br>[root@xy ~]# ipvsadm -a -t 172.20.0.200:80 -r 192.168.30.17:8080 -m <br><span class="hljs-comment"># 添加ipvsadm节点  -m NAT 模式  </span><br>[root@xy ~]# ipvsadm -a -t 172.20.0.200:80 -r 192.168.30.27:80 -m <br>[root@xy ~]# ipvsadm -Ln<br>[root@xy ~]# service ipvsadm save  <br>[root@xy ~]# chkconfig ipvsadm on  <br><br>[root@xy ~]# ipvsadm -Ln --status <span class="hljs-comment"># 查看集群状态  </span><br>[root@xy ~]# ipvsadm -D -t 外网卡地址:80  <span class="hljs-comment"># 删除集群  </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="4-3真实服务器配置"><a href="#4-3真实服务器配置" class="headerlink" title="4.3真实服务器配置:"></a>4.3真实服务器配置:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# route add default gw IP  <span class="hljs-comment"># 指定真实服务器网关至负载调度器  </span><br>[root@xy ~]# route -n<br>[root@xy ~]# service httpd start  <br>[root@xy ~]# chkconfig httpd on<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-4DR-模式构建："><a href="#4-4DR-模式构建：" class="headerlink" title="4.4DR 模式构建："></a>4.4DR 模式构建：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Client: 172.20.0.222/16      GW: 172.20.0.200  </span><br><span class="hljs-comment"># Route: 172.20.0.200  192.168.30.200</span><br><span class="hljs-comment"># LVS: eth0:VIP:192.168.30.7   GW: 192.168.30.200    </span><br><span class="hljs-comment"># RS: eth0:192.168.30.17/24  eth0:192.168.30.27/24  VIP:192.168.30.7  GW: 192.168.30.200   </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="4-5负载调度器配置"><a href="#4-5负载调度器配置" class="headerlink" title="4.5负载调度器配置"></a>4.5负载调度器配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# service NetworkManager stop  <br>[root@xy ~]# chkconfig NetworkManager off  <br>[root@xy ~]# vim /etc/sysconfig/network-scripts/  <br>[root@xy ~]# vim /etc/sysctl.conf  <span class="hljs-comment"># 开启负载调度器路由转发   </span><br>  net.ipv4.ip_forward=1  <br>[root@xy ~]# sysctl -p <span class="hljs-comment"># 刷新内核参数 </span><br>[root@xy ~]# vim /etc/sysctl.conf  <span class="hljs-comment"># 关闭网卡重定向  </span><br>  net.ipv4.conf.all.send_redirects = 0  <br>  net.ipv4.conf.default.send_redirects = 0  <br>  net.ipv4.conf.eth0.send_redirects = 0  <br>[root@xy ~]# sysctl -p<br>[root@xy ~]# modprobe ip_vs <span class="hljs-comment"># 重新加载 ipvs 模块  </span><br>[root@xy ~]# rpm -ivh ipvsadm   <span class="hljs-comment"># 安装ipvsadm工具  </span><br>[root@xy ~]# ipvsadm -v         <span class="hljs-comment"># 查看当前集群内容  </span><br>[root@xy ~]# ipvsadm -A -t 192.168.30.7:80 -s rr  <span class="hljs-comment"># 添加TCP集群  </span><br>[root@xy ~]# ipvsadm -a -t  192.168.30.7:80:80 -r 192.168.30.17:80 -g <span class="hljs-comment"># 添加ipvsadm集群子节点  </span><br>[root@xy ~]# ipvsadm -a -t  192.168.30.7:80:80 -r 192.168.30.27:80 -g <span class="hljs-comment"># -g DR模式</span><br>[root@xy ~]# ipvsadm -Ln<br>[root@xy ~]# service ipvsadm save  <br>[root@xy ~]# chkconfig ipvsadm on  <br></code></pre></td></tr></table></figure>
+
+<h4 id="4-6真实服务器"><a href="#4-6真实服务器" class="headerlink" title="4.6真实服务器"></a>4.6真实服务器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# service NetworkManager stop  <br>[root@xy ~]# vim /etc/sysctl.conf    <span class="hljs-comment"># 关闭对应ARP 响应及公告功能  </span><br>  net.ipv4.conf.all.arp_ignore = 1  <br>  net.ipv4.conf.all.arp_announce = 2  <br>  net.ipv4.conf.default.arp_ignore = 1  <br>  net.ipv4.conf.default.arp_announce = 2  <br>  net.ipv4.conf.lo.arp_ignore = 1  <br>  net.ipv4.conf.lo.arp_announce = 2  <br>[root@xy ~]# sysctl -p<br>[root@xy ~]# <span class="hljs-built_in">cd</span> /etc/sysconfig/network-scripts/  <br>[root@xy ~]# <span class="hljs-built_in">cp</span> ifcfg-lo ifcfg-lo:0  <br>[root@xy ~]# vim ifcfg-lo:0     <span class="hljs-comment"># 拷贝回环网卡子接口  </span><br>  DEVICE=lo:0  <br>  IPADDR=192.168.30.7 <span class="hljs-comment"># VIP </span><br>  NETMASK=255.255.255.255  <br>[root@xy ~]# ifup lo:0  <br>[root@xy ~]# route add -host 192.168.30.200 dev lo:0 <span class="hljs-comment"># 添加路由记录，网关，当访问 VIP 交给lo:0 网卡接收  </span><br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;route add -host 192.168.30.200 dev lo:0&quot;</span> &gt;&gt; /etc/rc.local  <span class="hljs-comment"># 加入到开机自启中  </span><br>[root@xy ~]# service httpd start<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-高可用集群-HAC"><a href="#5-高可用集群-HAC" class="headerlink" title="5.高可用集群(HAC)"></a>5.高可用集群(HAC)</h3><h4 id="5-1Keeplived原理："><a href="#5-1Keeplived原理：" class="headerlink" title="5.1Keeplived原理："></a>5.1Keeplived原理：</h4><ul>
+<li>热备方式：VRRP 虚拟路由冗余协议<ul>
+<li>一主+多备，共用同一个IP，但优先级不同</li>
+<li>支持故障自动切换</li>
+<li>支持节点健康状态检查</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-2LVS-DR-Keeplived："><a href="#5-2LVS-DR-Keeplived：" class="headerlink" title="5.2LVS-DR+Keeplived："></a>5.2LVS-DR+Keeplived：</h4><img src="/posts/f8c8020d/LVS-DR-Keepalived.png" srcset="/img/loading.gif" lazyload class="" title="[LVS-DR-Keepalived]">    
+
+<h4 id="5-3负载调度器-1"><a href="#5-3负载调度器-1" class="headerlink" title="5.3负载调度器 1"></a>5.3负载调度器 1</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# service NetworkManager stop  <br>[root@xy ~]# chkconfig NetworkManager off    <br>[root@xy ~]# <span class="hljs-built_in">cd</span> /etc/sysconfig/network-scripts/    <br>[root@xy ~]# <span class="hljs-built_in">cp</span> -a ifcfg-eth0 ifcfg-eth0:0<br>[root@xy ~]# vim !$<br>  DEVICE=eth0:0    <br>  IPADDR=10.10.10.100 <span class="hljs-comment">#虚拟IP    </span><br>  NETMASK=255.255.255.0   <br>[root@xy ~]# ifup eth0:0  <br>[root@xy ~]# yum install -y ipvsadm  <br>[root@xy ~]# vim /etc/sysctl.conf  <span class="hljs-comment"># 关闭网卡的广播功能，防止冲突  </span><br>  net.ipv4.conf.all.send_redirects = 0  <br>  net.ipv4.conf.default.send_redirects = 0  <br>  net.ipv4.conf.eth0.send_redirects = 0  <br>[root@xy ~]# sysctl -p<br>[root@xy ~]# ipvsadm -A -t 10.10.10.100:80 -s rr  添加集群  <br>[root@xy ~]# ipvsadm -a -t 10.10.10.100:80 -r 10.10.10.13:80 -g <span class="hljs-comment"># 添加集群子节点，-g DR模式    </span><br>[root@xy ~]# ipvsadm -a -t 10.10.10.100:80 -r 10.10.10.114:80 -g    <br>[root@xy ~]# service ipvsadm save    <br>[root@xy ~]# ipvsadm -Ln   <br>  IP Virtual Server version 1.2.1 (siza=4096)  <br>  Port LocalAddress:Port Scheduler Flags <br>      -&gt; RemoteAddress:Port       Forward     Weight      ActiveConn      InActConn  <br>  TCP 10.10.10.100:80 rr<br>      -&gt;10.10.10.13:80            Route       1           0           0<br>      -&gt;10.10.10.14:80            Route       1           0           0  <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> /mnt/keepalived    <span class="hljs-comment"># 配置 keepalived 文件  10.10.10.11   </span><br>[root@xy ~]# mount -o loop Keepalived.iso  <br>[root@xy ~]# <span class="hljs-built_in">cp</span> -a /mnt/leepalived/* .  <br>[root@xy ~]# vim /etc/keepalived/keepalived.conf<br>  global_defs &#123;<br>      router_id R1    <span class="hljs-comment">#命名主机名</span><br>  &#125;<br><br>  vrrp_instance VI--1 &#123;<br>      state MASTER        <span class="hljs-comment"># 设置服务类型主/从（MASTER/SLAVE）</span><br>      interface eth0      <span class="hljs-comment"># 指定那块网卡用来监听</span><br>      virtual_router_id 66 <span class="hljs-comment"># 设置组号， 如果是一组就是相同的ID号， 一个主里面只能有一个主服务器和多个从服务器</span><br>      priority 80          <span class="hljs-comment"># 服务器优先级， 主服务器优先级高</span><br>      advert_int 1         <span class="hljs-comment"># 心跳时间， 检测对方存活</span><br>      authenticetion &#123;     <span class="hljs-comment"># 存活验证密码</span><br>          auth_type PASS<br>          auth_pass 1111<br>      &#125;<br>  virtual_ipaddress &#123;<br>      10.10.10.100       <span class="hljs-comment">#设置集群地址</span><br>      &#125;<br>  &#125;<br><br>  virtual_server 10.10.10.100 80 &#123;   <span class="hljs-comment"># 设置集群地址以及端口号</span><br>      delay_loop 2                   <span class="hljs-comment"># 健康检查间隔</span><br>      lb_algo rr                     <span class="hljs-comment"># 使用轮询调度算法</span><br>      lb_kind DR                     <span class="hljs-comment"># DR模式的群集</span><br>      protocol TCP                   <span class="hljs-comment"># 使用的协议</span><br>  real_server 10.10.10.13 80 &#123;       <span class="hljs-comment"># 管理的网站节点以及使用端口</span><br>          weight 1                   <span class="hljs-comment"># 权重， 优先级在原文件基础上删除修改</span><br>          TCP_CHECK &#123;                <span class="hljs-comment"># 状态检查方式</span><br>              connect_port 80        <span class="hljs-comment"># 检查的目标端口</span><br>              connect_timeout 3      <span class="hljs-comment"># 连接超时（秒）</span><br>              nb_get_retry 3         <span class="hljs-comment"># 重试次数</span><br>              delay_before_retry 4   <span class="hljs-comment"># 重试间隔（秒）</span><br>          &#125;<br>      &#125;<br>  real_server 10.10.10.14 80 &#123;    <span class="hljs-comment"># 管理的第二个网站节点以及使用端口</span><br>          weight 1                <span class="hljs-comment"># 权重， 优先级在原文件基础上删除修改</span><br>          TCP_CHECK &#123;             <span class="hljs-comment"># 状态检查方式</span><br>              connect_port 80     <span class="hljs-comment"># 检查的目标端口</span><br>              connect_timeout 3   <span class="hljs-comment"># 连接超时（秒）</span><br>              nb_get_retry 3           <span class="hljs-comment"># 重试次数</span><br>              delay_before_retry 4     <span class="hljs-comment"># 重试间隔（秒）</span><br>          &#125;<br>      &#125;<br>  &#125;<br>[root@xy ~]# service keepalived start  <br>[root@xy ~]# <span class="hljs-built_in">tail</span> -f  /var/log/message  <br></code></pre></td></tr></table></figure>
+
+<h4 id="5-4负载调度器-2"><a href="#5-4负载调度器-2" class="headerlink" title="5.4负载调度器 2"></a>5.4负载调度器 2</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy network-scripts]# <span class="hljs-built_in">cp</span> -a ifcfg-eth0 ifcfg-eth0:0   10.10.10.12  <br>  DEVICE=eth0:0  <br>  IPADDR=10.10.10.100  <br>  NETMASK=255.255.255.0  <br>[root@xy network-scripts]# vim ifup-eth <span class="hljs-comment"># 256行左右，注释arp命令  </span><br>[root@xy network-scripts]# ifup eth0:0<br>[root@xy network-scripts]# vim /etc/keepalived/keepalived.conf<br>  <span class="hljs-comment"># 修改1：state MASTER 修改至state SLAVE </span><br>  <span class="hljs-comment"># 修改2：priority 100 修改至priority 47 一般建议与主服务器差值为50</span><br>[root@xy network-scripts]# service NetworkManager stop  <span class="hljs-comment"># 启动虚拟借口，必须关闭此服务  </span><br>[root@xy network-scripts]# vim /etc/sysctl.conf  <span class="hljs-comment"># 修改内核参数。防止相同网络地址广播冲突， 如果有多快网卡需要设置多行  </span><br>  net.ipv4.conf.eth0.send_redirects = 0  <br>  net.ipv4.conf.all.send_redirects = 0  <br>  net.ipv4.conf.default.send_redirects = 0   <br>  net.ipv4.conf.eth0.send_redirects = 0   <br>[root@xy network-scripts]# sysctl -p <span class="hljs-comment"># 刷新内核参数  </span><br>[root@xy network-scripts]# modprobe ip_vs      <span class="hljs-comment"># 查看内核是否加载， 无法应则以加载  </span><br>[root@xy network-scripts]# <span class="hljs-built_in">cat</span> /proc/net/ip_vs <span class="hljs-comment"># 参看版本， 确认知否正确加载  </span><br>[root@xy network-scripts]# <span class="hljs-built_in">cd</span> /mnt/cdrom/Packages/  <span class="hljs-comment"># 进入光盘挂载目录  </span><br>[root@xy network-scripts]# rpm -ivh ipvsadm-1.26l......... <span class="hljs-comment"># 安装ipvsadm管理工具  </span><br>[root@xy network-scripts]# ipvsadm -v<br>[root@xy network-scripts]# ipvsadm -A -t 10.10.10.100:80 -s rr  <br>[root@xy network-scripts]# ipvsadm -Ln   <span class="hljs-comment"># 查看设置的ipvsadm如果没有子项， 那么手动添加  </span><br>[root@xy network-scripts]# ipvsadm -a -t 10.10.10.100:80 -r 10.10.10.13:80 -g <br>[root@xy network-scripts]# ipvsadm -a -t 10.10.10.100:80 -r 10.10.10.14:80 -g  <br></code></pre></td></tr></table></figure>
+
+<h4 id="5-5真实服务器"><a href="#5-5真实服务器" class="headerlink" title="5.5真实服务器"></a>5.5真实服务器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# service httpd start  <span class="hljs-comment"># 真实服务器开启Web服务    </span><br>[root@xy ~]# chkconfig httpd on <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;this is Server 1&quot;</span> &gt;&gt; /var/www/index.html  <span class="hljs-comment"># 10.10.10.13   </span><br>[root@xy ~]# curl localhost<br>[root@xy ~]# <span class="hljs-built_in">cd</span> /etc/sysconfig/network-scripts/<br>[root@xy ~]# <span class="hljs-built_in">cp</span> ifcfg-lo ifcfg-lo:0    <br>[root@xy ~]# vim ifcfg-lo:0  拷贝回环网卡子接口    <br>  DEVICE=lo:0   <br>  IPADDR=10.10.10.100     <br>  NETMASK=255.255.255.255   <br>[root@xy ~]# vim /etc/sysctl.conf   <span class="hljs-comment"># 关闭对应ARP 响应及公告功能   </span><br>  net.ipv4.conf.all.arp_ignore = 1    <br>  net.ipv4.conf.all.arp_announce = 2    <br>  net.ipv4.conf.default.arp_ignore = 1  <br>  net.ipv4.conf.default.arp_announce = 2   <br>  net.ipv4.conf.lo.arp_ignore = 1   <br>  net.ipv4.conf.lo.arp_announce = 2   <br>[root@xy ~]# sysctl -p <br>[root@xy ~]# ifup lo: 0  <br>[root@xy ~]# route add -host 10.10.10.100 dev lo:0 <span class="hljs-comment"># 添加路由记录，当访问VIP 交给lo:0 网卡接受  </span><br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;route add -host 10.10.10.100 dev lo:0&quot;</span> &gt;&gt; /etc/rc.local <span class="hljs-comment"># 加入到开机自启中  </span><br>[root@xy ~]# ipvsadm -Ln --stats    <br>  IP Virtual Server version 1.2.1 (siza=4096)  <br>  Port LocalAddress:Port   <br>      -&gt; RemoteAddress:Port       Conns       InPkts      OutPkts     InBytes     OutBytes       <br>  TCP 10.10.10.100:80             16          79          0           11036          0<br>      -&gt;10.10.10.13:80            8           39          0           5481           0<br>      -&gt;10.10.10.14:80            8           40          0           5555           0<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="5-6Heartbeat-Nginx："><a href="#5-6Heartbeat-Nginx：" class="headerlink" title="5.6Heartbeat+Nginx："></a>5.6Heartbeat+Nginx：</h4><img src="/posts/f8c8020d/Heartbeat-Nginx.png" srcset="/img/loading.gif" lazyload class="" title="[Heartbeat-Nginx]">  
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# yum -y install pcre pcre-devel zlib zlib-devel  <span class="hljs-comment"># 10.10.10.11  </span><br>[root@xy nginx-1.2.6]# useradd -s /sbin/no-login -M nginx  -M 家目录  <br>[root@xy nginx-1.2.6]# ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx  <br>[root@xy nginx-1.2.6]# make &amp;&amp; make install    <br><br>[root@xy ~]# tar -xzvf heartbeat.tar.gz  <br>[root@xy heartbeat]# yum -y install ntp  <span class="hljs-comment"># 安装时间同步服务程序  </span><br>[root@xy heartbeat]# vim /ect/ntp.conf <br>  restrict 10.10.10.0 mask 255.255.255.0 nomodify notrap  <br>  server 127.127.1.0   <br>  fudge 127.127.1.0 stratum 10   <br>[root@xy heartbeat]# service ntpd start  <br>[root@xy heartbeat]# chkconfig ntpd on <br>[root@xy ~] <span class="hljs-comment"># yum install -y ntpdate    # 10.10.10.12  </span><br>[root@xy ~] <span class="hljs-comment"># ntpdate -u 10.10.10.11 </span><br>[root@xy heartbeat]# vim /etc/sysconfig/network  <span class="hljs-comment"># 更改主机名  uname -n</span><br>[root@xy heartbeat]# <span class="hljs-built_in">cd</span> /usr/share/doc/heartbeat-3.0.4<br>[root@xy heartbeat]# <span class="hljs-built_in">cp</span> -a authkeys ha.cf haresources /etc/ha.d <br>[root@xy heartbeat]# <span class="hljs-built_in">cd</span> !$ <br>[root@xy ha.d]# <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/random bs=512 count=1 | openssl md5 <br>  记录了 0+1 的读入  <br>  记录了 0+1 的写入  <br>  16字节(16 B)已复制, 6.5455e-05 秒, 244 kb/秒    <br>  (stdin)=53a0ba829e8a55f7faea1891c850dde8  <br>[root@xy ha.d]#  vim authkeys <br>  auth 3<br>  1 crc   <br>  2 sha1 HI!  <br>  3 md5 53a0ba829e8a55f7faea1891c850dde8     <br>[root@xy ha.d]# <span class="hljs-built_in">chmod</span> 600 authkeys  <br>[root@xy ha.d]# vim ha.cf  <span class="hljs-comment"># /bcast  /node  </span><br>  bcast   eth0    <span class="hljs-comment">#Linux   </span><br>  node    www.centos1.com  <br>  node    www.centos2.com     <br>[root@xy ha.d]# haresoures<br>  www.centos1.com IPaddr::10.10.10.100/24/eth0:0  <span class="hljs-comment"># 切换 IP 地址</span><br>[root@xy ~]# scp ha.cf authkeys haresoures root@10.10.10.12:/etc/ha.d/ <span class="hljs-comment"># 10.10.10.12  </span><br>[root@xy ha.d]#  /etc/init.d/ha.d<br>  <span class="hljs-comment">#!/bin/bash         # 检测脚本</span><br>  PWD=/usr/local/script/<br>  URL=<span class="hljs-string">&quot;http://10.10.10.11/index.html&quot;</span><br>  HTTP_CODE=`curl -o /dev/null -s -w <span class="hljs-string">&quot;%&#123;http_code&#125;&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;URL&#125;</span>&quot;</span>` <br>  <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$HTTP_CODE</span> != 200 ]<br>  <span class="hljs-keyword">then</span><br>  	   service heartbeat stop<br>  <span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Devops-linux/" class="category-chain-item">Devops, linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/Devops/" class="print-no-link">#Devops</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux 集群</div>
+      <div>https://anyu967.github.io/posts/f8c8020d.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/a6e6cc3d.html" title="关于正则表达式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于正则表达式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/48810125.html" title="Linux 监控">
+                        <span class="hidden-mobile">Linux 监控</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

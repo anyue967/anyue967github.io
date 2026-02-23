@@ -1,0 +1,764 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-06-09-SQL基础命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL基础命令">
+<meta property="og:url" content="https://anyu967.github.io/posts/5b397e67.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-06-09-SQL基础命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-09T00:49:34.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.653Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Mysql">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>SQL基础命令 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SQL基础命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-09 08:49" pubdate>
+          2019年6月9日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SQL基础命令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-06-09-SQL基础命令</p>
+<span id="more"></span>
+
+<h3 id="Basic-SQL-Commands"><a href="#Basic-SQL-Commands" class="headerlink" title="Basic SQL Commands:"></a>Basic SQL Commands:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SHOW</span>	<span class="hljs-keyword">SELECT</span>  <span class="hljs-keyword">INSERT</span>  <span class="hljs-keyword">CREATE</span>  <span class="hljs-keyword">UPDATE</span>  <span class="hljs-keyword">DELETE</span>  <span class="hljs-keyword">GRANT</span>	<span class="hljs-keyword">REVOKE</span>	<span class="hljs-keyword">CREATE</span>  <br></code></pre></td></tr></table></figure>
+
+<h4 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">CREATE</span> DATABASE [IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>] db_name [<span class="hljs-keyword">DEFAULT</span>] <span class="hljs-keyword">CHARACTER SET</span> [<span class="hljs-operator">=</span>] charset_name;<br></code></pre></td></tr></table></figure>
+
+<h4 id="SHOW"><a href="#SHOW" class="headerlink" title="SHOW"></a>SHOW</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SHOW</span> databases;<br><span class="hljs-comment">/* The SQL SHOW statement displays information contained in the database and its tables.*/</span><br><span class="hljs-keyword">SHOW</span> DATABASES;<br><br><span class="hljs-keyword">SHOW</span> TABLES;<br><span class="hljs-comment">/* The SHOW TABLES command is used to display all of the tables in the currently selected MySQL database.*/</span><br><br><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE TABLE</span> tbl_name;	#查看创建表的语句<br></code></pre></td></tr></table></figure>
+
+<h4 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/* The SELECT statement is used to select data from a database.*/</span><br><span class="hljs-keyword">SELECT</span> column_list <span class="hljs-keyword">FROM</span> tbl_name;<br>  <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span>;<br>  eg1. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers;<br>  <span class="hljs-operator">|</span> ID <span class="hljs-operator">|</span> FirstName <span class="hljs-operator">|</span> LastName <span class="hljs-operator">|</span>     City    <span class="hljs-operator">|</span> ZipCode <span class="hljs-operator">|</span> Age <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span><span class="hljs-comment">----|-----------|----------|-------------|---------|-----|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> John      <span class="hljs-operator">|</span> Smith    <span class="hljs-operator">|</span> NewYork     <span class="hljs-operator">|</span>   <span class="hljs-number">10199</span> <span class="hljs-operator">|</span>  <span class="hljs-number">21</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> David     <span class="hljs-operator">|</span> Williams <span class="hljs-operator">|</span> Los Angeles <span class="hljs-operator">|</span>   <span class="hljs-number">90052</span> <span class="hljs-operator">|</span>  <span class="hljs-number">22</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Chole     <span class="hljs-operator">|</span> Anderson <span class="hljs-operator">|</span> Chicago     <span class="hljs-operator">|</span>   <span class="hljs-number">60607</span> <span class="hljs-operator">|</span>  <span class="hljs-number">24</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Emily     <span class="hljs-operator">|</span> Adams    <span class="hljs-operator">|</span> Houston     <span class="hljs-operator">|</span>   <span class="hljs-number">77201</span> <span class="hljs-operator">|</span>  <span class="hljs-number">23</span> <span class="hljs-operator">|</span><br><br>  eg2. <span class="hljs-keyword">SELECT</span> FirstName,LastName,City <span class="hljs-keyword">FROM</span> customers;<br>  <span class="hljs-operator">|</span> ID <span class="hljs-operator">|</span> FirstName <span class="hljs-operator">|</span> LastName <span class="hljs-operator">|</span>     City    <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span><span class="hljs-comment">----|-----------|----------|-------------|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> John      <span class="hljs-operator">|</span> Smith    <span class="hljs-operator">|</span> NewYork     <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> David     <span class="hljs-operator">|</span> Williams <span class="hljs-operator">|</span> Los Angeles <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Chole     <span class="hljs-operator">|</span> Anderson <span class="hljs-operator">|</span> Chicago     <span class="hljs-operator">|</span> <br>  <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Emily     <span class="hljs-operator">|</span> Adams    <span class="hljs-operator">|</span> Houston     <span class="hljs-operator">|</span><br><br><span class="hljs-comment">/* The SQL DISTINCT keyword is used in conjunction with SELECT to eliminate all duplicate records and return only unique ones.(不选择重复的数据).*/</span><br>  eg1. <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> column_name1, column_name2 <span class="hljs-keyword">FROM</span> tbl_name;  <br>  <span class="hljs-operator">|</span> ID <span class="hljs-operator">|</span> FirstName <span class="hljs-operator">|</span> LastName <span class="hljs-operator">|</span>     City    <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span><span class="hljs-comment">----|-----------|----------|-------------|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> John      <span class="hljs-operator">|</span> Smith    <span class="hljs-operator">|</span> NewYork     <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> David     <span class="hljs-operator">|</span> Williams <span class="hljs-operator">|</span> Los Angeles <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Chole     <span class="hljs-operator">|</span> Anderson <span class="hljs-operator">|</span> Chicago     <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Emily     <span class="hljs-operator">|</span> Adams    <span class="hljs-operator">|</span> Houston     <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">5</span> <span class="hljs-operator">|</span> Yue       <span class="hljs-operator">|</span> Xing     <span class="hljs-operator">|</span> NewYork     <span class="hljs-operator">|</span><br><br><span class="hljs-comment">/* Sometimes we need to retrieve just a subset of records(限制选择数据条数).*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">column</span> list <span class="hljs-keyword">FROM</span> table_name LIMIT [number <span class="hljs-keyword">of</span> records];  <br>  eg. <span class="hljs-keyword">SELECT</span> ID, FirstName, LastName, City <span class="hljs-keyword">FROM</span> customers LIMIT <span class="hljs-number">3</span>; <br><br><span class="hljs-comment">/* 从第2个位置开始拾取3条记录：(计数由0开始).*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> ID, FirstName, LastName, City <span class="hljs-keyword">FROM</span> customers LIMIT <span class="hljs-number">1</span>,<span class="hljs-number">3</span>;<br><br><span class="hljs-comment">/* In SQL, you can provide the table name prior to the column name, by separating them with a dot.The following statements are equivalent:*/</span>  <br>  eg. <span class="hljs-keyword">SELECT</span> City <span class="hljs-keyword">FROM</span> customers;<br>  eg. <span class="hljs-keyword">SELECT</span> customers.City <span class="hljs-keyword">FROM</span> customers;<br><br><span class="hljs-comment">/* ORDER BY is used with SELECT to sort the returned data.*/</span> <br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> FirstName,Age;<br>  <br><span class="hljs-keyword">SELECT</span> databases();<br><span class="hljs-keyword">SELECT</span> version();<br><span class="hljs-keyword">SELECT</span> now();<br></code></pre></td></tr></table></figure>
+
+<h4 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/* The WHERE clause is used to extract only those records that fulfill a specified criterion.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> column_list <span class="hljs-keyword">FROM</span> table_name <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">condition</span>;<br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> ID <span class="hljs-operator">=</span> <span class="hljs-number">7</span>;<br><br>  <span class="hljs-comment">/* SQL Operators:</span><br><span class="hljs-comment">     | Operator | Describtion               |</span><br><span class="hljs-comment">     |----------|---------------------------|</span><br><span class="hljs-comment">     | =        | equal                     |</span><br><span class="hljs-comment">     | !=       | Not equal                 |</span><br><span class="hljs-comment">     | &gt;        | Greater than              |</span><br><span class="hljs-comment">     | &lt;        | Less than                 |</span><br><span class="hljs-comment">     | &gt;=       | Greater than or equal     |</span><br><span class="hljs-comment">     | &lt;=       | Less than or equal        |</span><br><span class="hljs-comment">     | BETWEEN  | between an inclusiverange |</span><br><span class="hljs-comment">     | AND      | ----                      |</span><br><span class="hljs-comment">     | OR       | ----                      |</span><br><span class="hljs-comment">     | IN       | ----                      |</span><br><span class="hljs-comment">     | NOT      | ---                       |</span><br><span class="hljs-comment">   */</span><br><br>  eg. <span class="hljs-keyword">SELECT</span> column_name(s) <span class="hljs-keyword">FROM</span> table_name <span class="hljs-keyword">WHERE</span> column_name <span class="hljs-keyword">BETWEEN</span> value1 <span class="hljs-keyword">AND</span> value2;<br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> ID <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">3</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">7</span>;<br>  eg. <span class="hljs-keyword">SELECT</span> ID, FirstName <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> City <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;New York&#x27;</span>;<br>  eg. <span class="hljs-keyword">SELECT</span> ID, Age <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> Age <span class="hljs-operator">&gt;=</span> <span class="hljs-number">30</span> <span class="hljs-keyword">AND</span> Age <span class="hljs-operator">&lt;=</span> <span class="hljs-number">40</span>;<br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> City <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;New York&#x27;</span> <span class="hljs-keyword">AND</span> (Age<span class="hljs-operator">=</span><span class="hljs-number">30</span> <span class="hljs-keyword">OR</span> Age<span class="hljs-operator">=</span><span class="hljs-number">35</span>);<br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> City <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;New York&#x27;</span>, <span class="hljs-string">&#x27;Los Angeles&#x27;</span>);<br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> City <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;New York&#x27;</span>, <span class="hljs-string">&#x27;Los Angeles&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="CONCAT"><a href="#CONCAT" class="headerlink" title="CONCAT()"></a>CONCAT()</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/* The CONCAT function is used to concatenate two or more text values and returns the concatenating string.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> CONCAT(FirstName, <span class="hljs-string">&#x27;, &#x27;</span> , City) <span class="hljs-keyword">FROM</span> customers; <br>  <span class="hljs-operator">|</span> CONCAT(FirstName,<span class="hljs-string">&#x27;,&#x27;</span>,City) <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span><span class="hljs-comment">----------------------------|</span><br>  <span class="hljs-operator">|</span> John,NewYork               <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> David,Los Angeles          <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> Chole,Chicado              <span class="hljs-operator">|</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="AS"><a href="#AS" class="headerlink" title="AS"></a>AS</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/* A concatenation results in a new column. The default column name will be the CONCAT function.You can assign a custom name to the resulting.*/</span><br>  <span class="hljs-keyword">column</span> <span class="hljs-keyword">using</span> the <span class="hljs-keyword">AS</span> keyword:<br>  eg. <span class="hljs-keyword">SELECT</span> CONCAT(FirstName,<span class="hljs-string">&#x27;, &#x27;</span>, City) <span class="hljs-keyword">AS</span> new_column <span class="hljs-keyword">FROM</span> customers;<br>  eg. <span class="hljs-keyword">SELECT</span> ID, FirstName, LastName, Salary<span class="hljs-operator">+</span><span class="hljs-number">500</span> <span class="hljs-keyword">AS</span> Salary <span class="hljs-keyword">FROM</span> employees;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Function"><a href="#Function" class="headerlink" title="Function: "></a>Function: <a id="function" target="_self"></a></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/* The UPPER function converts all letters in the specified string to uppercase.*/</span> <br><br><span class="hljs-comment">/* The LOWER function converts the string to lowercase.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> FirstName, <span class="hljs-built_in">UPPER</span>(LastName) <span class="hljs-keyword">AS</span> LastName <span class="hljs-keyword">FROM</span> employees;<br><br><span class="hljs-comment">/* The SQRT function returns the square root of given value in the argument.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> Salary, <span class="hljs-built_in">SQRT</span>(Salary) <span class="hljs-keyword">FROM</span> employees;<br><br><span class="hljs-comment">/* Similarly, the AVG function returns the average value of a numeric column:*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(Salary) <span class="hljs-keyword">FROM</span> employees;<br><br><span class="hljs-comment">/* The SUM function is used to calculate the sum for a column 的 values.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(Salary) <span class="hljs-keyword">FROM</span> employees;<br><br><span class="hljs-comment">/* DESC:递减排列(子查询) / ASC:升序排列*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(Salary) <span class="hljs-keyword">FROM</span> employees;<br>  eg. <span class="hljs-keyword">SELECT</span> FirstName，Salary <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> Salary<span class="hljs-operator">&gt;</span><span class="hljs-number">3100</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Salary <span class="hljs-keyword">DESC</span>; <br>  eg. <span class="hljs-keyword">SELECT</span> FirstName，Salary <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> Salary<span class="hljs-operator">&gt;</span>(<span class="hljs-keyword">SELECT</span> AVG（Salary) <span class="hljs-keyword">FROM</span> employees）<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Salary <span class="hljs-keyword">DESC</span>; <br><br><span class="hljs-comment">/* The LIKE keyword is useful when specifying a search condition within your WHERE clause.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> LastName <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%s&#x27;</span>;	 <span class="hljs-comment">/* 以s结尾的*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> FirstName <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;A%&#x27;</span>; <span class="hljs-comment">/* 以A开头的*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> employees <span class="hljs-keyword">WHERE</span> LastName <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;_A&#x27;</span>;  <br><span class="hljs-comment">/* 2个字符*/</span><br><br><span class="hljs-comment">/* The MIN function is used to return the minimum value of an expression in a SELECT statement.*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(Salary) <span class="hljs-keyword">AS</span> Salary <span class="hljs-keyword">FROM</span> employees;<br></code></pre></td></tr></table></figure>
+
+<h4 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN:"></a>JOIN:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/* To join the two tables, specify them as a comma-separated list in the FROM clause:*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> customers.ID, customers.Name, orders.Name, orders.Amount <span class="hljs-keyword">FROM</span> customers, orders <span class="hljs-keyword">WHERE</span> customers.ID<span class="hljs-operator">=</span>orders.Customer_ID <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> customers.ID;   <br><br>            customers <span class="hljs-keyword">table</span><br>  <span class="hljs-operator">|</span> ID  <span class="hljs-operator">|</span> Name  <span class="hljs-operator">|</span>     City     <span class="hljs-operator">|</span> Age <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> <span class="hljs-comment">--- | ----- | ------------ | --- |</span><br>  <span class="hljs-operator">|</span> <span class="hljs-number">1</span>   <span class="hljs-operator">|</span> John  <span class="hljs-operator">|</span> <span class="hljs-keyword">New</span> York     <span class="hljs-operator">|</span> <span class="hljs-number">35</span>  <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> <span class="hljs-number">2</span>   <span class="hljs-operator">|</span> David <span class="hljs-operator">|</span> Los Angeles  <span class="hljs-operator">|</span> <span class="hljs-number">23</span>  <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> <span class="hljs-number">3</span>   <span class="hljs-operator">|</span> Chole <span class="hljs-operator">|</span> Chicago      <span class="hljs-operator">|</span> <span class="hljs-number">27</span>  <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> <span class="hljs-number">4</span>   <span class="hljs-operator">|</span> Emily <span class="hljs-operator">|</span> Houston      <span class="hljs-operator">|</span> <span class="hljs-number">34</span>  <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span> <span class="hljs-number">5</span>   <span class="hljs-operator">|</span> James <span class="hljs-operator">|</span> Philadelphia <span class="hljs-operator">|</span> <span class="hljs-number">31</span>  <span class="hljs-operator">|</span><br><br>		    orders <span class="hljs-keyword">table</span><br>  <span class="hljs-operator">|</span> ID <span class="hljs-operator">|</span>  Name   <span class="hljs-operator">|</span> Customer_ID <span class="hljs-operator">|</span> Amount <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span><span class="hljs-comment">----|---------|-------------|----------|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> Book    <span class="hljs-operator">|</span>           <span class="hljs-number">3</span> <span class="hljs-operator">|</span>     <span class="hljs-number">5000</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> Box     <span class="hljs-operator">|</span>           <span class="hljs-number">5</span> <span class="hljs-operator">|</span>     <span class="hljs-number">3000</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Toy     <span class="hljs-operator">|</span>           <span class="hljs-number">2</span> <span class="hljs-operator">|</span>     <span class="hljs-number">4500</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Flowers <span class="hljs-operator">|</span>           <span class="hljs-number">4</span> <span class="hljs-operator">|</span>     <span class="hljs-number">1800</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">5</span> <span class="hljs-operator">|</span> Cake    <span class="hljs-operator">|</span>           <span class="hljs-number">1</span> <span class="hljs-operator">|</span>     <span class="hljs-number">6700</span> <span class="hljs-operator">|</span><br>	<br>		    Joining Tables<br>  <span class="hljs-operator">|</span> ID <span class="hljs-operator">|</span>  Name <span class="hljs-operator">|</span>   Name  <span class="hljs-operator">|</span> Amount <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span><span class="hljs-comment">----|-------|---------|--------|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> John  <span class="hljs-operator">|</span> Cake    <span class="hljs-operator">|</span>   <span class="hljs-number">6700</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> David <span class="hljs-operator">|</span> Toy     <span class="hljs-operator">|</span>   <span class="hljs-number">4500</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Chole <span class="hljs-operator">|</span> Book    <span class="hljs-operator">|</span>   <span class="hljs-number">5000</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Emoly <span class="hljs-operator">|</span> Flowers <span class="hljs-operator">|</span>   <span class="hljs-number">1800</span> <span class="hljs-operator">|</span><br>  <span class="hljs-operator">|</span>  <span class="hljs-number">5</span> <span class="hljs-operator">|</span> James <span class="hljs-operator">|</span> Box     <span class="hljs-operator">|</span>   <span class="hljs-number">3000</span> <span class="hljs-operator">|</span><br><br><span class="hljs-comment">/* AS*/</span><br>  eg. <span class="hljs-keyword">SELECT</span> customers.ID, customers.Name, orders.Name, orders.Amount <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">AS</span> ct, orders <span class="hljs-keyword">AS</span> ord <span class="hljs-keyword">WHERE</span> ct.ID<span class="hljs-operator">=</span>ord.Customer_ID <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ct.ID;<br><br>  # <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> 相当于 <span class="hljs-keyword">JOIN</span><br>    eg. <span class="hljs-keyword">SELECT</span> column_name(s) <span class="hljs-keyword">FROM</span> table1 <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> table2 <span class="hljs-keyword">ON</span> table1.column_name<span class="hljs-operator">=</span>table2.column_name;<br>  # <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span>  <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span>返回左表中的所有行，即使右表中没有匹配项也是如此<br>    eg. <span class="hljs-keyword">SELECT</span> table1.column1, table2.column2...FROM table1 <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> table2 <span class="hljs-keyword">ON</span> table1.column_name <span class="hljs-operator">=</span> table2.column_name;<br>  # <span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">JOIN</span> 即使左表中没有匹配项，<span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">JOIN</span>也会返回右表中的所有行<br>    eg. <span class="hljs-keyword">SELECT</span> table1.column1, table2.column2...FROM table1 <span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> table2 <span class="hljs-keyword">ON</span> table1.column_name <span class="hljs-operator">=</span> table2.column_name;<br># <span class="hljs-number">3</span>)<span class="hljs-keyword">UNION</span>:<span class="hljs-keyword">UNION</span>运算符用于组合两个或多个<span class="hljs-keyword">SELECT</span>语句的结果集<br>  eg. <span class="hljs-keyword">SELECT</span> column_name(s) <span class="hljs-keyword">FROM</span> table1 <span class="hljs-keyword">UNION</span> <span class="hljs-keyword">SELECT</span> column_name(s) <span class="hljs-keyword">FROM</span> table2;<br># <span class="hljs-number">4</span>)<span class="hljs-keyword">UNION</span> <span class="hljs-keyword">ALL</span>:<span class="hljs-keyword">UNION</span> <span class="hljs-keyword">ALL</span>选择每个表中的所有行并将它们组合成一个表<br>  eg. <span class="hljs-keyword">SELECT</span> ID, FirstName, LastName, City <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">First</span> <span class="hljs-keyword">UNION</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">SELECT</span> ID, FirstName, LastName, City <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">Second</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">INSERT INTO</span> 表名 (列名<span class="hljs-number">1</span>,列名<span class="hljs-number">2</span>,...) <span class="hljs-keyword">VALUES</span> (列值<span class="hljs-number">1</span>,列值<span class="hljs-number">2</span>,...);<br>eg. <span class="hljs-keyword">INSERT INTO</span> table_name <span class="hljs-keyword">VALUES</span>(value1, value2, value3,...);<br>eg. <span class="hljs-keyword">INSERT INTO</span> Employees <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;Anthony&#x27;</span>, <span class="hljs-string">&#x27;Young&#x27;</span>, <span class="hljs-number">35</span>);<br><br>eg. <span class="hljs-keyword">INSERT INTO</span> table_name (column1, column2, column3, ...,columnN)  <span class="hljs-keyword">VALUES</span> (value1, value2, value3,...valueN);	<br>eg. <span class="hljs-keyword">INSERT INTO</span> Employees (ID, FirstName, LastName, Age) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;Anthony&#x27;</span>, <span class="hljs-string">&#x27;Young&#x27;</span>, <span class="hljs-number">35</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">UPDATE</span> 表名 <span class="hljs-keyword">SET</span> 列名<span class="hljs-operator">=</span>值 <span class="hljs-keyword">where</span> 条件;<br>eg. <span class="hljs-keyword">UPDATE</span> tbl_name <span class="hljs-keyword">SET</span> column1<span class="hljs-operator">=</span>value1, column2<span class="hljs-operator">=</span>value2, ... <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">condition</span>;       <br>eg. <span class="hljs-keyword">UPDATE</span> Employees <span class="hljs-keyword">SET</span> Salary<span class="hljs-operator">=</span><span class="hljs-number">5000</span> <span class="hljs-keyword">WHERE</span> ID<span class="hljs-operator">=</span><span class="hljs-number">1</span>;	 <br></code></pre></td></tr></table></figure>
+
+<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">eg. <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> tbl_name <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">condition</span>;<br>eg. <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> Employees <span class="hljs-keyword">WHERE</span> ID<span class="hljs-operator">=</span><span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="CREATE-TABLES"><a href="#CREATE-TABLES" class="headerlink" title="CREATE TABLES"></a>CREATE TABLES</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">CREATE TABLE</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> <br>(<br>	列名<span class="hljs-number">1</span> 数据类型[列级别约束条件][<span class="hljs-keyword">default</span>],<br>    列名<span class="hljs-number">2</span> 数据类型[列级别约束条件][<span class="hljs-keyword">default</span>],<br>    ...<br>    [表级别约束条件]<br>);<br>eg. <span class="hljs-keyword">CREATE TABLE</span> table_name(<br>	  column_name1 data_type(size),<br>	  column_name2 data_type(size),<br>	  column_name3 data_type(size),<br>	  ....<br>	  column_Nu data_type(size)<br>	);<br><br>eg. <span class="hljs-keyword">CREATE TABLE</span> Users(<br>   	  UserID <span class="hljs-type">int</span>,<br>   	  FirstName <span class="hljs-type">varchar</span>(<span class="hljs-number">100</span>), <br>   	  LastName <span class="hljs-type">varchar</span>(<span class="hljs-number">100</span>),<br>  	  City <span class="hljs-type">varchar</span>(<span class="hljs-number">100</span>),<br>  	  <span class="hljs-keyword">PRIMARY KEY</span>(UserID)<br>    );<br><br>eg. <span class="hljs-keyword">CREATE TABLE</span> testDB(<br>	  id <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) key,         # <span class="hljs-keyword">primary key</span>(id)<br>	  name <span class="hljs-type">varchar</span>(<span class="hljs-number">45</span>) <span class="hljs-keyword">not null</span> comment <span class="hljs-string">&#x27;student name&#x27;</span><br>	);<br></code></pre></td></tr></table></figure>
+
+<h4 id="ALTER-用于添加，删除或修改现有表中的列"><a href="#ALTER-用于添加，删除或修改现有表中的列" class="headerlink" title="ALTER: 用于添加，删除或修改现有表中的列"></a>ALTER: 用于添加，删除或修改现有表中的列</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ADD</span> (<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>类型<span class="hljs-operator">&gt;</span>,<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>类型<span class="hljs-operator">&gt;</span>,...) [约束条件] [<span class="hljs-keyword">FIRST</span> <span class="hljs-operator">|</span> AFTER 已存在列名];<br>eg. <span class="hljs-keyword">ALTER TABLE</span> People <span class="hljs-keyword">ADD</span> DateOfBirth <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>);<br>  上述<span class="hljs-keyword">SQL</span>代码People表中添加一个名为DateOfBirth的新列<br><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">DROP</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>;<br>eg. <span class="hljs-keyword">ALTER TABLE</span> People <span class="hljs-keyword">DROP</span> DateOfBirth;<br>  上述<span class="hljs-keyword">SQL</span>代码删除People表中名为DateOfBirth的列。<br><br>eg. <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">EXISTS</span> People,People1;<br>	<span class="hljs-keyword">DROP</span> DATABASES [IF EXITSTS] db_name;<br><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> CHANGE <span class="hljs-operator">&lt;</span>旧列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>新列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>新数据类型<span class="hljs-operator">&gt;</span>;<br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> MODIFY <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>列类型<span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">FIRST</span><span class="hljs-operator">|</span>AFTER] <span class="hljs-operator">&lt;</span>列<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>;<br>eg. <span class="hljs-keyword">ALTER TABLE</span> People CHANGE FirstName name <span class="hljs-type">varchar</span>(<span class="hljs-number">100</span>);<br><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>旧表名<span class="hljs-operator">&gt;</span> RENAME [<span class="hljs-keyword">TO</span>] <span class="hljs-operator">&lt;</span>新表名<span class="hljs-operator">&gt;</span>;<br>eg. <span class="hljs-keyword">ALTER TABLE</span> People RENAME <span class="hljs-keyword">TO</span> Users;<br>  上述<span class="hljs-keyword">SQL</span>代码重命名列<br>  <br><span class="hljs-keyword">ALTER</span> DATABASES db_name [<span class="hljs-keyword">DEFAULT</span>] <span class="hljs-keyword">CHARACTER SET</span> [<span class="hljs-operator">=</span>] charset_name<br>eg. <span class="hljs-keyword">ALTER</span> databases test2 <span class="hljs-keyword">character set</span> latin1;<br>	<span class="hljs-keyword">SHOW</span> variables <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;character%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><h4 id="约束介绍"><a href="#约束介绍" class="headerlink" title="约束介绍"></a>约束介绍</h4><table>
+<thead>
+<tr>
+<th>约束类型</th>
+<th>非空约束</th>
+<th>主键约束</th>
+<th>唯一约束</th>
+<th>默认约束</th>
+<th>外键约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关键字</td>
+<td>NOT NULL</td>
+<td>PRIMARY KEY</td>
+<td>UNIQUE</td>
+<td>DEFAULT</td>
+<td>FOREIGN KEY</td>
+</tr>
+</tbody></table>
+<h4 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/*创建表时加非空约束*/</span><br><span class="hljs-keyword">CREATE TABLE</span> bookinfo(<br>	book_id <span class="hljs-type">int</span>,<br>    book_name <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span><br>);<br><span class="hljs-comment">/*修改表*/</span><br><span class="hljs-keyword">ALTER TABLE</span> bookinfo MODIFY book_name <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span>;<br><br></code></pre></td></tr></table></figure>
+<h4 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/*单字段*/</span><br><span class="hljs-keyword">CREATE TABLE</span> bookinfo(<br>	book_id <span class="hljs-type">int</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    book_name <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span><br>    <span class="hljs-comment">/*CONSTRAINT pk_id PRIMARY KEY (book_id)*/</span><br>);<br><span class="hljs-comment">/*复合主键*/</span><br><span class="hljs-keyword">CREATE TABLE</span> bookinfo(<br>	book_id <span class="hljs-type">int</span>,<br>    book_name <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    <span class="hljs-keyword">PRIMARY KEY</span>(book_id,card_id)<br>);<br><span class="hljs-comment">/*修改主键*/</span><br><span class="hljs-keyword">ALTER TABLE</span> bookinfo <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PRIMARY KEY</span>(book_id);<br><span class="hljs-keyword">ALTER TABLE</span> bookinfo MODIFY book_id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY KEY</span>;<br><span class="hljs-keyword">ALTER TABLE</span> bookinfo <span class="hljs-keyword">ADD CONSTRAINT</span> PK_ID <span class="hljs-keyword">PRIMARY KEY</span>(book_id);<br><span class="hljs-comment">/*删除主键*/</span><br><span class="hljs-keyword">ALTER TABLE</span> bookinfo <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PRIMARY KEY</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">CREATE TABLE</span> bookinfo(<br>	book_id <span class="hljs-type">int</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    book_name <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT NULL</span>,<br>    <span class="hljs-comment">/*CONSTRAINT uk_bname UNIQUE (book_id)*/</span><br>);<br><span class="hljs-comment">/*删除主键*/</span><br><span class="hljs-keyword">ALTER TABLE</span> bookinfo <span class="hljs-keyword">DROP</span> KEY uk_bname;<br></code></pre></td></tr></table></figure>
+
+<h4 id="FOREIGN-KEY"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/*创建外键*/</span><br><span class="hljs-keyword">CREATE TABLE</span> bookcategory(<br>	category_id <span class="hljs-type">int</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    category <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>),<br>    parent_id <span class="hljs-type">int</span><br>);<br><span class="hljs-keyword">CREATE TABLE</span> bookinfo(<br>	book_id <span class="hljs-type">int</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    book_category_id <span class="hljs-type">int</span>,<br>    <span class="hljs-keyword">CONSTRAINT</span> fk_cid <span class="hljs-keyword">FOREIGN KEY</span> (book_category_id) <span class="hljs-keyword">REFERENCES</span> bookcategory (category_id) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> CASCADE;<br>);<br><br><span class="hljs-keyword">ALTER TABLE</span> bookinfo <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">FOREIGN KEY</span> fk_cid;<br><span class="hljs-keyword">ALTER TABLE</span> bookinfo <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">FOREIGN  KEY</span> (book_category_id) REFERENCE bookcategory (category_id);<br><br><span class="hljs-comment">/*CASCADE 从父表删除或更新且自动删除或更新子表中匹配的行*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> 用户名<span class="hljs-variable">@IP</span>地址 IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;密码&#x27;</span>; # 指定的IP上登陆<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> 用户名@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;密码&#x27;</span>;    # 登陆不限定IP<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">USER</span> 用户名<span class="hljs-variable">@IP</span>地址;<br></code></pre></td></tr></table></figure>
+
+<h4 id="授权-查看权限-解除权限"><a href="#授权-查看权限-解除权限" class="headerlink" title="授权&#x2F;查看权限&#x2F;解除权限"></a>授权&#x2F;查看权限&#x2F;解除权限</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">GRANT</span> 权限<span class="hljs-number">1</span>,...权限n <span class="hljs-keyword">ON</span> 数据库.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> 用户名<span class="hljs-variable">@IP</span>地址;<br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> 数据库.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> 用户名<span class="hljs-variable">@IP</span>地址;<br><br><span class="hljs-keyword">SHOW</span> GRANTS <span class="hljs-keyword">FOR</span> 用户名<span class="hljs-variable">@IP</span>地址;<br><br><span class="hljs-keyword">REVOKE</span> 权限<span class="hljs-number">1</span>,...权限n <span class="hljs-keyword">ON</span> 数据库.<span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> 用户名<span class="hljs-variable">@IP</span>地址;<br><span class="hljs-keyword">REVOKE</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> 数据库.<span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> 用户名<span class="hljs-variable">@IP</span>地址;<br></code></pre></td></tr></table></figure>
+
+<h3 id="忘记密码问题解决"><a href="#忘记密码问题解决" class="headerlink" title="忘记密码问题解决"></a>忘记密码问题解决</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">service mysql stop <br>mysqld_safe --user=mysql --skip-grant-tables --skip-networking &amp;   <span class="hljs-comment"># 跳过授权表模式  </span><br>mysql -uroot -p    <span class="hljs-comment"># 不输密码直接回车</span><br>use mysql;<br>update user <span class="hljs-built_in">set</span> password=PASSWORD(<span class="hljs-string">&quot;123&quot;</span>) <span class="hljs-built_in">where</span> user =<span class="hljs-string">&#x27;root&#x27;</span>;  <span class="hljs-comment"># 设置新密码为123  </span><br>flush privileges;  <br>quit;<br><br>service mysql stop   <br>service mysql start     <span class="hljs-comment"># 以正常模式启动</span><br>mysql -u root -p        <span class="hljs-comment"># 回车输入新密码即可 </span><br><br>MariaDB [(none)]&gt; delete from user <span class="hljs-built_in">where</span> user=<span class="hljs-string">&#x27;&#x27;</span>;<br>MariaDB [(none)]&gt; delete from user <span class="hljs-built_in">where</span> password=<span class="hljs-string">&#x27;&#x27;</span>;  <br>MariaDB [(none)]&gt; create database anyue default character <span class="hljs-built_in">set</span> latin1;  <br>[root@xingyue masR5]# mysql -uroot -p123456 anyue &lt; masR5.sql --default-character-set=lantin1<br></code></pre></td></tr></table></figure>
+
+<p><a href="#目录" target="_self">回到顶部</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SQL/" class="category-chain-item">SQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Mysql/" class="print-no-link">#Mysql</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="print-no-link">#数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SQL基础命令</div>
+      <div>https://anyu967.github.io/posts/5b397e67.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/3e6df65f.html" title="Adobe">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Adobe</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/8ef1acd.html" title="BatShell">
+                        <span class="hidden-mobile">BatShell</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

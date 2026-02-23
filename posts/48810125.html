@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-06-12-Zabbix">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 监控">
+<meta property="og:url" content="https://anyu967.github.io/posts/48810125.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-06-12-Zabbix">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/Cacti.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/Nagios.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-autofind.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-autofind1.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-autofind2.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-autofind3.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-web%E5%9C%BA%E6%99%AF.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-web%E5%9C%BA%E6%99%AF1.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-%E8%81%9A%E5%90%88%E5%9B%BE%E5%BD%A2.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/zabbix-%E8%81%9A%E5%90%88%E5%9B%BE%E5%BD%A21.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/%E9%A1%B5%E9%9D%A2%E8%AD%A6%E5%91%8A.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/mail.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/%E9%92%89%E9%92%89%E8%AD%A6%E5%91%8A.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/48810125/%E9%92%89%E9%92%89%E8%AD%A6%E5%91%8A1.png">
+<meta property="article:published_time" content="2019-06-12T02:30:30.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.740Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anyu967.github.io/posts/48810125/Cacti.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux 监控 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux 监控"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-12 10:30" pubdate>
+          2019年6月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux 监控</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-06-12-Zabbix</p>
+<span id="more"></span>
+
+<h2 id="监控服务"><a href="#监控服务" class="headerlink" title="监控服务"></a>监控服务</h2><h3 id="1-常见的监控平台"><a href="#1-常见的监控平台" class="headerlink" title="1. 常见的监控平台"></a>1. 常见的监控平台</h3><h4 id="1-1-Cacti-流量与性能监测为主-Cacti"><a href="#1-1-Cacti-流量与性能监测为主-Cacti" class="headerlink" title="1.1 Cacti 流量与性能监测为主 Cacti"></a>1.1 Cacti 流量与性能监测为主 <a target="_blank" rel="noopener" href="http://www.cacti.net/">Cacti</a></h4><ul>
+<li><strong>展示平台 Apache</strong>：B&#x2F;S</li>
+<li><strong>收集数据</strong>：SNMP(Simple Network Management Protocol)</li>
+<li><strong>RRD Tool</strong> 绘图软件</li>
+</ul>
+<h4 id="1-2-Nagios-服务与性能检测为主-Nagios"><a href="#1-2-Nagios-服务与性能检测为主-Nagios" class="headerlink" title="1.2 Nagios 服务与性能检测为主 Nagios"></a>1.2 Nagios 服务与性能检测为主 <a target="_blank" rel="noopener" href="http://www.nagios.org/">Nagios</a></h4><ul>
+<li><strong>展示平台</strong>：B&#x2F;S</li>
+<li><strong>收集数据</strong>：C&#x2F;S (脚本)</li>
+<li>ntop</li>
+</ul>
+<h4 id="1-3-Zabbix-新型全功能监控软件-Zabbix"><a href="#1-3-Zabbix-新型全功能监控软件-Zabbix" class="headerlink" title="1.3 Zabbix 新型全功能监控软件 Zabbix"></a>1.3 Zabbix 新型全功能监控软件 <a target="_blank" rel="noopener" href="http://www.zabbix.com/">Zabbix</a></h4><ul>
+<li><strong>展示平台</strong>：B&#x2F;S</li>
+<li><strong>收集数据</strong>：C&#x2F;S (脚本)、SNMP</li>
+</ul>
+<h3 id="2-Cacti-监控平台"><a href="#2-Cacti-监控平台" class="headerlink" title="2. Cacti 监控平台"></a>2. Cacti 监控平台</h3><img src="/posts/48810125/Cacti.png" srcset="/img/loading.gif" lazyload class="" title="[Cacti]">  
+
+<h4 id="2-1-Cacti-原理"><a href="#2-1-Cacti-原理" class="headerlink" title="2.1 Cacti 原理"></a>2.1 Cacti 原理</h4><blockquote>
+<p><strong>SNMP(收集数据)</strong> –&gt;<strong>RRD Tool(绘图)</strong> –&gt;<strong>Apache(平台展示)</strong>  </p>
+</blockquote>
+<h4 id="2-2-Cacti-监控构建-服务器端-10-10-10-11"><a href="#2-2-Cacti-监控构建-服务器端-10-10-10-11" class="headerlink" title="2.2 Cacti 监控构建 服务器端(10.10.10.11)"></a>2.2 Cacti 监控构建 服务器端(10.10.10.11)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# yum -y install httpd mysql \<br>    mysql-server mysql-devel libxml2-devel \<br>    mysql-connector-odbc perl-DBD-MySQL \<br>    unixODBC php php-mysql php-pdo  <br><br>[root@xy ~]# mysqladmin -uroot password anyu<br>[root@xy ~]# yum -y install \<br>    net-snmp net-snmp-utils \<br>    net-snmp-libs lm_sensors       <span class="hljs-comment"># 安装 snmp</span><br><br>[root@xy ~]# yum -y install libart_lgpl-devel \<br>    pango-devel* cairo-devel*  <br><br>[root@xy ~]# mount -o loop cacti.iso /mnt/iso  <br>[root@xy ~]# <span class="hljs-built_in">cp</span> -a /mnt/iso/* .    <br>[root@xy ~]# tar -xzvf rrdtool-1.4.5.tar.gz     <span class="hljs-comment"># 安装 rrdtool  </span><br>[root@xy rrdtool-1.4.5]# ./configure --prefix=/usr/local  <br>[root@xy rrdtool-1.4.5]# make &amp;&amp; make install  <br><br><span class="hljs-comment"># 报错解决方法: </span><br>  tar -xzvf cgilib-0.5.tar.gz<br>  <span class="hljs-built_in">cd</span> cgilib-0.5/<br>  make  <br>  <span class="hljs-built_in">cp</span> libcgi.a /usr/local/lib<br>  <span class="hljs-built_in">cp</span> cgi.h /usr/local/include<br><br>[root@xy cacti]# tar -xzvf cacti-0.8.7g.tar.gz  <br>[root@xy cacti]# <span class="hljs-built_in">mv</span> cacti-0.8.7g/ /var/www/html/  <br>[root@xy www html]# <span class="hljs-built_in">ln</span> -s cacti-0.8.7g/ cacti  <br>[root@xy www cacti]# patch -p1 -N &lt; /root/cacti/data_source_deactivate.patch  <span class="hljs-comment"># 打补丁  </span><br>[root@xy www cacti]# useradd cacti <br>[root@xy www cacti]# <span class="hljs-built_in">chown</span> -R root:root ./  <br>[root@anyue html]# <span class="hljs-built_in">chmod</span> -R 777 cacti/  <br>[root@xy www cacti]# <span class="hljs-built_in">chown</span> -R cacti:cacti rra/ <span class="hljs-built_in">log</span>/    <br>[root@xy www cacti]# mysql -uroot -p    <span class="hljs-comment"># 授权数据库用户，导入初始化数据  </span><br>  mysql&gt; create database cactidb default character <span class="hljs-built_in">set</span> utf8;<br>  mysql&gt; grant all privileges on cactidb.* to cactiuser@localhost identified by <span class="hljs-string">&#x27;cacti&#x27;</span>;<br>  mysql&gt; <span class="hljs-built_in">exit</span><br><br>[root@xy www cacti]# mysql -uroot -p cactidb &lt; cacti.sql <br>[root@xy www cacti]# vim /include/config.php    <span class="hljs-comment"># 设置数据连接参数   </span><br>29 <span class="hljs-variable">$database_type</span>     = <span class="hljs-string">&#x27;mysql&#x27;</span>;<br>30 <span class="hljs-variable">$database_default</span>  = <span class="hljs-string">&#x27;cactidb&#x27;</span>;<br>31 <span class="hljs-variable">$database_hostname</span> = <span class="hljs-string">&#x27;localhost&#x27;</span>;<br>32 <span class="hljs-variable">$database_username</span> = <span class="hljs-string">&#x27;cactiuser&#x27;</span>;<br>33 <span class="hljs-variable">$database_password</span> = <span class="hljs-string">&#x27;cacti&#x27;</span>;<br><br>[root@xy www cacti]# vim /etc/httpd/conf/httpd.conf  <br><br>DocumentRoot <span class="hljs-string">&quot;/var/www/html/cacti&quot;</span>  <br>&lt;Directory <span class="hljs-string">&quot;/var/www/html/cacti&quot;</span>&gt;  <br>DirectoryIndex index.php index.html index.htm.var  <br><br><span class="hljs-comment"># 10.10.10.11 进行安装 </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-Cacti-插件添加-10-10-10-12-客户端"><a href="#2-3-Cacti-插件添加-10-10-10-12-客户端" class="headerlink" title="2.3 Cacti 插件添加 10.10.10.12  (客户端)"></a>2.3 Cacti 插件添加 10.10.10.12  (客户端)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# yum -y install net-snmp net-snmp-utils net-snmp-libs lm_sensors    <br>[root@xy ~]# vim /etc/snmpd.conf  <br>  com2sec notConfigUser   default public123<br>  view all include .1  <br>  <span class="hljs-comment">#       group   context sec.model   sec.level   prefix  read        write   notif   </span><br>  access  notConfigGroup  <span class="hljs-string">&quot;&quot;</span>  any noauth          exact   all  none    none  <br>[root@xy ~]# service snmpd start  <br>[root@xy ~]# snmpwalk -v 2c -c public123 10.10.10.12 tcp  <span class="hljs-comment"># -c 共同体名称(组号)</span><br>  <span class="hljs-comment"># V1 版 简单，高效，不支持加密及身份认证  </span><br>  <span class="hljs-comment"># V2 版 身份认证  </span><br>  <span class="hljs-comment"># V3 版 加密</span><br>[runct@www html]# php /var/www/html/cacti/poller.php<br>[root@www html]# su -cacti <br>[runct@xy ~]# crontab -e <br>  */5   *   *   *   *   /usr/bin/php    /var/www/html/cacti/poller.php &amp;&gt;/dev/null   <br>[runct@xy ~]# service crond restart  <br>[root@xy cacti-plugin]# tar -xzvf cacti-plugin-0.8.7-PA-v2.8.tar.gz  <br>[root@xy cacti-plugin-arch]# mysql -uroot -p cactidb &lt; pa.aql  <br>[root@xy www cacti]# patch -p1 -N &lt; /root/cacti-plugin/cacti-plugin-arch/cacti-plugin-0.8.7g-PA-v2.8.diff <br><br><span class="hljs-comment"># 启用插件管理器, 下载插件复制到 /var/www/html/cacti/plugins并还原数据库, 用于0.8.7，8  </span><br><span class="hljs-comment"># 1.2.6版本集成了插件管理器  </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-Nagios-监控平台"><a href="#2-Nagios-监控平台" class="headerlink" title="2. Nagios 监控平台"></a>2. Nagios 监控平台</h3><h4 id="2-1-Nagios-原理"><a href="#2-1-Nagios-原理" class="headerlink" title="2.1 Nagios 原理"></a>2.1 Nagios 原理</h4><img src="/posts/48810125/Nagios.png" srcset="/img/loading.gif" lazyload class="" title="[Nagios原理]">  
+
+<h4 id="2-2-Nagios-构建"><a href="#2-2-Nagios-构建" class="headerlink" title="2.2 Nagios 构建"></a>2.2 Nagios 构建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# yum -y install httpd php php-cli php-mysql gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip    <br>[root@xy mnt cdrom]# yum -y insatall *gd*   <span class="hljs-comment"># 在光盘Package里找 *gd* 安装    </span><br>[root@xy ~]# groupadd nagcmd                <span class="hljs-comment"># 必须  </span><br>[root@xy ~]# useradd -m nagios              <span class="hljs-comment"># 必须  </span><br>[root@xy ~]# usermod -a -G nagcmd nagios  <br>[root@xy ~]# usermod -a -G nagcmd apache   <span class="hljs-comment"># 把Apache添加到 nagcmd 组  </span><br>[root@xy ~]# mount -o loop nagios.iso /mnt/iso <br>[root@xy ~]# <span class="hljs-built_in">cp</span> -a /mnt/iso/* . <br>[root@xy ~]# tar -xzvf nagios-3.1.2.tar.gz  <br>[root@xy nagios-3.1.2]# ./configure --with-command-group=nagcmd --enable-event-broker  <span class="hljs-comment"># 开启数据库选项  </span><br>[root@xy nagios-3.1.2]# make all  <br>[root@xy nagios-3.1.2]# make install  <br>[root@xy nagios-3.1.2]# make install-init    <span class="hljs-comment"># - This installs the init script in /etc/rc.d/init.d  </span><br>[root@xy nagios-3.1.2]# make install-config  <span class="hljs-comment"># - This installs and configures permissions on the</span><br>  directory <span class="hljs-keyword">for</span> holding the external <span class="hljs-built_in">command</span> file  <br>[root@xy nagios-3.1.2]# make install-commandmode  <span class="hljs-comment"># - This installs sample config files in /usr/local/nagios/etc  </span><br>[root@xy nagios-3.1.2]# vim /usr/local/nagios/etc/objects/contacts.cfg <br>  email   nagios@localhost    <span class="hljs-comment"># 邮件地址</span><br>[root@xy nagios-3.1.2]# make install-webconf  <br>[root@xy nagios-3.1.2]# vim /etc/httpd/conf.d/nagios.conf <br>[root@xy nagios-3.1.2]# htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin  <br><br>[root@xy ~]# tar -xzvf nagios-plugins-1.4.15.tar.gz <br>[root@xy nagios-plugins-1.4.15]# ./configure --with-nagios-user=nagios \<br>  --with-nagios-group=nagios --with-mysql \<br>  --enable-perl-modules  <br>[root@xy nagios-plugins-1.4.15]# make all &amp;&amp;  make install  <br>[root@xy nagios-plugins-1.4.15]# chkconfig --add nagios  <br>[root@xy nagios-plugins-1.4.15]# chkconfig nagios on <br>[root@xy nagios-plugins-1.4.15]# /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg  <span class="hljs-comment"># 检测   </span><br>[root@xy nagios-plugins-1.4.15]# service nagios start  <br>[root@xy nagios-3.1.2]# systemctl restart httpd  <br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-Nagios-添加监控主机"><a href="#2-3-Nagios-添加监控主机" class="headerlink" title="2.3 Nagios 添加监控主机"></a>2.3 Nagios 添加监控主机</h4><p><strong>windows 监控插件(MSClient++.msi), windows端</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue objects]# <span class="hljs-built_in">cd</span> /usr/local/nagios/etc/objects  <br>[root@anyue objects]# vim windows.cfg   <span class="hljs-comment"># 填写主机、IP</span><br>[root@anyue objects]# <span class="hljs-built_in">cd</span> /usr/local/nagios/etc  <br>[root@anyue objects]# vim nagios.cfg    <span class="hljs-comment"># 添加模板</span><br>  28 <span class="hljs-comment"># You can specify individual object config files as shown below:</span><br>  29 cfg_file=/usr/local/nagios/etc/objects/commands.cfg<br>  30 cfg_file=/usr/local/nagios/etc/objects/contacts.cfg<br>  31 cfg_file=/usr/local/nagios/etc/objects/timeperiods.cfg<br>  32 cfg_file=/usr/local/nagios/etc/objects/templates.cfg<br>  33 32 cfg_file=/usr/local/nagios/etc/objects/windows.cfg<br></code></pre></td></tr></table></figure>
+
+<p><strong>linux 监控插件(nrpe), linux端</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# useradd nagios <br>[root@xy ~]# tar -xzvf nagios-plugins-1.4.15.tar.gz <br>[root@xy nagios-plugins-1.4.15]# ./configure --with-nagios-user=nagios --with-nagios-group=nagios   <br>[root@xy nagios-plugins-1.4.15]# make all &amp;&amp;  make install <br>[root@anyue nagios]# tar -xzf nrpe-3.2.1.tar.gz<br>[root@anyue nrpe-3.2.1]# ./configure --enable-ssl --with-ssl-lib=/usr/lib64/  <br>[root@anyue nrpe-3.2.1]# make all <br>[root@anyue nrpe-3.2.1]# make install-plugin<br>[root@anyue nrpe-3.2.1]# make install-daemon<br>[root@anyue nrpe-3.2.1]# make install-daemon-config<br>[root@anyue nrpe-3.2.1]# <span class="hljs-built_in">cd</span> /usr/local/nagios/etc/nrpe.cfg <br>  allowed_hosts=serverIP 127.0.0.1<br>[root@anyue etc]# /usr/local/nagios/bin/nrpe -c /usr/local/nagios/etc/nrpe.cfg -d  <span class="hljs-comment"># tcp/5666</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-Zabbix-监控构建"><a href="#3-Zabbix-监控构建" class="headerlink" title="3. Zabbix 监控构建"></a>3. Zabbix 监控构建</h3><h4 id="3-1-初始化系统"><a href="#3-1-初始化系统" class="headerlink" title="3.1 初始化系统"></a>3.1 初始化系统</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# systemctl stop firewalld  <br>[root@xy ~]# systemctl <span class="hljs-built_in">disable</span> firewalld  <br>[root@xy ~]# setenforce 0<br>[root@xy ~]# sed -i <span class="hljs-string">&quot;s/SELINUX=enforcing/SELINUX=disabled/g&quot;</span> /etc/selinux/config <br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-构建-LAMP-环境"><a href="#3-2-构建-LAMP-环境" class="headerlink" title="3.2 构建 LAMP 环境"></a>3.2 构建 LAMP 环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# wget http://mirros.163.com/.help/CentOS7-Base-163.repo <br>[root@xy ~]# yum clean all  <br>[root@xy ~]# yum makecache fast   <br>[root@xy ~]# yum -y install mariadb mariadb-server httpd php php-mysql php-mbstring php-gd php-bcmatch php-ldap php=xml   <br>[root@xy ~]# systemctl <span class="hljs-built_in">enable</span> httpd <br>[root@xy ~]# systemctl restart httpd <br>[root@xy ~]# systemctl <span class="hljs-built_in">enable</span> mariadb  <br>[root@xy ~]# systemctl restart mariadb  <br>[root@xy ~]# mysql_secure_installation <br></code></pre></td></tr></table></figure>
+
+<h4 id="3-3-安装配置zabbix-server"><a href="#3-3-安装配置zabbix-server" class="headerlink" title="3.3 安装配置zabbix-server"></a>3.3 安装配置zabbix-server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm  <span class="hljs-comment"># 官方源: repo.zabbix.com  </span><br>[root@xy ~]# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX<br>[root@xy ~]# yum -y install zabbix-server-mysql zabbix-web zabbix-web-mysql zabbix-agent  <span class="hljs-comment"># 连接数据库方案 Web可视化方案  </span><br>[root@xy ~]# mysql -uroot -p  <span class="hljs-comment"># 还原官方数据库  </span><br>  MariaDB [(none)]&gt; create database zabbix default character <span class="hljs-built_in">set</span> utf8 collate utf8_bin;  <br>  MariaDB [(none)]&gt; grant all privileges on zabbix.* to zabbix@localhost identified by <span class="hljs-string">&#x27;zabbix&#x27;</span>;<br>[root@xy ~]# <span class="hljs-built_in">cd</span> /usr/share/doc/zabbix-server-mysql-3.2.11/  <br>[root@xy zabbix-server-mysql-3.2.11]# zcat create.sql.gz | mysql -uroot -p -Dzabbix  <span class="hljs-comment"># zcat 解压并查看  </span><br>[root@xy zabbix-server-mysql-3.2.11]# vim /etc/zabbix/zabbix_server.conf  ✔<br>  LogFile=/tmp/zabbix_server.log<br>  DBHost=localhost  <span class="hljs-comment"># 82 </span><br>  DBName=zabbix  <br>  DBUser=zabbix  <br>  DBPassword=zabbix  <span class="hljs-comment"># 115</span><br>[root@xy zabbix-server-mysql-3.2.11]# systemctl start zabbix-server  <br>[root@xy zabbix-server-mysql-3.2.11]# systemctl <span class="hljs-built_in">enable</span> zabbix-server<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-4-安装配置zabbix-web"><a href="#3-4-安装配置zabbix-web" class="headerlink" title="3.4 安装配置zabbix-web"></a>3.4 安装配置zabbix-web</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy zabbix-server-mysql-3.2.11]# vim /etc/httpd/conf.d/zabbix.conf <br>  &lt;virtualHost IP:80&gt;     <span class="hljs-comment"># 采用虚拟主机访问方式</span><br>  servername zabbix.anyu967.com<br>  documentroot /usr/share/zabbix    <br>  ...<br>  php_value date.timezone Asia/Shanghai   <span class="hljs-comment"># 更改时区: 19</span><br>  &lt;/VirtualHost&gt;<br>[root@xy ~]# systemctl restart httpd  <br>[root@xy ~]# yum -y install ntpdate  <br>[root@xy ~]# netstat -anpt | grep :10050  <span class="hljs-comment"># Listenport: 10050  </span><br>[root@xy ~]# vim /usr/share/zabbix/include/locales.inc.php   <span class="hljs-comment"># 中文选项</span><br>  zh_CN =&gt; [<span class="hljs-string">&#x27;name&#x27;</span> =&gt; _(<span class="hljs-string">&#x27;Chinese (zh_CN)&#x27;</span>, <span class="hljs-string">&#x27;display&#x27;</span> =&gt; <span class="hljs-literal">true</span>)],<br>[root@xy ~]# <span class="hljs-built_in">mv</span> simsun.ttc /usr/share/zabbix/fonts    <span class="hljs-comment"># win+r fonts  </span><br>[root@anyue zabbix]# <span class="hljs-built_in">cd</span> !$<br>[root@xy fonts]# chomod a+x song.ttf  <br>[root@xy fonts]# vim /usr/share/zabbix/include/defines.inc.php  <span class="hljs-comment"># /fonts  </span><br>  define(<span class="hljs-string">&#x27;ZBX_GRAPH_FONT_NAME&#x27;</span>,       <span class="hljs-string">&#x27;song&#x27;</span>);  <span class="hljs-comment"># font file name</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-5-Zabbix-添加监控主机-自动发现-10-10-10-12"><a href="#3-5-Zabbix-添加监控主机-自动发现-10-10-10-12" class="headerlink" title="3.5 Zabbix 添加监控主机 &#x2F; 自动发现  10.10.10.12"></a>3.5 Zabbix 添加监控主机 &#x2F; 自动发现  10.10.10.12</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# yum install zabbix-sender zabbix-agent-3.2.11-1.el7.x86_64.rpm  <span class="hljs-comment"># 被监控服务器</span><br>[root@xy ~]# service httpd start<br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello,HTML~&quot;</span> &gt;&gt; /var/www/html/index.html  <br>[root@xy ~]# curl localhost<br>[root@xy ~]# vim /etc/zabbix/zabbix_agentd.conf  <br>  <span class="hljs-comment">####### GENRAL PARAMETERS</span><br>  PidFile=/var/run/zabbix/zabbix_agent.pid<br>  <span class="hljs-comment"># LogType=file</span><br>  LogFile=/tmp/zabbix_agentd.log<br>  <span class="hljs-comment">####### Passive checks related</span><br>  <span class="hljs-comment">####### Active checks related </span><br>  Server=10.10.10.11     <span class="hljs-comment"># zabbix-server IP</span><br>  ServerActive=10.10.10.11  <br>  Hostname=10.10.10.12  <br>[root@xy ~]# service zabbix-agent start  <br>[root@xy ~]# chkconfig zabbix-agent on   <br>[root@xy ~]# netstat -anptl | grep :10050   <br>[root@xy ~]# yum -y install zabbix-sender zabbix-agent-3.2.1-1.el6.x86_64.rpm  <span class="hljs-comment"># 10.10.10.13 </span><br>[root@xy ~]# vim /etc/zabbix/zabbix_agentd.conf<br>  Server=10.10.10.11  <br>  ServerActive=10.10.10.11  <br>  Hostname=10.10.10.13<br></code></pre></td></tr></table></figure>
+
+<p><strong>先创建动作–&gt; 自动发现</strong>  </p>
+<img src="/posts/48810125/zabbix-autofind.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-autofind]">  
+<img src="/posts/48810125/zabbix-autofind1.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-autofind1]">  
+<img src="/posts/48810125/zabbix-autofind2.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-autofind2]">  
+<img src="/posts/48810125/zabbix-autofind3.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-autofind3]">  
+
+<h4 id="3-6-Zabbix-Nginx-并发监控-自定义脚本功能-10-10-10-12"><a href="#3-6-Zabbix-Nginx-并发监控-自定义脚本功能-10-10-10-12" class="headerlink" title="3.6 Zabbix Nginx 并发监控(自定义脚本功能)  10.10.10.12"></a>3.6 Zabbix Nginx 并发监控(自定义脚本功能)  10.10.10.12</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy nginx-1.2.6]# yum -y install pcre pcre-devel zlib zlib-devel  <br>[root@xy nginx-1.2.6]# ./configure --<span class="hljs-built_in">help</span> | grep status  <span class="hljs-comment"># 查询模块  </span><br>[root@xy nginx-1.2.6]# useradd -s /sbin/nologin -M nginx  <br>[root@xy nginx-1.2.6]# ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-htttp_stub_status_module<br>[root@xy nginx-1.2.6]# make &amp;&amp; make install  <br>[root@xy nginx-1.2.6]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;123&quot;</span> &gt;&gt; /usr/local/nginx/html/index.html <br>[root@xy nginx-1.2.6]# /usr/local/nginx/sbin/nginx<br>[root@xy nginx-1.2.6]# vim /usr/local/nginx/conf/nginx.conf  <br>  location    /nginx-status &#123;<br>      stub_status on;<br>  &#125;<br>[root@xy nginx-1.2.6]# /usr/local/nginx/sbin/nginx -t  <br>[root@xy nginx-1.2.6]# <span class="hljs-built_in">kill</span> -HUP $(<span class="hljs-built_in">cat</span> /usr/local/nginx/logs/nginx.pid)<br>  <span class="hljs-comment">#!/bin/bash</span><br>  <span class="hljs-comment"># nginx_status.sh</span><br>  <span class="hljs-comment"># Active connections: 3</span><br>  <span class="hljs-comment"># server accepts handle requests</span><br>  <span class="hljs-comment">#   4   4   5</span><br>  <span class="hljs-comment"># Reading: 1  Writing: 1  Waiting: 1  </span><br><br>  HOST=<span class="hljs-string">&quot;10.10.10.12&quot;</span><br>  PORT=<span class="hljs-string">&quot;80&quot;</span><br>  <span class="hljs-comment"># 检测 nginx 进程是否存在  </span><br>  <span class="hljs-keyword">function</span> ping &#123;<br>      /sbin/pidof nginx | <span class="hljs-built_in">wc</span> -l<br>  &#125;<br>  <span class="hljs-comment"># 检测 nginx 性能</span><br>  <span class="hljs-keyword">function</span> active &#123;<br>      /usr/bin/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | grep <span class="hljs-string">&#x27;Active&#x27;</span> | awk <span class="hljs-string">&#x27;&#123;print $NF&#125;&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">function</span> reading &#123;<br>      /usr/bin/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | grep <span class="hljs-string">&#x27;Reading&#x27;</span> | awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">function</span> writing &#123;<br>      /usr/local/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | grep <span class="hljs-string">&#x27;Writing&#x27;</span> | awk <span class="hljs-string">&#x27;&#123;print $4&#125;&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">function</span> waiting &#123;<br>      /usr/local/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | grep <span class="hljs-string">&#x27;waiting&#x27;</span> | awk <span class="hljs-string">&#x27;&#123;print $6&#125;&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">function</span> accepts &#123;<br>      /usr/local/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | awk NR==3 | awk <span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">function</span> handle &#123;<br>      /usr/local/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | awk NR==3 | awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">function</span> requests &#123;<br>      /usr/local/curl <span class="hljs-string">&quot;http://<span class="hljs-variable">$HOST</span>:<span class="hljs-variable">$PORT</span>/ngx_status&quot;</span> 2&gt;/dev/null | awk NR==3 | awk <span class="hljs-string">&#x27;&#123;print $3&#125;&#x27;</span><br>  &#125;    <br>  <span class="hljs-comment"># 执行 function </span><br>  <span class="hljs-variable">$1</span><br>  %s/ngx_status/nginx_status/g<br>[root@xy nginx-1.2.6]# <span class="hljs-built_in">chmod</span> a+x nginx-status.sh  <br>[root@xy nginx-1.2.6]# <span class="hljs-built_in">mv</span> nginx-status.sh /etc/zabbix/zabbix_agentd.d/ <br>[root@xy ~]# vim /etc/zabbix/zabbix_agentd.conf  ✔<br>  UnsafeUserParameter=1  <br>  UserParameter=nginx.status[*],/etc/zabbix/zabbix_agentd.d/nginx-status.sh <span class="hljs-variable">$1</span>  <br>[root@xy ~]# service zabbix-agent restart<br>[root@xy ~]# yum -y install zabbix-get      <span class="hljs-comment"># 10.10.10.11 </span><br>[root@xy ~]# zabbix_get -s 10.10.10.12 -k <span class="hljs-string">&#x27;nginx.status[requests]&#x27;</span>  <br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://monitoringartist.github.io/zabbix-searcher/">Zabbix-templete下载</a></p>
+<h4 id="3-7-Zabbix-Web场景、组合图"><a href="#3-7-Zabbix-Web场景、组合图" class="headerlink" title="3.7 Zabbix Web场景、组合图"></a>3.7 Zabbix Web场景、组合图</h4><p><strong>监控主机–&gt; 创建应用集–&gt; 创建web场景–&gt; 创建触发器</strong>    </p>
+<img src="/posts/48810125/zabbix-web%E5%9C%BA%E6%99%AF.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-web场景]">  
+<img src="/posts/48810125/zabbix-web%E5%9C%BA%E6%99%AF1.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-web场景1]">  
+
+<p><strong>创建聚合图形–&gt; 编辑聚合图形–&gt; 添加组件</strong>  </p>
+<img src="/posts/48810125/zabbix-%E8%81%9A%E5%90%88%E5%9B%BE%E5%BD%A2.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-聚合图形]">  
+<img src="/posts/48810125/zabbix-%E8%81%9A%E5%90%88%E5%9B%BE%E5%BD%A21.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix-聚合图形1]">  
+
+<h4 id="3-8-Zabbix-报警设置-管理–-报警媒介类型–-创建媒体类型"><a href="#3-8-Zabbix-报警设置-管理–-报警媒介类型–-创建媒体类型" class="headerlink" title="3.8 Zabbix 报警设置(管理–&gt; 报警媒介类型–&gt; 创建媒体类型)"></a>3.8 Zabbix 报警设置(管理–&gt; 报警媒介类型–&gt; 创建媒体类型)</h4><img src="/posts/48810125/%E9%A1%B5%E9%9D%A2%E8%AD%A6%E5%91%8A.png" srcset="/img/loading.gif" lazyload class="" title="[页面警告]">  
+
+<h5 id="3-8-1-邮件报警功能（脚本指定路径查看-etc-zabbix-zabbix-server-conf）"><a href="#3-8-1-邮件报警功能（脚本指定路径查看-etc-zabbix-zabbix-server-conf）" class="headerlink" title="3.8.1 邮件报警功能（脚本指定路径查看: &#x2F;etc&#x2F;zabbix&#x2F;zabbix_server.conf）"></a>3.8.1 邮件报警功能（脚本指定路径查看: &#x2F;etc&#x2F;zabbix&#x2F;zabbix_server.conf）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>to=<span class="hljs-variable">$1</span><br>subject=<span class="hljs-variable">$2</span><br>context=<span class="hljs-variable">$3</span><br><span class="hljs-comment">#url=$4</span><br><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$context</span>&quot;</span> |mail -s <span class="hljs-string">&quot;<span class="hljs-variable">$subject</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$to</span>&quot;</span><br><br>vim /etc/mail.rc<br><span class="hljs-built_in">set</span> from=发件邮箱<br><span class="hljs-built_in">set</span> smtp=smtp服务器<br><span class="hljs-built_in">set</span> smtp-auth-user=发件人邮箱账户<br><span class="hljs-built_in">set</span> smtp-auth-password=发件人邮箱账户密码<br><span class="hljs-built_in">set</span> smtp-auth=login<br></code></pre></td></tr></table></figure>
+
+<img src="/posts/48810125/mail.png" srcset="/img/loading.gif" lazyload class="" title="[zabbix_mail]">  
+
+<blockquote>
+<p>注意: 若某个zabbix 用户也想使用邮箱媒介报警，则需要在<code>管理--&gt; 用户--&gt; 报警媒介</code>中添加</p>
+</blockquote>
+<h4 id="3-9-创建动作-触发器"><a href="#3-9-创建动作-触发器" class="headerlink" title="3.9 创建动作(触发器)"></a>3.9 创建动作(触发器)</h4><ul>
+<li><p>脚本参数:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml">&#123;<span class="hljs-string">ALERT.SENDTO</span>&#125;<br>&#123;<span class="hljs-string">ALERT.SUBJECT</span>&#125;<br>&#123;<span class="hljs-string">ALERT.MESSAGE</span>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>报警参数</p>
+<ul>
+<li><p>标题改为:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">故障&#123;TRIGGER.STATUS&#125;,服务器:&#123;HOSTNAME1&#125;发生:&#123;TRIGGER.NAME&#125;故障!</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>信息改为:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css">告警主机:&#123;HOSTNAME1&#125;<br>告警时间:&#123;EVENT<span class="hljs-selector-class">.DATE</span>&#125; &#123;EVENT<span class="hljs-selector-class">.TIME</span>&#125;<br>告警等级:&#123;TRIGGER<span class="hljs-selector-class">.SEVERITY</span>&#125;<br>告警信息:&#123;TRIGGER<span class="hljs-selector-class">.NAME</span>&#125;<br>告警项目:&#123;TRIGGER<span class="hljs-selector-class">.KEY1</span>&#125;<br>问题详情:&#123;<span class="hljs-selector-tag">TIME</span><span class="hljs-selector-class">.NAME</span>&#125;:&#123;<span class="hljs-selector-tag">TIME</span><span class="hljs-selector-class">.VALUE</span>&#125;<br>当前状态:&#123;TRIGGER<span class="hljs-selector-class">.STATUS</span>&#125;:&#123;<span class="hljs-selector-tag">TIME</span><span class="hljs-selector-class">.VALUE1</span>&#125;<br>事件 ID:&#123;EVENT<span class="hljs-selector-class">.ID</span>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>恢复参数</p>
+<ul>
+<li><p>标题改为:</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">恢复</span><span class="hljs-template-variable">&#123;TRIGGER.STATUS&#125;</span><span class="language-xml">,服务器:</span><span class="hljs-template-variable">&#123;HOSTNAME1&#125;</span><span class="language-xml">: </span><span class="hljs-template-variable">&#123;TRIGGER.NAME&#125;</span><span class="language-xml">已恢复!</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>信息改为:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css">告警主机:&#123;HOSTNAME1&#125;<br>告警时间:&#123;EVENT<span class="hljs-selector-class">.DATE</span>&#125; &#123;EVENT<span class="hljs-selector-class">.TIME</span>&#125;<br>告警等级:&#123;TRIGGER<span class="hljs-selector-class">.SEVERITY</span>&#125;<br>告警信息:&#123;TRIGGER<span class="hljs-selector-class">.NAME</span>&#125;<br>告警项目:&#123;TRIGGER<span class="hljs-selector-class">.KEY1</span>&#125;<br>问题详情:&#123;<span class="hljs-selector-tag">TIME</span><span class="hljs-selector-class">.NAME</span>&#125;:&#123;<span class="hljs-selector-tag">TIME</span><span class="hljs-selector-class">.VALUE</span>&#125;<br>当前状态:&#123;TRIGGER<span class="hljs-selector-class">.STATUS</span>&#125;:&#123;<span class="hljs-selector-tag">TIME</span><span class="hljs-selector-class">.VALUE1</span>&#125;<br>事件 ID:&#123;EVENT<span class="hljs-selector-class">.ID</span>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<img src="/posts/48810125/%E9%92%89%E9%92%89%E8%AD%A6%E5%91%8A.png" srcset="/img/loading.gif" lazyload class="" title="[钉钉警告]">  
+<img src="/posts/48810125/%E9%92%89%E9%92%89%E8%AD%A6%E5%91%8A1.png" srcset="/img/loading.gif" lazyload class="" title="[钉钉警告1]"> 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Devops-linux/" class="category-chain-item">Devops, linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/Devops/" class="print-no-link">#Devops</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux 监控</div>
+      <div>https://anyu967.github.io/posts/48810125.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/f8c8020d.html" title="Linux 集群">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux 集群</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/6fc8eab5.html" title="Markdown">
+                        <span class="hidden-mobile">Markdown</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

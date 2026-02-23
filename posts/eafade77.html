@@ -1,0 +1,766 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-07-29-tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tools">
+<meta property="og:url" content="https://anyu967.github.io/posts/eafade77.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-07-29-tools">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-29T12:40:35.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.789Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="CRH">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>tools - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="tools"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-07-29 20:40" pubdate>
+          2019年7月29日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">tools</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-07-29-tools</p>
+<span id="more"></span>
+
+<h2 id="转自https-github-com-shenzekun"><a href="#转自https-github-com-shenzekun" class="headerlink" title="转自https://github.com/shenzekun"></a>转自<a href="">https://github.com/shenzekun</a></h2><hr>
+<h1 id="useful-tools"><a href="#useful-tools" class="headerlink" title="useful-tools"></a>useful-tools</h1><blockquote>
+<p>🔨 一些有用的工具网站（<strong>注意</strong>：有些网站可能需要翻墙才能看到）</p>
+</blockquote>
+<h2 id="浏览器兼容类🌎"><a href="#浏览器兼容类🌎" class="headerlink" title="浏览器兼容类🌎"></a>浏览器兼容类🌎</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://caniuse.com/">caniuse</a> (网站开发浏览器兼容性查询)</li>
+<li><a target="_blank" rel="noopener" href="http://browserhacks.com/">browserhacks</a> (一些浏览器兼容写法)</li>
+</ul>
+<h2 id="图片类😎"><a href="#图片类😎" class="headerlink" title="图片类😎"></a>图片类😎</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://tinypng.com/">Tinypng</a> | <a target="_blank" rel="noopener" href="http://zhitu.isux.us/">智图</a> (压缩图片)</li>
+<li><a target="_blank" rel="noopener" href="http://www.biaonimeia.com/login">标你妹啊</a> (psd 标注)</li>
+<li><a target="_blank" rel="noopener" href="https://coolbackgrounds.io/">Cool Backgrounds</a> (生成好看的渐变背景图)</li>
+<li><a target="_blank" rel="noopener" href="https://carbon.now.sh/?bg=rgba(171,%20184,%20195,%201)&t=seti&wt=none&l=auto&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&si=false&es=2x&wm=false">carbon</a> (生成类似 mac 风格的代码图片，用于分享)  </li>
+<li><a target="_blank" rel="noopener" href="https://source.unsplash.com/">Unsplash Source</a> (生成随机图片) </li>
+<li><a target="_blank" rel="noopener" href="https://spritegen.website-performance.org/">CSS Sprite Generator</a> (生成雪碧图)</li>
+<li><a target="_blank" rel="noopener" href="http://www.iconfont.cn/plus">iconfont</a> (阿里巴巴矢量图标库)</li>
+<li><a target="_blank" rel="noopener" href="https://icons8.com/preloaders/">Preloaders</a> | <a target="_blank" rel="noopener" href="https://loading.io/">LOADING.IO</a> (加载图，<strong>有些是收费的</strong>)</li>
+<li><a target="_blank" rel="noopener" href="https://www.desktoppr.co/wallpapers">desktoppr</a> (好看的壁纸)</li>
+<li><a target="_blank" rel="noopener" href="https://material.io/tools/icons/?style=baseline">Material icons</a> (Material icons图标)</li>
+<li><a target="_blank" rel="noopener" href="https://www.iloveimg.com/zh-cn">Iloveimg</a> (批量编辑图片的所有工具。包括压缩图片，剪裁图片，图片加水印，转化至jpg图片等等)</li>
+<li><a target="_blank" rel="noopener" href="https://www.pkgif.net/">pkgif</a> (任意GIF添加字幕)</li>
+<li><a target="_blank" rel="noopener" href="https://imagecyborg.com/">ImageCyborg</a> (一键下载当前网页的所有图片)</li>
+<li><a target="_blank" rel="noopener" href="http://emblemmatic.org/markmaker/#/">MarkMaker</a> (在线 logo 随机生成工具)</li>
+<li><a target="_blank" rel="noopener" href="https://www.remove.bg/">Removebg</a> (在线移除背景工具，想改图片的背景可以用这个，证件照必备😀)</li>
+<li><a target="_blank" rel="noopener" href="https://jakearchibald.github.io/svgomg/">SVGOMG</a> (SVG图形压缩优化)</li>
+</ul>
+<h2 id="代码类⌨️"><a href="#代码类⌨️" class="headerlink" title="代码类⌨️"></a>代码类⌨️</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/">Ubuntu pastebin</a> (代码分享)</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/pens/">Codepen</a> | <a target="_blank" rel="noopener" href="http://jsbin.com/">Jsbin</a> (在线代码编辑)</li>
+<li><a target="_blank" rel="noopener" href="https://codesandbox.io/">CodeSandbox</a> (在线写React,自动编译,有代码提示)</li>
+<li><a target="_blank" rel="noopener" href="http://www.colorzilla.com/gradient-editor/">Ultimate CSS Gradient Generator</a> (生成 css 渐变)</li>
+<li><a target="_blank" rel="noopener" href="https://www.grabient.com/">Grabient</a> (生成漂亮的 css 渐变)</li>
+<li><a target="_blank" rel="noopener" href="https://dev.w3.org/html5/html-author/charref">Character Entity Reference Chart</a> (各种符号的转义字符)</li>
+<li><a target="_blank" rel="noopener" href="http://apps.eky.hk/css-triangle-generator/zh-hant">css三角形产生器</a> | <a target="_blank" rel="noopener" href="http://www.cssarrowplease.com/">CSS ARROW PLEASE</a> (生成CSS小三角) </li>
+<li><a target="_blank" rel="noopener" href="https://easings.net/zh-cn?tuyiyi.com">缓动函数速查表</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexper.com/">Regexper</a> (正则可视化)</li>
+<li><a target="_blank" rel="noopener" href="https://regex101.com/">Regex101</a> (正则表达式测试)</li>
+<li><a target="_blank" rel="noopener" href="https://visualgo.net/en">Visualgo</a> (数据结构，算法可视化)</li>
+<li><a target="_blank" rel="noopener" href="http://animista.net/">Animista</a> (在线生成 css 动画)</li>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> (测试网站速度，优化性能)</li>
+<li><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/">Learn Git Branching</a> (以动画的形式让你学习 git)</li>
+<li><a target="_blank" rel="noopener" href="http://asciiflow.com/">Asciiflow</a> (生成类似代码注释里那种佛祖的代码。。自己画😄)</li>
+<li><a target="_blank" rel="noopener" href="http://pxtoem.com/">PXtoEM</a> (PX EM 单位换算)</li>
+<li><a target="_blank" rel="noopener" href="http://epic-spinners.epicmax.co/#/">epic-spinners</a> (一个好看的css loading 代码库)</li>
+<li><a target="_blank" rel="noopener" href="https://www.myintervals.com/emogrifier.php">Emogrifier</a> (邮件模板必备工具-html转换成内联样式)</li>
+</ul>
+<h2 id="效率类⚡️"><a href="#效率类⚡️" class="headerlink" title="效率类⚡️"></a>效率类⚡️</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://modao.cc/">墨刀</a> (画原型图)</li>
+<li><a target="_blank" rel="noopener" href="https://shimo.im/">石墨文档</a> | <a target="_blank" rel="noopener" href="https://docs.qq.com/">腾讯文档</a> (多人实时协作的云端文档与表格)</li>
+<li><a target="_blank" rel="noopener" href="https://www.hloom.com/resume-examples/">resume-examples</a> (简历模板)</li>
+<li><a target="_blank" rel="noopener" href="https://enhancv.com/">Enhancv</a> (生成简历)</li>
+<li><a target="_blank" rel="noopener" href="http://www.koppt.cn/index">KOPPT</a> (ppt 模板)</li>
+<li><a target="_blank" rel="noopener" href="https://about.beautiful.ai/">Beautiful.Ai</a> (人工智能 ppt 模板创建)</li>
+<li><a target="_blank" rel="noopener" href="https://www.canva.com/templates/">Canva</a> (设计模板)</li>
+<li><a target="_blank" rel="noopener" href="https://www.processon.com/;jsessionid=EC0CB59BD105F6FD0294417AB0B0CC22.jvm1">ProcessOn</a> (在线画流程图，思维导图、UI原型图等等)</li>
+<li><a target="_blank" rel="noopener" href="https://wakatime.com/">WakaTime</a> (跟踪项目花费的时间，得装插件)</li>
+<li><a target="_blank" rel="noopener" href="http://screensiz.es/">Screen Sizes</a> (移动屏幕尺寸)</li>
+<li><a target="_blank" rel="noopener" href="https://habitica.com/">Habitica</a> (游戏化Todo)</li>
+<li><a target="_blank" rel="noopener" href="https://smallpdf.com/">Smallpdf</a> (非常厉害的一个网站，PDF压缩，PDF转PPT，Word，Excel等等都可以直接通过这个页面实现)</li>
+<li><a target="_blank" rel="noopener" href="https://cli.im/">草料二维码</a> (在线生成二维码)</li>
+<li><a target="_blank" rel="noopener" href="https://ppt.baomitu.com/">声享</a> (在线制作 PPT)</li>
+<li><a target="_blank" rel="noopener" href="https://mubu.com/">幕布</a> (极简大纲笔记，一键生成思维导图)</li>
+<li><a target="_blank" rel="noopener" href="https://infogram.com/">Infogram</a> (在线图表制作工具)</li>
+<li><a target="_blank" rel="noopener" href="https://uzer.me/">UZER.ME</a> (能够在线使用ps，ai，office，xmind，火狐浏览器等多个应用的网站)</li>
+<li><a target="_blank" rel="noopener" href="http://www.nicetool.net/">NiceTool</a> (在线工具集合网站)</li>
+<li><a target="_blank" rel="noopener" href="https://unbug.github.io/codelf/">codelf</a> (开发变量命名神器)</li>
+<li><a target="_blank" rel="noopener" href="https://tableconvert.com/">表格转换</a> (Markdown表格生成,LaTex表格生成)</li>
+<li><a target="_blank" rel="noopener" href="https://www.rdtoc.com/tools/jsonpath">JSONPath</a> (在线JSON提取工具)</li>
+<li><a target="_blank" rel="noopener" href="https://www.rdtoc.com/tools/jmespath">JMESPath</a> (在线JSON提取工具)</li>
+</ul>
+<h2 id="查询类🔎"><a href="#查询类🔎" class="headerlink" title="查询类🔎"></a>查询类🔎</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://devhints.io/">devhints</a> (常用速查表，快速查询各类框架和库的常用方法，很实用)</li>
+<li><a target="_blank" rel="noopener" href="https://docschina.org/">印记中文</a> (快速查询各类框架和周边库的中文文档)</li>
+<li><a target="_blank" rel="noopener" href="https://csstriggers.com/">Css Triggers</a> (列出了哪些CSS属性在不同的渲染引擎中是否会触发重排或重绘)</li>
+<li><a target="_blank" rel="noopener" href="https://securityheaders.com/">Security Headers</a> (搜索网站是否有不安全的头部 header 设置，并会评分)</li>
+<li><a target="_blank" rel="noopener" href="https://devdocs.io/">devdocs</a> (各种编程语言 API 文档)</li>
+<li><a target="_blank" rel="noopener" href="http://www.speedtest.cn/">Seepdtest</a>(测速网站)<ul>
+<li>300M的家庭带宽，家庭网络需要使用<code>千兆无线路由器、千兆网线组网</code></li>
+<li><code>1Mbps=1024Kbps=128KB/s, 300Mbps=300x128=38400KB/s=37.5MB/s</code></li>
+</ul>
+</li>
+<li>关于网线:<ul>
+<li><code>五类线</code>：该类电缆增加了绕线密度，传输带宽为100MHz，用于语音传输和最高传输速率为<code>100Mbps</code>的数据传输，主要用于100BASE-T和10BASE-T网络，已被超五类线替代。</li>
+<li><code>超五类线</code>：具有衰减小，串扰少，比五类线增加了近端串音功率和的测试要求，并且具有更高的衰减串扰比（ACR)和信噪比、更小的时延误差，性能得到很大提高。超五类线的最大带宽为100MHz。</li>
+<li><code>六类线</code>：的传输性能远远高于超五类标准，最适用于传输速率为<code>1Gbps</code>的应用。六类与超五类的一个重要的不同点在于：改善了在串扰以及回波损耗方面的性能，对于新一代全双工的高速网络应用而言，优良的回波损耗性能是极重要的。</li>
+<li><code>超六类线</code>：是六类线的改进版，发布于2008年，同样是ANSI&#x2F;TIA-568C.2和ISO&#x2F;IEC 11801超六类&#x2F;EA级标准中规定的一种双绞线电缆，主要应用于万兆位网络中。传输频率500 MHz，最大传输速度也可达到10Gbps ，在外部串扰等方面有较大改善</li>
+<li><code>七类线</code>：该线是ISO&#x2F;IEC 11801 7类&#x2F;F级标准中于2002年,  认可的一种双绞线，它主要为了适应万兆以太网技术的应用和发展。但它不再是一种非屏蔽双绞线了，而是一种屏蔽双绞线，所以它的传输频率至少可达600 MHz，传输速率可达10 Gbps。</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CRH/" class="print-no-link">#CRH</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>tools</div>
+      <div>https://anyu967.github.io/posts/eafade77.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年7月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/f7bab86b.html" title="网站数据备份">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网站数据备份</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/794381c6.html" title="review">
+                        <span class="hidden-mobile">review</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

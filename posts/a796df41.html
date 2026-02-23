@@ -1,0 +1,1201 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-06-13-grep&#x2F;sed&#x2F;awk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于grep、sed和awk的基础用法">
+<meta property="og:url" content="https://anyu967.github.io/posts/a796df41.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-06-13-grep&#x2F;sed&#x2F;awk">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://anyu967.github.io/posts/a796df41/awk.jpg">
+<meta property="article:published_time" content="2019-06-13T13:23:48.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.760Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="shell">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anyu967.github.io/posts/a796df41/awk.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>关于grep、sed和awk的基础用法 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="关于grep、sed和awk的基础用法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-13 21:23" pubdate>
+          2019年6月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">关于grep、sed和awk的基础用法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-06-13-grep&#x2F;sed&#x2F;awk</p>
+<span id="more"></span>
+
+<h4 id="Linux报“-‘-usr-bin’-is-not-included-in-the-PATH-environment-variable-”的解决方法"><a href="#Linux报“-‘-usr-bin’-is-not-included-in-the-PATH-environment-variable-”的解决方法" class="headerlink" title="Linux报“ ‘&#x2F;usr&#x2F;bin’ is not included in the PATH environment variable ”的解决方法:"></a>Linux报“ ‘&#x2F;usr&#x2F;bin’ is not included in the PATH environment variable ”的解决方法:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">利用/usr/bin vi 编辑之前改过环境变量:<br>/usr/bin vi ~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<h4 id="find-文件目录的查找"><a href="#find-文件目录的查找" class="headerlink" title="find(文件目录的查找)"></a>find(文件目录的查找)</h4><blockquote>
+<p>+n(n天以前), -n(n天以内)   </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-name</td>
+<td>根据文件名匹配</td>
+</tr>
+<tr>
+<td>-iname</td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td>-regex pattern</td>
+<td>基于正则进行文件名匹配</td>
+</tr>
+<tr>
+<td>-user</td>
+<td>根据属主匹配</td>
+</tr>
+<tr>
+<td>-group</td>
+<td>根据属组匹配</td>
+</tr>
+<tr>
+<td>-uid</td>
+<td>根据UID匹配</td>
+</tr>
+<tr>
+<td>-gid</td>
+<td>根据GID匹配</td>
+</tr>
+<tr>
+<td>-nouser</td>
+<td>匹配没有属主文件</td>
+</tr>
+<tr>
+<td>-nogroup</td>
+<td>匹配没有属组文件</td>
+</tr>
+<tr>
+<td>-type f d c b l p s</td>
+<td>匹配文件类型</td>
+</tr>
+<tr>
+<td>-size k M G</td>
+<td>根据文件大小</td>
+</tr>
+<tr>
+<td>-atime -mtime -ctime</td>
+<td>访问 修改 改变</td>
+</tr>
+<tr>
+<td>-perm -mode &#x2F;mode</td>
+<td>根据权限匹配</td>
+</tr>
+<tr>
+<td>-print -ls, ls -l</td>
+<td>–</td>
+</tr>
+<tr>
+<td>-exec&#x2F;-ok command {} ;</td>
+<td>–</td>
+</tr>
+<tr>
+<td>-a -o -not</td>
+<td>逻辑上的与 或 非</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">find /data/ -name <span class="hljs-string">&quot;*.log&quot;</span> -<span class="hljs-built_in">type</span> f -size +10k -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">cp</span> &#123;&#125; /tmp \;   <span class="hljs-comment"># 区分大小写</span><br>find /data/ -iname <span class="hljs-string">&quot;*.log&quot;</span> -<span class="hljs-built_in">type</span> f -size +10k -m perm 644 -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">rm</span> -rf &#123;&#125; \;  <br>find /data/ -name <span class="hljs-string">&quot;*.log&quot;</span> -<span class="hljs-built_in">type</span> f -mtime +30 -size +10M -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">mv</span> &#123;&#125; /tmp/ \; <span class="hljs-comment"># +30 30天以前，-30 30天之内   </span><br>find /data -not \( -user user1 -a -not -<span class="hljs-built_in">type</span> d \)<br></code></pre></td></tr></table></figure>
+
+<h4 id="grep-文本搜索工具-行"><a href="#grep-文本搜索工具-行" class="headerlink" title="grep(文本搜索工具,行)"></a>grep(文本搜索工具,行)</h4><ul>
+<li>grep [OPTION] PATTERN [FILE]</li>
+<li>Search for PATTERN in each FILE.</li>
+<li>Example: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -i <span class="hljs-string">&#x27;hello world&#x27;</span> menu.h main.c<br></code></pre></td></tr></table></figure></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--color=auto</code></td>
+<td>对匹配到的文本着色显示</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>反选</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>统计匹配的行数</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>根据模式文件处理</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>使用ERE</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>匹配整个单词</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>实现多个选项</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>仅显示匹配到的字符串</td>
+</tr>
+<tr>
+<td>-A #</td>
+<td>after, 后#行(tail -n)</td>
+</tr>
+<tr>
+<td>-B #</td>
+<td>before, 前#行(head -n)</td>
+</tr>
+<tr>
+<td>-C #</td>
+<td>前后各#行</td>
+</tr>
+</tbody></table>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -f, --file=FILE    # 从文件每一行获取匹配模式</span><br>grep -f a.txt b.txt  <span class="hljs-comment"># 输出b文件在a文件相同的行</span><br><br><span class="hljs-comment"># -v, --invert-match # 打印不匹配的行</span><br>grep -v -f a.txt b.txt <span class="hljs-comment"># 输出b文件中在a文件不同的行</span><br><br><span class="hljs-comment"># -e, --regexp=PATTERN # 使用模式匹配，可指定多个模式匹配</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;a bc de&quot;</span> |xargs -n1 |grep -e <span class="hljs-string">&#x27;a&#x27;</span> -e <span class="hljs-string">&#x27;bc&#x27;</span><br>grep -E -v <span class="hljs-string">&quot;^$|^#&quot;</span> /etc/httpd/conf/httpd.conf<br><br><span class="hljs-comment"># -o, --only-matching  # 只打印匹配的内容</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;this is a test&quot;</span> |grep -o <span class="hljs-string">&#x27;is&#x27;</span>   <span class="hljs-comment"># is</span><br>ifconfig eno16777736 |grep -o <span class="hljs-string">&quot;\&lt;\([0-9]\&#123;1,3\&#125;\.\)\&#123;3\&#125;[0-9]\&#123;1,3\&#125;\&gt;&quot;</span><br>grep -Eo <span class="hljs-string">&quot;(([1-9]?[0-9]|1[0-9]&#123;2&#125;|2[0-4][0-9]|25[0-5])\.)&#123;3&#125;([1-9]?[0-9]|1[0-9]&#123;2&#125;|2[0-4][0-9]|25[0-5])&quot;</span><br><br><span class="hljs-comment"># -m, --max-count=NUM # 输出匹配的结果num数</span><br><span class="hljs-built_in">seq</span> 1 20 |grep -m 5 -E <span class="hljs-string">&#x27;[0-9]&#123;2&#125;&#x27;</span>   <span class="hljs-comment"># 10 11 12 13 14 15</span><br><br><span class="hljs-comment"># -w, --word-regexp # 模式匹配整个单词</span><br><span class="hljs-comment"># xargs 能够捕获一个命令的输出，然后传递给另外一个命令</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;a ab abc abcd abcde&quot;</span> |xargs -n1 |grep -E -w -o <span class="hljs-string">&#x27;[a-z]&#123;2,3&#125;&#x27;</span> <span class="hljs-comment"># ab abc</span><br><br><span class="hljs-comment"># -c, --count </span><br><span class="hljs-built_in">seq</span> 1 20 |grep -c -E <span class="hljs-string">&#x27;[0-9]&#123;2&#125;&#x27;</span>   <span class="hljs-comment"># 11</span><br><br><span class="hljs-comment"># -n, --line-number</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;a ab abc abcd abcde&quot;</span> |xargs -n1 |grep -n <span class="hljs-string">&#x27;de$&#x27;</span>  <span class="hljs-comment"># 5:abcde</span><br><br><span class="hljs-comment"># -B, --before-context=NUM</span><br><span class="hljs-built_in">seq</span> 1 10 |grep 5 -B 3  <span class="hljs-comment"># 2 3 4 5  </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="sed-处理行-一次读取一行内容"><a href="#sed-处理行-一次读取一行内容" class="headerlink" title="sed(处理行,一次读取一行内容)"></a>sed(处理行,一次读取一行内容)</h4><blockquote>
+<p>流编辑器, 过滤和替换文本.<br><code>sed [选项] &#39;模式1动作1; 模式2动作2; ...&#39; 待处理File</code>  </p>
+</blockquote>
+<blockquote>
+<p>工作原理: sed命令将当前处理的行存储在临时缓冲区–<strong>模式空间(临时缓冲区)<strong>进行处理, 处理完把结果输出, 并清空模式空间. 然后再将下一行读入模式空间进行处理输出, 以此类推, 直到最后一行；<br>还有一个空间叫</strong>保持空间, 又称暂存空间</strong>, 可以暂时存放一些处理的数据,但不能直接输出, 只能放到模式空间输出；这两个空间其实就是在内存中初始化的一个内存区域, 存放正在处理的数据和临时存放的数据；<br>默认工作模式输出模式空间内容  </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-n</td>
+<td>只输出命令匹配的内容(不显示模式空间内容)</td>
+</tr>
+<tr>
+<td>-r, –reg</td>
+<td>开启支持扩展正则</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>sed的修改结果直接应用于文件</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>多个命令组合 或者用<code>;</code>分割</td>
+</tr>
+<tr>
+<td>-f 脚本文件名</td>
+<td>从sed脚本读入sed操作</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>动作(定位)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x,y</td>
+<td>x~y之间的行</td>
+</tr>
+<tr>
+<td>x,+N</td>
+<td>从x行开始向后的N的行</td>
+</tr>
+<tr>
+<td>x,y!</td>
+<td>查询不包括x和y行之间的行</td>
+</tr>
+<tr>
+<td>$</td>
+<td>最后一行</td>
+</tr>
+<tr>
+<td>&#x2F;pattern1&#x2F;,&#x2F;pattern2&#x2F;</td>
+<td>查询从匹配模式1~模式2之间的行</td>
+</tr>
+<tr>
+<td>&#x2F;pattern&#x2F;pattern&#x2F;</td>
+<td>查询包含两个模式的行</td>
+</tr>
+<tr>
+<td>x,&#x2F;pattern&#x2F;</td>
+<td>从与x行~与pattern匹配行之间的行</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>动作(编辑命令)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p</td>
+<td>打印,输出指定行</td>
+</tr>
+<tr>
+<td>d</td>
+<td>删除指定行</td>
+</tr>
+<tr>
+<td>a \string</td>
+<td>在指定行后追加</td>
+</tr>
+<tr>
+<td>i \string</td>
+<td>在指定行前插入</td>
+</tr>
+<tr>
+<td>c \string</td>
+<td>行替换,用c后边的字符串替换原数据</td>
+</tr>
+<tr>
+<td>r FILE</td>
+<td>指定行后添加文件内容</td>
+</tr>
+<tr>
+<td>w FILE</td>
+<td>指定范围的内容另存至指定文件中</td>
+</tr>
+<tr>
+<td>s&#x2F;pattern&#x2F;string&#x2F;</td>
+<td>查找并替换字串</td>
+</tr>
+<tr>
+<td>n</td>
+<td>读取下一个输入行, 用下一个命令处理新行</td>
+</tr>
+<tr>
+<td>N</td>
+<td>将当前读入行的下一行读取到当前的模式空间</td>
+</tr>
+<tr>
+<td>g</td>
+<td>将保持缓冲区的内容复制到模式缓冲区</td>
+</tr>
+<tr>
+<td>G</td>
+<td>将保持缓冲区的内容追加到模式缓冲区</td>
+</tr>
+</tbody></table>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例:"></a>示例:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -n, --quiet, --silent # 只输出匹配的字串到屏幕</span><br>sed -n <span class="hljs-string">&#x27;/^blp5/p&#x27;</span> /etc/services     <span class="hljs-comment"># 打印匹配blp5开头的行</span><br><span class="hljs-built_in">tail</span> /etc/services |sed -n <span class="hljs-string">&#x27;1,3p&#x27;</span>   <span class="hljs-comment"># 打印1-3行</span><br>sed -n <span class="hljs-string">&#x27;1p;$p&#x27;</span> test.txt`            <span class="hljs-comment"># 打印第一行与最后一行</span><br><br><span class="hljs-comment"># a i c r w命令</span><br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;/blp5/i \test&#x27;</span>   <br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;/blp5/a \test&#x27;</span>   <br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;/blp5/c \test&#x27;</span>   <span class="hljs-comment"># 在blp5替换新行</span><br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;2a \test&#x27;</span>        <span class="hljs-comment"># 在指定行下一行添加</span><br>sed <span class="hljs-string">&#x27;1,2r /etc/issue&#x27;</span> /etc/fstab <br>sed <span class="hljs-string">&#x27;/oot/w /tmp/oot/txt&#x27;</span> /etc/fstab  <br><br><span class="hljs-comment"># d 命令</span><br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;/blp5/,$d&#x27;</span>   <span class="hljs-comment"># 删除匹配行直到最后一行 </span><br>sed <span class="hljs-string">&#x27;/^#/d;/^$/d&#x27;</span> /etc/httpd/conf/httpd.conf<br>sed <span class="hljs-string">&#x27;1,3d&#x27;</span> test.txt                   <span class="hljs-comment"># 删除1-3行</span><br><br><span class="hljs-comment"># s 命令</span><br><span class="hljs-comment"># 默认只替换每行中第一次被模式匹配的字串，g-全局替换，i-忽略大小写， </span><br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;s/blp5/test/&#x27;</span>  <span class="hljs-comment"># 替换blp5字符串为test s/old/new/g</span><br><span class="hljs-built_in">tail</span> /etc/services |sed <span class="hljs-string">&#x27;1,4s#blp5#test#&#x27;</span><br>sed -i <span class="hljs-string">&#x27;/SELINUX/s/enforceing/disabled/g&#x27;</span> /etc/selinux/config  <br>sed <span class="hljs-string">&#x27;s/l..e/&amp;r/g&#x27;</span><br>sed <span class="hljs-string">&#x27;s#\(l..e\)#\1r#g&#x27;</span>  <br>sed <span class="hljs-string">&#x27;s#l\(..e\)#L\1#g&#x27;</span>    <span class="hljs-comment"># like love</span><br><br><span class="hljs-comment"># N,D,P--处理多行模式空间; H,h,G,g,x--将模式空间内容放入存储空间以便编辑</span><br>  <span class="hljs-comment"># N: 不会清空模式空间内容，并从输入文件中读取下一行数据，追加到模式空间中，两行数据以换行符\n连接；</span><br><br><span class="hljs-comment"># 例子:  </span><br><span class="hljs-built_in">seq</span> 6 |sed <span class="hljs-string">&#x27;/^$/d; 1,3G&#x27;</span>      <span class="hljs-comment"># 前3行每行后加入空行 ^$(空行)</span><br><span class="hljs-built_in">seq</span> 6 |sed <span class="hljs-string">&#x27;n; d&#x27;</span>             <span class="hljs-comment"># 偶数行删除 1 3 5</span><br><span class="hljs-built_in">seq</span> 6 |sed <span class="hljs-string">&#x27;/5/&#123;x; p; x&#125;&#x27;</span>     <span class="hljs-comment"># 匹配内容的前一行插入空行</span><br><span class="hljs-built_in">seq</span> 6 |sed <span class="hljs-string">&#x27;N; s/\n/ /&#x27;</span>       <span class="hljs-comment"># 1 2   3 4    5 6</span><br>sed <span class="hljs-string">&#x27;N;s#\n#=#g&#x27;</span>       <br><span class="hljs-built_in">seq</span> 6 |sed <span class="hljs-string">&#x27;$!N; $!D&#x27;</span>         <span class="hljs-comment"># 5 6</span><br><span class="hljs-built_in">seq</span> 6 |sed -n <span class="hljs-string">&#x27;/3/,/6/&#x27;</span>p      <span class="hljs-comment"># 3 4 5 6</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="awk-先读取行-再提取列"><a href="#awk-先读取行-再提取列" class="headerlink" title="awk (先读取行, 再提取列)"></a>awk (先读取行, 再提取列)</h4><blockquote>
+<p>awk是一个处理文本的编程语言工具, 能用简短的程序处理标准输入或文件、数据排序、计算以及生成报表等等  </p>
+</blockquote>
+<blockquote>
+<p>awk 引用shell变量使用 <code>-v</code> 或者 <code>双引号+单引号</code>即可  </p>
+</blockquote>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk -v STR=hello <span class="hljs-string">&#x27;&#123;print STR, $NF&#125;&#x27;</span> test.txt`  <br>STR=<span class="hljs-string">&#x27;Hello&#x27;</span>; <span class="hljs-built_in">echo</span> |awk <span class="hljs-string">&#x27;&#123;print &quot;&#x27;</span><span class="hljs-variable">$&#123;STR&#125;</span><span class="hljs-string">&#x27;&quot;&#125;&#x27;</span>`  <br></code></pre></td></tr></table></figure>
+
+<img src="/posts/a796df41/awk.jpg" srcset="/img/loading.gif" lazyload class="" title="[awk原理说明]">
+
+<h4 id="Usage"><a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h4><ul>
+<li><code>awk 选项 &#39;条件1&#123;动作1&#125; 条件2&#123;动作2&#125; ...&#39; file</code>    </li>
+<li><code>awk -F: &#39;&#123;print $1 &gt;&gt;&quot;/tmp/awk.log&quot;&#125;&#39; test.txt</code> # -F ‘[ :\t;]’</li>
+<li>条件&#x2F;模式: 条件也即模式: <code>BEGIN, 空模式, END模式</code></li>
+<li>动作: <ul>
+<li>{ print 动作1,动作2, … }       # 打印后则默认空格隔开; 若没有逗号隔开, 则会连在一起</li>
+<li>{ print 动作1; print 动作2 }     # 多个动作用分号隔开<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk -F <span class="hljs-string">&quot;:&quot;</span> <span class="hljs-string">&#x27;&#123; if($3&lt;500) &#123; print $1,&quot;系统用户&quot; &#125; else&#123; print $1,&quot;普通用户&quot; &#125;&#125;&#x27;</span> /etc/passwd<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FS, Field Separator</td>
+<td>输入字段(列)分隔符，默认是空格或制表符  BEGIN{FS&#x3D;”:”}</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>输出字段(列)分隔符，默认是空格</td>
+</tr>
+<tr>
+<td>RS, Record Separator</td>
+<td>输入记录(行)分隔符，默认是换行符\n</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>输出记录(行分隔符，默认是换行符\n</td>
+</tr>
+<tr>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>NF, Number Field</td>
+<td>统计当前记录中字段(列)个数，列号</td>
+</tr>
+<tr>
+<td>NR, Number Record</td>
+<td>行号，当前处理的文本行的行号</td>
+</tr>
+<tr>
+<td>FNR</td>
+<td>同NR，各文件分别计数的行号</td>
+</tr>
+<tr>
+<td>$0</td>
+<td>当前读入整行数据</td>
+</tr>
+<tr>
+<td>$n</td>
+<td>当前读入行的第n个字段，第n列</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>显示文件名</td>
+</tr>
+</tbody></table>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例:"></a>示例:</h5><ul>
+<li>FS OFS(输入输出字段分割符)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;BEGIN&#123;FS=&quot;:&quot;&#125;&#123;print $1,$2&#125;&#x27;</span> /etc/passwd |<span class="hljs-built_in">head</span> -n5	        <span class="hljs-comment"># root x</span><br>awk <span class="hljs-string">&#x27;BEGIN&#123;FS=&quot;:&quot;;OFS=&quot;:&quot;&#125;&#123;print $1,$2&#125;&#x27;</span> /etc/passwd |<span class="hljs-built_in">head</span> -n5	<span class="hljs-comment"># root:x</span><br>awk <span class="hljs-string">&#x27;BEGIN&#123;FS=&quot;:&quot;&#125;&#123;print $1&quot;#&quot;$2&#125;&#x27;</span> /etc/passwd |<span class="hljs-built_in">head</span> -n5        <span class="hljs-comment"># root#x</span><br></code></pre></td></tr></table></figure></li>
+<li>RS ORS(输入输出记录分隔符)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;www.baidu.com/user/test.html&quot;</span> |awk <span class="hljs-string">&#x27;BEGIN&#123;RS=&quot;/&quot;&#125;&#123;print $0&#125;&#x27;</span>   <span class="hljs-comment"># user test.html</span><br></code></pre></td></tr></table></figure></li>
+<li>NF(列号,统计当前字段个数) <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;a b c d e f&quot;</span>|awk <span class="hljs-string">&#x27;&#123;print NF&#125;&#x27;</span>    <span class="hljs-comment"># 6</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;a b c d e f&quot;</span>|awk <span class="hljs-string">&#x27;&#123;print $NF&#125;&#x27;</span>   <span class="hljs-comment"># f</span><br></code></pre></td></tr></table></figure></li>
+<li>NR FNR(行号,统计记录编号)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">tail</span> -n5 /etc/services |awk <span class="hljs-string">&#x27;&#123;print NR,$0&#125;&#x27;</span>  <br><span class="hljs-built_in">tail</span> -n5 /etc/services |awk <span class="hljs-string">&#x27;END&#123;print NR&#125;&#x27;</span>	   <span class="hljs-comment"># 5</span><br><span class="hljs-built_in">cat</span> /etc/passwd |grep <span class="hljs-string">&quot;/bin/bash&quot;</span> |awk <span class="hljs-string">&#x27;BEGIN&#123;FS=&quot;:&quot;&#125; &#123;printf $1 &quot;\t&quot; $3 &quot;\t 行号:&quot;NR &quot;\t 字段数:&quot;NF &quot;\n&quot;&#125;&#x27;</span><br></code></pre></td></tr></table></figure></li>
+<li>格式化输出<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk -F: <span class="hljs-string">&#x27;&#123;print &quot;%-12s %-6s %-8s\n&quot;, $1, $2, $NF&#125;&#x27;</span> /etc/passwd<br>netstat -an |awk <span class="hljs-string">&#x27;$6 ~ /LISTEN/&amp;&amp;NR&gt;=1&amp;&amp;NR&lt;=10 &#123;print NR, $4, $5,$6&#125;&#x27;</span> OFS=<span class="hljs-string">&quot;\t&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>须知: 在awk中, 有3种情况表达式为假: 数字是0, 空字符串和未定义的值. 数值运算, 未定义变量初始值为0; 字符运算; 未定义变量初始值为空.</p>
+</blockquote>
+<ul>
+<li><p>awk是按行处理的，每次读取一行，并遍历打印每个字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;i=1;while(i&lt;=NF)&#123;print $1;i++&#125;&#125;&#x27;</span> file<br>awk <span class="hljs-string">&#x27;&#123;for(i=NF;i&gt;=1;i--)&#123;print $i&quot; &quot;&#125;;print&quot;&quot;&#125;&#x27;</span> file<br>awk <span class="hljs-string">&#x27;BEGIN&#123;for(i=1;i&lt;=5;i++)&#123;if(i==3)&#123;break&#125;;print i&#125;&#125;&#x27;</span>	file    <span class="hljs-comment"># 1 2</span><br>awk <span class="hljs-string">&#x27;BEGIN&#123;for(i=1;i&lt;=5;i++)&#123;if(i==3)&#123;continue&#125;;print i&#125;&#125;&#x27;</span> file <span class="hljs-comment"># 1 2 4 5</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>统计passwd文件用户数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk -F<span class="hljs-string">&#x27;:&#x27;</span> <span class="hljs-string">&#x27;BEGIN&#123;count=0;&#125; &#123;name[count]=$1; count++;&#125; END&#123;for(i=0; i&lt;NR; i++) print i, name[i]&#125;&#x27;</span> /etc/passwd<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Nginx-日志分析"><a href="#Nginx-日志分析" class="headerlink" title="Nginx 日志分析:"></a>Nginx 日志分析:</h4><blockquote>
+<p>114.242.26.65 - - [22&#x2F;Mar&#x2F;2017:08:41:08 +0800] “GET &#x2F;css&#x2F;20151103Style.css HTTP&#x2F;1.1” 200 9041 “<a target="_blank" rel="noopener" href="http://sz.cdn-my.mobiletrain.org/">http://sz.cdn-my.mobiletrain.org/</a>“ “Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_11_6) ApplwWebKit&#x2F;537.36 (HTML, like Gecko) Chrome&#x2F;50.02661.102 Safari&#x2F;537.36”  </p>
+</blockquote>
+<ul>
+<li>1.统计2017年9月5日 PV量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&#x27;05/Sep/2017&#x27;</span> cd.mobiletrain.org.log |<span class="hljs-built_in">wc</span> -l  <br>awk <span class="hljs-string">&#x27;$4&gt;=&quot;[05/sep/2017:08:00:00&quot; &amp;&amp; &quot;[05/sep/2017:09:00:00&quot; &#123;print $0&#125;&#x27;</span> sz.mobiletrain.log |<span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>2.统计2017年9月5日 一天访问最多的10个IP(top 10)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&#x27;05/Sep/2017&#x27;</span> sz.mobiletrain.org.log |awk <span class="hljs-string">&#x27;&#123;ips[$1]++&#125; END&#123;for(i in ips)&#123;print i,ips[i]&#125;&#125;&#x27;</span> |<span class="hljs-built_in">sort</span> -k2 -nr |<span class="hljs-built_in">head</span> -n10    <br>awk <span class="hljs-string">&#x27;05\/Sep\/2017&#x27;</span> sz.mobiletrain.org.log |awk <span class="hljs-string">&#x27;&#123;ips[$1]++&#125; END&#123;for(i in ips)&#123;print i,ips[i]&#125;&#125;&#x27;</span> |<span class="hljs-built_in">sort</span> -k2 -nr |<span class="hljs-built_in">head</span> -n10<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>3.统计2017年9月5日 访问&gt;100次的IP</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&#x27;05/Sep/2017&#x27;</span> sz.mobiletrain.org.log |awk <span class="hljs-string">&#x27;&#123;ips[$1]++&#125; END&#123;for(i in ips)&#123;if(ips[i]&gt;100)&#123;print i,ips[i]&#125;&#125;&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>4.统计2017年9月5日 访问最多的10个页面($request top 10)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;/05\/Sep\/2017/ &#123;urls[$7]++&#125; END&#123;for(i in urls)&#123;print i,urls[i]&#125;&#125;&#x27;</span> sz.mobiletrain.org.log |<span class="hljs-built_in">sort</span> -k1 -rn |<span class="hljs-built_in">head</span> -n10<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>5.统计2017年9月5日 每个url访问内容总大小($body_bytes_sent)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;/05\/Sep\/2017/ &#123;urls[$7]++; size[$7]+=$10&#125; END&#123;for(i in urls)&#123;print urls[i],size[i],i&#125;&#125;&#x27;</span> sz.mobiletrain.org.log |<span class="hljs-built_in">sort</span> -k1 -rn |<span class="hljs-built_in">head</span> -n10<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>6.统计2017年9月5日 每个IP访问状态码数量($status)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;/05\/Sep/\2017/ &#123;ip_code[$1&quot; &quot;$9]++&#125; END&#123;for(i in ip_code)&#123;print i,ip_code[i]&#125;&#125;&#x27;</span> sz.mobiletrain.org |<span class="hljs-built_in">sort</span> -k1 -rn |<span class="hljs-built_in">head</span> -n10<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>7.统计2017年9月5日 访问状态码为404及出现次数($status)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;/05\/Sep\/2017/ &#123;if($9==&quot;404&quot;)&#123;ip_code[$1&quot; &quot;$9]++&#125; END&#123;for(i in ip_code)&#123;print i,ip_code[i]&#125;&#125;&#125;&#x27;</span> sz.mobiletrain.org.log<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>8.统计前一分钟的PV量(带入外部变量)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span>=$(<span class="hljs-built_in">date</span> -d <span class="hljs-string">&#x27;-1 minute&#x27;</span> +%d/%b/%Y:%H:%M); awk -v <span class="hljs-built_in">date</span>=<span class="hljs-variable">$date</span> <span class="hljs-string">&#x27;$0 ~ date &#123;i++&#125; END&#123;print i&#125;&#x27;</span> sz.mobiletrain.org.log<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>9.统计2017年9月5日 8:30-9:00, 访问状态码是404</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;$4&gt;=&quot;[05/Sep/2017:08:30:00 &amp;&amp; [05/Sep/2017:09:00:00&quot; &#123;if($9==&quot;404&quot;)&#123;ip_code[$1&quot; &quot;$9]++&#125; for(i in ip_code)&#123;print i,ip_code[i]&#125;&#125;&#x27;</span> sz.mobiletrain.org.log<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>10.统计2017年9月5日各种状态码数量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;/05\/09\/2017/ &#123;code[$9]++;total++&#125; END&#123;for(i in code)&#123;printf i&quot;\t&quot;; printf code[i]&quot;\t&quot;; printf &quot;%.2f&quot;,code[i]/total*100; print &quot;%&quot;&#125;&#125;&#x27;</span> sz.mobiletrain.org.log<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>11.统计独立IP数</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span> access.log |<span class="hljs-built_in">sort</span> -r |<span class="hljs-built_in">uniq</span> -c |<span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>12.统计总PV量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;print $7&#125;&#x27;</span> access.log |<span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>13.UV统计</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;print $11&#125;&#x27;</span> access.log |<span class="hljs-built_in">sort</span> -r |<span class="hljs-built_in">uniq</span> -c |<span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>14.截至目前为止访问量前20的IP</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span> access.log |<span class="hljs-built_in">sort</span> |<span class="hljs-built_in">uniq</span> -c |<span class="hljs-built_in">sort</span> -nr |<span class="hljs-built_in">head</span> -n20<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>15.早上9-12总请求量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed -n <span class="hljs-string">&quot;/2019:09:00&quot;</span>/,/2019:12:00/<span class="hljs-string">&quot;p access.log</span><br><span class="hljs-string">`awk &#x27;/2019:09:00/,/2019:12:00&#x27; access.log |wc -l</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>16.状态码404、502、503、500、499等错误信息页面，打错误出现次数大于20的IP地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;if($9~/502|499|500|503|404/) print $1, $9&#125;&#x27;</span> access.log |<span class="hljs-built_in">sort</span> |<span class="hljs-built_in">uniq</span> -c |<span class="hljs-built_in">sort</span> -nr |awk <span class="hljs-string">&#x27;&#123;if($1&gt;20) print $2&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>17.访问最多的页面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;print $7&#125;&#x27;</span> access.log |<span class="hljs-built_in">sort</span> |<span class="hljs-built_in">uniq</span> -c |<span class="hljs-built_in">sort</span> -nr |<span class="hljs-built_in">head</span> -n20<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>18.请求处理时间大于5s的URL，打印出时间、URL、访客、IP</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;if($NF&gt;5) print $NF, $7, $1&#125;&#x27;</span> access.log |<span class="hljs-built_in">sort</span> -nr |more<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>continue: 在循环中不执行continue下面的代码，转而进入下一轮循环</li>
+<li>break: 结束并退出整个循环</li>
+<li>exit: 退出脚本，常带一个整数给系统，如 exit 0</li>
+<li>return: 在函数中将数据返回或返回一个结果给调用函数的脚本</li>
+<li>break: 是立马跳出循环, continue: 是跳出当前条件循环, 继续下一轮条件循环, exit: 是直接退出整个脚本</li>
+</ul>
+<h4 id="琐碎知识点"><a href="#琐碎知识点" class="headerlink" title="琐碎知识点:"></a>琐碎知识点:</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0</td>
+<td>脚本自身名字</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>返回上条命令是否执行成功, 0执行成功, 非零失败</td>
+</tr>
+<tr>
+<td>S#</td>
+<td>参数总数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>参数都被看作一个字符串</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>每个参数被看作独立字符串</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>当前进程PID</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>上一条运行后台进程PID</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/shell/" class="print-no-link">#shell</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>关于grep、sed和awk的基础用法</div>
+      <div>https://anyu967.github.io/posts/a796df41.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/4bf6bbf0.html" title="Git命令总结及问题解决">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git命令总结及问题解决</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/a6e6cc3d.html" title="关于正则表达式">
+                        <span class="hidden-mobile">关于正则表达式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

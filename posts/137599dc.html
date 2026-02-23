@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-06-11-WordPress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wordpress部署">
+<meta property="og:url" content="https://anyu967.github.io/posts/137599dc.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-06-11-WordPress">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-11T09:20:46.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.739Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="网站">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>wordpress部署 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="wordpress部署"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-11 17:20" pubdate>
+          2019年6月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">wordpress部署</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-06-11-WordPress</p>
+<span id="more"></span>
+
+<h2 id="redhat系统"><a href="#redhat系统" class="headerlink" title="redhat系统"></a>redhat系统</h2><h2 id="软件版本"><a href="#软件版本" class="headerlink" title="软件版本:"></a>软件版本:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ wget https://wordpress.org/latest.tar.gz <br>$ wget https://cdn.mysql.com//Downloads/MySQL-5.7/ mysql-5.7.27-1.el7.x86_64.rpm-bundle.tar <span class="hljs-comment"># rpm</span><br>$ wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.27-el7-x86_64.tar.gz <span class="hljs-comment"># 二进制包 </span><br>$ wget http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.39.tar.gz`  <br>$ wget https://www.php.net/distributions/php-7.3.7.tar.bz2  <br></code></pre></td></tr></table></figure>
+
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖:"></a>安装依赖:</h2><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs livescript">$ yum install -y apr* <span class="hljs-string">\</span> <br>  autoconf automake bison bzip2 bzip2* <span class="hljs-string">\</span><br>  compat* cpp curl curl-devel fontconfig fontconfig-devel <span class="hljs-string">\</span><br>  freetype freetype* freetype-devel gcc gcc-c++ gd <span class="hljs-string">\</span> <br>  gettext gettext-devel glibc kernel kernel-headers <span class="hljs-string">\</span><br>  keyutils keyutils-libs-devel krb5-devel libcom_err-devel <span class="hljs-string">\</span> <br>  libpng libpng-devel libjpeg* libsepol-devel libselinux-devel <span class="hljs-string">\</span> <br>  libstdc++-devel libtool* libgomp libxml2 libxml2-devel libXpm* <span class="hljs-string">\</span> <br>  libtiff libtiff* make mpfr ncurses* ntp openssl openssl-devel <span class="hljs-string">\</span><br>  patch pcre-devel perl php-common php-gd policycoreutils telnet <span class="hljs-string">\</span><br>  t1lib t1lib* nasm nasm* wget zlib-devel<br>  <br>$ tar -xzvf cmake-<span class="hljs-number">3.15</span>.<span class="hljs-number">1.tar</span>.gz   <br>$ ./configure<br>$ make &amp;&amp; make install  <br></code></pre></td></tr></table></figure>
+
+<h3 id="1-部署软件"><a href="#1-部署软件" class="headerlink" title="1. 部署软件:"></a>1. 部署软件:</h3><ul>
+<li><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ftl1012/p/9302206.html">参考文档1</a></strong>  </li>
+<li><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/apollo1616/p/10205216.html">参考文档2</a></strong>  </li>
+<li><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wujuntian/p/8183952.html">参考文档3</a></strong>  </li>
+<li><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/inana/p/7545103.html">参考文档4</a></strong></li>
+</ul>
+<h4 id="1-1-RPM安装Mysql"><a href="#1-1-RPM安装Mysql" class="headerlink" title="1.1 RPM安装Mysql:"></a>1.1 RPM安装Mysql:</h4><blockquote>
+<p>在安装之前, 首先要查看的是, 系统中有没有已经安装过的情况, 键入 <code>rpm -qa|grep mysql</code> , 如果无任何显示，则表示没有安装过相关组件, 如果有, 则根据显示出来的名字, 键入<code>rpm -e --nodeps XXXX</code>(星号为你要删除的文件名字), 接着键入<code>rpm -qa|grep mariadb</code>, rpm 删除时如果有依赖关系, 可以用<code>yum remove XXXX</code>; 同样的步骤, 把出现的文件删除; 两步都完成后, 可以开始安装所需要的包了  </p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">$ tar -xvf mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">27</span>-<span class="hljs-number">1</span><span class="hljs-selector-class">.el7</span><span class="hljs-selector-class">.x86_64</span><span class="hljs-selector-class">.rpm-bundle</span><span class="hljs-selector-class">.tar</span>   <br>$ yum remove mariadb-libs-<span class="hljs-number">5.5</span>.<span class="hljs-number">35</span>-<span class="hljs-number">3</span><span class="hljs-selector-class">.el7</span>.x86_64<br></code></pre></td></tr></table></figure>
+
+<p><em><strong>依次安装, 各包之间有依赖关系</strong></em>    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ rpm -ivh mysql-community-common-5.7.27-1.el7.x86_64.rpm <br>$ rpm -ivh mysql-community-libs-5.7.27-1.el7.x86_64.rpm  <br>$ rpm -ivh mysql-community-client-5.7.27-1.el7.x86_64.rpm <br>$ rpm -ivh mysql-community-server-5.7.27-1.el7.x86_64.rpm <br>$ find / -name mysql -<span class="hljs-built_in">print</span>  <br>$ rpm -ql XXXX.rpm	<span class="hljs-comment">#查看安装路路径</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>数据库目录: <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/mysql/</span><br></code></pre></td></tr></table></figure></li>
+<li>配置文件: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/share/mysql <span class="hljs-comment">#(mysql.server命令及配置文件)</span><br></code></pre></td></tr></table></figure></li>
+<li>相关命令: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/bin <span class="hljs-comment"># (mysqladmin mysqldump等命令)</span><br></code></pre></td></tr></table></figure></li>
+<li>启动脚本: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/rc.d/init.d/   <span class="hljs-comment"># (启动脚本文件mysql的目录)  </span><br>$ vim /etc/my.cnf  <br><span class="hljs-comment"># For advice on how to change settings please see</span><br><span class="hljs-comment"># http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html</span><br>[mysqld]<br>...<br>skip-grant-tables	<span class="hljs-comment"># 添加</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="1-2-二进制安装Mysql"><a href="#1-2-二进制安装Mysql" class="headerlink" title="1.2 二进制安装Mysql:"></a>1.2 二进制安装Mysql:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tar -xzvf mysql-5.7.27-el7-x86_64.tar.gz<br>$ groupadd mysql<br>$ useradd -r -g mysql -s /sbin/nologin mysql      <span class="hljs-comment"># -r 创建系统账户  </span><br>$ <span class="hljs-built_in">mv</span> ./mysql-5.7.27-el7-x86_64 /usr/local/mysql<br>$ <span class="hljs-built_in">mkdir</span> /usr/local/mysql/data<br>$ <span class="hljs-built_in">chown</span> -Rf mysql:mysql /usr/local/mysql/<br><br>$ <span class="hljs-built_in">cd</span> /usr/local/mysql/bin<br>$ ./mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/myslq/data<br>[Note] A temporary password is generated <span class="hljs-keyword">for</span> root@localhost: C#ePz?uG+9a.	  <span class="hljs-comment"># 初始密码</span><br><br>$ <span class="hljs-built_in">mkdir</span> /var/lib/mysql <br>$ <span class="hljs-built_in">ln</span> -s /usr/local/mysql/lib/ /usr/lib/mysql<br>$ <span class="hljs-built_in">ln</span> -s /tmp/mysql.sock /var/lib/mysql/mysql.sock<br>$ <span class="hljs-built_in">ln</span> -s /usr/local/mysql/include/mysql /usr/include/mysql<br><br><span class="hljs-comment"># 配置文件</span><br>$ vim /etc/cnf	<span class="hljs-comment"># 配置文件</span><br>  [mysqld]<br>  <span class="hljs-comment">#skip-grant-tables</span><br>  secure_file_priv=<span class="hljs-string">&quot;/usr/local/mysql&quot;</span><br>  port = 3306<br>  basedir = /usr/local/mysql<br>  datadir = /usr/local/mysql/data<br>  socket=/tmp/mysql.sock<br>  pid-file=/usr/local/mysql/data/mysql.pid<br>  log-error=/usr/local/mysql/data/error.log<br>  character_set_server=utf8<br>  user=mysql<br>  max_connections=1500<br>  symbolic-links=0<br>  !includedir /etc/my.cnf.d            <br>$ <span class="hljs-built_in">mkdir</span> /etc/my.cnf.d      <br>$ <span class="hljs-built_in">cp</span> ./support-files/mysql.server /etc/rc.d/init.d/mysqld<br>  46 basedir=/usr/local/mysql  <br>  47 datadir=/usr/local/mysql/data  <br>$ service mysqld start    <br>$ chkconfig mysqld on<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-源码编译安装Mysql"><a href="#1-3-源码编译安装Mysql" class="headerlink" title="1.3 源码编译安装Mysql:"></a>1.3 源码编译安装Mysql:</h4><p><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/galengao/p/5755788.html">源码安装参考</a></strong></p>
+<ul>
+<li>安装boost(若只是安装mysql, 不用安装, 编译引用解包路径即可)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ wget https://nchc.dl.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.gz    <br>$ tar xzf boost_1_59_0.tar.gz <br>$ <span class="hljs-built_in">cd</span> boost_1_59_0  <br>$ ./bootstrap.sh  <br>$ ./b2 install<br>$ useradd -r -s /sbin/nologin mysql<br>$ mkdie /usr/local/mysql/data<br>$ <span class="hljs-built_in">chown</span> -Rf mysql:mysql /usr/local/mysql  <br>$ <span class="hljs-built_in">mkdir</span> build &amp;&amp; <span class="hljs-built_in">cd</span> build<br>$ cmake .. \<br>  -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \<br>  -DMYSQL_DATADIR=/usr/local/mysql/data \<br>  -DMYSQL_USER=mysql \<br>  -DSYSCONFDIR=/etc \<br>  -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock \<br>  -DWITH_DEBUG=0 \<br>  -DEXTRA_CHARSETS=all \<br>  -DDEFAULT_CHARSET=utf8 \ <br>  -DDEFAULT_COLLATION=utf8_general_ci \<br>  -DWITH_BOOST=boost<br>$ make -j 4 &amp;&amp; make install  <br>$ <span class="hljs-built_in">cp</span> /etc/my.cnf /etc/my.cnf.bak <br>$ <span class="hljs-built_in">cd</span> /usr/local/mysql/bin<br>$ ./mysqld --initialize-insecure \<br>  --user=mysql \<br>  --basedir=/usr/local/mysql \<br>  --datadir=/usr/local/myslq/data <br>  [Note] A temporary password is generated <span class="hljs-keyword">for</span> root@localhost: Plip9_BU81ZA<br>$ ./mysql_ssl_rsa_setup \<br>  --user=mysql \<br>  --basedir=/usr/local/mysql \<br>  --datadir=/usr/local/mysql/data<br></code></pre></td></tr></table></figure>
+
+<p><strong>接下来配置如二进制安装方法</strong><br><strong>关于Mysql: ERROR 1819 (HY000): Your password does not satisfy the current policy requirements解决方法:</strong>  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs SQL">mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">show</span> variables <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;validate_password%&#x27;</span>;	<br>	<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------+--------+</span><br>	<span class="hljs-operator">|</span> Variable_name                        <span class="hljs-operator">|</span> <span class="hljs-keyword">Value</span>  <span class="hljs-operator">|</span><br>	<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------+--------+</span><br>	<span class="hljs-operator">|</span> validate_password_check_user_name    <span class="hljs-operator">|</span> OFF    <span class="hljs-operator">|</span><br>	<span class="hljs-operator">|</span> validate_password_dictionary_file    <span class="hljs-operator">|</span>        <span class="hljs-operator">|</span><br>	<span class="hljs-operator">|</span> validate_password_length             <span class="hljs-operator">|</span> <span class="hljs-number">8</span>      <span class="hljs-operator">|</span><br>	<span class="hljs-operator">|</span> validate_password_mixed_case_count   <span class="hljs-operator">|</span> <span class="hljs-number">1</span>      <span class="hljs-operator">|</span><br>	<span class="hljs-operator">|</span> validate_password_number_count       <span class="hljs-operator">|</span> <span class="hljs-number">1</span>      <span class="hljs-operator">|</span><br>	<span class="hljs-operator">|</span> validate_password_policy             <span class="hljs-operator">|</span> MEDIUM <span class="hljs-operator">|</span><br>	<span class="hljs-operator">|</span> validate_password_special_char_count <span class="hljs-operator">|</span> <span class="hljs-number">1</span>      <span class="hljs-operator">|</span><br>	<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------+--------+</span><br>	<span class="hljs-number">7</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.01</span> sec)<br><br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password_policy<span class="hljs-operator">=</span>LOW;  # 设置校验等级<br>  Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.00</span> sec) <br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password_length<span class="hljs-operator">=</span><span class="hljs-number">6</span>;    # 设置密码长度<br>  Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.01</span> sec)<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;123456&#x27;</span>;<br>  Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.00</span> sec)<br>mysql<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> privileges <span class="hljs-keyword">on</span> <span class="hljs-operator">*</span>.<span class="hljs-operator">*</span> <span class="hljs-keyword">to</span> root@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">with</span> <span class="hljs-keyword">grant</span> option; <br>  Query OK, <span class="hljs-number">0</span> <span class="hljs-keyword">rows</span> affected (<span class="hljs-number">0.00</span> sec)<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-4-安装Apache"><a href="#1-4-安装Apache" class="headerlink" title="1.4 安装Apache:"></a>1.4 安装Apache:</h4><ul>
+<li><p>安装依赖：</p>
+</li>
+<li><p>pcre</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf pcre-8.43.tar.gz<br>./configure --prefix=/usr/local/pcre<br>`make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>apr</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf apr-1.7.0.tar.gz<br>./configure --prefix=/usr/local/apr<br>make &amp;&amp; make install<br></code></pre></td></tr></table></figure></li>
+<li><p>apr-util</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">tar -xzvf apr-util-1.6.1.tar.gz</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr</span><br>make &amp;&amp; make install<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">useradd www -s /sbin/nologin</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">./configure --prefix=/usr/local/apache24 \</span><br><span class="language-bash">  --with-mysql=/usr/local/mysql \</span><br><span class="language-bash">  --with-pcre=/usr/local/pcre \</span><br><span class="language-bash">  --with-apr=/usr/local/apr \</span><br><span class="language-bash">  --with-apr-util=/usr/local/apr-util \</span><br><span class="language-bash">  --with-openssl=/usr/local/openssl \</span><br><span class="language-bash">  --with-zlib=/usr/local/zlib \</span><br><span class="language-bash">  --with-mpm=prefork \</span><br><span class="language-bash">  --enable-modules=most \</span><br><span class="language-bash">  --enable-rewrite \</span><br><span class="language-bash">  --enable-shared=max \</span><br><span class="language-bash">  --enable-so \</span><br><span class="language-bash">  --enable-mpms-shared=all \</span><br><span class="language-bash">  --enable-ssl \</span><br><span class="language-bash">  --enable-cgi \</span><br><span class="language-bash">  --enable-mpms-shared=all</span> <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>自启动脚本配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/local/apache/bin	<br>vim httpd			<span class="hljs-comment"># 编辑自启动脚本</span><br>  <span class="hljs-comment">#!/bin/bash</span><br>  <span class="hljs-comment"># chkconfig:2345 80 90</span><br>  <span class="hljs-comment"># description:Apache httpd</span><br>  <span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">start_http</span></span>()<br>  &#123;<br>    /usr/local/apache24/bin/apachectl  start<br>  &#125;<br>  <span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">stop_http</span></span>()<br>  &#123;<br>    /usr/local/apache24/bin/apachectl  stop<br>  &#125;<br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-keyword">in</span><br>  start)<br>    start_http<br>  ;;  <br>  stop)<br>    stop_http<br>  ;;  <br>  restart)<br>    stop_http<br>    start_http<br>  ;;<br>  *)<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage : start | stop | restart&quot;</span><br>  ;;<br>  <span class="hljs-keyword">esac</span><br>    <br>$ <span class="hljs-built_in">chmod</span> a+x httpd<br>$ <span class="hljs-built_in">cp</span> -frp ./httpd /etc/init.d	<span class="hljs-comment"># -f强制合并, 不询问	-r递归合并	-p保持文件属性不变</span><br>$ systemctl daemon-reload<br>$ systemctl start httpd<br>$ chkconfig --add httpd	  <span class="hljs-comment"># 设置开机自启</span><br>$ vim ./apache24/conf/httpd.conf<br>  164 User deamon --&gt;User www<br>  165 Group deamon --&gt;Group www<br>  196 <span class="hljs-comment">#ServerName www.example.com:80 --&gt;ServerName localhost:80</span><br>$ firewall-cmd --permanent --add-service=http<br>$ firewall-cmd --permanent --add-service=http<br>$ firewall-cmd --reload <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>测试: 192.168.10.130 –&gt;It Works!</p>
+</li>
+<li><p>问题1:   </p>
+<ul>
+<li><strong>服务不支持chkconfig的解决?</strong>  </li>
+<li><strong>解决方法:</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"> httpd 脚本的开头要这样加：  <br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-comment">#chkconfig:345 61 61 	# 此行的345参数表示, 在哪些运行级别启动</span><br><span class="hljs-comment">#description:Apache httpd # 此行必写,描述服务.</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>level&lt;等级代号&gt; 　指定读系统服务要在哪一个执行等级中开启或关毕。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#等级0表示：表示关机</span><br><span class="hljs-comment">#等级1表示：单用户模式</span><br><span class="hljs-comment">#等级2表示：无网络连接的多用户命令行模式</span><br><span class="hljs-comment">#等级3表示：有网络连接的多用户命令行模式</span><br><span class="hljs-comment">#等级4表示：不可用</span><br><span class="hljs-comment">#等级5表示：带图形界面的多用户模式</span><br><span class="hljs-comment">#等级6表示：重新启动</span><br></code></pre></td></tr></table></figure></li>
+<li><p><a target="_blank" rel="noopener" href="https://anyue967.github.io/2019/06/11/LNMP%E6%9E%B6%E6%9E%84%E9%83%A8%E7%BD%B2%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E7%8E%AF%E5%A2%83/">nginx参考</a></p>
+</li>
+</ul>
+<h4 id="1-5-安装PHP7-http-pecl-php-net"><a href="#1-5-安装PHP7-http-pecl-php-net" class="headerlink" title="1.5 安装PHP7(http://pecl.php.net):"></a>1.5 安装PHP7(<a target="_blank" rel="noopener" href="http://pecl.php.net/">http://pecl.php.net</a>):</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://anyue967.github.io/2019/06/11/LNMP%E6%9E%B6%E6%9E%84%E9%83%A8%E7%BD%B2%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E7%8E%AF%E5%A2%83/">依赖包安装见</a>   </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhou75771217/article/details/83303058">编译参考</a>  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37886429/article/details/79643078">PHP整合apache参考</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ wget wget https://nih.at/libzip/libzip-1.2.0.tar.gz <br>$ tar -xzvf libzip-1.2.0.tar.gz<br>$ <span class="hljs-built_in">cd</span> libzip-1.2.0/<br>$ <span class="hljs-built_in">mkdir</span> build &amp;&amp; <span class="hljs-built_in">cd</span> build<br>$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/libzip <br>$ make &amp;&amp; make install <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>问题1:  </p>
+<ul>
+<li><strong>off_t undefined?</strong>  </li>
+<li><strong>解决方法:</strong>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/usr/local/libgd/lib	<br>$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;/usr/local/lib64 	# error: off_t undefined; </span><br><span class="hljs-string">  /usr/local/lib </span><br><span class="hljs-string">  /usr/lib </span><br><span class="hljs-string">  /usr/lib64&#x27;</span>&gt;&gt;/etc/ld.so.conf<br>$ ldconfig -v<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>问题2:  </p>
+<ul>
+<li><strong>如何让apache支持解析PHP?</strong>  </li>
+<li><strong>解决方法:</strong></li>
+</ul>
+</li>
+<li><p>编译PHP必须加 <strong>–with-apxs2&#x3D;&#x2F;usr&#x2F;local&#x2F;apache24&#x2F;bin&#x2F;apxs</strong>, 目的是在 &#x2F;usr&#x2F;local&#x2F;apache24&#x2F;modules 下生成对应的libphp7.so</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ./configure \<br>  --prefix=/usr/local/php73 \<br>  --with-config-file-path=/usr/local/php73/etc \<br>  --with-apxs2=/usr/local/apache24/bin/apxs \<br>  --enable-mysqlnd \<br>  --with-mysqli=mysqlnd \<br>  --with-mysql-sock=/tmp/mysql.sock \<br>  --with-pdo-mysql=mysqlnd \<br>  --enable-inline-optimization \<br>  --enable-opcache --enable-fpm \<br>  --with-fpm-user=www --with-fpm-group=www \<br>  --with-gettext --with-iconv --with-mhash \<br>  --with-openssl=/usr/local/openssl \<br>  --enable-bcmath --enable-soap \<br>  --with-libxml-dir --enable-libxml --enable-pcntl \<br>  --enable-shmop --enable-sysvsem --enable-sockets \<br>  --with-curl --with-zlib-dir=/usr/local/zlib \<br>  --enable-zip --with-gd \<br>  --with-png-dir=/usr/local/libpng \<br>  --with-jpeg-dir=/usr/local/jpeg \<br>  --with-freetype-dir=/usr/local/freetype \<br>  --with-xpm-dir=/usr \<br>  --with-libzip=/usr/local/libzip \<br>  --without-pear --with-tidy=/usr/local/tidy \<br>  --enable-xml --enable-mbregex \<br>  --enable-mbstring --enable-ftp \<br>  --with-xmlrpc --enable-session \<br>  --enable-ctype <br></code></pre></td></tr></table></figure>
+<p><strong>php.ini-production &#x2F; php.ini-devlopmentphp.ini –&gt;php.ini</strong><br><strong>php-fpm.conf.default –&gt;php-fpm.conf</strong><br><strong>sapi&#x2F;fpm&#x2F;init.d.php-fpm –&gt;&#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;php-fpm</strong></p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">php.ini-development<br>php.ini-production<br>$ <span class="hljs-built_in">mv</span> /etc/php.ini /etc/php.ini.bak<br>$ <span class="hljs-built_in">cp</span> php.ini-production /usr/local/php73/etc/php.ini<br>$ <span class="hljs-built_in">ln</span> -s /usr/local/php73/etc/php.ini /etc/php.ini<br>$ <span class="hljs-built_in">cp</span> /usr/local/php73/etc/php-fpm.conf.default /usr/local/php73/etc/php-fpm.conf<br>$ <span class="hljs-built_in">ln</span> -s /usr/local/php73/etc/php-fpm.conf /etc/php-fpm.conf<br>$ vim /usr/local/php73/etc/php-fpm.conf<br>  17 pid = run/php-fpm.pid<br><br>$ <span class="hljs-built_in">cp</span> sapi/fpm/init.d.php-fpm /etc/rc.d/init.d/php-fpm<br>$ <span class="hljs-built_in">chmod</span> 755 /etc/rc.d/init.d/php-fpm<br>$ chkconfig php-fpm on<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意: PHP7里的用户设置在如下文件中配置, 而不是在php-fpm.conf中</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/local/php73/etc/php-fpm.d<br>$ <span class="hljs-built_in">cp</span> ./www.conf.default www.conf<br>$ vim ./www/conf<br>  user=www<br>  group=www<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意 httpd.conf 配置:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">162 LoadModule php7_module        modules/libphp7.so<br>173 User www<br>174 Group www<br>206 ServerName localhost:80<br><br>263 &lt;IfModule dir_module&gt;<br>264     DirectoryIndex index.html index.php<br>265 &lt;/IfModule&gt;<br><br>400     AddType application/x-compress .Z<br>401     AddType application/x-gzip .gz .tgz<br>402     AddType application/x-httpd-php .php	<span class="hljs-comment"># 增加的</span><br></code></pre></td></tr></table></figure>
+
+<p>问题1: <strong>checking for libzip… not found configure: error: Please reinstall the libzip distribution</strong><br><strong>解决方法:<a target="_blank" rel="noopener" href="https://www.hahack.com/codes/cmake/">参考</a></strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s /usr/local/libzip/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h<br></code></pre></td></tr></table></figure>
+
+<p>问题2: <strong>error: ‘INT_MAX’ undeclared (first use in this function)</strong><br><em><strong>解决方法:</strong></em>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#define INT_MAX 4096	# 声明宏定义  </span><br><span class="hljs-comment">#include &quot;/usr/include/limits.h&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>问题3: <strong>configure: WARNING: unrecognized options: –with-mysql, –with-vpx-dir, –with-t1lib, –enable-gd-native-ttf, –with-mcrypt</strong><br><strong>解决方法:</strong></p>
+<ul>
+<li>对于PHP7, –with-mysql 不适用: 更改为<code>--with-pdo-mysql</code>;    </li>
+<li>对于64位系统, 出现 –with-t1lib 执行: <ul>
+<li><code>ln -s /usr/lib64/libltdl.so /usr/lib/libltdl.so</code></li>
+<li><code>cp -frp /usr/lib64/libXpm.so* /usr/lib</code></li>
+</ul>
+</li>
+<li>对于 –with-mcrypt: 从PHP7.2开始, Mcrypt no longer provided, <a target="_blank" rel="noopener" href="https://webtatic.com/packages/php72/">参考</a>;     </li>
+<li>对于 –enable-gd-native-ttf: 同–with-mcrypt;    </li>
+<li>对于 –with-vpx-dir: <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/image.installation.php">参考</a>, 要激活 GD 支持, 配置 PHP 时加上 –with-gd[&#x3D;DIR], DIR 是 GD 的基本安装目录, 要使用推荐的绑定的 GD 库版;</li>
+</ul>
+<h3 id="2-测试"><a href="#2-测试" class="headerlink" title="2. 测试:"></a>2. 测试:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /usr/local/apache24/htdocs/wordpress<br>$ <span class="hljs-built_in">cp</span> ../wp-config-sample.php wp-config.php<br>$ vim wp-config.php<br>  22 /** WordPress数据库的名称 */<br>  23 define( <span class="hljs-string">&#x27;DB_NAME&#x27;</span>, <span class="hljs-string">&#x27;wordpress&#x27;</span> );<br>  24 <br>  25 /** MySQL数据库用户名 */<br>  26 define( <span class="hljs-string">&#x27;DB_USER&#x27;</span>, <span class="hljs-string">&#x27;wordpress&#x27;</span> );<br>  27 <br>  28 /** MySQL数据库密码 */<br>  29 define( <span class="hljs-string">&#x27;DB_PASSWORD&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span> );<br></code></pre></td></tr></table></figure>
+<p><strong>IP:80&#x2F;wordpress</strong><br><strong>IP:80&#x2F;wordpress&#x2F;wp-login.php?loggedout&#x3D;true</strong><br><strong><a target="_blank" rel="noopener" href="https://cn.gravatar.com/">A Globally Recognized Avatar</a></strong>  </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Devops-linux/" class="category-chain-item">Devops, linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/Devops/" class="print-no-link">#Devops</a>
+      
+        <a href="/tags/%E7%BD%91%E7%AB%99/" class="print-no-link">#网站</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>wordpress部署</div>
+      <div>https://anyu967.github.io/posts/137599dc.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/6fc8eab5.html" title="Markdown">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Markdown</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/b0672b6e.html" title="Linux服务配置02">
+                        <span class="hidden-mobile">Linux服务配置02</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

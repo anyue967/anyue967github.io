@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-10-31">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux笔记">
+<meta property="og:url" content="https://anyu967.github.io/posts/e511c25d.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-10-31">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-31T09:12:13.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.842Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux笔记 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-10-31 17:12" pubdate>
+          2019年10月31日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-10-31</p>
+<span id="more"></span>
+
+<h4 id="用户操作练习"><a href="#用户操作练习" class="headerlink" title="用户操作练习"></a>用户操作练习</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建一个用户mandriva，其ID号为2002，基本组为distro（组ID为3003），附加组为linux</span><br>groupadd -g 3003 distro<br>groupadd linux<br>useradd -u 2002 -g distro -G linux mandriva<br><br><span class="hljs-comment"># 创建一个用户fedora，其全名为Fedora Community，默认shell为tcsh</span><br>useradd -c <span class="hljs-string">&quot;Fedora Community&quot;</span> -s /bin/tcsh fedora<br><br><span class="hljs-comment"># 修改mandriva的ID号为4004，基本组为linux，附加组为distro和fedora</span><br>usermod -u 4004 -g linux -G distro,fedora mandriva<br><br><span class="hljs-comment"># 给fedora加密码，并设定其密码最短使用期限2D，最长为50D</span><br>passwd -n 2 -x 50 fedora<br><br><span class="hljs-comment"># 将mandriva的默认shell修改为/bin/bash</span><br>usermod -s /bin/bash mandriva<br><br><span class="hljs-comment"># 添加系统用户hbase，且不允许登录系统</span><br>useradd -r -s /sbin/nologin hbase<br><br><span class="hljs-comment"># 新建一个没有家目录的用户openstack</span><br>useradd -M openstack<br></code></pre></td></tr></table></figure>
+
+<h4 id="权限练习"><a href="#权限练习" class="headerlink" title="权限练习"></a>权限练习</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 复制/etc/skel 为/home/openstack</span><br><span class="hljs-built_in">cp</span> -r /etc/skel /home/openstack<br><br><span class="hljs-comment"># 改变/home/openstack及其内部文件的属主属组均为openstack</span><br><span class="hljs-built_in">chown</span> -R openstack.openstack /home/openstack<br><br><span class="hljs-comment"># /home/openstack及其内部文件属主与其他用户没有任何访问权限</span><br><span class="hljs-built_in">chmod</span> -R go= /home/openstack<br></code></pre></td></tr></table></figure>
+
+<h4 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 统计/usr/bin目录下的文件个数</span><br><span class="hljs-built_in">ls</span> /usr/bin |<span class="hljs-built_in">wc</span> -l<br><br><span class="hljs-comment"># 取出当前系统上所有用户的shell，每种shell只显示一次，并且按顺序进行显示</span><br><span class="hljs-built_in">cat</span> /etc/passwd |<span class="hljs-built_in">cut</span> -d: -f7 |<span class="hljs-built_in">sort</span> -u<br><br><span class="hljs-comment"># 如何显示/var/log目录下每个文件的内容类型？</span><br>file /var/log/* <br>file $(<span class="hljs-built_in">ls</span> /var/log)<br><br><span class="hljs-comment"># 取出/etc/inittab文件的第六行</span><br><span class="hljs-built_in">head</span> -n6 |<span class="hljs-built_in">tail</span> -n1<br><br><span class="hljs-comment"># 取出/etc/passwd文件中倒数第九个用户的用户名和shell，显示到屏幕并将其保存至/tmp/users文件中</span><br><span class="hljs-built_in">tail</span> -n9 |<span class="hljs-built_in">head</span> -n1 |<span class="hljs-built_in">cut</span> -d: -f1,7 &gt;/tmp/users<br><br><span class="hljs-comment"># 显示/etc目录所有以pa开头的文件，并统计个数</span><br><span class="hljs-built_in">ls</span> -d /etc/pa* |<span class="hljs-built_in">wc</span> -l<br><br><span class="hljs-comment"># 不使用文本编辑器将alias cls=&quot;clear&quot;添加到当前用户的.bashrc文件中</span><br><span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;alias cls=clear&quot;</span>&gt;&gt;~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<h4 id="grep-sed-awk"><a href="#grep-sed-awk" class="headerlink" title="grep&#x2F;sed&#x2F;awk"></a>grep&#x2F;sed&#x2F;awk</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 找出ifconfig命令结果中的1-255之间的整数</span><br>grep -E <span class="hljs-string">&#x27;(\&lt;([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\&gt;\.)&#123;3&#125;\&lt;([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\&gt;&#x27;</span>  <br>  A: 1-127  <br>  B: 128-191  <br>  C: 192-223  <br>grep -E <span class="hljs-string">&#x27;\&lt;[1-9]|1[1-9]&#123;2&#125;|2[01][0-9]|22[0-3]\&gt;(\.\&lt;([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-4])\&gt;)&#123;2&#125;\.\&lt;([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-4])\&gt;&#x27;</span><br><br><span class="hljs-comment"># 删除/etc/grub.conf文件中行首的空白符</span><br>sed <span class="hljs-string">&#x27;s/[[:space:]]+//g&#x27;</span> /etc/grub.conf<br><br><span class="hljs-comment"># 替换/etc/inittab文件中&quot;id:3:initdefault&quot;一行中的数字5</span><br>sed <span class="hljs-string">&#x27;s@\(id:\)[0-9]\(:initdefault:\)@\15\2@g&#x27;</span> /etc/inittab <br><br><span class="hljs-comment"># 删除/etc/inittab文件中的空白行</span><br>sed <span class="hljs-string">&#x27;/^$/d&#x27;</span> /etc/inittab<br><br><span class="hljs-comment"># 删除/etc/inittab文件开头的#号</span><br>sed <span class="hljs-string">&#x27;s/^#//g&#x27;</span> /etc/inittab<br><br><span class="hljs-comment"># 删除某文件中开头的#及后面的空白字符，但要求#后面必须有空白字符</span><br>sed -r <span class="hljs-string">&#x27;s@^#[[:space:]]+@@&#x27;</span> /etc/inittab<br><br><span class="hljs-comment"># 删除某文件以空白字符且后边跟#号的开头的行的空白字符及#</span><br>sed <span class="hljs-string">&#x27;s/^[[:space:]+#//g&#x27;</span> /etc/inittab<br><br><span class="hljs-comment"># 取出一个文件路径的目录名称</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;/etc/rc.d&#x27;</span> |sed -r <span class="hljs-string">&#x27;s@^(/.*/)[^/]+/?@\1@g&#x27;</span>	/etc/<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;/etc/rc.d&#x27;</span> |sed -r <span class="hljs-string">&#x27;s@^/.*/([^/]+)/?@\1@g&#x27;</span>	rc.d<br></code></pre></td></tr></table></figure>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查找/var 下属主为root并且属组为mail的所有文件</span><br>find /var -user root -a -group mail<br><br><span class="hljs-comment"># 查找/usr 下不属于root,bin,或student的文件</span><br>find /usr -not \( -user root -o -user bin -o -user student \)<br>find  /usr -not -user root -a -not -user bin -not -user student<br><br><span class="hljs-comment"># 查找/etc 下最近一周内内容修改过的且不属于root及student用户的文件</span><br>find /etc -mtime -7 -not \( -user root -o -user student \)<br>find /etc -mtime -7 -not -user root -a -not -user student<br><br><span class="hljs-comment"># 查找当前系统上没有属主或属组且最近1天内被访问过的文件，并将其属主属组均改为root</span><br>find / \( -nouser -o -nogroup \) -a -atime -1 -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">chown</span> root.root &#123;&#125; \;<br><br><span class="hljs-comment"># 查找/etc下大于1M 的文件，并将其文件名写入/tmp/etc.largefiles文件中</span><br>find /etc -size +1M -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">echo</span> &#123;&#125; &gt;&gt;/tmp/etc.largefiles \;  <br>find /etc -size +1M &gt;&gt;/tmp/etc.largefiles<br><br><span class="hljs-comment"># xargs - build and execute command lines from standford input</span><br>find /etc -size +1M |xargs <span class="hljs-built_in">echo</span> &gt;&gt;/tmp/etc.largefiles <br><br><span class="hljs-comment"># 查找/etc下所有用户都没有写权限的文件，显示出详细信息</span><br>find /etc -not -perm /222 -<span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建5G的分区，文件系统为ext3，卷标为MYDATA，块大小为1024，预留管理空间为磁盘分区3%，要求开机后自动挂载至/data目录，并且自动挂载的设备要使用卷标进行引导</span><br>	mke2fs -t ext3 -L MYDATA -b 1024 -m 3 /dev/sda2<br>	blkid	<span class="hljs-comment"># 查看磁盘 UUID  TYPE  LABEL等属性  </span><br>	tune2fs <span class="hljs-comment"># 调整文件系统属性 -L -m -o</span><br>	dumpe2fs	<span class="hljs-comment"># 显示文件属性信息  </span><br>	fsck / e2fsck<br><br><span class="hljs-comment"># 上述如何操作，让其自动挂载的同时启用ACL功能</span><br>	/etc/fstab<br>	LABEL=<span class="hljs-string">&#x27;MYDATA&#x27;</span>	/data	ext3	defaults,acl	0 0<br><br><span class="hljs-comment"># 创建一个本地回环文件/var/swaptmp/swapfile来用于swap，要求大小为512MB，卷标为SWAP-FILE，且开机自动挂载此交换设备</span><br><br>	<span class="hljs-built_in">mkdir</span> /var/swaptmp<br>	<span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/var/swaptmp/swapfile bs=1M count=512<br>	mkswap LABLE=SWAP-FILE /var/swaptmp/swapfile<br><br>	/var/swaptmp/swapfile	swap	swap	defaults	0 0<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux笔记</div>
+      <div>https://anyu967.github.io/posts/e511c25d.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年10月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/47b7e05b.html" title="五笔和双拼">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">五笔和双拼</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/bae4ff13.html" title="Redis">
+                        <span class="hidden-mobile">Redis</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

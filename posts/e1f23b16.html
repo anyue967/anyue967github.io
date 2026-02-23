@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-11-08-Zookeeper&amp;Kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zookeeper和Kafka">
+<meta property="og:url" content="https://anyu967.github.io/posts/e1f23b16.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-11-08-Zookeeper&amp;Kafka">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/zkservice.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/zknamespace.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/PP.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/PS.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/kafka-apis.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/Topic.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/e1f23b16/kafka.png">
+<meta property="article:published_time" content="2019-11-08T14:58:30.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.843Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anyu967.github.io/posts/e1f23b16/zkservice.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Zookeeper和Kafka - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Zookeeper和Kafka"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-11-08 22:58" pubdate>
+          2019年11月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Zookeeper和Kafka</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-11-08-Zookeeper&amp;Kafka</p>
+<span id="more"></span>
+
+<h1 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h1><h2 id="Zookeeper官网"><a href="#Zookeeper官网" class="headerlink" title="Zookeeper官网"></a><a target="_blank" rel="noopener" href="http://zookeeper.apache.org/">Zookeeper官网</a></h2><h3 id="1-什么是Zookeeper"><a href="#1-什么是Zookeeper" class="headerlink" title="1. 什么是Zookeeper?"></a>1. 什么是Zookeeper?</h3><blockquote>
+<p>Zookeeper是开源<code>分布式</code>的，为分布式应用<code>提供协调服务</code>的Apache项目；<br>Zookeeper 是一个基于<code>观察者模式</code>设计的<code>分布式服务管理框架</code>，负责<code>存储和管理</code>数据，接受观察者的注册，数据状态一旦发生变化，Zookeeper负责通知已经在Zookeeper注册的观察者做出相应的反应；<br>应用场景：统一命名服务；统一配置管理；统一集群管理；监控服务器动态上下线；软负载均衡；     </p>
+</blockquote>
+<h3 id="2-Zookeeper特点"><a href="#2-Zookeeper特点" class="headerlink" title="2. Zookeeper特点"></a>2. Zookeeper特点</h3><h4 id="2-1-Zookeeper的设计目标"><a href="#2-1-Zookeeper的设计目标" class="headerlink" title="2.1 Zookeeper的设计目标"></a>2.1 Zookeeper的设计目标</h4><img src="/posts/e1f23b16/zkservice.png" srcset="/img/loading.gif" lazyload class="" title="[zkservice]">  
+
+<ul>
+<li>一个Leader，多个Follwers；</li>
+<li>集群只要有半数以上节点存活，集群就可以正常服务，适合安装奇数台服务器；</li>
+<li>全局数据一致，每个Server保存一份相同数据副本；</li>
+<li>数据更新<code>原子性</code>，要么成功，要么失败；</li>
+<li><code>实时性</code>：一定时间内，Client能读到最新数据；</li>
+<li><code>顺序性</code>：来自同一个Client的更新请求按其发送顺序一次执行；</li>
+</ul>
+<h4 id="2-2-Zookeeper数据模型和分层名称"><a href="#2-2-Zookeeper数据模型和分层名称" class="headerlink" title="2.2 Zookeeper数据模型和分层名称"></a>2.2 Zookeeper数据模型和分层名称</h4><img src="/posts/e1f23b16/zknamespace.png" srcset="/img/loading.gif" lazyload class="" title="[zknamespace]">   
+
+<ul>
+<li>类似于Unix文件系统，每个节点称为ZNode，默认存储1MB的数据，每个节点可以通过其路径唯一表示；</li>
+</ul>
+<h3 id="3-Zookeeper的使用"><a href="#3-Zookeeper的使用" class="headerlink" title="3. Zookeeper的使用"></a>3. Zookeeper的使用</h3><h4 id="3-1-下载地址"><a href="#3-1-下载地址" class="headerlink" title="3.1 下载地址"></a>3.1 下载地址</h4><p><a target="_blank" rel="noopener" href="http://zookeeper.apache.org/releases.html">Zookeeper下载地址</a>  </p>
+<h4 id="3-2-本地模式安装部署"><a href="#3-2-本地模式安装部署" class="headerlink" title="3.2 本地模式安装部署"></a>3.2 本地模式安装部署</h4><ul>
+<li>JDK<ul>
+<li><code>vim /etc/profile</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">JAVA_HOME=/opt/jdk1.8<br>JRE_HOME=<span class="hljs-variable">$JAVA_HOME</span>/jre<br>CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure></li>
+<li>解压Zookeeper到&#x2F;opt</li>
+</ul>
+<h4 id="3-3-修改配置文件"><a href="#3-3-修改配置文件" class="headerlink" title="3.3 修改配置文件"></a>3.3 修改配置文件</h4><ul>
+<li><p>路径：&#x2F;zookeepr-version&#x2F;conf</p>
+<ul>
+<li><code>mv ./zoo_sample.cfg ./zoo.cfg &amp;&amp; mkdir zkData</code></li>
+<li><code>vim zoo.cfg</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">tickTime=2000 <span class="hljs-comment"># 通信心跳时间 2s，S-C</span><br>initLimit=10  <span class="hljs-comment"># 2sx10=20s，初始Leader与Followed通信时限</span><br>syncLimit=5   <span class="hljs-comment"># LF同步通信时限，5x2s=10s</span><br>clientPort=2181   <span class="hljs-comment"># 监听客户端连接端口号</span><br>dataDir=/opt/zookeeper-version/zkData <span class="hljs-comment"># 数据文件目录和数据持久化路径  </span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>启动zookeeper服务端&amp;客户端</p>
+<ul>
+<li><code>./bin/zkServer.sh start</code></li>
+<li><code>jps</code>  # Java Virtual Machine Process Status Tool</li>
+<li><code>./bin/zkCli.sh -server IP</code>  # Command line Iteraction</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-4-测试"><a href="#3-4-测试" class="headerlink" title="3.4 测试"></a>3.4 测试</h4><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ls</td>
+<td align="left">查看节点</td>
+</tr>
+<tr>
+<td align="left">–</td>
+<td align="left">watch, 监听节点变化</td>
+</tr>
+<tr>
+<td align="left">create</td>
+<td align="left">创建节点</td>
+</tr>
+<tr>
+<td align="left">–</td>
+<td align="left">-s, 自动建立序号</td>
+</tr>
+<tr>
+<td align="left">delete</td>
+<td align="left">删除节点</td>
+</tr>
+<tr>
+<td align="left">set</td>
+<td align="left">设置节点值</td>
+</tr>
+<tr>
+<td align="left">get</td>
+<td align="left">获取节点的值</td>
+</tr>
+<tr>
+<td align="left">–</td>
+<td align="left">watch, 监听节点值的变化</td>
+</tr>
+<tr>
+<td align="left">stat</td>
+<td align="left">查看节点状态</td>
+</tr>
+</tbody></table>
+<ul>
+<li>连接到Zookeeper：</li>
+</ul>
+<ul>
+<li><code>$ bin/zkCli.sh -server 127.0.0.1:2181</code> # help 查询帮助命令</li>
+</ul>
+<ul>
+<li>创建znode<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">[zkshell: 9] create /zk_test <span class="hljs-string">&quot;my_data&quot;</span>    <span class="hljs-comment"># 要有相应的值 </span><br>Created /zk_test<br><br>[zkshell: 11] <span class="hljs-built_in">ls</span> /<br>[zookeeper, zk_test]<br><br>[zkshell: 12] get /zk_test    <span class="hljs-comment"># set /zk_test junk     delete /zk_test</span><br>my_data<br>cZxid = 5<br>...<br>numChildren = 0<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-分布式安装部署-建议奇数台"><a href="#4-分布式安装部署-建议奇数台" class="headerlink" title="4. 分布式安装部署(建议奇数台)"></a>4. 分布式安装部署(建议奇数台)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim conf/zoo.cfg<br>tickTime=2000<br>dataDir=/var/lib/zookeeper<br>clientPort=2181<br>initLimit=5<br>syncLimit=2<br>server.1=zoo1:2888:3888 <span class="hljs-comment"># zoo1建议为主机名； </span><br>server.2=zoo2:2888:3888 <span class="hljs-comment"># 2888：该server与集群leader server交换信息的端口；</span><br>server.3=zoo3:2888:3888 <span class="hljs-comment"># 3888选举端口；</span><br><br><span class="hljs-comment"># 配置myid 在数据目录下</span><br>vim myid<br>1<br></code></pre></td></tr></table></figure>
+
+<h1 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h1><h2 id="Kafka官网"><a href="#Kafka官网" class="headerlink" title="Kafka官网"></a><a target="_blank" rel="noopener" href="http://kafka.apache.org/">Kafka官网</a></h2><h3 id="1-什么是Kafka？"><a href="#1-什么是Kafka？" class="headerlink" title="1. 什么是Kafka？"></a>1. 什么是Kafka？</h3><blockquote>
+<p>Kafka 是一个<code>分布式</code>的<code>基于发布/订阅模式</code>的<code>消息队列</code>(Message Queue)，主要应用于大数据领域的实时计算以及日志采集。</p>
+</blockquote>
+<h3 id="2-什么是Message-Queue？"><a href="#2-什么是Message-Queue？" class="headerlink" title="2. 什么是Message Queue？"></a>2. 什么是Message Queue？</h3><blockquote>
+<p>消息队列比作是一个<code>存放消息的容器</code>，需要使用消息的时候可以取出消息供自己使用，消息队列是<code>分布式系统</code>中重要的组件，目前使用较多的消息队列有<code>ActiveMQ，RabbitMQ，Kafka，RocketMQ</code>；队列 Queue 是一种<code>先进先出</code>的数据结构。 </p>
+</blockquote>
+<blockquote>
+<p>消息队列的模式：  </p>
+<blockquote>
+<p>点对点模式，消费者<code>主动</code>拉取数据，消息收到后消息清除（阅后即焚）；     </p>
+  <img src="/posts/e1f23b16/PP.png" srcset="/img/loading.gif" lazyload class="" title="[点对点模式]">   
+<blockquote>
+<p>发布-订阅模式，发布到Topic数据不会清除，分为push &#x2F; pull；     </p>
+  <img src="/posts/e1f23b16/PS.png" srcset="/img/loading.gif" lazyload class="" title="[发布-订阅模式]">   </blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>优点：  </p>
+<blockquote>
+<p>1）通过异步处理提高系统性能（削峰、减少响应所需时间）；<br>2）降低系统耦合性，消息队列使利用<code>发布-订阅</code>模式工作，消息发送者（<code>生产者</code>）发布消息，一个或多个消息接受者（<code>消费者</code>）订阅消息；  </p>
+</blockquote>
+</blockquote>
+<h3 id="3-Kafka的4个核心API"><a href="#3-Kafka的4个核心API" class="headerlink" title="3. Kafka的4个核心API"></a>3. Kafka的4个核心API</h3><ul>
+<li><p><code>Producer API</code>：允许应用程序发布的记录流至一个或多个Kafka topics。</p>
+</li>
+<li><p><code>Consumer API</code>：允许应用程序订阅一个或多个主题，并处理所产生的记录流。</p>
+</li>
+<li><p><code>Streams API</code>：允许应用程序扮演流处理器，从一个或多个主题消耗的输入流，并产生一个输出流至一个或多个输出的主题，有效地把输入数据流转变输出流。</p>
+</li>
+<li><p><code>Connector API</code>：允许构建和运行可重复使用的生产者或消费者，将Kafka topics连接到现有的应用程序或数据系统。例如，关系数据库的连接器可能会捕获对表的所有更改。</p>
+</li>
+<li><p>在Kafka中，客户端和服务器之间的通信是通过简单，高性能，与语言无关的<code>TCP协议</code>完成的。</p>
+</li>
+</ul>
+<img src="/posts/e1f23b16/kafka-apis.png" srcset="/img/loading.gif" lazyload class="" title="[kafka-apis]">    
+
+<ul>
+<li>topics：主题是被发布记录的一种类别或者订阅名称，Kafka的主题是通常是多用户的，也即一个主题可以有零个，一个或者多个消费者来订阅写入该主题的数据；对于每个主题，Kafka集群都会维护一个分区日志。</li>
+</ul>
+<img src="/posts/e1f23b16/Topic.png" srcset="/img/loading.gif" lazyload class="" title="[Topic]">  
+
+<h3 id="4-kafka架构："><a href="#4-kafka架构：" class="headerlink" title="4. kafka架构："></a>4. kafka架构：</h3><img src="/posts/e1f23b16/kafka.png" srcset="/img/loading.gif" lazyload class="" title="[kafka架构]">  
+
+<ul>
+<li><code>Producer</code>：消息生产者，就是向kafka broker发消息的客户端；</li>
+<li><code>Consumer</code>：消息消费者，向kafka broker取消息的客户端；</li>
+<li><code>Consumer Group （CG）</code>：kafka用来实现一个topic消息的广播（发给所有的consumer）和单播（发给任意一个consumer）的手段；广播的实现：让每一个Consuner拥有独立的CG；<ul>
+<li>第一：同一个消费者组里面，只能有一个消费者去消费分区的数据；</li>
+<li>第二：同一个消费者组里面是不会重复消费消息的；</li>
+<li>第三：同一个消费者组的一个消费者不是以一条一条数据为单元的，是以<code>分区为单元</code>，就相当于消费者和分区建立某种socket，进行传输数据，所以，一旦建立这个关系，这个分区的数据只能是由这个消费者消费；</li>
+</ul>
+</li>
+<li><code>Broker</code>：一台kafka服务器就是一个broker；一个集群由多个broker组成。一个broker可以容纳多个topic；</li>
+<li><code>Topic</code>：可以理解为一个队列；</li>
+<li><code>Partition</code>：为了实现扩展性，数据量大的topic可以分布到多个broker（即服务器）上，一个topic可以分为多个partition，每个partition是一个有序的队列。partition中的每条消息都会被分配一个有序的id（offset）。kafka只保证按一个partition中的顺序将消息发给consumer，不保证一个topic的整体（多个partition间）的顺序；</li>
+<li><code>Offset</code>：kafka的存储文件都是按照offset.kafka来命名，用offset做名字的好处是方便查找。例如你想找位于2049的位置，只要找到2048.kafka的文件即可。当然the first offset就是00000000000.kafka；</li>
+<li>Zookeeper：存储Kafka集群信息，实现集群的高可用；</li>
+</ul>
+<h3 id="5-kafka安装部署："><a href="#5-kafka安装部署：" class="headerlink" title="5. kafka安装部署："></a>5. kafka安装部署：</h3><h4 id="5-1-下载地址"><a href="#5-1-下载地址" class="headerlink" title="5.1 下载地址"></a>5.1 <a target="_blank" rel="noopener" href="http://kafka.apache.org/quickstart">下载地址</a></h4><blockquote>
+<p>依赖于Zk  </p>
+</blockquote>
+<h4 id="5-2-安装部署"><a href="#5-2-安装部署" class="headerlink" title="5.2 安装部署"></a>5.2 安装部署</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf kafka_version.tgz -C /opt/<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/Devops/" class="print-no-link">#Devops</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Zookeeper和Kafka</div>
+      <div>https://anyu967.github.io/posts/e1f23b16.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年11月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/546a1914.html" title="SPL">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SPL</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/47b7e05b.html" title="五笔和双拼">
+                        <span class="hidden-mobile">五笔和双拼</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

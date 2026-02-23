@@ -1,0 +1,1794 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="anyu967">
+  <meta name="keywords" content="web,web前端,js,javascript,Devops,linux">
+  
+    <meta name="description" content="2019-06-11-Linux服务配置01">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux服务配置01">
+<meta property="og:url" content="https://anyu967.github.io/posts/296e7ad4.html">
+<meta property="og:site_name" content="旅行">
+<meta property="og:description" content="2019-06-11-Linux服务配置01">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/jiegou.jpg">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/RAID0.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/raid1.jpg">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/raid5.jpg">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/raid-10.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/%E9%80%BB%E8%BE%91%E5%8D%B7.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/SNAT.png">
+<meta property="og:image" content="https://anyu967.github.io/posts/296e7ad4/DNAT.png">
+<meta property="article:published_time" content="2019-06-11T01:10:30.000Z">
+<meta property="article:modified_time" content="2026-02-22T05:33:39.709Z">
+<meta property="article:author" content="anyu967">
+<meta property="article:tag" content="Devops">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anyu967.github.io/posts/296e7ad4/jiegou.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux服务配置01 - 旅行</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"anyu967.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux服务配置01"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-11 09:10" pubdate>
+          2019年6月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          72 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux服务配置01</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2019-06-11-Linux服务配置01</p>
+<span id="more"></span>
+
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录	"></a>目录	<a id="back"></a></h2><ul>
+<li><a href="#fdisk" target="_self">分区&#x2F;格式化&#x2F;挂载&#x2F;卸载</a></li>
+<li><a href="#uquota" target="_self">磁盘容量配额技术 uquota</a></li>
+<li><a href="#raid" target="_self">RAID 磁盘阵列</a></li>
+<li><a href="#lvm" target="_self">LVM 逻辑卷管理</a></li>
+<li><a href="#iptables" target="_self">iptables 参数 规则链 动作</a></li>
+<li><a href="#firewalld" target="_self">firewall-cmd 防火墙</a></li>
+<li><a href="#ssh" target="_self">SSH 服务</a></li>
+<li><a href="#scp" target="_self">scp 远程传输</a></li>
+<li><a href="#apache" target="_self">apache 服务</a></li>
+</ul>
+<h3 id="1-一切从-开始"><a href="#1-一切从-开始" class="headerlink" title="1. 一切从  &#x2F; 开始"></a>1. 一切从  &#x2F; 开始</h3><img src="/posts/296e7ad4/jiegou.jpg" srcset="/img/loading.gif" lazyload class="" title="[文件系统与目录结构]">  
+
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;boot</td>
+<td>开机所需文件——内核、开机菜单以及所需配置文件</td>
+</tr>
+<tr>
+<td>&#x2F;dev</td>
+<td>以文件形式存放任何设备及接口</td>
+</tr>
+<tr>
+<td>&#x2F;etc</td>
+<td>配置文件</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>用户家目录</td>
+</tr>
+<tr>
+<td>&#x2F;bin</td>
+<td>存放单用户模式下还可以操作的命令</td>
+</tr>
+<tr>
+<td>&#x2F;lib</td>
+<td>开机时用到的函数库</td>
+</tr>
+<tr>
+<td>&#x2F;sbin</td>
+<td>开机过程中用到的命令</td>
+</tr>
+<tr>
+<td>&#x2F;media</td>
+<td>挂载设备文件的目录</td>
+</tr>
+<tr>
+<td>&#x2F;opt</td>
+<td>第三方软件</td>
+</tr>
+<tr>
+<td>&#x2F;root</td>
+<td>系统管理员家目录</td>
+</tr>
+<tr>
+<td>&#x2F;srv</td>
+<td>网络服务的数据文件目录</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>任何人均可使用的“共享”临时目录</td>
+</tr>
+<tr>
+<td>&#x2F;proc</td>
+<td>虚拟文件系统</td>
+</tr>
+<tr>
+<td>&#x2F;usr&#x2F;local</td>
+<td>用户自行安装的软件</td>
+</tr>
+<tr>
+<td>&#x2F;usr&#x2F;sbin</td>
+<td>开机不会使用的软件及脚本</td>
+</tr>
+<tr>
+<td>&#x2F;usr&#x2F;share</td>
+<td>帮助与说明文件</td>
+</tr>
+<tr>
+<td>&#x2F;var</td>
+<td>经常变化文件,日志</td>
+</tr>
+<tr>
+<td>&#x2F;lost+found</td>
+<td>当文件系统发生错误，存放丢失的文件片段</td>
+</tr>
+</tbody></table>
+<h3 id="2-路径"><a href="#2-路径" class="headerlink" title="2. 路径"></a>2. 路径</h3><p>绝对路径：从根目录(&#x2F;)开始写起的文件或目录<br>相对路径：相对于当前路径的写法  <code>./  ../  ~</code></p>
+<h3 id="3-物理设备的命名规则"><a href="#3-物理设备的命名规则" class="headerlink" title="3. 物理设备的命名规则"></a>3. 物理设备的命名规则</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDE</td>
+<td>&#x2F;dev&#x2F;hd[a-d]</td>
+</tr>
+<tr>
+<td>SCSI&#x2F;SATA&#x2F;U盘</td>
+<td>&#x2F;dev&#x2F;sd[a-p]</td>
+</tr>
+<tr>
+<td>软驱</td>
+<td>&#x2F;dev&#x2F;fd[0-1]</td>
+</tr>
+<tr>
+<td>打印机</td>
+<td>&#x2F;dev&#x2F;lp[0-15]</td>
+</tr>
+<tr>
+<td>光驱</td>
+<td>&#x2F;dev&#x2F;cdrom</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>&#x2F;dev&#x2F;mouse</td>
+</tr>
+<tr>
+<td>磁带机</td>
+<td>&#x2F;dev&#x2F;st0   &#x2F;dev&#x2F;ht0</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>主分区&#x2F;扩展分区编号从1开始，到4结束　逻辑分区从编号5开始</strong><br>硬盘设备是由大量扇区组成的，<strong>每个扇区的容量为512字节</strong>，第一个扇区最重要，保存了<strong>主引导记录与分区表信息MBR</strong>，主引导记录用446B，分区表用64B，结束符用2B；分区表记录一个<strong>分区信息需要16B</strong>，最多只有4个分区信息可以写到第一个扇区中，这四个分区就是4个主分区；</li>
+<li>为了解决分区个数不够,可以将第一个扇区分区表中16B(原本写入主分区信息)的空间(称为扩展分区)拿出来指向另外一个分区表。<strong>扩展分区不是一个真正的分区</strong>,是一个占用16字节分区表空间的指针。所以,<strong>用户一般会选择3个主分区加1个扩展分区,在扩展分区中建立数个逻辑分区</strong>；</li>
+</ul>
+<h3 id="4-文件系统与数据资料"><a href="#4-文件系统与数据资料" class="headerlink" title="4. 文件系统与数据资料"></a>4. 文件系统与数据资料</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EXT3</td>
+<td>日志文件系统</td>
+</tr>
+<tr>
+<td>Ext4</td>
+<td>Ext3改进版,RHEL6系统默认文件管理系统,支持存储容量高达1EB</td>
+</tr>
+<tr>
+<td>XFS</td>
+<td>高性能的日志文件系统,RHEL7默认文件管理系统,最大支持存储容量18EB</td>
+</tr>
+</tbody></table>
+<h3 id="5-挂载硬件设备"><a href="#5-挂载硬件设备" class="headerlink" title="5. 挂载硬件设备"></a>5. 挂载硬件设备</h3><p><strong>注：</strong> mount -a 会自动检查&#x2F;etc&#x2F;fstab文件有无疏漏的挂载设备，若有则自动进行挂载</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-t</td>
+<td>指定文件的系统类型:iso9600</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>描述设备或档案的挂载方式</td>
+</tr>
+<tr>
+<td>—</td>
+<td>loop:把文件当成硬盘分区挂载</td>
+</tr>
+<tr>
+<td>—</td>
+<td>ro:只读方式</td>
+</tr>
+<tr>
+<td>—</td>
+<td>rw:读写方式</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mount /dev/sdb2 /backup <span class="hljs-comment"># 挂载目录需要挂载前创建好，mount[设备文件 挂在目录]  </span><br>[root@xy ~]# vim /etc/fstab	     <span class="hljs-comment"># 开机自动挂载sdb2    </span><br>  1  <span class="hljs-comment">#  </span><br>  2  <span class="hljs-comment"># /etc/fstab  </span><br>  3  <span class="hljs-comment"># Created by anaconda on Fri Jul  6 08:44:38 2018  </span><br>  4  <span class="hljs-comment">#  </span><br>  5  <span class="hljs-comment"># Accessible filesystems, by reference, are maintained under &#x27;/dev/disk&#x27;  </span><br>  6  <span class="hljs-comment"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info  </span><br>  7  <span class="hljs-comment">#  </span><br>  8  /dev/mapper/rhel-root                      /         xfs       defaults        1 1  <br>  9  UUID=28d7b2f5-a322-4990-ab6c-5936d156fce7 /boot      xfs       defaults        1 2  <br>  10 /dev/mapper                              /rhel-swap  swap swap defaults        0 0  <br>  11 /dev/cdrom                              /media/cdrom iso9660   defaults        0 0  <br>  12 /dev/sdb2							  /backup		ext4      defaults        0 0  <br></code></pre></td></tr></table></figure>
+
+<h3 id="6-撤销挂载设备"><a href="#6-撤销挂载设备" class="headerlink" title="6. 撤销挂载设备  "></a>6. 撤销挂载设备  <a id="fdisk"></a></h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@xy</span> ~]<span class="hljs-meta"># umount /dev/sdb2　# umount [设备文件/挂在目录]</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="7-分区-格式化-挂载"><a href="#7-分区-格式化-挂载" class="headerlink" title="7. 分区-格式化-挂载:"></a>7. 分区-格式化-挂载:</h3><h4 id="fdisk"><a href="#fdisk" class="headerlink" title="fdisk"></a>fdisk</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m</td>
+<td>查看全部可用参数</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>添加新的分区，p主分区，e扩展分区</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>删除某个分区信息</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>不保存退出</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>✔列出所以可用的分区类型</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>✔改变某个分区的信息</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>✔查看分区信息</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>保存并退出</td>
+</tr>
+</tbody></table>
+<h4 id="7-1-分区："><a href="#7-1-分区：" class="headerlink" title="7.1 分区："></a>7.1 分区：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# fdisk /dev/sdb  <span class="hljs-comment"># sd --&gt;SATA</span><br>  Welcome to fdisk (util-linux 2.23.2).  <br><br>  Changes will remain <span class="hljs-keyword">in</span> memory only, <span class="hljs-keyword">until</span> you decide to write them.  <br>  Be careful before using the write <span class="hljs-built_in">command</span>.  <br><br>  Device does not contain a recognized partition table  <br>  Building a new DOS disklabel with disk identifier 0x301a431a.  <br>   <br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): p 	<span class="hljs-comment">#查看分区信息  </span><br>  Disk /dev/sdb: 21.5 GB, 21474836480 bytes, 41943040 sectors  <br>  Units = sectors of 1 * 512 = 512 bytes  <br>  Sector size (logical/physical): 512 bytes / 512 bytes  <br>  I/O size (minimum/optimal): 512 bytes / 512 bytes  <br>  Disk label <span class="hljs-built_in">type</span>: dos  <br>  Disk identifier: 0x301a431a  <br>  <br>  Device Boot      Start         End      Blocks   Id  System  <br> <br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): n 	<span class="hljs-comment">#添加新的分区  </span><br>  Partition <span class="hljs-built_in">type</span>:  <br>      p   primary (0 primary, 0 extended, 4 free)  <br>      e   extended  <br>  <br>Select (default p): p   <br>Partition number (1-4, default 1): 1  <br>  First sector (2048-41943039, default 2048):   <br>  Using default value 2048  <br>  Last sector, +sectors or +size&#123;K,M,G&#125; (2048-41943039, default 41943039): +2G <span class="hljs-comment"># 创建2GB分区  </span><br>  Partition 1 of <span class="hljs-built_in">type</span> Linux and of size 2 GiB is <span class="hljs-built_in">set</span>  <br>  <br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): p 		　<span class="hljs-comment"># 查看分区信息     </span><br>  Disk /dev/sdb: 21.5 GB, 21474836480 bytes, 41943040 sectors  <br>  Units = sectors of 1 * 512 = 512 bytes  <br>  Sector size (logical/physical): 512 bytes / 512 bytes  <br>  I/O size (minimum/optimal): 512 bytes / 512 bytes  <br>  Disk label <span class="hljs-built_in">type</span>: dos  <br>  Disk identifier: 0x301a431a  <br><br>  Device Boot      Start         End      Blocks   Id  System  <br>  /dev/sdb1            2048     4196351     2097152   83  Linux  <br>  <br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): w 	<span class="hljs-comment"># 保存分区信息并退出</span><br>  The partition table has been altered!  <br>  Calling ioctl() to re-read partition table.  <br>  Syncing disks.<br>   <br>[root@xy ~]# file /dev/sdb　<span class="hljs-comment"># file 查看 /dev/sdb1 文件属性  /dev/sdb1: cannot open (No such file or directory)</span><br>[root@xy ~]# partprobe　<span class="hljs-comment">#partprobe 同步分区信息到系统内核 </span><br>[root@xy ~]# file /dev/sdb1  <br>/dev/sdb1: block special  <br></code></pre></td></tr></table></figure>
+
+<h4 id="7-2-格式化-创建文件系统类型-：-mkfs-文件类型名称-dev-sdb1"><a href="#7-2-格式化-创建文件系统类型-：-mkfs-文件类型名称-dev-sdb1" class="headerlink" title="7.2 格式化(创建文件系统类型)： mkfs.文件类型名称 &#x2F;dev&#x2F;sdb1"></a>7.2 格式化(创建文件系统类型)： mkfs.文件类型名称 &#x2F;dev&#x2F;sdb1</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mkfs <span class="hljs-comment"># 分区完后用 mkfs 格式化  </span><br>    mkfs	 mkfs.cramfs  	mkfs.ext3	mkfs.fat	mkfs.msdos  	<br>    mkfs.xfs	mkfs.btrfs	mkfs.ext2	mkfs.ext4	mkfs.minix   <br>    mkfs.vfat   <br>[root@xy ~]# mkfs -t xfs /dev/sdb1 <br>  meta-data=/dev/sdb1  isize=256  agcount=4, agsize=131072 blks  <br>  =  sectsz=512  attr=2, projid32bit=1  <br>  =  crc=0  <br>  data  =bsize=4096   blocks=524288, imaxpct=25  <br>  =  sunit=0  swidth=0 blks  <br>  naming  =version 2  bsize=4096   ascii-ci=0 ftype=0  <br>  <span class="hljs-built_in">log</span>  =internal <span class="hljs-built_in">log</span>  bsize=4096   blocks=2560, version=2  <br>  =  sectsz=512   sunit=0 blks, lazy-count=1  <br>  realtime =none  extsz=4096   blocks=0, rtextents=0<br></code></pre></td></tr></table></figure>
+
+<h4 id="7-3-挂载分区："><a href="#7-3-挂载分区：" class="headerlink" title="7.3 挂载分区："></a>7.3 挂载分区：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mkdir</span> /newFS<br>[root@xy ~]# mount /dev/sdb1 /newFS/  <br>[root@xy ~]# <span class="hljs-built_in">df</span> -h 	　 <span class="hljs-comment"># 查看挂载状态及设备 建议 df -Th 命令信息更全 </span><br>    Filesystem           Size  Used Avail Use% Mounted on  <br>    /dev/mapper/rhel-root   28G  3.0G   25G  11% /  <br>    devtmpfs               985M     0  985M   0% /dev  <br>    tmpfs                  994M  148K  994M   1% /dev/shm  <br>    tmpfs                  994M  8.8M  986M   1% /run  <br>    tmpfs                  994M     0  994M   0% /sys/fs/cgroup  <br>    /dev/sr0               3.5G  3.5G     0 100% /media/cdrom  <br>    /dev/sda1              497M  119M  379M  24% /boot  <br>    /dev/sdb1              2.0G   33M  2.0G   2% /newFS  <br>    <br>[root@xy ~]# <span class="hljs-built_in">cp</span> -rf /etc/* /newFS<br>[root@xy ~]# <span class="hljs-built_in">ls</span> /newFS<br>abrt hosts pulse  <br>adjtime host.allow purple  <br>........省略部分信息........  <br><br>[root@xy ~]# <span class="hljs-built_in">du</span> -sh /newFS/ 　 <span class="hljs-comment"># du -sh  查看空间占用情况  </span><br>33M /newFS/<br></code></pre></td></tr></table></figure>
+
+<h3 id="8-添加交换分区swap"><a href="#8-添加交换分区swap" class="headerlink" title="8. 添加交换分区swap"></a>8. 添加交换分区swap</h3><blockquote>
+<p>交换分区是把内存中暂时不用的数据临时存放到硬盘中,解决物理内存不足问题,交换分区一般为物理内存的1.5~2倍  ，mkswap 与 swapon  </p>
+</blockquote>
+<h4 id="8-1-分区："><a href="#8-1-分区：" class="headerlink" title="8.1 分区："></a>8.1 分区：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# fdisk /dev/sdb 　 <span class="hljs-comment"># 分区  </span><br>Welcome to fdisk (util-linux 2.23.2).  <br><br>Changes will remain <span class="hljs-keyword">in</span> memory only, <span class="hljs-keyword">until</span> you decide to write them.  <br>Be careful before using the write <span class="hljs-built_in">command</span>.  <br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): n<br> Partition <span class="hljs-built_in">type</span>:<br>   p   primary (1 primary, 0 extended, 3 free)  <br>   e   extended  <br><br>Select (default p): p <br> Partition number (2-4, default 2): 2  <br>  First sector (4196352-41943039, default 4196352):   <br>  Using default value 4196352  <br>  Last sector, +sectors or +size&#123;K,M,G&#125; (4196352-41943039, default 41943039): +5G  <br>  Partition 2 of <span class="hljs-built_in">type</span> Linux and of size 5 GiB is <span class="hljs-built_in">set</span>  <br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): p  <br> Disk /dev/sdb: 21.5 GB, 21474836480 bytes, 41943040 sectors  <br>Units = sectors of 1 * 512 = 512 bytes  <br>Sector size (logical/physical): 512 bytes / 512 bytes  <br>I/O size (minimum/optimal): 512 bytes / 512 bytes  <br>Disk label <span class="hljs-built_in">type</span>: dos  <br>Disk identifier: 0x301a431a  <br><br> Device Boot      Start         End      Blocks   Id  System  <br>/dev/sdb1            2048     4196351     2097152   83  Linux  <br>/dev/sdb2         4196352    14682111     5242880   83  Linux  <br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): w  <br> The partition table has been altered!  <br><br> Calling ioctl() to re-read partition table.  <br><br> WARNING: Re-reading the partition table failed with error 16: Device or resource busy.  <br>The kernel still uses the old table. The new table will be used at  <br>the next reboot or after you run partprobe(8) or kpartx(8)  <br>Syncing disks.  <br></code></pre></td></tr></table></figure>
+
+<h4 id="8-2-格式化："><a href="#8-2-格式化：" class="headerlink" title="8.2 格式化："></a>8.2 格式化：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mkswap /dev/sdb2  　<span class="hljs-comment"># 格式化 mkswap  </span><br>/dev/sdb2: No such file or directory  <br>[root@xy ~]# partprobe  <br>[root@xy ~]# partprobe  <br>[root@xy ~]# mkswap /dev/sdb2  <br>Setting up swapspace version 1, size = 5242876 KiB  <br>no label, UUID=ffe8494a-c2f5-4af4-becf-985b130d395c  <br>[root@xy ~]# free -m  <br>             total       used       free     shared    buffers     cached  <br>Mem:          1987       1137        850          9          1        279  <br>-/+ buffers/cache:        856       1131  <br>Swap:            0          0          0  <br></code></pre></td></tr></table></figure>
+
+<h4 id="8-3-挂载分区："><a href="#8-3-挂载分区：" class="headerlink" title="8.3 挂载分区："></a>8.3 挂载分区：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# swapon /dev/sdb2    　<span class="hljs-comment"># 挂载使用  </span><br>[root@xy ~]# free -m  <br>             total       used       free     shared    buffers     cached  <br>Mem:          1987       1141        846          9          1        279  <br>-/+ buffers/cache:        860       1127  <br>Swap:         5119          0       5119  <br><br>[root@xy ~]# vim /etc/fstab 　<span class="hljs-comment"># 设置自动挂载      </span><br>  1  <span class="hljs-comment">#  </span><br>  2  <span class="hljs-comment"># /etc/fstab  </span><br>  3  <span class="hljs-comment"># Created by anaconda on Fri Jul  6 08:44:38 2018  </span><br>  4  <span class="hljs-comment">#  </span><br>  5  <span class="hljs-comment"># Accessible filesystems, by reference, are maintained under &#x27;/dev/disk&#x27;  </span><br>  6  <span class="hljs-comment"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info  </span><br>  7  <span class="hljs-comment">#  </span><br>  /dev/mapper/rhel-root                  /         xfs       defaults        1 1    <br>  UUID=28d7b2f5-a322-4990-ab6c-5936d156fce7 /boot  xfs       defaults        1 2    <br>  /dev/mapper                          /rhel-swap  swap swap defaults        0 0  <br>  /dev/cdrom                          /media/cdrom iso9660   defaults        0 0    <br>  /dev/sdb1                          /newFS        xfs       defaults        0 0    <br>  /dev/sdb2                          swap          swap      defaults        0 0 <br></code></pre></td></tr></table></figure>
+
+<h3 id="9-删除手动增加的交换分区swap"><a href="#9-删除手动增加的交换分区swap" class="headerlink" title="9. 删除手动增加的交换分区swap"></a>9. 删除手动增加的交换分区swap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# /sbin/swapoff /dev/sdb2  <br>[root@xy ~]# vim /etc/fstab   <br>/dev/sdb2    swap     swap     defaults       0 0 　<span class="hljs-comment"># 删除  </span><br>[root@xy ~]# swapon -s<br>Filename        Type      Size    Used  Priority  <br>/dev/dm-0       partition 2113532 0     -1  <br></code></pre></td></tr></table></figure>
+
+<h3 id="10-磁盘容量配额技术"><a href="#10-磁盘容量配额技术" class="headerlink" title="10. 磁盘容量配额技术  "></a>10. 磁盘容量配额技术  <a id="uquota"></a></h3><p><strong>配置&#x2F;etc&#x2F;fstab,使&#x2F;boot目录支持uquota,磁盘容量配额技术</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">UUID=28d7b2f5-a322-4990-ab6c-5936d156fce7 /boot    xfs    defaults,uquota 1 2<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# reboot  <br>[root@xy ~]# mount | grep boot<br>/dev/sda1 on /boot <span class="hljs-built_in">type</span> xfs (rw,relatime,seclablel,attr2,inode64,usrquota)  <br>[root@xy ~]# useradd tom   <br>[root@xy ~]# <span class="hljs-built_in">chmod</span> -Rf o+w /boot 　<span class="hljs-comment"># other write  </span><br>[root@xy ~]# xfs_quota -x -c <span class="hljs-string">&#x27;limit bsoft=3m bhard=6m isoft=3 ihard=6 tom&#x27;</span> /boot<br>[root@xy ~]# xfs_quota -x -c report /boot　<span class="hljs-comment"># xfs_quota -x -c</span><br>  User quota on /boot (/dev/sda1)	  Blocks  <br>  User ID Used Soft Hard Warn/Grace  <br>  ----------- ----------------------------------------------  <br>  root 95084   0     0    00 [--------] <br>  tom  0       3072  6144 00 [--------] <br><br>[root@xy ~]# su - tom  <br>[tom@xy ~]$ <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/boot/tom bs=5M count=1  <br>  1+0 records <span class="hljs-keyword">in</span>  <br>  1+0 records out  <br>  5242880 bytes (5.2 MB) copied, 0.123996 s, 42.3 MB/s  <br><br>[tom@xy ~]$ <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/boot/tom bs=8M count=1<br>  <span class="hljs-built_in">dd</span>: error writing <span class="hljs-string">&#x27;/boot/tom&#x27;</span>: Disk quato exceeded 　 <span class="hljs-comment"># 限制  </span><br>  1+0 records <span class="hljs-keyword">in</span>  <br>  1+0 records out  <br>  6291456 bytes (6.3 MB) copied, 0.0201596s, 312MB/s  <br><br>[root@xy ~]# edquota -u tom　 <span class="hljs-comment"># edquota -u 按需修改配额    </span><br>  Disk quotas <span class="hljs-keyword">for</span> user tom (uid 1001):  <br>  Filesystem blocks   soft   hard   inodes   soft   hard  <br>  /dev/sda   6114     3072   8192   1        3      6  <br><br>[root@xy ~]# su - tom<br>[tom@xy ~]$ <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/boot/tom bs=8M count=1  <br>  1+0 records <span class="hljs-keyword">in</span>  <br>  1+0 records out  <br>  8388608 bytes (8.4 MB) copied, 0.0238044s, 313MB/s  <br>[tom@xy ~]$ <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/boot/tom bs=10M count=1  <br>  <span class="hljs-built_in">dd</span>: error writing <span class="hljs-string">&#x27;/boot/tom&#x27;</span>: Disk quato exceeded  <br>  1+0 records <span class="hljs-keyword">in</span>  <br>  1+0 records out  <br>  8388608 bytes (8.4 MB) copied, 0.0238044s, 313MB/s  <br></code></pre></td></tr></table></figure>
+
+<h3 id="11-创建链接文件ln"><a href="#11-创建链接文件ln" class="headerlink" title="11. 创建链接文件ln"></a>11. 创建链接文件ln</h3><p>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ricklz/p/9378755.html">cnblog参考</a>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy /]# <span class="hljs-built_in">ln</span> -s ../usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="hljs-comment">#相对目录建立, 找相对于链接的根目录</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>硬链接与软链接的区别:  </p>
+<blockquote>
+<p>ln src dst<br>	1、不能跨分区；<br>	2、删除源文件不影响链接文件；<br>	3、inode号不变，指向同一个文件；<br>	4、链接数增加；<br>##软链接：<br>ln -s src dst<br>	1、可以跨分区；<br>	2、删除源文件影响链接文件；<br>	3、inode号不相同；<br>	4、链接数不变；<br>ln -s ..&#x2F;boot&#x2F;grub2&#x2F;grub.cfg &#x2F;etc&#x2F;grub2.cfg</p>
+</blockquote>
+</blockquote>
+<h3 id="12-RAID与LVM磁盘阵列技术"><a href="#12-RAID与LVM磁盘阵列技术" class="headerlink" title="12. RAID与LVM磁盘阵列技术  "></a>12. RAID与LVM磁盘阵列技术  <a id="raid"></a></h3><ul>
+<li>RAID(fd)(Redundant Array of Independent Disks,独立冗余磁盘阵列)</li>
+<li><strong>RAID 0(Srtiping)</strong>:把多块物理硬件设备(至少2块)通过硬件或软件凡事串联在一起,组成一个大的卷组,提升了硬盘数据的吞吐量,但不具备数据备份和错误修复能力； <ul>
+<li>性能提升：读写；</li>
+<li>冗余(容错)能力：无；</li>
+<li>空间利用率：ns(s–&gt; 一块盘利用率)</li>
+<li>至少2块</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/296e7ad4/RAID0.png" srcset="/img/loading.gif" lazyload class="" title="[RAID 0--条带]">
+
+<ul>
+<li><strong>RAID 1(Mirroring)</strong>:数据写到多块硬盘设备上,当某一块硬盘发生故障后,一般会立即以热交换方式来恢复数据的正常使用,但硬盘的使用率却下降了,只有33%左右 ✔   <ul>
+<li>性能提升：写下降，读提升；</li>
+<li>冗余能力：有；</li>
+<li>空间利用率：1&#x2F;2</li>
+<li>至少2块</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/296e7ad4/raid1.jpg" srcset="/img/loading.gif" lazyload class="" title="[RAID 1--镜像]">
+
+<ul>
+<li><strong>RAID 5</strong>:将硬盘设备的数据奇偶校验信息保存到除自身外每一块硬盘设备上,当硬盘出现问题,通过奇偶校验信息来尝试重建损坏的数据  ✔<ul>
+<li>性能提升：读写提升；</li>
+<li>冗余能力：有；</li>
+<li>空间利用率：(n-1)s&#x2F;n</li>
+<li>至少3块</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/296e7ad4/raid5.jpg" srcset="/img/loading.gif" lazyload class="" title="[RAID 5--校验]">
+
+<ul>
+<li><strong>RAID 10</strong>：RAID10&#x3D;RAID 1 + RAID 0<ul>
+<li>性能提升：读写提升；</li>
+<li>冗余能力：有；</li>
+<li>空间利用率：1&#x2F;2</li>
+<li>至少4块</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/296e7ad4/raid-10.png" srcset="/img/loading.gif" lazyload class="" title="[RAID 10--综合]">
+
+<ul>
+<li>mdadm 命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-C</td>
+<td>创建 ✔</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示过程 ✔</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>检测设备名称</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>指定设备数量 ✔</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>指定RAID级别</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>查看详细信息 ✔</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>模拟设备损坏</td>
+</tr>
+<tr>
+<td>-Q</td>
+<td>查看摘要信息</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>移除设备</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>停止RAID磁盘阵列</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>备用盘</td>
+</tr>
+</tbody></table>
+<h3 id="12-1-部署磁盘阵列RAID-5-也可以拿分区做实验"><a href="#12-1-部署磁盘阵列RAID-5-也可以拿分区做实验" class="headerlink" title="12.1 部署磁盘阵列RAID 5(也可以拿分区做实验)"></a>12.1 部署磁盘阵列RAID 5(也可以拿分区做实验)</h3><h4 id="1-创建RAID-5："><a href="#1-创建RAID-5：" class="headerlink" title="1)创建RAID 5："></a>1)创建RAID 5：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mdadm -Cv -a <span class="hljs-built_in">yes</span> /dev/md0 -n 3 -l 5 -x 1 /dev/sd&#123;c,d,e,f&#125;<br>  mdadm: layout defaults to left-symmetric  <br>  mdadm: layout defaults to left-symmetric  <br>  mdadm: chunk size defaults to 512K  <br>  mdadm: Defaulting to version 1.2 metadata  <br>  mdadm: array /dev/md0 started.<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-查看RAID-5："><a href="#2-查看RAID-5：" class="headerlink" title="2)查看RAID 5："></a>2)查看RAID 5：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mdadm -D /dev/md0  <br>[root@xy ~]# watch -n <span class="hljs-string">&#x27;command&#x27;</span>  <span class="hljs-comment"># 周期性执行指定命令，并以全屏方式显示结果</span><br>  /dev/md0:  <br>  Version : 1.2  <br>  Creation Time : Fri May 8 09:20:35 2018  <br>  Raid Level : raid5  <br>  Array Size : 41909248 (39.97 GiB 42.92 GB)  <br>  Used Dev Size : 20954624 (19.98 GiB 21.46 GB)  <br>  Raid Devices : 3   <br>  Total Devices : 4  <br>  Persistence : Superblock is Persistence  <br>  Update Time : Fri May 8 09:22:22 2018  <br>  State : clean  <br>  Active Devices : 3  <br>  Working Devices : 4  <br>  Failed Devices : 0  <br>  Spare Devices : 1  <br>  Layout : left-symmetric  <br>  Chunk Size : 512K   <br>  Name : xy.com:0 (<span class="hljs-built_in">local</span> to host xy.com)  <br>  UUID : 111c244f:e080b0c1:3316b6f2:986fa663  <br>  Events : 18  <br>  Number Major Minor RaidDevice State  <br>       0   8    16       0      active <span class="hljs-built_in">sync</span> /dev/sdc  <br>       1   8    32       1      active <span class="hljs-built_in">sync</span> /dev/sdd  <br>       4   8    48       2      active <span class="hljs-built_in">sync</span> /dev/sde  <br>       3   8    64       -      spare       /dev/sdf <br></code></pre></td></tr></table></figure>
+
+<h4 id="3-格式化RAID-5："><a href="#3-格式化RAID-5：" class="headerlink" title="3)格式化RAID 5："></a>3)格式化RAID 5：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mkfs.ext4 /dev/md0<br>  mke2fs 1.42.9 (28-Dec-2013)  <br>  Filesystem label=  <br>  OS <span class="hljs-built_in">type</span>: Linux  <br>  Block size=4096 (<span class="hljs-built_in">log</span>=2)  <br>  Fragment size=4096 (<span class="hljs-built_in">log</span>=2)  <br>  Stride=128 blocks, Stripe width=256 blocks  <br>  2621440 inodes, 10477312 blocks  <br>  523865 blocks (5.00%) reserved <span class="hljs-keyword">for</span> the super user  <br>  First data block=0  <br>  Maximum filesystem blocks=2157969408  <br>  320 block <span class="hljs-built_in">groups</span>  <br>  32768 blocks per group, 32768 fragments per group  <br>  8192 inodes per group  <br>  Superblock backups stored on blocks:   <br>    32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,   <br>    4096000, 7962624  <br><br>  Allocating group tables: <span class="hljs-keyword">done</span>                              <br>  Writing inode tables: <span class="hljs-keyword">done</span>                              <br>  Creating journal (32768 blocks): <span class="hljs-keyword">done</span>  <br>  Writing superblocks and filesystem accounting information: <span class="hljs-keyword">done</span> <br></code></pre></td></tr></table></figure>
+
+<h4 id="4-挂载-RAID-5"><a href="#4-挂载-RAID-5" class="headerlink" title="4)挂载 RAID 5"></a>4)挂载 RAID 5</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/dev/md0 /RAID ext4 defaults 0 0&quot;</span> &gt;&gt; /etc/fstab  <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> /RAID <br>[root@xy ~]# mount -a<br>[root@xy ~]# mdadm /dev/md0 -f /dev/sdc  <br>  mdadm: <span class="hljs-built_in">set</span> /dev/sdc faulty <span class="hljs-keyword">in</span> /dev/md0  <br>[root@xy ~]# mdadm -D /dev/md0<br>  /dev/md0:  <br>  Version : 1.2  <br>  Creation Time : Fri May 8 09:20:35 2018  <br>  Raid Level : raid5  <br>  Array Size : 41909248 (39.97 GiB 42.92 GB)  <br>  Used Dev Size : 20954624 (19.98 GiB 21.46 GB)  <br>  Raid Devices : 3  <br>  Total Devices : 4  <br>  Persistence : Superblock is Persistence  <br>  Update Time : Fri May 8 09:23:51 2018  <br>  State : active, degraded, resering  <br>  Active Devices : 2  <br>  Working Devices :3  <br>  Failed Devices : 1  <br>  Spare Devices : 1  <br>  Layout : left-symmetric  <br>  Chunk Size : 512K  <br>  Rebuild Status : 0% complete  <br>  Name : xy.com:0 (<span class="hljs-built_in">local</span> to host xy.com)  <br>  UUID : 111c244f:e080b0c1:3316b6f2:986fa663  <br>  Events : 21  <br>  Number Major Minor RaidDevice Status  <br>       3   8    64       0      spare rebuilding /dev/sdf <br>       1   8    32       1      active <span class="hljs-built_in">sync</span>      /dev/sdd <br>       4   8    48       2      active <span class="hljs-built_in">sync</span>      /dev/sde <br>       0   8    16       -      faulty           /dev/sdc  <br></code></pre></td></tr></table></figure>
+
+<h4 id="12-3-部署磁盘阵列RAID-10"><a href="#12-3-部署磁盘阵列RAID-10" class="headerlink" title="12.3 部署磁盘阵列RAID 10:"></a>12.3 部署磁盘阵列RAID 10:</h4><h5 id="1-创建-RAID-10"><a href="#1-创建-RAID-10" class="headerlink" title="1) 创建 RAID 10:"></a>1) 创建 RAID 10:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mdadm -Cv /dev/md0 -a <span class="hljs-built_in">yes</span> -n 4 -l 10 /dev/sd&#123;c,d,e,f&#125;     <br>  mdadm: layout defaults to n2  <br>  mdadm: layout defaults to n2  <br>  mdadm: chunk size defaults to 512K  <br>  mdadm: size <span class="hljs-built_in">set</span> to 20954624K  <br>  mdadm: Defaulting to version 1.2 metadata  <br>  mdadm: array /dev/md0 started. <br></code></pre></td></tr></table></figure>
+
+<h5 id="2-格式化-RAID-10"><a href="#2-格式化-RAID-10" class="headerlink" title="2) 格式化 RAID 10:"></a>2) 格式化 RAID 10:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mkfs.ext4 /dev/md0　<span class="hljs-comment"># 格式化 ext4  </span><br>  mke2fs 1.42.9 (28-Dec-2013)  <br>  Filesystem label=  <br>  OS <span class="hljs-built_in">type</span>: Linux  <br>  Block size=4096 (<span class="hljs-built_in">log</span>=2)  <br>  Fragment size=4096 (<span class="hljs-built_in">log</span>=2)  <br>  Stride=128 blocks, Stripe width=256 blocks  <br>  2621440 inodes, 10477312 blocks  <br>  523865 blocks (5.00%) reserved <span class="hljs-keyword">for</span> the super user  <br>  First data block=0  <br>  Maximum filesystem blocks=2157969408  <br>  320 block <span class="hljs-built_in">groups</span>  <br>  32768 blocks per group, 32768 fragments per group  <br>  8192 inodes per group  <br>  Superblock backups stored on blocks:   <br>  32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,  <br>  4096000, 7962624  <br><br>  Allocating group tables: <span class="hljs-keyword">done</span>                           <br>  Writing inode tables: <span class="hljs-keyword">done</span>                             <br>  Creating journal (32768 blocks): <span class="hljs-keyword">done</span>  <br>  Writing superblocks and filesystem accounting information: <span class="hljs-keyword">done</span>   <br></code></pre></td></tr></table></figure>
+
+<h5 id="3-挂载-RAID-10"><a href="#3-挂载-RAID-10" class="headerlink" title="3) 挂载 RAID 10:"></a>3) 挂载 RAID 10:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mkdir</span> /RAID 　<span class="hljs-comment"># 挂载 /dev/md0</span><br>[root@xy ~]# mount /dev/md0 /RAID/<br>[root@xy ~]# <span class="hljs-built_in">df</span> -h  <br>  Filesystem             Size  Used Avail Use% Mounted on  <br>  /dev/mapper/rhel-root   28G  3.0G   25G  11% /  <br>  devtmpfs               985M     0  985M   0% /dev  <br>  tmpfs                  994M  148K  994M   1% /dev/shm  <br>  tmpfs                  994M  8.8M  986M   1% /run  <br>  tmpfs                  994M     0  994M   0% /sys/fs/cgroup  <br>  /dev/sdb1              2.0G   33M  2.0G   2% /newFS  <br>  /dev/sr0               3.5G  3.5G     0 100% /media/cdrom  <br>  /dev/sda1              497M  119M  379M  24% /boot  <br>  /dev/md0                40G   49M   38G   1% /RAID  <br></code></pre></td></tr></table></figure>
+
+<h5 id="4-查看-RAID-10-信息"><a href="#4-查看-RAID-10-信息" class="headerlink" title="4) 查看 RAID 10 信息:"></a>4) 查看 RAID 10 信息:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mdadm -D /dev/md0 　<span class="hljs-comment"># 查看 /dev/md0 磁盘阵列详细信息</span><br>  /dev/md0:  <br>        Version : 1.2  <br>  Creation Time : Mon Jul  9 20:07:08 2018  <br>     Raid Level : raid10  <br>     Array Size : 41909248 (39.97 GiB 42.92 GB)  <br>  Used Dev Size : 20954624 (19.98 GiB 21.46 GB)  <br>   Raid Devices : 4  <br>  Total Devices : 4  <br>    Persistence : Superblock is persistent  <br>    <br>    Update Time : Mon Jul  9 20:10:35 2018  <br>          State : active, resyncing   <br>  Active Devices : 4  <br>  Working Devices : 4  <br>  Failed Devices : 0  <br>  Spare Devices : 0  <br><br>         Layout : near=2  <br>     Chunk Size : 512K  <br><br>  Resync Status : 96% complete  <br><br>           Name : xy.com:0  (<span class="hljs-built_in">local</span> to host xy.com)  <br>           UUID : 111c244f:e080b0c1:3316b6f2:986fa663  <br>         Events : 16  <br><br>    Number   Major   Minor   RaidDevice State  <br>       0       8       32        0      active <span class="hljs-built_in">sync</span>   /dev/sdc  <br>       1       8       48        1      active <span class="hljs-built_in">sync</span>   /dev/sdd  <br>       2       8       64        2      active <span class="hljs-built_in">sync</span>   /dev/sde  <br>       3       8       80        3      active <span class="hljs-built_in">sync</span>   /dev/sdf  <br></code></pre></td></tr></table></figure>
+
+<h4 id="12-2-模拟损坏磁盘阵列及修复："><a href="#12-2-模拟损坏磁盘阵列及修复：" class="headerlink" title="12.2 模拟损坏磁盘阵列及修复："></a>12.2 模拟损坏磁盘阵列及修复：</h4><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs gams">[root@xy ~]# mdadm /dev/md0 -f /dev/sdc　# -f 模拟设备损坏 <br>  mdadm: <span class="hljs-keyword">set</span> /dev/sdc <span class="hljs-comment">faulty in</span> /dev/<span class="hljs-comment">md0</span>   <br>[root@xy ~<span class="hljs-comment">]# mdadm -D</span> /dev/<span class="hljs-comment">md0</span><br>  /dev/md0:  <br>          Version <span class="hljs-comment">: 1.2</span>  <br>    Creation <span class="hljs-comment">Time : Mon Jul  9 20:07:08 2018</span>  <br>       Raid <span class="hljs-comment">Level : raid10</span>  <br>       Array <span class="hljs-comment">Size : 41909248 (39.97 GiB 42.92 GB)</span>  <br>    Used <span class="hljs-comment">Dev Size : 20954624 (19.98 GiB 21.46 GB)</span>  <br>     Raid <span class="hljs-comment">Devices : 4</span>  <br>    Total <span class="hljs-comment">Devices : 4</span>  <br>      Persistence <span class="hljs-comment">: Superblock is persistent</span>  <br><br>      Update <span class="hljs-comment">Time : Mon Jul  9 20:23:34 2018</span>  <br>            State <span class="hljs-comment">: clean, degraded</span>   <br>   Active <span class="hljs-comment">Devices : 3</span>  <br>  Working <span class="hljs-comment">Devices : 3</span>  <br>   Failed <span class="hljs-comment">Devices : 1</span>  <br>    Spare <span class="hljs-comment">Devices : 0</span>  <br><br>           Layout <span class="hljs-comment">: near=2</span>  <br>       Chunk <span class="hljs-comment">Size : 512K</span>  <br><br>             Name <span class="hljs-comment">: xy.com:0  (local to host xy.com)</span>  <br>             UUID <span class="hljs-comment">: 111c244f:e080b0c1:3316b6f2:986fa663</span>  <br>           Events <span class="hljs-comment">: 21</span>  <br><br>      Number   <span class="hljs-comment">Major   Minor   RaidDevice State</span> <br>         0       0        0        0      removed  <br>         1       8       48        1      active <span class="hljs-comment">sync</span>   /dev/<span class="hljs-comment">sdd</span>  <br>         2       8       64        2      active <span class="hljs-comment">sync</span>   /dev/<span class="hljs-comment">sde</span>  <br>         3       8       80        3      active <span class="hljs-comment">sync</span>   /dev/<span class="hljs-comment">sdf</span>  <br><br>         0       8       32        -      faulty   /dev/<span class="hljs-comment">sdc</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# reboot  <br>[root@xy ~]# umount /dev/RAID<br>[root@xy ~]# mdadm /dev/md0 -a /dev/sdc<br>  mdadm: added /dev/sdc  <br>[root@xy ~]# mdadm -D /dev/md0<br><br>  /dev/md0:  <br>          Version : 1.2  <br>    Creation Time : Mon Jul  9 20:07:08 2018  <br>       Raid Level : raid10  <br>       Array Size : 41909248 (39.97 GiB 42.92 GB)  <br>    Used Dev Size : 20954624 (19.98 GiB 21.46 GB)  <br>     Raid Devices : 4  <br>    Total Devices : 4  <br>      Persistence : Superblock is persistent  <br><br>      Update Time : Mon Jul  9 21:04:28 2018 <br>            State : clean, degraded, recovering   <br>   Active Devices : 3  <br>  Working Devices : 4  <br>   Failed Devices : 0  <br>    Spare Devices : 1  <br><br>           Layout : near=2  <br>       Chunk Size : 512K  <br><br>   Rebuild Status : 19% complete  <br>   <br>             Name : xy.com:0  (<span class="hljs-built_in">local</span> to host xy.com)  <br>             UUID : 111c244f:e080b0c1:3316b6f2:986fa663  <br>           Events : 32 <br><br>      Number   Major   Minor   RaidDevice State  <br>         4       8       32        0      spare rebuilding   /dev/sdc  <br>         1       8       48        1      active <span class="hljs-built_in">sync</span>   /dev/sdd  <br>         2       8       64        2      active <span class="hljs-built_in">sync</span>   /dev/sde  <br>         3       8       80        3      active <span class="hljs-built_in">sync</span>   /dev/sdf  <br></code></pre></td></tr></table></figure>
+
+<h3 id="13-LVM-8e-Logical-Volume-Manager，逻辑卷管理器"><a href="#13-LVM-8e-Logical-Volume-Manager，逻辑卷管理器" class="headerlink" title="13. LVM(8e) (Logical Volume Manager，逻辑卷管理器)  "></a>13. LVM(8e) (Logical Volume Manager，逻辑卷管理器)  <a id="lvm"></a></h3><blockquote>
+<p>在硬盘分区和文件系统之间添加了一个逻辑层,提供了一个抽象的卷组，可以把多块硬盘进行卷合并实现对硬盘分区的<strong>动态调整</strong>    </p>
+</blockquote>
+<ul>
+<li>物理卷(PV) 就是真正的<strong>物理硬盘或者分区</strong>；  </li>
+<li>卷组(VG)  将多个物理卷合起来组成卷组，组成同一个卷组的物理卷可以是同一个硬盘的不同分区，也可以是不同硬盘的不同分区，<strong>抽象为一个逻辑硬盘</strong>；  </li>
+<li>逻辑卷(LV) 卷组是一个逻辑硬盘，硬盘分区后才可以使用，类似的，从卷组出来的分区为逻辑卷，<strong>可以抽象为分区</strong></li>
+</ul>
+<img src="/posts/296e7ad4/%E9%80%BB%E8%BE%91%E5%8D%B7.png" srcset="/img/loading.gif" lazyload class="" title="[LVM图示]">
+
+<h4 id="13-1-常用LVM部署命令"><a href="#13-1-常用LVM部署命令" class="headerlink" title="13.1 常用LVM部署命令"></a>13.1 常用LVM部署命令</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>PV</th>
+<th>VG</th>
+<th>LV</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>扫描</td>
+<td>pvscan</td>
+<td>vgscan</td>
+<td>lvscan</td>
+</tr>
+<tr>
+<td>建立</td>
+<td>pvcreate</td>
+<td>vgcreate</td>
+<td>lvcreate</td>
+</tr>
+<tr>
+<td>显示</td>
+<td>pvs&#x2F;pvdisplay</td>
+<td>vgs&#x2F;vgdisplay</td>
+<td>lvs&#x2F;lvdisplay</td>
+</tr>
+<tr>
+<td>移除</td>
+<td>pvremove</td>
+<td>vgremove</td>
+<td>lvremove</td>
+</tr>
+<tr>
+<td>扩展</td>
+<td>vgextend</td>
+<td>vgextend</td>
+<td>lvextend</td>
+</tr>
+<tr>
+<td>缩小</td>
+<td>vgreduce</td>
+<td>vgreduce</td>
+<td>lvreduce</td>
+</tr>
+</tbody></table>
+<h4 id="13-2-创建LVM-PV-VG-LV-mkfs-ext4-dev-storage-vo-monut"><a href="#13-2-创建LVM-PV-VG-LV-mkfs-ext4-dev-storage-vo-monut" class="headerlink" title="13.2 创建LVM: PV -&gt; VG -&gt; LV -&gt; mkfs.ext4 &#x2F;dev&#x2F;storage&#x2F;vo -&gt; monut"></a>13.2 创建LVM: PV -&gt; VG -&gt; LV -&gt; mkfs.ext4 &#x2F;dev&#x2F;storage&#x2F;vo -&gt; monut</h4><h5 id="1-pvcrate-创建物理卷："><a href="#1-pvcrate-创建物理卷：" class="headerlink" title="1) pvcrate 创建物理卷："></a>1) pvcrate 创建物理卷：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# pvcreate /dev/sd&#123;c,d&#125;<br>  Physical volume <span class="hljs-string">&quot;/dev/sdc&quot;</span> successfully created  <br>  Physical volume <span class="hljs-string">&quot;/dev/sdd&quot;</span> successfully created<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-vgcrate-创建卷组管理："><a href="#2-vgcrate-创建卷组管理：" class="headerlink" title="2) vgcrate 创建卷组管理："></a>2) vgcrate 创建卷组管理：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vgcreate storage /dev/sd&#123;c,d&#125;  <span class="hljs-comment"># 添加到storage卷组中 </span><br>  Volume group <span class="hljs-string">&quot;storage&quot;</span> successfully created<br></code></pre></td></tr></table></figure>
+
+<h5 id="3-vgdisplay-显示卷组管理："><a href="#3-vgdisplay-显示卷组管理：" class="headerlink" title="3) vgdisplay 显示卷组管理："></a>3) vgdisplay 显示卷组管理：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vgdisplay storage<br>  --- Volume group ---  <br>  VG Name               storage  <br>  System ID               <br>  Format                lvm2  <br>  Metadata Areas        2  <br>  Metadata Sequence No  1  <br>  VG Access             <span class="hljs-built_in">read</span>/write  <br>  VG Status             resizable  <br>  MAX LV                0  <br>  Cur LV                0  <br>  Open LV               0  <br>  Max PV                0  <br>  Cur PV                2  <br>  Act PV                2  <br>  VG Size               39.99 GiB  <br>  PE Size               4.00 MiB  <span class="hljs-comment"># -s 8M 指定PE大小  </span><br>  Total PE              10238  <br>  Alloc PE / Size       0 / 0    <br>  Free  PE / Size       10238 / 39.99 GiB  <br>  VG UUID               pjR9cJ-VoyM-TZsz-NdMb-s05a-0VQZ-wHhEBo <br></code></pre></td></tr></table></figure>
+
+<h5 id="4-lvcrate-创建逻辑卷："><a href="#4-lvcrate-创建逻辑卷：" class="headerlink" title="4) lvcrate 创建逻辑卷："></a>4) lvcrate 创建逻辑卷：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# lvcreate -l 37 -n vo storage　<span class="hljs-comment"># 从卷组里边 创建逻辑卷 lvcreate  </span><br>  Logical volume <span class="hljs-string">&quot;vo&quot;</span> created   <br>  -L 以容量为单位(-L 15G)  <br>  -l 以PE（4MB）为单位<br></code></pre></td></tr></table></figure>
+
+<h5 id="5-lvdisplay-显示逻辑卷："><a href="#5-lvdisplay-显示逻辑卷：" class="headerlink" title="5) lvdisplay 显示逻辑卷："></a>5) lvdisplay 显示逻辑卷：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# lvdisplay <br>  --- Logical volume ---  <br>  LV Path                /dev/storage/vo  <br>  LV Name                vo  <br>  VG Name                storage  <br>  LV UUID                bDRxSW-f9X3-KkjE-UPJL-wsrj-2zXm-pCNpcq  <br>  LV Write Access        <span class="hljs-built_in">read</span>/write  <br>  LV Creation host, <span class="hljs-keyword">time</span> xy.com, 2018-07-10 10:03:43 +0800  <br>  LV Status              available  <br>  open                 0  <br>  LV Size                148.00 MiB  <br>  Current LE             37  <br>  Segments               1  <br>  Allocation             inherit  <br>  Read ahead sectors     auto  <br>  currently <span class="hljs-built_in">set</span> to     8192  <br>  Block device           253:2  <br></code></pre></td></tr></table></figure>
+
+<h5 id="6-格式化逻辑卷："><a href="#6-格式化逻辑卷：" class="headerlink" title="6) 格式化逻辑卷："></a>6) 格式化逻辑卷：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# mkfs.ext4 /dev/storage/vo<br>[root@xy ~]# mke2fs -j /dev/storage/vo<br></code></pre></td></tr></table></figure>
+<h5 id="7-挂载使用逻辑卷："><a href="#7-挂载使用逻辑卷：" class="headerlink" title="7) 挂载使用逻辑卷："></a>7) 挂载使用逻辑卷：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mkdir</span> /LVM <br>[root@xy ~]# mount /dev/storage/vo /LVM/<br>[root@xy ~]# vim /etc/fstab  <br>  /dev/storage/vo              /LVM         ext4          defaults   0 0<br></code></pre></td></tr></table></figure>
+
+<h5 id="8-扩容"><a href="#8-扩容" class="headerlink" title="8) 扩容"></a>8) 扩容</h5><p><strong>外加磁盘</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# fdisk t 8e<br>[root@xy ~]# mkfs.ext4 /dev/sdb1  <span class="hljs-comment"># 不用分区也可以</span><br>---<br>[root@xy ~]# pvcreate /dev/sdb1<br>[root@xy ~]# vgextend VolGroup /dev/sdb1<br>[root@xy ~]# lvextend -L +20G /dev/volGroup/VolGroup-lv_root<br>[root@xy ~]# resize2fs /dev/volGroup/VolGroup-lv_root<br></code></pre></td></tr></table></figure>
+
+<p><strong>把其它分区分给空间不足的</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# umount /home   <span class="hljs-comment"># 25G</span><br>[root@xy ~]# e2fsck -f /dev/volGroup/VolGroup-lv_home<br>[root@xy ~]# resize2fs -p /dev/volGroup/VolGroup-lv_home 10G   <span class="hljs-comment"># xfs格式用xfs_growfs</span><br>---<br>[root@xy ~]# mount /home<br>[root@xy ~]# lvreduce -L -15G /dev/volGroup/VolGroup-lv_home<br>[root@xy ~]# lvextend -L +15G 或 lvextend -l +100%FREE /dev/volGroup/VolGroup-lv_root<br>[root@xy ~]# resize2fs -p /dev/volGroup/VolGroup-lv_root<br><br>[root@xy ~]# fuser -m -v /home<br>[root@xy ~]# <span class="hljs-built_in">kill</span> -9 PID<br><span class="hljs-comment"># 建议保留Free PE／SIZE 一点空间，不要全用上；</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="14-逻辑卷快照-类似于虚拟机快照-特点-快照卷容量必须等同于逻辑卷容量-快照卷是一次性的-执行后会立即自动删除"><a href="#14-逻辑卷快照-类似于虚拟机快照-特点-快照卷容量必须等同于逻辑卷容量-快照卷是一次性的-执行后会立即自动删除" class="headerlink" title="14. 逻辑卷快照:类似于虚拟机快照, 特点:快照卷容量必须等同于逻辑卷容量; 快照卷是一次性的, 执行后会立即自动删除"></a>14. 逻辑卷快照:类似于虚拟机快照, 特点:快照卷容量必须等同于逻辑卷容量; 快照卷是一次性的, 执行后会立即自动删除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vgdisplay<br>  --- Volume group ---<br>  VG Name               storage  <br>  System ID             <br>  Format                lvm2 <br>  ...<br>  Total PE              10238<br>  Alloc PE / Size       37 / 148.00 MiB　<span class="hljs-comment"># PE 创建快照大小依据</span><br>  Free  PE / Size       10201 / 39.85 GiB<br>  VG UUID          6YZPns-qgdy-yEFx-hEZ3-bLwe-2eDd-PFEip8<br><br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Welcome to linux&quot;</span> &gt; /LVM/readme.txt <br>[root@xy ~]# lvcreate -L 148M -n SNAP -p r -s /dev/storage/vo 　<span class="hljs-comment"># -s创建快照卷  </span><br>  Logical volume <span class="hljs-string">&quot;SNAP&quot;</span> created<br><br>[root@xy ~]# lvdisplay <br><br>  --- Logical volume ---  <br>  LV Path                /dev/storage/vo  <br>  LV Name                vo  <br>  VG Name                storage  <br>  ...  <br>  LV snapshot status     <span class="hljs-built_in">source</span> of  SNAP [active]  <br>  LV Status              available  <br>  open                 1<br>  LV Size               148.00 MiB  <br>  ...<br>  currently <span class="hljs-built_in">set</span> to     8192  <br>  Block device           253:2  <br><br>  --- Logical volume ---  <br>  LV Path                /dev/storage/SNAP <br>  LV Name                SNAP  <br>  VG Name                storage  <br>  LV UUID                dERsif-hvjx-20JJ-1BLn-dPxb-aYtw-n1zetn  <br>  LV Write Access        <span class="hljs-built_in">read</span>/write  <br>  LV Creation host, <span class="hljs-keyword">time</span> xy.com, 2018-07-10 14:00:46 +0800  <br>  LV snapshot status     active destination <span class="hljs-keyword">for</span> vo  <br>  LV Status              available  <br>  open                 0  <br>  LV Size                148.00 MiB  <br>  ...<br>  Block device           253:3<br><br>[root@xy ~]# <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/LVM/files count=1 bs=100M<br>[root@xy ~]# mount -o /dev/storage/SNAP /mnt/SNAP  <span class="hljs-comment"># ext4  </span><br>[root@xy ~]# mount -o nouuid,ro /dev/storage/SNAP /mnt/SNAP  <span class="hljs-comment"># xfs  </span><br><br>[root@xy ~]# umount /LVM<br>[root@xy ~]# umount /mnt/SANP    <br>[root@xy ~]# lvconvert --merge /dev/storage/SNAP 　<span class="hljs-comment"># 快照还原  </span><br>   Merging of volume SNAP started.  <br>   vo: Merged: 33.5%  <br>   vo: Merged: 100.0%  <br>   Merge of snapshot into logical volume vo has finished.  <br>   Logical volume <span class="hljs-string">&quot;SNAP&quot;</span> successfully removed<br><br>[root@xy ~]# mount /dev/storage/vo /LVM/    <br>[root@xy ~]# <span class="hljs-built_in">ls</span> /LVM/  <br>  lost+found  readme.txt<br></code></pre></td></tr></table></figure>
+
+<h3 id="15-删除逻辑卷-LV-VG-PV"><a href="#15-删除逻辑卷-LV-VG-PV" class="headerlink" title="15. 删除逻辑卷: LV -&gt; VG -&gt; PV"></a>15. 删除逻辑卷: LV -&gt; VG -&gt; PV</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># umount /LVM/</span><br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># lvremove /dev/storage/vo　# lvremove</span><br>  Do you really want to <span class="hljs-keyword">remove</span> active  logical volume vo? [y/n]: y<br>  Logical volume <span class="hljs-string">&quot;vo&quot;</span> successfully<br>  removed<br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># vgremove storage</span><br>  Volume <span class="hljs-keyword">group</span> <span class="hljs-string">&quot;storage&quot;</span> successfully removed<br>[<span class="hljs-meta">root@xy ~</span>]<span class="hljs-meta"># pvremove /dev/sdc /dev/sdd</span><br>  Labels <span class="hljs-keyword">on</span> physical volume <span class="hljs-string">&quot;/dev/sdc&quot;</span> successfully wiped  <br>  Labels <span class="hljs-keyword">on</span> physical volume <span class="hljs-string">&quot;/dev/sdd&quot;</span> successfully wiped<br></code></pre></td></tr></table></figure>
+
+<h3 id="16-iptables-与-firewalld-防火墙-四表五链"><a href="#16-iptables-与-firewalld-防火墙-四表五链" class="headerlink" title="16. iptables 与 firewalld 防火墙(四表五链)"></a>16. iptables 与 firewalld 防火墙(四表五链)</h3><h4 id="16-1-iptables命令-参数-策略规则链-动作-："><a href="#16-1-iptables命令-参数-策略规则链-动作-：" class="headerlink" title="16.1 iptables命令  参数 + 策略规则链 + 动作 ："></a>16.1 iptables命令  参数 + 策略规则链 + 动作 ：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables  [-t 表名]  选项 [链名]  [条件]  [-j 控制类型]<br>1）默认filter表；<br>2）默认表内所有链； <br>3）选项、链名、控制类型使用大写字母，其余均为小写；<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-P</td>
+<td>设置默认策略   ✔</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>清空规则链  ✔</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>查看规则链  ✔</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>在规则链的 末尾 添加新规则   ✔</td>
+</tr>
+<tr>
+<td>-I num</td>
+<td>在规则链的 头部 添加新规则    ✔</td>
+</tr>
+<tr>
+<td>-D num</td>
+<td>删除某一条规则  ✔ <code>iptables -t 表明 -D 链名 num</code></td>
+</tr>
+<tr>
+<td>-s IP&#x2F;MASK</td>
+<td>匹配来源地址IP&#x2F;MASK,加!表示除这个IP外</td>
+</tr>
+<tr>
+<td>-d IP&#x2F;MASK</td>
+<td>匹配目标地址(多个IP用逗号隔开)</td>
+</tr>
+<tr>
+<td>-i 网卡名称</td>
+<td>匹配从这块网卡流入的数据(PREROUTING、INPUT、FORWARD)</td>
+</tr>
+<tr>
+<td>-o 网卡名称</td>
+<td>匹配从这块网卡流出的数据(FORWARD、OUTPUT、POSTROUTING)</td>
+</tr>
+<tr>
+<td>-p Protocol</td>
+<td>匹配协议,如:TCP&#x2F;UDP&#x2F;ICMP</td>
+</tr>
+<tr>
+<td>–dport num</td>
+<td>匹配目标端口号</td>
+</tr>
+<tr>
+<td>–sport num</td>
+<td>匹配来源端口号</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>数据报文 字节数显示(信息更全) <code>iptables --line-number -vnL INPUT</code></td>
+</tr>
+<tr>
+<td>-n</td>
+<td>以数字形式显示IP地址、端口</td>
+</tr>
+<tr>
+<td><code>--line-numbers</code></td>
+<td>查看规则，显示序号   ✔</td>
+</tr>
+<tr>
+<td>-N -E -X</td>
+<td>自定义、重命名、删除自定义链</td>
+</tr>
+<tr>
+<td>-m,–module</td>
+<td>扩展模块</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m multiport –sport  用于匹配报文源端口,多个端口用逗号隔开</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m multiport –dport  用于匹配报文目的端口,多个端口用逗号隔开</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m iprange –src-range  IP范围</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m iprange –dst-range  IP范围</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m mac –macl-source  MAC地址</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m tcp –sport 用于匹配tcp协议报文源端口,用冒号定义连续端口</td>
+</tr>
+<tr>
+<td>—</td>
+<td>-m tcp –dport 用于匹配tcp协议报文目的端口,用冒号定义连续端口</td>
+</tr>
+<tr>
+<td>-m state –state</td>
+<td>连接状态</td>
+</tr>
+<tr>
+<td>—</td>
+<td>NEW,ESTABLISHED,RELATED -j ACCEPT</td>
+</tr>
+</tbody></table>
+<h4 id="16-2-策略规则链-iptables-服务把用于处理或过滤流量的策略条目称为规则-多条规则可组成一个规则链-而规则链则依据数据包处理位置的不同进行分类-具体如下："><a href="#16-2-策略规则链-iptables-服务把用于处理或过滤流量的策略条目称为规则-多条规则可组成一个规则链-而规则链则依据数据包处理位置的不同进行分类-具体如下：" class="headerlink" title="16.2 策略规则链[iptables]服务把用于处理或过滤流量的策略条目称为规则,多条规则可组成一个规则链,而规则链则依据数据包处理位置的不同进行分类,具体如下："></a>16.2 策略规则链[iptables]服务把用于处理或过滤流量的策略条目称为规则,多条规则可组成一个规则链,而规则链则依据数据包处理位置的不同进行分类,具体如下：<a id="iptables"></a></h4><ul>
+<li>报文路径: <ul>
+<li>到本机某进程的报文（<code>PREROUTING --&gt; INPUT</code>）;</li>
+<li>由本机转发的报文（<code>PREROUTING --&gt; FORWARD--&gt; POSTROUTING</code>）;</li>
+<li>由本机的某进程发出报文，即响应报文（<code>OUTPUT --&gt; POSTROUTING</code>）;</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>四表(相同功能规则的集合)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>raw表</code></td>
+<td>关闭nat启用的连接追踪机制</td>
+</tr>
+<tr>
+<td><code>mangle表</code></td>
+<td>拆解报文，做出修改，重新封装功能</td>
+</tr>
+<tr>
+<td><code>nat表</code></td>
+<td>网络地址转换功能，内核模块</td>
+</tr>
+<tr>
+<td><code>filter表</code></td>
+<td>过滤功能，防火墙，内核模块</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>五链(钩子)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PREROUTING链</code></td>
+<td>在进行路由选择前处理数据包(raw&gt;mangle&gt;nat)</td>
+</tr>
+<tr>
+<td><code>INPUT链</code></td>
+<td>处理流入数据包</td>
+</tr>
+<tr>
+<td><code>OUTPUT链</code></td>
+<td>处理流出数据包</td>
+</tr>
+<tr>
+<td><code>FORWARD链</code></td>
+<td>处理转发数据包</td>
+</tr>
+<tr>
+<td><code>POSTROUTING链</code></td>
+<td>在进行路由选择后处理数据包</td>
+</tr>
+</tbody></table>
+<p><strong>-L 查看规则链</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -L  <span class="hljs-comment"># -L 查看规则链 Look  </span><br>  Chain INPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>        destination           <br>  ACCEPT     all  --  anywhere      anywhere             ctstate RELATED,ESTABLISHED  <br>  ACCEPT     all  --  anywhere      anywhere              <br>  INPUT_direct  all  --  anywhere   anywhere                         <br>  ........省略部分输出信息........  <br>[root@xy ~]# iptables-save &gt; /home/User/iptables.bak         <span class="hljs-comment"># 备份</span><br>[root@xy ~]# iptables-restore &lt; /home/User/iptables.bak      <span class="hljs-comment"># 还原</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>-F 清空规则链</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -F 　<br>[root@xy ~]# iptables -L  <br>  Chain INPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination   <br><br>  Chain FORWARD (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination   <br><br>  Chain OUTPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination   <br>  <br>  ........省略部分输出信息........  <br></code></pre></td></tr></table></figure>
+
+<p><strong>iptables -P参数默认策略 INPUT规则链 DROP动作</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -P INPUT DROP<br>[root@xy ~]# iptables -L  <br>   Chain INPUT (policy DROP)    <br>   ........省略部分输出信息........  <br></code></pre></td></tr></table></figure>
+
+<p><strong>iptables -I头部添加新规则 INPUT规则链 -p icmp ACCEPT动作</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -I INPUT -p icmp -j ACCEPT<br></code></pre></td></tr></table></figure>
+
+<p><strong>iptables -D删除某一条规则 INPUT规则链 序号</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -D INPUT 1<br></code></pre></td></tr></table></figure>
+
+<p><strong>iptables -P默认策略 INPUT规则链 ACCEPT动作</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -P INPUT ACCEPT<br>[root@xy ~]# iptables -L<br>  Chain INPUT (policy ACCEPT)<br>  ........省略部分输出信息........<br></code></pre></td></tr></table></figure>
+
+<h4 id="16-4-仅允许指定网段的主机访问本机的22端口-SSH"><a href="#16-4-仅允许指定网段的主机访问本机的22端口-SSH" class="headerlink" title="16.4 仅允许指定网段的主机访问本机的22端口 SSH"></a>16.4 仅允许指定网段的主机访问本机的22端口 SSH</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#iptables -I头部添加新规则 INPUT规则链 源IP -p tcp --dport 22 ACCEPT动作  </span><br>[root@xy ~]# iptables -I INPUT -s 192.168.37.0/24 -p tcp --dport 22 -j ACCEPT　　<br><br><span class="hljs-comment">#iptables -A尾部添加新规则 INPUT规则链 -p tcp --dport 22 REJECT动作</span><br>[root@xy ~]# iptables -A INPUT -p tcp --dport 22 -j REJECT<br>[root@xy ~]# iptables -L<br>  Chain INPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination           <br>  ACCEPT     tcp  --  192.168.37.0/24      anywhere             tcp dpt:ssh  <br>  REJECT     tcp  --  anywhere             anywhere             tcp dpt:ssh   <br>  reject-with icmp-port-unreachable  <br>  ........省略部分输出信息........   <br><br>[root@clientA ~]# ssh 192.168.37.10　<span class="hljs-comment"># 网段192.168.37.0/24 是可以的  </span><br>[root@clientA ~]# ssh 192.168.37.10　<span class="hljs-comment"># 网段192.168.20.0/24 XXXXXXXX</span><br>  Connecting to 192.168.37.10:22...<br>  Could not connect to <span class="hljs-string">&#x27;192.168.37.10&#x27;</span>(port 22): Connection failed  <br></code></pre></td></tr></table></figure>
+
+<h4 id="16-5-INPUT-规则链加入拒绝所有人访问本机12345端口的策略规则"><a href="#16-5-INPUT-规则链加入拒绝所有人访问本机12345端口的策略规则" class="headerlink" title="16.5 INPUT 规则链加入拒绝所有人访问本机12345端口的策略规则"></a>16.5 INPUT 规则链加入拒绝所有人访问本机12345端口的策略规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -I INPUT -p tcp --dport 12345 -j REJECT   <br>[root@xy ~]# iptables -I INPUT -p udp --dport 12345 -j REJECT  <br>[root@xy ~]# iptables -L<br>  Chain INPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination           <br>  REJECT     udp  --  anywhere             anywhere             udp dpt:italk   <br>  reject-with icmp-port-unreachable  <br>  REJECT     tcp  --  anywhere             anywhere             tcp dpt:italk   <br>  reject-with icmp-port-unreachable  <br>  ACCEPT     tcp  --  192.168.37.0/24      anywhere             tcp dpt:ssh  <br>  REJECT     tcp  --  anywhere             anywhere             tcp dpt:ssh   <br>  reject-with icmp-port-unreachable  <br>  ........省略部分输出信息........  <br></code></pre></td></tr></table></figure>
+
+<h4 id="16-6-INPUT-规则链加入拒绝所有人访问本机1000-1024端口的策略规则"><a href="#16-6-INPUT-规则链加入拒绝所有人访问本机1000-1024端口的策略规则" class="headerlink" title="16.6 INPUT 规则链加入拒绝所有人访问本机1000:1024端口的策略规则"></a>16.6 INPUT 规则链加入拒绝所有人访问本机1000:1024端口的策略规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -A INPUT -p tcp --dport 1000:1024 -j REJECT<br>[root@xy ~]# iptables -A INPUT -p udp --dport 1000:1024 -j REJECT<br>[root@xy ~]# iptables -L<br>  Chain INPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination           <br>  REJECT     udp  --  anywhere             anywhere             udp dpt:italk   <br>  reject-with icmp-port-unreachable  <br>  REJECT     tcp  --  anywhere             anywhere             tcp dpt:italk   <br>  reject-with icmp-port-unreachable  <br>  ACCEPT     tcp  --  192.168.37.0/24      anywhere             tcp dpt:ssh  <br>  REJECT     tcp  --  anywhere             anywhere             tcp dpt:ssh   <br>  ........省略部分输出信息........  <br></code></pre></td></tr></table></figure>
+
+<h4 id="16-7-INPUT-规则链加入拒绝192-168-37-5访问本机80端口的策略规则"><a href="#16-7-INPUT-规则链加入拒绝192-168-37-5访问本机80端口的策略规则" class="headerlink" title="16.7 INPUT 规则链加入拒绝192.168.37.5访问本机80端口的策略规则"></a>16.7 INPUT 规则链加入拒绝192.168.37.5访问本机80端口的策略规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -I INPUT -p tcp -s 192.168.37.5 --dport 80 -j REJECT<br>[root@xy ~]# iptables -L<br>  Chain INPUT (policy ACCEPT)  <br>  target     prot opt <span class="hljs-built_in">source</span>               destination           <br>  REJECT     tcp  --  192.168.37.5         anywhere             tcp dpt:http   <br>  reject-with icmp-port-unreachable<br>  ........省略部分输出信息........  <br>[root@xy ~]# service iptables save　 <span class="hljs-comment"># 永久生效</span><br>  iptables: Saving firewall rules to /etc/sysconfig/iptables:[  OK  ]<br></code></pre></td></tr></table></figure>
+
+<h4 id="16-8-禁止源自192-168-10-0-24-网段的流量访问本机sshd服务："><a href="#16-8-禁止源自192-168-10-0-24-网段的流量访问本机sshd服务：" class="headerlink" title="16.8 禁止源自192.168.10.0&#x2F;24 网段的流量访问本机sshd服务："></a>16.8 禁止源自192.168.10.0&#x2F;24 网段的流量访问本机sshd服务：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -I INPUT -s 192.168.10.0/24 -p tcp --dport 22 -j REJECT  <br>[root@xt ~]# service iptables save<br></code></pre></td></tr></table></figure>
+
+<h4 id="16-9-SNAT-DNAT"><a href="#16-9-SNAT-DNAT" class="headerlink" title="16.9 SNAT &amp;&amp; DNAT"></a>16.9 SNAT &amp;&amp; DNAT</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# modprobe ip_tables  <br>[root@xy ~]# modprobe<br>[root@xy ~]# vim /etc/sysctl.conf  <span class="hljs-comment"># /proc/sys/net/ipv4/ip_forward  </span><br>[root@xy ~]# net.ipv4.ip_forward  = 1 <br>[root@xy ~]# sysctl -p /etc/sysctl.conf  <br>[root@xy ~]# iptables -F<br><br><span class="hljs-comment">#网关服务器: eth0(192.168.1.1) eth1(218.29.30.31) </span><br><span class="hljs-comment">#局域网客户机(服务器): 192.168.1.6</span><br><span class="hljs-comment">#公网服务器(客户机): 58.63.236.45</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="16-10-SNAT-转换规则：内网访问外网-路由后交给SNAT"><a href="#16-10-SNAT-转换规则：内网访问外网-路由后交给SNAT" class="headerlink" title="16.10 SNAT 转换规则：内网访问外网(路由后交给SNAT)"></a>16.10 SNAT 转换规则：内网访问外网(路由后交给SNAT)</h4><img src="/posts/296e7ad4/SNAT.png" srcset="/img/loading.gif" lazyload class="" title="[SNAT转换]">  
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -t nat -A  POSTROUTING -s 192.168.1.0/24 -o eth1 -j SNAT --to-source 218.29.30.31     <br>[root@xy ~]# iptables -t nat -A  POSTROUTING -s 192.168.1.0/24 -o eth1 -j MASQUERADE  <br>[root@xy ~]# service iptables save<br>[root@xy ~]# vim /etc/sysconfig/iptables  <br>[root@xy~]# tcpdump -i eth0 -nn -X icmp<br></code></pre></td></tr></table></figure>
+
+<h4 id="16-11-DNAT-转换规则：外网访问内网-路由前交给DNAT"><a href="#16-11-DNAT-转换规则：外网访问内网-路由前交给DNAT" class="headerlink" title="16.11 DNAT 转换规则：外网访问内网(路由前交给DNAT)"></a>16.11 DNAT 转换规则：外网访问内网(路由前交给DNAT)</h4><img src="/posts/296e7ad4/DNAT.png" srcset="/img/loading.gif" lazyload class="" title="[DNAT转换]"> 
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -t nat -A  PREROUTING -d 218.29.30.31 -i eth1 -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.6:80      <br>[root@xy ~]# service iptables save<br>[root@xy ~]# iptables-save &gt; 1.iptables<br>[root@xy ~]# iptables-restore &lt; 1.iptables<br></code></pre></td></tr></table></figure>
+
+<h4 id="16-12-解决Windows访问Samba服务拒绝的方法"><a href="#16-12-解决Windows访问Samba服务拒绝的方法" class="headerlink" title="16.12 解决Windows访问Samba服务拒绝的方法:"></a>16.12 解决Windows访问Samba服务拒绝的方法:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# iptables -L --line-number -n    <span class="hljs-comment"># 以带有序号形式查看规则</span><br><br>[root@xy ~]# iptables -t filter -I INPUT 7 -p udp -m multiport --dport 139,445 -j ACCEPT<br>[root@xy ~]# iptables -t filter -I INPUT 7 -p tcp -m multiport --dport 139,445 -m state --state NEW  -j ACCEPT<br></code></pre></td></tr></table></figure>
+
+<h3 id="17-firewalld-Dynamic-Firewall-Manager-of-Linux-system-Linux动态防火墙管理器"><a href="#17-firewalld-Dynamic-Firewall-Manager-of-Linux-system-Linux动态防火墙管理器" class="headerlink" title="17 firewalld(Dynamic Firewall Manager of Linux system):Linux动态防火墙管理器 "></a>17 firewalld(Dynamic Firewall Manager of Linux system):Linux动态防火墙管理器 <a id="firewalld"></a></h3><p>管理方式:CLI(命令行界面) 与 GUI(图形用户界面)</p>
+<h4 id="17-1-firewalld中常用的区域名及策略规则"><a href="#17-1-firewalld中常用的区域名及策略规则" class="headerlink" title="17.1 firewalld中常用的区域名及策略规则:"></a>17.1 firewalld中常用的区域名及策略规则:</h4><table>
+<thead>
+<tr>
+<th>区域</th>
+<th>默认规则策略</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trusted</td>
+<td>允许所有数据包</td>
+</tr>
+<tr>
+<td>home</td>
+<td>拒绝流入的流量,除非与流出的流量相关;而如果流量与ssh、mdns、ipp-client、amba-client与dhcpv6-client服务相关,则允许流量</td>
+</tr>
+<tr>
+<td>internal</td>
+<td>等同于home区域</td>
+</tr>
+<tr>
+<td>public</td>
+<td>拒绝流入的流量,除非与流出的流量相关;而如果流量与ssh、dhcpv6-client服务相关,则允许流量</td>
+</tr>
+<tr>
+<td>external</td>
+<td>拒绝流入的流量,除非与流出的流量相关;而如果流量与ssh服务相关,则允许流量</td>
+</tr>
+<tr>
+<td>dmz</td>
+<td>拒绝流入的流量,除非与流出的流量相关;而如果流量与ssh服务相关,则允许流量</td>
+</tr>
+<tr>
+<td>block</td>
+<td>拒绝流入的流量,除非与流出的流量相关</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>拒绝流入的流量,除非与流出的流量相</td>
+</tr>
+</tbody></table>
+<h4 id="17-2-firewall-cmd-命令"><a href="#17-2-firewall-cmd-命令" class="headerlink" title="17.2 firewall-cmd 命令:"></a>17.2 firewall-cmd 命令:</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--get-default-zone</code></td>
+<td>查询默认区域名称</td>
+</tr>
+<tr>
+<td><code>--set-default-zone=&lt;区域名称&gt;</code></td>
+<td>设置默认区域,使其永久生效</td>
+</tr>
+<tr>
+<td><code>--get-zones</code></td>
+<td>显示可用区域</td>
+</tr>
+<tr>
+<td><code>--get-services</code></td>
+<td>显示预先定义服务</td>
+</tr>
+<tr>
+<td><code>--get-active-zones</code></td>
+<td>显示当前正使用的区域与网卡名称</td>
+</tr>
+<tr>
+<td><code>--add-source=</code></td>
+<td>将源自此IP&#x2F;子网流量导向某个指定区域</td>
+</tr>
+<tr>
+<td><code>--remove-source=</code></td>
+<td>不再将源自此IP&#x2F;子网流量导向某个指定区域</td>
+</tr>
+<tr>
+<td><code>--add-interface=&lt;网卡名称&gt;</code></td>
+<td>将源自此网卡所有流量导向某个指定区域</td>
+</tr>
+<tr>
+<td><code>--change-interface=&lt;网卡名称&gt;</code></td>
+<td>将某个网卡与区域进行关联</td>
+</tr>
+<tr>
+<td><code>--list-all</code></td>
+<td>显示当前区域网卡配置参数&#x2F;资源&#x2F;端口&#x2F;服务</td>
+</tr>
+<tr>
+<td><code>--list-all-zones</code></td>
+<td>显示所有区域网卡配置参数&#x2F;资源&#x2F;端口&#x2F;服务</td>
+</tr>
+<tr>
+<td><code>--add-service=&lt;服务名&gt;</code></td>
+<td>设置默认区域允许该服务的流量</td>
+</tr>
+<tr>
+<td><code>--add-port=&lt;端口号/协议&gt;</code></td>
+<td>设置默认区域允许该端口的流量</td>
+</tr>
+<tr>
+<td><code>--remove-service=&lt;服务名&gt;</code></td>
+<td>设置默认区域不再允许该服务的流量</td>
+</tr>
+<tr>
+<td><code>--remove-port=&lt;端口号/协议&gt;</code></td>
+<td>设置默认区域不再允许该端口的流量</td>
+</tr>
+<tr>
+<td><code>--reload</code></td>
+<td>让永久生效的配置规则立即生效,覆盖当前配置规则</td>
+</tr>
+<tr>
+<td><code>--panic-on</code></td>
+<td>开启应急状况模式</td>
+</tr>
+<tr>
+<td><code>--panic-off</code></td>
+<td>关闭应急状况模式</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# firewall-cmd --get-default-zone  <br>  public  <br>[root@xy ~]# firewall-cmd --get-zone-of-interface=eno16777736  <br>  public  <br>[root@xy ~]# firewall-cmd --permanent --zone=external --change-interface=eno16777736    <br>  success　<span class="hljs-comment"># 重启后生效</span><br>[root@xy ~]# firewall-cmd --get-zone-of-interface=eno16777736<br>  external<br>[root@xy ~]# firewall-cmd --set-default-zone=public  <span class="hljs-comment"># firewall当前服务设置为public  </span><br>  success <br>[root@xy ~]# firewall-cmd --panic-on <span class="hljs-comment"># 启动/关闭防火墙应急状况模式,阻断一切网络连接  </span><br>  success  <br>[root@xy ~]# firewall-cmd --panic-off<br>  success  <br></code></pre></td></tr></table></figure>
+
+<p><strong>查询public区域是否允许请求SSH和HTTPS协议流量</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# firewall-cmd --zone=public --query-service=ssh<br>  <span class="hljs-built_in">yes</span>  <br>[root@xy ~]# firewall-cmd --zone=public --query-service=https<br>  no   <br></code></pre></td></tr></table></figure>
+
+<p><strong>firewalld服务中请求HTTPS协议流量设置永久允许,立即生效</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# firewall-cmd --zone=public --add-service=https<br>  success  <br>[root@xy ~]# firewall-cmd --permanent --zone=public --add-service=https<br>  success  <br>[root@xy ~]# firewall-cmd --reload  <span class="hljs-comment"># 更改设置立即生效 </span><br>  success  <br></code></pre></td></tr></table></figure>
+
+<p><strong>firewalld服务中请求HTTP协议流量设置永久拒绝,立即生效</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# firewall-cmd --permanent --zone=public --remove-service=http <span class="hljs-comment"># permanent</span><br>  success  <br>[root@xy ~]# firewall-cmd --reload<br>  success  <br></code></pre></td></tr></table></figure>
+
+<p><strong>firewalld　服务中访问8080 8081端口流量策略设置允许,仅当前生效</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# firewall-cmd --zone=public --add-port=8080-8081/tcp<br>  success  <br>[root@xy ~]# firewall-cmd --zone=public --list-ports 8080-8081/tcp  <br></code></pre></td></tr></table></figure>
+
+<p><strong>流量转发 访问本机888端口的流量转发到22端口</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# firewall-cmd --permanent --zone=public     --add-forward-port=port=888:proto=tcp:toport=22:toaddr=192.168.37.10<br>[root@xy ~]# firewall-cmd --reload  <br>  success  <br></code></pre></td></tr></table></figure>
+
+<p><strong>服务的ACL</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/hosts.deny<br>[root@xy ~]# vim /etc/host.allow<br></code></pre></td></tr></table></figure>
+
+<h3 id="18-使用SSH服务管理远程主机"><a href="#18-使用SSH服务管理远程主机" class="headerlink" title="18. 使用SSH服务管理远程主机"></a>18. 使用SSH服务管理远程主机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# nmtui  <span class="hljs-comment"># GUI配置网络参数</span><br>[root@xy ~]# <span class="hljs-built_in">cd</span> /etc/sysconfig/network-scripts/<br>[root@xy network-scripts]# vim ifcfg-eno16777736  <br>[root@xy network-scripts]# systemctl restart network <br>[root@xy network-scripts]# ping -c 4 192.168.37.10 <br>  PING 192.168.37.10 (192.168.37.10) 56(84) bytes of data.  <br>  64 bytes from 192.168.37.10: icmp_seq=1 ttl=64 <span class="hljs-keyword">time</span>=31.3 ms  <br>  --- 192.168.37.10 ping statistics ---  <br>  4 packets transmitted, 4 received, 0% packet loss, <span class="hljs-keyword">time</span> 3005ms  <br>  rtt min/avg/max/mdev = 0.183/8.006/31.325/13.463 ms  <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy network-scripts]# nmcli connection show　 <span class="hljs-comment"># 管理Network Manager服务</span><br>  NAME         UUID                                  TYPE            DEVICE        <br>  eno16777736  e1fa8452-091b-429e-adce-ecea92a845c7  802-3-ethernet  eno16777736   <br>[root@xy network-scripts]# nmcli con show eno16777736    <br>  connection.id:                          eno16777736  <br>  connection.uuid:                        e1fa8452-091b-429e-adce-ecea92a845c7  <br>  connection.interface-name:  <br>  ........省略部分输出信息........  <br>[root@xy ~]# nmcli connection add con-name company ifname eno16777736<br>  autoconnect   <br>  no <span class="hljs-built_in">type</span> ethernet ip4 192.168.37.10/24 gw4 192.168.37.1  <br>  Connection <span class="hljs-string">&#x27;company&#x27;</span> (a8b3a029-5c7b-4ec7-b519-69f6862e616f) successfully added.<br>[root@xy ~]# nmcli connection add con-name house <span class="hljs-built_in">type</span> ethernet ifname eno16777736   <br>  Connection <span class="hljs-string">&#x27;house&#x27;</span> (00a825ae-b1c2-4130-a1f6-c693de73783c) successfully added.<br>[root@xy ~]# nmcli connection show<br>  NAME         UUID                                  TYPE            DEVICE        <br>  house        00a825ae-b1c2-4130-a1f6-c693de73783c  802-3-ethernet  --             <br>  company      a8b3a029-5c7b-4ec7-b519-69f6862e616f  802-3-ethernet  --             <br>  eno16777736  e1fa8452-091b-429e-adce-ecea92a845c7  802-3-ethernet  eno16777736  <br>[root@xy ~]# nmcli connection up house<br>  Connection successfully actived (D-Bus activ path: /org/freedesktop/NetworkManager/ActiveConnection/2)<br></code></pre></td></tr></table></figure>
+
+<h3 id="19-绑定两块网卡"><a href="#19-绑定两块网卡" class="headerlink" title="19. 绑定两块网卡"></a>19. 绑定两块网卡</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/sysconfig/network-scripts/ifcfg-eno16777736<br>  TYPE=Ethernet  <br>  BOOTPROTO=none  <br>  ONBOOT=<span class="hljs-built_in">yes</span>  <br>  USERCTL=no  <br>  DEVICE=eno16777736   <br>  MASTER=bond0  <br>  SLAVE=<span class="hljs-built_in">yes</span>  <br>[root@xy ~]# vim /etc/sysconfig/network-scripts/ifcfg-eno33554984      <br>  TYPE=Ethernet<br>  BOOTPROTO=none<br>  ONBOOT=<span class="hljs-built_in">yes</span><br>  USERCTL=no<br>  DEVICE=eno16777736<br>  MASTER=bond0<br>  SLAVE=<span class="hljs-built_in">yes</span>  <br>[root@xy ~]# vim /etc/sysconfig/network-scripts/ifcfg-bond0  <br>  TYPE=Ethernet  <br>  BOOTPROTO=none  <br>  ONBOOT=<span class="hljs-built_in">yes</span>  <br>  USERCTL=no   <br>  DEVICE=bond0  <br>  IPADDR=192.168.37.10  <br>  PREFIX=24  <br>  DNS=192.168.37.1  <br>  NM_CONTROLLED=no<br></code></pre></td></tr></table></figure>
+
+<p><strong>常见网卡绑定驱动有三种模式</strong>  </p>
+<ul>
+<li>mode0:平衡负载模式,平时两块网卡同时工作,且自动备援,但需要在与服务器本地网卡相连的交换机设备上进行端口聚合来支持绑定技术  </li>
+<li>mode1:自动备援模式,平时仅一块网卡工作,故障后自动替换为另外网卡  </li>
+<li>mode6:平衡负载模式,平时两块网卡同时工作,自动备援,无须交换机设备提供辅助支持</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/modprobe.d/bond.conf　<span class="hljs-comment"># 创建绑定网卡文件    </span><br>  <span class="hljs-built_in">alias</span> bond0 bonding<br>  options bond0 miiimon=100 mode=6  <br>[root@xy ~]# systemctl restart network  <br>[root@xy ~]# ifconfig 　 <span class="hljs-comment"># 正常情况下仅仅bond0网卡设备显示IP等信息  </span><br>  bond0: flags=5187&lt;UP,BR0ADCAST,RUNNING,MASTER,MULTICAST&gt; mtu 1500  <br>  inet 192.168.37.10 network 255.255.255.0 broadcast 192.168.37.255  <br>  inet6 fe80:20c:29ff:fe9c:637d prefixlen 64 scopeid 0x20&lt;<span class="hljs-built_in">link</span>&gt;  <br>  ........省略部分信息........  <br>  eno16777736: flags=5187&lt;UP,BR0ADCAST,RUNNING,MASTER,MULTICAST&gt; mtu 1500  <br>  ........省略部分信息........  <br>  eno33554984: flags=5187&lt;UP,BR0ADCAST,RUNNING,MASTER,MULTICAST&gt; mtu 1500  <br>  ........省略部分信息........  <br>[root@xy ~]# ping 192.168.37.10 <span class="hljs-comment"># 断开其中一块网卡,另一块会继续为用户提供服务</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="20-配置sshd服务"><a href="#20-配置sshd服务" class="headerlink" title="20. 配置sshd服务:    "></a>20. 配置sshd服务:    <a id="ssh"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/ssh/sshd_config<br>[root@xy ~]# systemctl restart sshd　<span class="hljs-comment"># service sshd start </span><br>[root@xy ~]# systemctl <span class="hljs-built_in">enable</span> sshd　 <span class="hljs-comment"># chkconfig sshd enable  </span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Port 22</td>
+<td>sshd服务默认端口</td>
+</tr>
+<tr>
+<td>ListenAddress 0.0.0.0</td>
+<td>设定sshd服务监听的IP地址</td>
+</tr>
+<tr>
+<td>Protocol 2</td>
+<td>SSH协议的版本号</td>
+</tr>
+<tr>
+<td>HostKey &#x2F;etc&#x2F;ssh&#x2F;ssh_host_key</td>
+<td>SSH协议的版本1,DES私钥存放位置</td>
+</tr>
+<tr>
+<td>HostKey &#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key</td>
+<td>SSH协议的版本2,RSA私钥存放位置</td>
+</tr>
+<tr>
+<td>HostKey &#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key</td>
+<td>SSH协议的版本2,DSA私钥存放位置</td>
+</tr>
+<tr>
+<td>PermitRootLogin no</td>
+<td>设定是否允许管理员直接登陆</td>
+</tr>
+<tr>
+<td>StrictModes yes</td>
+<td>当远程用户的私钥改变时直接拒接登陆</td>
+</tr>
+<tr>
+<td>MaxAuthTries 6</td>
+<td>最大密码尝试次数</td>
+</tr>
+<tr>
+<td>MaxSessions 10</td>
+<td>最大终端数</td>
+</tr>
+<tr>
+<td>PasswordAuthentication yes</td>
+<td>是否允许密码验证</td>
+</tr>
+<tr>
+<td>PermitEmptyPasswords no</td>
+<td>是否允许空密码登录</td>
+</tr>
+</tbody></table>
+<p><strong>安全密钥验证</strong><br><em>客户端主机生成“密钥对”(非对称加密)</em>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ssh-keygen -t rsa -b 2048  <span class="hljs-comment"># 用此命令的 留下 私钥</span><br>  Generating public/private rsa key pair. <br>  Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/root/.ssh/id_rsa):　回车或设置密钥存储路径<br>  Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase): 　直接按回车或设置密钥密码  <br>  Enter same passphrase again: 再次按回车或设置密钥密码<br>  Your identification has been saved <span class="hljs-keyword">in</span> /root/.ssh/id_rsa.  <br>  Your public key has been saved <span class="hljs-keyword">in</span> /root/.ssh/id_rsa.pub.  <br>  The key fingerprint is:  <br>  81:e1:46:ce:a2:1a:a2:45:e2:5e:46:05:9f:ce:c1:12 root@xy.com  <br>  The key<span class="hljs-string">&#x27;s randomart image is:  </span><br><span class="hljs-string">  ....</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>客户端主机生成的<code>公钥</code>传送至远程主机上</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ssh-copy-id 192.168.37.10  <span class="hljs-comment"># ssh-copy-ip 只能拷贝公钥</span><br>  Number of key(s) added: 1  <br>  Now try logging into the machine, with:   <span class="hljs-string">&quot;ssh &#x27;192.168.37.10&#x27;&quot;</span>  <br>  and check to make sure that only the key(s) you wanted were added.  <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>对服务器进行设置只允许密钥验证</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/ssh/sshd_config  <br>PasswordAuthentication no<br></code></pre></td></tr></table></figure>
+
+<h3 id="21-远程传输命令scp-secure-copy-基于SSH协议-Liunx主机之间"><a href="#21-远程传输命令scp-secure-copy-基于SSH协议-Liunx主机之间" class="headerlink" title="21. 远程传输命令scp(secure copy) 基于SSH协议 Liunx主机之间:  "></a>21. 远程传输命令scp(secure copy) 基于SSH协议 Liunx主机之间:  <a id="scp"></a></h3><ul>
+<li>scp [参数] 本地文件 远程用户@远程IP地址:远程目录	上传到远程主机</li>
+<li>scp [参数] 远程用户@远程IP地址:远程文件 本地目录    下载到本地主机<ul>
+<li>-v         显示详细的链接进度</li>
+<li>-P         指定远程主机的sshd端口号</li>
+<li>-r         用于传送文件</li>
+<li>-6         使用ipv6协议</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World&quot;</span> &gt; readme.txt  <br>[root@xy ~]# scp /root/readme.txt 192.168.37.10:/home　　　　<span class="hljs-comment"># 上传</span><br>[root@xy ~]# scp 192.168.37.10:/home/readme.txt /root　　　　<span class="hljs-comment"># 下载</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>不间断会话服务screen</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-ls</td>
+<td><strong>显示当前已经有的会话</strong></td>
+</tr>
+<tr>
+<td>-r ID</td>
+<td><strong>恢复指定会话</strong></td>
+</tr>
+<tr>
+<td>Ctrl+a,d</td>
+<td><strong>剥离当前会话</strong></td>
+</tr>
+<tr>
+<td>-S</td>
+<td><strong>创建会话窗口</strong></td>
+</tr>
+<tr>
+<td>-x</td>
+<td><strong>加入指定会话</strong></td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# screen -S backup 　 <span class="hljs-comment"># 屏幕快速闪动进入会话  </span><br>[root@xy ~]# screen -<span class="hljs-built_in">ls</span><br>  There is a screen on:  <br>        3127.backup     (Attached)  <br>1 Socket <span class="hljs-keyword">in</span> /var/run/screen/S-root.<br></code></pre></td></tr></table></figure>
+
+<h3 id="22-Apache-服务部署静态网站"><a href="#22-Apache-服务部署静态网站" class="headerlink" title="22. Apache 服务部署静态网站  "></a>22. Apache 服务部署静态网站  <a id="apache"></a></h3><ul>
+<li>Web 服务程序:IIS、Nginx、Apache</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# yum install httpd<br>[root@xy ~]# systemctl start httpd  <br>[root@xy ~]# systemctl <span class="hljs-built_in">enable</span> httpd<br>[root@xy ~]# vim /etc/httpd/conf/httpd.conf <span class="hljs-comment"># 配置文件</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="22-1-httpd服务程序配置文件及存放位置"><a href="#22-1-httpd服务程序配置文件及存放位置" class="headerlink" title="22.1 httpd服务程序配置文件及存放位置"></a>22.1 httpd服务程序配置文件及存放位置</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务目录</td>
+<td>&#x2F;etc&#x2F;httpd</td>
+</tr>
+<tr>
+<td>主配置文件</td>
+<td>&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</td>
+</tr>
+<tr>
+<td>网站数据目录DocumentRoot</td>
+<td>&#x2F;var&#x2F;www&#x2F;html</td>
+</tr>
+<tr>
+<td>访问日志</td>
+<td>&#x2F;var&#x2F;log&#x2F;httpd&#x2F;access_log</td>
+</tr>
+<tr>
+<td>错误日志</td>
+<td>&#x2F;var&#x2F;log&#x2F;httpd&#x2F;error_log</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ServerRoot</td>
+<td>服务目录  ✔</td>
+</tr>
+<tr>
+<td>ServerAdmin</td>
+<td>管理员邮箱</td>
+</tr>
+<tr>
+<td>User</td>
+<td>运行服务的用户</td>
+</tr>
+<tr>
+<td>Group</td>
+<td>运行服务的用户组</td>
+</tr>
+<tr>
+<td>ServerName</td>
+<td>网站服务器的域名</td>
+</tr>
+<tr>
+<td>DocumentRoot</td>
+<td>网站数据目录  ✔</td>
+</tr>
+<tr>
+<td>Directory</td>
+<td>网站数据目录的权限</td>
+</tr>
+<tr>
+<td>DirectoryIndex</td>
+<td>默认索引页面  ✔</td>
+</tr>
+<tr>
+<td>ErrorLog</td>
+<td>错误日志文件</td>
+</tr>
+<tr>
+<td>CustomLog</td>
+<td>访问日志文件</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>网页超时时间,默认300s</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>SELinux(Security-Enhances Linux),强制反问控制(MAC)安全子系统,三种服务配置模式<code>enforccing  peimissing  disabled</code>,当改变DocumentRoot路径后,违反了SELinux监管规则,所以在新的路径下Index.html无法访问；</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim  /etc/selinux/config　  <span class="hljs-comment"># SELinux 配置文件路径</span><br>  1  <span class="hljs-comment">#This file controls the state of SELinux on the system.  </span><br>  2  <span class="hljs-comment"># SELINUX= can take one of these three values:  </span><br>  3  <span class="hljs-comment">#     enforcing - SELinux security policy is enforced.   &#x27;enforce&#x27;  </span><br>  4  <span class="hljs-comment">#     permissive - SELinux prints warnings instead of enforcing.  &#x27;permissive&#x27;  </span><br>  5  <span class="hljs-comment">#     disabled - No SELinux policy is loaded.  &#x27;disabled SELINUX=enforcing  </span><br>  6  <span class="hljs-comment"># SELINUXTYPE= can take one of these two values:  </span><br>  7  <span class="hljs-comment">#     targeted - Targeted processes are protected,  </span><br>  8  <span class="hljs-comment">#     minimum - Modification of targeted policy. Only selected processes are protected.   </span><br>  9  <span class="hljs-comment">#     mls - Multi Level Security protection.</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="22-2-SELinux-安全上下文由用户段、角色段、类型段共同组成"><a href="#22-2-SELinux-安全上下文由用户段、角色段、类型段共同组成" class="headerlink" title="22.2 SELinux 安全上下文由用户段、角色段、类型段共同组成"></a>22.2 SELinux 安全上下文由用户段、角色段、类型段共同组成</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# setenforce 0   <span class="hljs-comment"># setenforce  </span><br>[root@xy ~]# getenforce 　  <span class="hljs-comment"># getenforce  </span><br>  Permissive  <br>[root@xy ~]# setenforce 1    <br>[root@xy ~]# getenforce <br>  Enforcing  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -Zd /var/www/html/ 　<span class="hljs-comment"># ls -Zd  用户段 角色段 类型段  </span><br>  drwxr-xr-x. root root system_u:object_r:httpd_sys_content_t:s0 /var/www/html/  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -Zd /home/wwwroot/<br>  drwxr-xr-x. root root unconfined_u:object_r:home_root_t:s0 /home/wwwroot/<br></code></pre></td></tr></table></figure>
+
+<h4 id="22-3-semanage-参数-选项-文件"><a href="#22-3-semanage-参数-选项-文件" class="headerlink" title="22.3 semanage [参数] [选项] [文件]"></a>22.3 semanage [参数] [选项] [文件]</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>用于查询</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>用于添加</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>用于修改</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>用于删除</td>
+</tr>
+<tr>
+<td>semanage fcontext -a -t</td>
+<td>用于添加新的SELinux安全上下文✔</td>
+</tr>
+<tr>
+<td>restorcon -Rv</td>
+<td>更新安全上下文</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot   <br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot/*  <br>[root@xy ~]# restorecon -Rv /home/wwwroot/    <br>  restorecon reset /home/wwwroot context unconfined_u:object_r:home_root_t:s0-&gt;  <br>  unconfined_u:object_r:httpd_sys_content_t:s0  <br>  restorecon reset /home/wwwroot/index.html context   <br>  unconfined_u:object_r:home_root_t:s0-&gt;unconfined_u:object_r:httpd_sys_content_t:s0<br></code></pre></td></tr></table></figure>
+
+<h4 id="22-4-个人用户主页功能"><a href="#22-4-个人用户主页功能" class="headerlink" title="22.4 个人用户主页功能"></a>22.4 个人用户主页功能</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/httpd/conf.d/userdir.conf<br>  <span class="hljs-comment">#UserDir disabled  </span><br>  UserDir public_html　　24行 去掉#   网站在用户家目录中保存的名称 <br>[root@xy ~]# su - xy  <br>[xy@xy ~]$ <span class="hljs-built_in">mkdir</span> public_html  <br>[xy@xy ~]$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This is xy&#x27;s website&quot;</span> &gt; public_html/index.html <br>[xy@xy ~]$ <span class="hljs-built_in">chmod</span> -Rf 755 /home/xy<br><br>[root@xy ~]# getsebool -a | grep http　<span class="hljs-comment"># getsebool -a 获取安全策略  </span><br>  httpd_enable_homedirs --&gt; off  <br>[root@xy ~]# setsebool -P httpd_enable_homedirs=on　 <span class="hljs-comment"># setsebool -P  </span><br>[root@xy ~]# htpasswd -c /etc/httpd/passwd xy <br>  New password:  <br>  Re-<span class="hljs-built_in">type</span> new password:  <br>  Adding password <span class="hljs-keyword">for</span> user xy  <br>[root@xy ~]# vim /etc/httpd/conf.d/userdir.conf  <span class="hljs-comment"># 31-35 </span><br>  &lt;Directory <span class="hljs-string">&quot;/home/*/public_html&quot;</span>&gt;  <br>     AllowOverride all  <br>     authuserfile <span class="hljs-string">&quot;/etc/httpd/passwd&quot;</span>  <br>     authname <span class="hljs-string">&quot;My privately website&quot;</span>  <br>     authtype basic  <br>     require user xy  <br>  &lt;/Directory&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="22-5-虚拟主机-VPS-Virtual-Private-Server-功能"><a href="#22-5-虚拟主机-VPS-Virtual-Private-Server-功能" class="headerlink" title="22.5 虚拟主机(VPS:Virtual Private Server)功能"></a>22.5 虚拟主机(VPS:Virtual Private Server)功能</h4><p><strong>利用该功能可以把一台物理服务器分割为多个”虚拟服务器”,VPS共享物理服务器硬件</strong><br><strong>资源,Apache的VPS是基于用户请求不同IP、主机域名、端口号,实现提供多个网站同时为外部提供访问服务技术</strong>   </p>
+<h5 id="1-基于多个IP地址-192-168-37-10-192-168-37-20-192-168-37-30"><a href="#1-基于多个IP地址-192-168-37-10-192-168-37-20-192-168-37-30" class="headerlink" title="1. 基于多个IP地址(192.168.37.10 ; 192.168.37.20 ; 192.168.37.30)"></a>1. 基于多个IP地址(192.168.37.10 ; 192.168.37.20 ; 192.168.37.30)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mkdir</span> -p /home/wwwroot/10  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;IP:192.168.37.10&quot;</span> &gt; /home/wwwroot/10/index.html  <br>[root@xy ~]# vim /etc/httpd/conf/httpd.conf       <br>  &lt;VirtualHost 192.168.37.10&gt;  <br>  &lt;DocumentRoot <span class="hljs-string">&quot;/home/wwwroot/10&quot;</span>&gt;  <br>    ServerName tech.xy.com  <br>  &lt;Directory <span class="hljs-string">&quot;/home/wwwroot/10&quot;</span>&gt;  <br>    AllowOverride None  <br>    Require all granted  <br>  &lt;/Directory&gt;  <br>  &lt;/VirtualHost&gt; <br></code></pre></td></tr></table></figure>
+
+<h5 id="2-基于主机域名-192-168-37-10-www-xy-com-bbs-xy-com-tech-xy-com-●ˇ∀ˇ●"><a href="#2-基于主机域名-192-168-37-10-www-xy-com-bbs-xy-com-tech-xy-com-●ˇ∀ˇ●" class="headerlink" title="2. 基于主机域名(192.168.37.10 www.xy.com bbs.xy.com tech.xy.com)  (●ˇ∀ˇ●)"></a>2. 基于主机域名(192.168.37.10 <a target="_blank" rel="noopener" href="http://www.xy.com/">www.xy.com</a> bbs.xy.com tech.xy.com)  (●ˇ∀ˇ●)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/hosts     <br>  127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4  <br>  ::1 localhost localhost.localdomain localhost6 localhost6.localdomain6  <br>  192.168.37.10 www.xy.com bbs.xy.com tech.xy.com  <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> -p /home/wwwroot/www<br>  &lt;VirtualHost 192.168.37.10&gt;  <br>  DocumentRoot <span class="hljs-string">&quot;/home/wwwroot/www&quot;</span>  <br>  ServerName tech.xy.com  <br>  &lt;Directory <span class="hljs-string">&quot;/home/wwwroot/www&quot;</span>&gt;  <br>	AllowOverride None  <br>	Require all granted  <br>  &lt;/Directory&gt;  <br>  &lt;/VirtualHost&gt; <br><br>[root@xy ~]# systemctl restart httpd<br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot/ <br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot/bbs <br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot/bbs/*<br>[root@xy ~]# restorecon -Rv /home/wwwroot<br></code></pre></td></tr></table></figure>
+
+<h5 id="3-基于端口号80-443-8080比较合理-测试-6111-6222"><a href="#3-基于端口号80-443-8080比较合理-测试-6111-6222" class="headerlink" title="3. 基于端口号80 443 8080比较合理  (测试:6111 6222)"></a>3. 基于端口号80 443 8080比较合理  (测试:6111 6222)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mkdir</span> -p /home/wwwroot/6111<br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;port:6111&quot;</span> &gt; /home/wwwroot/6111/index.html<br>[root@xy ~]# vim /etc/httpd/conf/httpd.conf <br>  Listen 6111  <br>    &lt;VirtualHost 192.168.37.10:6111&gt;  <br>    DocumentRoot <span class="hljs-string">&quot;/home/wwwroot/6111&quot;</span>  <br>    ServerName www.xy.com  <br>    &lt;Directory <span class="hljs-string">&quot;/home/wwwroot/6111&quot;</span>&gt;  <br>        AllowOverride None  <br>        Require all granted  <br>    &lt;/Directory&gt;  <br>    &lt;/VirtualHost&gt;    <br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot <br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot/6111 <br>[root@xy ~]# semanage fcontext -a -t httpd_sys_content_t /home/wwwroot/6111/*  <br>[root@xy ~]# restorecon -Rv /home/wwwroot <br>[root@xy ~]# semanage port -l | grep http   <span class="hljs-comment"># semanage port -l 查询端口</span><br>    http_cache_port_t            tcp      8080, 8118, 8123, 10001-10010  <br>    http_cache_port_t            udp      3130  <br>    http_port_t                  tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000  <br>    pegasus_http_port_t          tcp      5988  <br>    pegasus_https_port_t         tcp      5989  <br><br>[root@xy ~]# semanage port -a -t http_port_t -p tcp 6111  <span class="hljs-comment"># semanage port -a -t  </span><br>[root@xy ~]# semanage port -l | grep http<br>    http_cache_port_t    tcp   8080, 8118, 8123, 10001-10010  <br>    http_cache_port_t    udp   3130  <br>    http_port_t          tcp   6111, 80, 81, 443, 488, 8008, 8009, 8443, 9000  <br>    pegasus_http_port_t  tcp   5988  <br>    pegasus_https_port_t tcp   5989  <br>[root@xy ~]# systemctl restart httpd<br></code></pre></td></tr></table></figure>
+
+<h4 id="22-6-构建基于HTTP的网络YUM源"><a href="#22-6-构建基于HTTP的网络YUM源" class="headerlink" title="22.6 构建基于HTTP的网络YUM源"></a>22.6 构建基于HTTP的网络YUM源</h4><ol>
+<li>挂在光盘镜像并拷贝光盘下Packages目录所有软件包到 &#x2F;var&#x2F;www&#x2F;html&#x2F;centos;  </li>
+<li>创建本地源，构建缓存，<code>yum install createrepo; createrepo centos/</code>;</li>
+<li>安装httpd并<code>useradd apache -g apache</code>，重启服务并关闭防火墙;</li>
+<li>配置网络yum源&#x2F;etc&#x2F;yum.repo.d&#x2F;http.repo:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[base]<br>name = <span class="hljs-string">&quot;CentOS7 HTTP YUM&quot;</span><br>baseurl = http://192.168.37.10/centos/<br>gpgcheck = 0<br>enabled = 1<br>[update]<br>name = <span class="hljs-string">&quot;CentOS7 HTTP YUM&quot;</span><br>baseurl = http://192.168.37.10/centos/<br>gpgcheck = 0<br>enabled = 1<br></code></pre></td></tr></table></figure></li>
+<li>更新软件包，<code>createrepo --update centos/</code>   </li>
+<li>同步外网YUM源reposync:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -O /etc/yum.repo.d/ http://mirrors.163.com/.help/CentOS7-Base-163.repo <br>yum install yum-utils createrepo -y<br>yum repolist<br>reposync -r base -p /var/www/html/centos<br>createrepo /var/www/html/centos<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="#back" target="_self">返回目录</a></h4>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Devops-linux/" class="category-chain-item">Devops, linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/Devops/" class="print-no-link">#Devops</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux服务配置01</div>
+      <div>https://anyu967.github.io/posts/296e7ad4.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>anyu967</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/c7601bf8.html" title="Linux服务配置03">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux服务配置03</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4ac0a166.html" title="Linux基础命令">
+                        <span class="hidden-mobile">Linux基础命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
