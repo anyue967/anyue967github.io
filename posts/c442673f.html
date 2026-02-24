@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -75,7 +75,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -95,7 +95,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -108,7 +109,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -165,6 +166,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -233,7 +286,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          805 字
+          803 字
         
       </span>
     
@@ -295,174 +348,185 @@
             
               <div class="markdown-body">
                 
-                <p>2019-06-08-搭建博客</p>
-<span id="more"></span>
-
-<h2 id="基础搭建"><a href="#基础搭建" class="headerlink" title="基础搭建"></a>基础搭建</h2><h3 id="创建一个仓库，用于存放个人博客文件"><a href="#创建一个仓库，用于存放个人博客文件" class="headerlink" title="创建一个仓库，用于存放个人博客文件"></a>创建一个仓库，用于存放个人博客文件</h3><ul>
-<li>在Github首页右上角头像左侧加号点选择 New repositor(新存储库)或点击这里进行创建一个仓库.</li>
-</ul>
-<img src="/posts/c442673f/01-CreateBlog.jpg" srcset="/img/loading.gif" lazyload class="" title="创建仓库">  
-
+                <p>2019-06-08-搭建博客 <span id="more"></span></p>
+<h2 id="基础搭建">基础搭建</h2>
+<h3
+id="创建一个仓库用于存放个人博客文件">创建一个仓库，用于存放个人博客文件</h3>
 <ul>
-<li>开启Github Pages</li>
+<li><p>在Github首页右上角头像左侧加号点选择 New
+repositor(新存储库)或点击这里进行创建一个仓库. <img src="/posts/c442673f/01-CreateBlog.jpg" srcset="/img/loading.gif" lazyload class="" title="创建仓库"></p></li>
+<li><p>开启Github Pages <img src="/posts/c442673f/02-CreateBlog.jpg" srcset="/img/loading.gif" lazyload class="" title="创建仓库"></p></li>
+<li><p>进入仓库设置项，进行主题的选择 <img src="/posts/c442673f/03-CreateBlog.jpg" srcset="/img/loading.gif" lazyload class="" title="创建仓库"></p></li>
 </ul>
-<img src="/posts/c442673f/02-CreateBlog.jpg" srcset="/img/loading.gif" lazyload class="" title="创建仓库">  
-
-<ul>
-<li>进入仓库设置项，进行主题的选择</li>
-</ul>
-<img src="/posts/c442673f/03-CreateBlog.jpg" srcset="/img/loading.gif" lazyload class="" title="创建仓库">  
-
-<h2 id="Hexo-的搭建"><a href="#Hexo-的搭建" class="headerlink" title="Hexo 的搭建"></a>Hexo 的搭建</h2><blockquote>
-<p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持<code>Markdown</code>格式，有众多优秀插件和主题。</p>
+<h2 id="hexo-的搭建">Hexo 的搭建</h2>
+<blockquote>
+<p>Hexo是一个简单、快速、强大的基于 Github Pages
+的博客发布工具，支持<code>Markdown</code>格式，有众多优秀插件和主题。</p>
 </blockquote>
-<h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><h5 id="Linux-类Linux下利用nvm安装Node比较好，https-github-com-nvm-sh-nvm"><a href="#Linux-类Linux下利用nvm安装Node比较好，https-github-com-nvm-sh-nvm" class="headerlink" title="Linux&#x2F;类Linux下利用nvm安装Node比较好，https://github.com/nvm-sh/nvm"></a>Linux&#x2F;类Linux下利用nvm安装Node比较好，<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh<br>$ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh<br></code></pre></td></tr></table></figure>
-
-<h5 id="Windows下nvm安装配置，https-github-com-coreybutler-nvm-windows"><a href="#Windows下nvm安装配置，https-github-com-coreybutler-nvm-windows" class="headerlink" title="Windows下nvm安装配置，https://github.com/coreybutler/nvm-windows"></a>Windows下nvm安装配置，<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">https://github.com/coreybutler/nvm-windows</a></h5><blockquote>
-<p>nvm 安装好后，利用 nvm 相关命令安装node.js<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27626333/article/details/77857223">参考配置 nvm</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wyy1234/p/9727142.html">参考cnblog博客</a></p>
+<h3 id="安装-node.js">安装 Node.js</h3>
+<h5
+id="linux类linux下利用nvm安装node比较好httpsgithub.comnvm-shnvm">Linux/类Linux下利用nvm安装Node比较好，<a
+target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh<br>$ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh<br></code></pre></td></tr></table></figure>
+<h5
+id="windows下nvm安装配置httpsgithub.comcoreybutlernvm-windows">Windows下nvm安装配置，<a
+target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">https://github.com/coreybutler/nvm-windows</a></h5>
+<blockquote>
+<p>nvm 安装好后，利用 nvm 相关命令安装node.js<br />
+<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27626333/article/details/77857223">参考配置
+nvm</a><br />
+<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/wyy1234/p/9727142.html">参考cnblog博客</a></p>
 </blockquote>
 <ul>
-<li>配置nvm安装目录下的 settings.txt</li>
+<li><p>配置nvm安装目录下的 settings.txt <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ root: F:\Design\nvm<br>$ path: F:\Design\nodejs<br>$ <span class="hljs-built_in">arch</span>: 64 <br>$ proxy: none <br>$ node_mirror: https://npm.taobao.org/mirrors/node/<br>$ npm_mirror: https://npm.taobao.org/mirrors/npm/<br></code></pre></td></tr></table></figure></p></li>
+<li><p>配置用npm下载包时全局安装的包路径 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">$ npm config set prefix “F:\Design<span class="hljs-symbol">\n</span>vm<span class="hljs-symbol">\n</span>pm”<br>$ <span class="hljs-variable">%NPM_HOME%</span>=F:\Design<span class="hljs-symbol">\n</span>vm<span class="hljs-symbol">\n</span>pm<br></code></pre></td></tr></table></figure></p></li>
+<li><p>配置国内仓库<br />
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">$ npm install -<span class="hljs-selector-tag">g</span> cnpm <span class="hljs-attr">--registry</span>=https:<span class="hljs-comment">//registry.npm.taobao.org</span><br></code></pre></td></tr></table></figure></p></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ root: F:\Design\nvm<br>$ path: F:\Design\nodejs<br>$ <span class="hljs-built_in">arch</span>: 64 <br>$ proxy: none <br>$ node_mirror: https://npm.taobao.org/mirrors/node/<br>$ npm_mirror: https://npm.taobao.org/mirrors/npm/<br></code></pre></td></tr></table></figure>
+<p>:link:<a
+target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/node/">淘宝Node镜像</a><br />
+:link:<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/npm/">淘宝Npm镜像</a></p>
+<h3 id="nvm-命令">nvm 命令</h3>
+<table>
 
-<ul>
-<li>配置用npm下载包时全局安装的包路径</li>
-</ul>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">$ npm config set prefix “F:\Design<span class="hljs-symbol">\n</span>vm<span class="hljs-symbol">\n</span>pm”<br>$ <span class="hljs-variable">%NPM_HOME%</span>=F:\Design<span class="hljs-symbol">\n</span>vm<span class="hljs-symbol">\n</span>pm<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>配置国内仓库</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">$ npm install -<span class="hljs-selector-tag">g</span> cnpm <span class="hljs-attr">--registry</span>=https:<span class="hljs-comment">//registry.npm.taobao.org</span><br></code></pre></td></tr></table></figure>
-
-<p>:link:<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/node/">淘宝Node镜像</a><br>:link:<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/npm/">淘宝Npm镜像</a>  </p>
-<h3 id="nvm-命令"><a href="#nvm-命令" class="headerlink" title="nvm 命令"></a>nvm 命令</h3><table>
 <thead>
 <tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">nvm arch 32&#x2F;64</td>
-<td align="left">显示Node是以32位还是64位模式运行</td>
+<tbody>
+<tr>
+<td style="text-align: left;">nvm arch 32/64</td>
+<td style="text-align: left;">显示Node是以32位还是64位模式运行</td>
 </tr>
 <tr>
-<td align="left">nvm install <version> [arch]</td>
-<td align="left">下载需要的Node版本,默认64位</td>
+<td style="text-align: left;">nvm install <version> [arch]</td>
+<td style="text-align: left;">下载需要的Node版本,默认64位</td>
 </tr>
 <tr>
-<td align="left">nvm list [available]</td>
-<td align="left">列出node.js安装,在末尾输入可用的类型以显示可供下载的版本列表</td>
+<td style="text-align: left;">nvm list [available]</td>
+<td
+style="text-align: left;">列出node.js安装,在末尾输入可用的类型以显示可供下载的版本列表</td>
 </tr>
 <tr>
-<td align="left">nvm on</td>
-<td align="left">启用版本管理</td>
+<td style="text-align: left;">nvm on</td>
+<td style="text-align: left;">启用版本管理</td>
 </tr>
 <tr>
-<td align="left">nvm off</td>
-<td align="left">禁用版本管理</td>
+<td style="text-align: left;">nvm off</td>
+<td style="text-align: left;">禁用版本管理</td>
 </tr>
 <tr>
-<td align="left">nvm proxy [url]</td>
-<td align="left">设置代理,留空以查看当前代理,设置为“none”以删除代理</td>
+<td style="text-align: left;">nvm proxy [url]</td>
+<td
+style="text-align: left;">设置代理,留空以查看当前代理,设置为“none”以删除代理</td>
 </tr>
 <tr>
-<td align="left">nvm uninstall <version></td>
-<td align="left">卸载指定版本</td>
+<td style="text-align: left;">nvm uninstall <version></td>
+<td style="text-align: left;">卸载指定版本</td>
 </tr>
 <tr>
-<td align="left">nvm use <version> [arch]</td>
-<td align="left">使用指定Node版本,可以指定位数</td>
+<td style="text-align: left;">nvm use <version> [arch]</td>
+<td style="text-align: left;">使用指定Node版本,可以指定位数</td>
 </tr>
 <tr>
-<td align="left">nvm root [path]</td>
-<td align="left">设置nvm应存储不同版本node.js的目录</td>
+<td style="text-align: left;">nvm root [path]</td>
+<td style="text-align: left;">设置nvm应存储不同版本node.js的目录</td>
 </tr>
 <tr>
-<td align="left">nvm version</td>
-<td align="left">显示当前的 nvm 版本</td>
+<td style="text-align: left;">nvm version</td>
+<td style="text-align: left;">显示当前的 nvm 版本</td>
 </tr>
 <tr>
-<td align="left">nvm node_mirror <node_mirror_url></td>
-<td align="left">Set the node mirror(China)</td>
+<td style="text-align: left;">nvm node_mirror <node_mirror_url></td>
+<td style="text-align: left;">Set the node mirror(China)</td>
 </tr>
 <tr>
-<td align="left">nvm npm_mirror <npm_mirror_url></td>
-<td align="left">–</td>
+<td style="text-align: left;">nvm npm_mirror <npm_mirror_url></td>
+<td style="text-align: left;">–</td>
 </tr>
-</tbody></table>
-<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方参考文档</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install -g hexo-cli<br>$ hexo init &lt;folder&gt;  // 必须为空目录<br>$ <span class="hljs-built_in">cd</span> &lt;folder&gt;<br>$ npm install<br>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── <span class="hljs-built_in">source</span><br>|   ├── _drafts<br>|   └── _posts<br>└── themes<br><br>$ hexo new [layout] &lt;title&gt;  <span class="hljs-comment"># hexo new &quot;post title with whitespace&quot;  </span><br>$ hexo g  <span class="hljs-comment"># generate 网页文件</span><br>$ hexo s  <span class="hljs-comment"># server https://localhost:4000 预览网页</span><br>$ hexo clean <br>$ hexo d  <span class="hljs-comment"># deployer push 到仓库</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="配置优化Hexo-命令都是在博客主目录执行"><a href="#配置优化Hexo-命令都是在博客主目录执行" class="headerlink" title="配置优化Hexo(命令都是在博客主目录执行)"></a>配置优化Hexo(命令都是在博客主目录执行)</h3><h4 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="配置_config.yml"></a>配置_config.yml</h4><p>:link:<a target="_blank" rel="noopener" href="https://github.com/cczeng/BlogBackup/blob/master/_config.yml">参考配置</a></p>
-<h4 id="安装hexo-deployer-git扩展"><a href="#安装hexo-deployer-git扩展" class="headerlink" title="安装hexo-deployer-git扩展"></a>安装<code>hexo-deployer-git</code>扩展</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo-deployer-git --save<br>  <br>deploy:<br><span class="hljs-built_in">type</span>: git<br>repo: git@github.com:anyue967/anyue967.github.io.git<br>branch: master<br></code></pre></td></tr></table></figure>
-
-<h4 id="添加插件"><a href="#添加插件" class="headerlink" title="添加插件"></a>添加插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo-helper-live2d --save<br></code></pre></td></tr></table></figure>
-
-<p>:link:<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d">参考官方 live-2d配置文件</a></p>
+</tbody>
+</table>
+<h3 id="安装-hexo">安装 Hexo</h3>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方参考文档</a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install -g hexo-cli<br>$ hexo init &lt;folder&gt;  // 必须为空目录<br>$ <span class="hljs-built_in">cd</span> &lt;folder&gt;<br>$ npm install<br>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── <span class="hljs-built_in">source</span><br>|   ├── _drafts<br>|   └── _posts<br>└── themes<br><br>$ hexo new [layout] &lt;title&gt;  <span class="hljs-comment"># hexo new &quot;post title with whitespace&quot;  </span><br>$ hexo g  <span class="hljs-comment"># generate 网页文件</span><br>$ hexo s  <span class="hljs-comment"># server https://localhost:4000 预览网页</span><br>$ hexo clean <br>$ hexo d  <span class="hljs-comment"># deployer push 到仓库</span><br></code></pre></td></tr></table></figure></p>
+<h3
+id="配置优化hexo命令都是在博客主目录执行">配置优化Hexo(命令都是在博客主目录执行)</h3>
+<h4 id="配置_config.yml">配置_config.yml</h4>
+<p>:link:<a
+target="_blank" rel="noopener" href="https://github.com/cczeng/BlogBackup/blob/master/_config.yml">参考配置</a>
+#### 安装<code>hexo-deployer-git</code>扩展 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo-deployer-git --save<br>  <br>deploy:<br><span class="hljs-built_in">type</span>: git<br>repo: git@github.com:anyue967/anyue967.github.io.git<br>branch: master<br></code></pre></td></tr></table></figure></p>
+<h4 id="添加插件">添加插件</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo-helper-live2d --save<br></code></pre></td></tr></table></figure>
+<p>:link:<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d">参考官方
+live-2d配置文件</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo-generator-search --save<br><br>search:<br>path: search.xml<br>field: post<br>format: html<br><span class="hljs-built_in">limit</span>: 10000<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo-filter-optimize --save<br></code></pre></td></tr></table></figure>
-
-<h2 id="npm-Nodejs-Package-Manager-相关命令"><a href="#npm-Nodejs-Package-Manager-相关命令" class="headerlink" title="npm (Nodejs Package Manager)相关命令"></a>npm (Nodejs Package Manager)相关命令</h2><table>
+<h2 id="npm-nodejs-package-manager相关命令">npm (Nodejs Package
+Manager)相关命令</h2>
+<table>
 <thead>
 <tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">npm -v</td>
-<td align="left">查询node版本</td>
+<tbody>
+<tr>
+<td style="text-align: left;">npm -v</td>
+<td style="text-align: left;">查询node版本</td>
 </tr>
 <tr>
-<td align="left">npm install xx -g</td>
-<td align="left">全局安装模块,如:<code>gulp@3.9.1</code></td>
+<td style="text-align: left;">npm install xx -g</td>
+<td
+style="text-align: left;">全局安装模块,如:<code>gulp@3.9.1</code></td>
 </tr>
 <tr>
-<td align="left">npm install xx –save</td>
-<td align="left">本地安装模块并写入 json配置</td>
+<td style="text-align: left;">npm install xx –save</td>
+<td style="text-align: left;">本地安装模块并写入 json配置</td>
 </tr>
 <tr>
-<td align="left">npm search xx</td>
-<td align="left">搜索模块</td>
+<td style="text-align: left;">npm search xx</td>
+<td style="text-align: left;">搜索模块</td>
 </tr>
 <tr>
-<td align="left">npm outdated</td>
-<td align="left">过时模块</td>
+<td style="text-align: left;">npm outdated</td>
+<td style="text-align: left;">过时模块</td>
 </tr>
 <tr>
-<td align="left">npm update xx</td>
-<td align="left">更新模块</td>
+<td style="text-align: left;">npm update xx</td>
+<td style="text-align: left;">更新模块</td>
 </tr>
 <tr>
-<td align="left">npm search xx</td>
-<td align="left">搜索模块</td>
+<td style="text-align: left;">npm search xx</td>
+<td style="text-align: left;">搜索模块</td>
 </tr>
 <tr>
-<td align="left">npm cache clear</td>
-<td align="left">清空本地缓存</td>
+<td style="text-align: left;">npm cache clear</td>
+<td style="text-align: left;">清空本地缓存</td>
 </tr>
 <tr>
-<td align="left">npm uninstall xx</td>
-<td align="left">卸载模块</td>
+<td style="text-align: left;">npm uninstall xx</td>
+<td style="text-align: left;">卸载模块</td>
 </tr>
 <tr>
-<td align="left">npm list -g | grep xx</td>
-<td align="left">查找全局安装模块</td>
+<td style="text-align: left;">npm list -g | grep xx</td>
+<td style="text-align: left;">查找全局安装模块</td>
 </tr>
 <tr>
-<td align="left">npm list xx</td>
-<td align="left">查看模块版本号</td>
+<td style="text-align: left;">npm list xx</td>
+<td style="text-align: left;">查看模块版本号</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm config <span class="hljs-built_in">set</span> prefix “F:\Design\nvm\npm”      <span class="hljs-comment"># 配置用npm下载模块时全局安装的包路径</span><br>$ npm config <span class="hljs-built_in">set</span> proxy=http://xxx               <span class="hljs-comment"># 设置代理</span><br>$ npm config <span class="hljs-built_in">set</span> registry=<span class="hljs-string">&quot;http://r.cnmpjs.org&quot;</span>     <span class="hljs-comment"># 设置镜像仓库</span><br>$ npm install -g cnpm --registry=https://registry.npm.taobao.org`  <span class="hljs-comment"># 使用淘宝镜像命令</span><br></code></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm cache add &lt;tarball file&gt;<br>$ npm cache add &lt;folder&gt;<br>$ npm cache add &lt;tarball url&gt; <br>$ npm cache add &lt;git url&gt; <br>$ npm cache add &lt;name&gt;@&lt;version&gt;  <br>$ npm cache clean <br>$ npm cache verify  <br><br>npm start<br>npm stop<br>npm restart<br></code></pre></td></tr></table></figure>
+<h2 id="nrm-的安装和使用">nrm 的安装和使用</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install nrm -g    <span class="hljs-comment"># 全局安装nrm  </span><br>nrm <span class="hljs-built_in">ls</span>    <span class="hljs-comment"># 列出可用的镜像源  </span><br><br>  * npm -------- https://registry.npmjs.org/<br>    yarn ------- https://registry.yarnpkg.com/<br>    cnpm ------- http://r.cnpmjs.org/<br>    taobao ----- https://registry.npm.taobao.org/<br>    nj --------- https://registry.nodejitsu.com/<br>    npmMirror -- https://skimdb.npmjs.com/registry/<br>    edunpm ----- http://registry.enpmjs.org/<br>nrm use taobao    <span class="hljs-comment"># 选择国内淘宝镜像源</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="nrm-的安装和使用"><a href="#nrm-的安装和使用" class="headerlink" title="nrm 的安装和使用"></a>nrm 的安装和使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install nrm -g    <span class="hljs-comment"># 全局安装nrm  </span><br>nrm <span class="hljs-built_in">ls</span>    <span class="hljs-comment"># 列出可用的镜像源  </span><br><br>  * npm -------- https://registry.npmjs.org/<br>    yarn ------- https://registry.yarnpkg.com/<br>    cnpm ------- http://r.cnpmjs.org/<br>    taobao ----- https://registry.npm.taobao.org/<br>    nj --------- https://registry.nodejitsu.com/<br>    npmMirror -- https://skimdb.npmjs.com/registry/<br>    edunpm ----- http://registry.enpmjs.org/<br>nrm use taobao    <span class="hljs-comment"># 选择国内淘宝镜像源</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -666,7 +730,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -847,7 +911,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

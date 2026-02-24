@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -71,7 +71,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -91,7 +91,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -104,7 +105,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -161,6 +162,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -291,20 +344,25 @@
             
               <div class="markdown-body">
                 
-                <p>2019-09-14-Redis</p>
-<span id="more"></span>
-
-<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
-<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。 </p>
+                <p>2019-09-14-Redis <span id="more"></span></p>
+<h1 id="redis">Redis</h1>
+<h2 id="介绍">介绍</h2>
+<blockquote>
+<p>Redis
+是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。</p>
 </blockquote>
 <blockquote>
-<p>Redis支持数据的持久化，可以将<code>内存中的数据</code>保存在磁盘中，重启的时候可以再次加载进行使用; Redis不仅仅支持简单的<code>key-value</code>类型的数据，同时还提供<code>list，set，zset，hash</code>等数据结构的存储; Redis支持<code>数据的备份</code>，即master-slave模式的数据备份。</p>
+<p>Redis支持数据的持久化，可以将<code>内存中的数据</code>保存在磁盘中，重启的时候可以再次加载进行使用;
+Redis不仅仅支持简单的<code>key-value</code>类型的数据，同时还提供<code>list，set，zset，hash</code>等数据结构的存储;
+Redis支持<code>数据的备份</code>，即master-slave模式的数据备份。</p>
 </blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# wget http://download.redis.io/releases/redis-5.0.5.tar.gz<br>[root@anyue redis-5.0.5]# tar -xzf redis-5.0.5.tar.gz<br>[root@anyue redis-5.0.5]# make PREFIX=/usr/local/redis install <br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">mkdir</span> /usr/local/redis/etc<br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">cp</span> ./redis.conf /usr/local/redis/etc/<br>[root@anyue redis-5.0.5]# vim /usr/local/redis/etc/redis.conf   <br>  daemonize <span class="hljs-built_in">yes</span>  <br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">ln</span> -s /usr/local/redis/bin/* /usr/local/bin <br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">cp</span> /utils/redis_init_script /usr/local/redis/etc/  <span class="hljs-comment"># 启动脚本</span><br>[root@anyue redis-5.0.5]# vim /usr/local/redis/etc/redis_init_script  <br>	<span class="hljs-comment">#!/bin/sh</span><br>	<span class="hljs-comment"># chkconfig: 2345 80 90</span><br>	<span class="hljs-comment"># description: source package redis</span><br><br>	<span class="hljs-comment"># Simple Redis init.d script conceived to work on Linux systems</span><br>	<span class="hljs-comment"># as it does use of the /proc filesystem.</span><br>	<span class="hljs-comment">### BEGIN INIT INFO</span><br>	<span class="hljs-comment"># Provides:     redis_6379</span><br>	<span class="hljs-comment"># Default-Start:        2 3 4 5</span><br>	<span class="hljs-comment"># Default-Stop:         0 1 6</span><br>	<span class="hljs-comment"># Short-Description:    Redis data structure server</span><br>	<span class="hljs-comment"># Description:          Redis data structure server. See https://redis.io</span><br>	<span class="hljs-comment">### END INIT INFO</span><br><br>	REDISPORT=6379<br>	EXEC=/usr/local/redis/bin/redis-server<br>	CLIEXEC=/usr/local/redis/bin/redis-cli<br><br>	PIDFILE=/var/run/redis_<span class="hljs-variable">$&#123;REDISPORT&#125;</span>.pid<br>	CONF=<span class="hljs-string">&quot;/usr/local/redis/etc/<span class="hljs-variable">$&#123;REDISPORT&#125;</span>.conf&quot;</span><br><br>	<span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-keyword">in</span><br>		start)<br>			<span class="hljs-keyword">if</span> [ -f <span class="hljs-variable">$PIDFILE</span> ]; <span class="hljs-keyword">then</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$PIDFILE</span> exists, process is already running or crashed&quot;</span><br>			<span class="hljs-keyword">else</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Starting Redis server...&quot;</span><br>				<span class="hljs-variable">$EXEC</span> <span class="hljs-variable">$CONF</span> &amp;<br>			<span class="hljs-keyword">fi</span><br>			;;<br>		stop)<br>			<span class="hljs-keyword">if</span> [ ! -f <span class="hljs-variable">$PIDFILE</span> ]; <span class="hljs-keyword">then</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$PIDFILE</span> does not exist, process is not running&quot;</span><br>			<span class="hljs-keyword">else</span><br>				PID=$(<span class="hljs-built_in">cat</span> <span class="hljs-variable">$PIDFILE</span>)<br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Stopping ...&quot;</span><br>				<span class="hljs-variable">$CLIEXEC</span> -p <span class="hljs-variable">$REDISPORT</span> shutdown<br>				<span class="hljs-keyword">while</span> [ -x /proc/<span class="hljs-variable">$&#123;PID&#125;</span> ]<br>				<span class="hljs-keyword">do</span><br>					<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Waiting for Redis to shutdown ...&quot;</span><br>					<span class="hljs-built_in">sleep</span> 1<br>				<span class="hljs-keyword">done</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Redis stopped&quot;</span><br>			<span class="hljs-keyword">fi</span><br>			;;<br>		*)<br>			<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Please use start or stop as first argument&quot;</span><br>			;;<br>	<span class="hljs-keyword">esac</span><br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">ln</span> -s /usr/local/redis/etc/redis_init_script /etc/init.d/redisd  <br>[root@anyue redis-5.0.5]# chkconfig --add redisd`  <span class="hljs-comment"># 加入开机自启  </span><br></code></pre></td></tr></table></figure>
+<h2 id="安装">安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# wget http://download.redis.io/releases/redis-5.0.5.tar.gz<br>[root@anyue redis-5.0.5]# tar -xzf redis-5.0.5.tar.gz<br>[root@anyue redis-5.0.5]# make PREFIX=/usr/local/redis install <br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">mkdir</span> /usr/local/redis/etc<br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">cp</span> ./redis.conf /usr/local/redis/etc/<br>[root@anyue redis-5.0.5]# vim /usr/local/redis/etc/redis.conf   <br>  daemonize <span class="hljs-built_in">yes</span>  <br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">ln</span> -s /usr/local/redis/bin/* /usr/local/bin <br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">cp</span> /utils/redis_init_script /usr/local/redis/etc/  <span class="hljs-comment"># 启动脚本</span><br>[root@anyue redis-5.0.5]# vim /usr/local/redis/etc/redis_init_script  <br>	<span class="hljs-comment">#!/bin/sh</span><br>	<span class="hljs-comment"># chkconfig: 2345 80 90</span><br>	<span class="hljs-comment"># description: source package redis</span><br><br>	<span class="hljs-comment"># Simple Redis init.d script conceived to work on Linux systems</span><br>	<span class="hljs-comment"># as it does use of the /proc filesystem.</span><br>	<span class="hljs-comment">### BEGIN INIT INFO</span><br>	<span class="hljs-comment"># Provides:     redis_6379</span><br>	<span class="hljs-comment"># Default-Start:        2 3 4 5</span><br>	<span class="hljs-comment"># Default-Stop:         0 1 6</span><br>	<span class="hljs-comment"># Short-Description:    Redis data structure server</span><br>	<span class="hljs-comment"># Description:          Redis data structure server. See https://redis.io</span><br>	<span class="hljs-comment">### END INIT INFO</span><br><br>	REDISPORT=6379<br>	EXEC=/usr/local/redis/bin/redis-server<br>	CLIEXEC=/usr/local/redis/bin/redis-cli<br><br>	PIDFILE=/var/run/redis_<span class="hljs-variable">$&#123;REDISPORT&#125;</span>.pid<br>	CONF=<span class="hljs-string">&quot;/usr/local/redis/etc/<span class="hljs-variable">$&#123;REDISPORT&#125;</span>.conf&quot;</span><br><br>	<span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-keyword">in</span><br>		start)<br>			<span class="hljs-keyword">if</span> [ -f <span class="hljs-variable">$PIDFILE</span> ]; <span class="hljs-keyword">then</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$PIDFILE</span> exists, process is already running or crashed&quot;</span><br>			<span class="hljs-keyword">else</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Starting Redis server...&quot;</span><br>				<span class="hljs-variable">$EXEC</span> <span class="hljs-variable">$CONF</span> &amp;<br>			<span class="hljs-keyword">fi</span><br>			;;<br>		stop)<br>			<span class="hljs-keyword">if</span> [ ! -f <span class="hljs-variable">$PIDFILE</span> ]; <span class="hljs-keyword">then</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$PIDFILE</span> does not exist, process is not running&quot;</span><br>			<span class="hljs-keyword">else</span><br>				PID=$(<span class="hljs-built_in">cat</span> <span class="hljs-variable">$PIDFILE</span>)<br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Stopping ...&quot;</span><br>				<span class="hljs-variable">$CLIEXEC</span> -p <span class="hljs-variable">$REDISPORT</span> shutdown<br>				<span class="hljs-keyword">while</span> [ -x /proc/<span class="hljs-variable">$&#123;PID&#125;</span> ]<br>				<span class="hljs-keyword">do</span><br>					<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Waiting for Redis to shutdown ...&quot;</span><br>					<span class="hljs-built_in">sleep</span> 1<br>				<span class="hljs-keyword">done</span><br>				<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Redis stopped&quot;</span><br>			<span class="hljs-keyword">fi</span><br>			;;<br>		*)<br>			<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Please use start or stop as first argument&quot;</span><br>			;;<br>	<span class="hljs-keyword">esac</span><br>[root@anyue redis-5.0.5]# <span class="hljs-built_in">ln</span> -s /usr/local/redis/etc/redis_init_script /etc/init.d/redisd  <br>[root@anyue redis-5.0.5]# chkconfig --add redisd`  <span class="hljs-comment"># 加入开机自启  </span><br></code></pre></td></tr></table></figure>
+<h2 id="使用">使用</h2>
+<h3 id="string-类型及操作">string 类型及操作</h3>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@anyue</span> redis<span class="hljs-number">-5.0</span><span class="hljs-number">.5</span>]<span class="hljs-meta"># redis-cli -h 127.0.0.1 -p6379 -apasswd  # 远程</span><br></code></pre></td></tr></table></figure>
+<h2 id="待续">待续。。。</h2>
 
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="string-类型及操作"><a href="#string-类型及操作" class="headerlink" title="string 类型及操作"></a>string 类型及操作</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@anyue</span> redis<span class="hljs-number">-5.0</span><span class="hljs-number">.5</span>]<span class="hljs-meta"># redis-cli -h 127.0.0.1 -p6379 -apasswd  # 远程</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="待续。。。"><a href="#待续。。。" class="headerlink" title="待续。。。"></a>待续。。。</h2>
                 
               </div>
             
@@ -508,7 +566,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -689,7 +747,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

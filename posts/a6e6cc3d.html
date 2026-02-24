@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -71,7 +71,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -91,7 +91,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -104,7 +105,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -161,6 +162,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -291,220 +344,307 @@
             
               <div class="markdown-body">
                 
-                <p>2019-06-13-正则表达式</p>
-<span id="more"></span>
-
-<h2 id="关于正则-规则"><a href="#关于正则-规则" class="headerlink" title="关于正则(规则)"></a>关于正则(规则)</h2><blockquote>
-<p>字符:<code>\</code><br>意义：对于字符, 通常表示按字面意义, 指出接着的字符为特殊字符<br>例如：<code>/b</code>, 通过在 b 前面加一个反斜杠\，也就是 <code>/\b/</code>, 则该字符变成特殊字符, 表示匹配一个单词的分界线。</p>
+                <p>2019-06-13-正则表达式 <span id="more"></span></p>
+<h2 id="关于正则规则">关于正则(规则)</h2>
+<blockquote>
+<p>字符:<code>\</code><br />
+意义：对于字符, 通常表示按字面意义, 指出接着的字符为特殊字符<br />
+例如：<code>/b</code>, 通过在 b 前面加一个反斜杠，也就是
+<code>/\b/</code>, 则该字符变成特殊字符, 表示匹配一个单词的分界线。</p>
 </blockquote>
-<h3 id="基本正则表达式元字符"><a href="#基本正则表达式元字符" class="headerlink" title="基本正则表达式元字符"></a>基本正则表达式元字符</h3><table>
-<thead>
-<tr>
-<th align="left">基本正则元字符1</th>
-<th align="left">说明  <strong>次数匹配(贪婪模式)</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">.</td>
-<td align="left">匹配除换行符外的任意单个的字符</td>
-</tr>
-<tr>
-<td align="left">*</td>
-<td align="left">匹配前面字符<code>任意次</code>, 包括0次{0,}</td>
-</tr>
-<tr>
-<td align="left">.*</td>
-<td align="left">任意长度的任意字符</td>
-</tr>
-<tr>
-<td align="left"><code>\?</code></td>
-<td align="left">匹配其前面字符0或1次</td>
-</tr>
-<tr>
-<td align="left"><code>\+</code></td>
-<td align="left">匹配其前面字符至少1次</td>
-</tr>
-<tr>
-<td align="left"><code>\{n\}</code></td>
-<td align="left">匹配其前面字符n次</td>
-</tr>
-<tr>
-<td align="left"><code>\{m,n\}</code></td>
-<td align="left">匹配其前面字符至少m次, 至多n次</td>
-</tr>
-<tr>
-<td align="left"><code>\{,n\}</code></td>
-<td align="left">匹配其前面字符至多n次</td>
-</tr>
-<tr>
-<td align="left"><code>\{n,\}</code></td>
-<td align="left">匹配其前面字符至少n次</td>
-</tr>
-</tbody></table>
+<h3 id="基本正则表达式元字符">基本正则表达式元字符</h3>
 <table>
 <thead>
 <tr>
-<th align="left">基本正则元字符2</th>
-<th align="left">说明  <strong>位置锚定</strong></th>
+<th style="text-align: left;">基本正则元字符1</th>
+<th style="text-align: left;">说明
+<strong>次数匹配(贪婪模式)</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">^</td>
-<td align="left">行首定位</td>
+<tbody>
+<tr>
+<td style="text-align: left;">.</td>
+<td style="text-align: left;">匹配除换行符外的任意单个的字符</td>
 </tr>
 <tr>
-<td align="left">$</td>
-<td align="left">行尾定位</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">匹配前面字符<code>任意次</code>,
+包括0次{0,}</td>
 </tr>
 <tr>
-<td align="left">^$</td>
-<td align="left">匹配空白行</td>
+<td style="text-align: left;">.*</td>
+<td style="text-align: left;">任意长度的任意字符</td>
 </tr>
 <tr>
-<td align="left"><code>^PATTERN$</code></td>
-<td align="left">用于匹配整行, 空白行:^[[:space:]]*$</td>
+<td style="text-align: left;"><code>\?</code></td>
+<td style="text-align: left;">匹配其前面字符0或1次</td>
 </tr>
 <tr>
-<td align="left">&lt;或者\b</td>
-<td align="left">词首, 用于单词模式左侧</td>
+<td style="text-align: left;"><code>\+</code></td>
+<td style="text-align: left;">匹配其前面字符至少1次</td>
 </tr>
 <tr>
-<td align="left"><code>\&gt;</code>或者\b</td>
-<td align="left">词尾, 用于单词模式右侧</td>
+<td style="text-align: left;"><code>\{n\}</code></td>
+<td style="text-align: left;">匹配其前面字符n次</td>
 </tr>
 <tr>
-<td align="left"><code>\&lt;PATTERN&gt;\</code></td>
-<td align="left">匹配整个单词(数字、字母与下划线都算单词)</td>
+<td style="text-align: left;"><code>\{m,n\}</code></td>
+<td style="text-align: left;">匹配其前面字符至少m次, 至多n次</td>
 </tr>
 <tr>
-<td align="left"><code>\(\)</code></td>
-<td align="left">当作一个整体处理,E:<code>\(root\)</code></td>
+<td style="text-align: left;"><code>\{,n\}</code></td>
+<td style="text-align: left;">匹配其前面字符至多n次</td>
 </tr>
-</tbody></table>
+<tr>
+<td style="text-align: left;"><code>\{n,\}</code></td>
+<td style="text-align: left;">匹配其前面字符至少n次</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
-<th align="left">基本正则元字符3</th>
-<th align="left">说明  <strong>字符匹配</strong></th>
+<th style="text-align: left;">基本正则元字符2</th>
+<th style="text-align: left;">说明 <strong>位置锚定</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">[]</td>
-<td align="left">匹配指定范围内的任意单个字符</td>
+<tbody>
+<tr>
+<td style="text-align: left;">^</td>
+<td style="text-align: left;">行首定位</td>
 </tr>
 <tr>
-<td align="left">[^]</td>
-<td align="left">匹配指定范围外的任意单个字符</td>
+<td style="text-align: left;">$</td>
+<td style="text-align: left;">行尾定位</td>
 </tr>
 <tr>
-<td align="left">[:alnum:]</td>
-<td align="left">匹配任何英文大小写字母, [a-zA-Z]</td>
+<td style="text-align: left;">^$</td>
+<td style="text-align: left;">匹配空白行</td>
 </tr>
 <tr>
-<td align="left">[:alpha:]</td>
-<td align="left">字母与数字[a-zA-Z0-9]</td>
+<td style="text-align: left;"><code>^PATTERN$</code></td>
+<td style="text-align: left;">用于匹配整行, 空白行:<a href="#fn1"
+class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>*$</td>
 </tr>
 <tr>
-<td align="left">[:lower:]</td>
-<td align="left">小写字母[a-z] [:upper:]</td>
+<td style="text-align: left;">&lt;或者 词首, 用于单词模式左侧</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">[:blank:]</td>
-<td align="left">空白字符(空格和制表符)</td>
+<td style="text-align: left;"><code>\&gt;</code>或者 词尾,
+用于单词模式右侧</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">[:space:]</td>
-<td align="left">水平和垂直的空白字符</td>
+<td style="text-align: left;"><code>\&lt;PATTERN&gt;\</code></td>
+<td
+style="text-align: left;">匹配整个单词(数字、字母与下划线都算单词)</td>
 </tr>
 <tr>
-<td align="left">[:cntrl:]</td>
-<td align="left">不可打印的控制字符(退格, 删除…)</td>
+<td style="text-align: left;"><code>\(\)</code></td>
+<td
+style="text-align: left;">当作一个整体处理,E:<code>\(root\)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">基本正则元字符3</th>
+<th style="text-align: left;">说明 <strong>字符匹配</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">匹配指定范围内的任意单个字符</td>
 </tr>
 <tr>
-<td align="left">[:digit:]</td>
-<td align="left">[0-9] [:xdigit:]十六进制</td>
+<td style="text-align: left;">[^]</td>
+<td style="text-align: left;">匹配指定范围外的任意单个字符</td>
 </tr>
 <tr>
-<td align="left">[:graph:]</td>
-<td align="left">可打印的非空白字符</td>
+<td style="text-align: left;">[:alnum:]</td>
+<td style="text-align: left;">匹配任何英文大小写字母, [a-zA-Z]</td>
 </tr>
 <tr>
-<td align="left">[:print:]</td>
-<td align="left">可打印字符</td>
+<td style="text-align: left;">[:alpha:]</td>
+<td style="text-align: left;">字母与数字[a-zA-Z0-9]</td>
 </tr>
 <tr>
-<td align="left">[:punct:]</td>
-<td align="left">标点符号</td>
+<td style="text-align: left;">[:lower:]</td>
+<td style="text-align: left;">小写字母[a-z] [:upper:]</td>
 </tr>
-</tbody></table>
+<tr>
+<td style="text-align: left;">[:blank:]</td>
+<td style="text-align: left;">空白字符(空格和制表符)</td>
+</tr>
+<tr>
+<td style="text-align: left;">[:space:]</td>
+<td style="text-align: left;">水平和垂直的空白字符</td>
+</tr>
+<tr>
+<td style="text-align: left;">[:cntrl:]</td>
+<td style="text-align: left;">不可打印的控制字符(退格, 删除…)</td>
+</tr>
+<tr>
+<td style="text-align: left;">[:digit:]</td>
+<td style="text-align: left;">[0-9] [:xdigit:]十六进制</td>
+</tr>
+<tr>
+<td style="text-align: left;">[:graph:]</td>
+<td style="text-align: left;">可打印的非空白字符</td>
+</tr>
+<tr>
+<td style="text-align: left;">[:print:]</td>
+<td style="text-align: left;">可打印字符</td>
+</tr>
+<tr>
+<td style="text-align: left;">[:punct:]</td>
+<td style="text-align: left;">标点符号</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><p><code>*</code> – {0,}, 匹配前导符任意次</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-number">1.</span> /<span class="hljs-keyword">a</span>*/意味匹配<span class="hljs-number">0</span>个或多个<span class="hljs-keyword">a</span><br><span class="hljs-number">2.</span> 为了匹配字面上的*，在<span class="hljs-keyword">a</span>前面加一个反斜杠；例如：/<span class="hljs-keyword">a</span>\*/匹配<span class="hljs-string">&#x27;a*&#x27;</span><br><span class="hljs-number">3.</span> /bo*/匹配<span class="hljs-string">&quot;A ghost booooed&quot;</span>中的<span class="hljs-string">&#x27;boooo&#x27;</span>或<span class="hljs-string">&quot;A bird warbled&quot;</span>中的<span class="hljs-string">&#x27;b&#x27;</span>，但不匹配<span class="hljs-string">&quot;A goat grunted&quot;</span>中的任何字符。<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>.</code> （点）– 匹配除换行符外的所有单个的字符 Shell(?)  </p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-number">1</span>. <span class="hljs-regexp">/&lt;[^&lt;&gt;]+&gt;/g</span><br><span class="hljs-number">2</span>. <span class="hljs-regexp">/.n/</span>匹配<span class="hljs-string">&quot;nay, an apple is on the tree&quot;</span>中的<span class="hljs-string">&#x27;an&#x27;</span>和<span class="hljs-string">&#x27;on&#x27;</span>，但不匹配<span class="hljs-string">&#x27;nay&#x27;</span> <br><span class="hljs-number">3</span>. 匹配<span class="hljs-number">123</span>：echo -e <span class="hljs-string">&quot;123\n456&quot;</span> |<span class="hljs-keyword">grep</span> <span class="hljs-number">1.3</span>  <br><span class="hljs-number">4</span>. <span class="hljs-regexp">/&lt;.*&gt;/</span>     <br></code></pre></td></tr></table></figure></li>
-<li><p><code>.*</code> – 任意多个字符</p>
-</li>
-<li><p><code>[xyz]</code> 匹配任意字符, 指定范围的一个字符   </p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7">1. /1<span class="hljs-comment">[abc]</span>2/`<br>2. <span class="hljs-comment">[abcd]</span>跟<span class="hljs-comment">[a-c]</span>一样,匹配<span class="hljs-string">&quot;brisket&quot;</span>中的&#x27;b&#x27;和<span class="hljs-string">&quot;ache&quot;</span>中的&#x27;c<br>3. <span class="hljs-comment">[a-z]</span>、<span class="hljs-comment">[0-9]</span>、<span class="hljs-comment">[^a]</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>[^xyz]</code> – 匹配除了列出的字符外的所有东西</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-number">1.</span> [^abc]和[^a-c]等价，它们最早匹配<span class="hljs-string">&quot;brisket&quot;</span>中的<span class="hljs-string">&#x27;r&#x27;</span>和<span class="hljs-string">&quot;chop.&quot;</span>中的<span class="hljs-string">&#x27;h&#x27;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>^ --行首，$ --行尾</code></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-number">1</span>. 匹配以<span class="hljs-keyword">abc</span>开头的行：<span class="hljs-keyword">echo</span> -<span class="hljs-keyword">e</span> <span class="hljs-string">&quot;abc\nxyz&quot;</span> |<span class="hljs-keyword">grep</span> ^<span class="hljs-keyword">abc</span><br><span class="hljs-number">2</span>. 匹配以xyz结尾的行：<span class="hljs-keyword">echo</span> -<span class="hljs-keyword">e</span> <span class="hljs-string">&quot;abc\nxyz&quot;</span> |<span class="hljs-keyword">grep</span> xyz$<br><span class="hljs-number">3</span>. /^\<span class="hljs-keyword">w</span>+@[<span class="hljs-keyword">a</span>-z0-<span class="hljs-number">9</span>]+\.[<span class="hljs-keyword">a</span>-<span class="hljs-keyword">z</span>]&#123;<span class="hljs-number">2</span>,<span class="hljs-number">4</span>&#125;$/ -- 邮箱验证<br><span class="hljs-number">4</span>. /^\s*|\s*$/ -- 去掉首尾Space<br><span class="hljs-number">5</span>. /[\u4e00-\u9fa5]/ -- 匹配中文 <br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>\&lt;</code> – 词首定位符: &lt;love  </p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl">匹配开始是<span class="hljs-number">123</span>和<span class="hljs-number">1234</span>：echo -e <span class="hljs-string">&quot;1<span class="hljs-subst">\n</span>12<span class="hljs-subst">\n</span>123<span class="hljs-subst">\n</span>1234&quot;</span> |grep &#x27;\&lt;<span class="hljs-number">123</span>&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>\&gt;</code> – 词尾定位符: love&gt;</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl">匹配结束是<span class="hljs-number">1234</span>：echo -e <span class="hljs-string">&quot;1<span class="hljs-subst">\n</span>12<span class="hljs-subst">\n</span>123<span class="hljs-subst">\n</span>1234&quot;</span> |grep &#x27;<span class="hljs-number">4</span>\&gt;&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>\(\)</code>  – 匹配稍后使用的字符标签 \1, \2, \3</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">:% s/172.16.130.1/172.16.130.5/<br>:% s/<span class="hljs-symbol">\(</span>172.16.130.<span class="hljs-symbol">\)</span>1\15/<br>:% s/<span class="hljs-symbol">\(</span>172.<span class="hljs-symbol">\)</span><span class="hljs-symbol">\(</span>16.<span class="hljs-symbol">\)</span><span class="hljs-symbol">\(</span>130.<span class="hljs-symbol">\)</span>1/\1\2\35/<br>:3,9 s/<span class="hljs-symbol">\(</span>.*<span class="hljs-symbol">\)</span>/#\1/ -- 添加注释<br></code></pre></td></tr></table></figure></li>
+<li><p><code>*</code> – {0,}, 匹配前导符任意次 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-number">1.</span> /<span class="hljs-keyword">a</span>*/意味匹配<span class="hljs-number">0</span>个或多个<span class="hljs-keyword">a</span><br><span class="hljs-number">2.</span> 为了匹配字面上的*，在<span class="hljs-keyword">a</span>前面加一个反斜杠；例如：/<span class="hljs-keyword">a</span>\*/匹配<span class="hljs-string">&#x27;a*&#x27;</span><br><span class="hljs-number">3.</span> /bo*/匹配<span class="hljs-string">&quot;A ghost booooed&quot;</span>中的<span class="hljs-string">&#x27;boooo&#x27;</span>或<span class="hljs-string">&quot;A bird warbled&quot;</span>中的<span class="hljs-string">&#x27;b&#x27;</span>，但不匹配<span class="hljs-string">&quot;A goat grunted&quot;</span>中的任何字符。<br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>.</code> （点）– 匹配除换行符外的所有单个的字符
+Shell(?)<br />
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-number">1</span>. <span class="hljs-regexp">/&lt;[^&lt;&gt;]+&gt;/g</span><br><span class="hljs-number">2</span>. <span class="hljs-regexp">/.n/</span>匹配<span class="hljs-string">&quot;nay, an apple is on the tree&quot;</span>中的<span class="hljs-string">&#x27;an&#x27;</span>和<span class="hljs-string">&#x27;on&#x27;</span>，但不匹配<span class="hljs-string">&#x27;nay&#x27;</span> <br><span class="hljs-number">3</span>. 匹配<span class="hljs-number">123</span>：echo -e <span class="hljs-string">&quot;123\n456&quot;</span> |<span class="hljs-keyword">grep</span> <span class="hljs-number">1.3</span>  <br><span class="hljs-number">4</span>. <span class="hljs-regexp">/&lt;.*&gt;/</span>     <br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>.*</code> – 任意多个字符</p></li>
+<li><p><code>[xyz]</code> 匹配任意字符, 指定范围的一个字符<br />
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7">1. /1<span class="hljs-comment">[abc]</span>2/`<br>2. <span class="hljs-comment">[abcd]</span>跟<span class="hljs-comment">[a-c]</span>一样,匹配<span class="hljs-string">&quot;brisket&quot;</span>中的&#x27;b&#x27;和<span class="hljs-string">&quot;ache&quot;</span>中的&#x27;c<br>3. <span class="hljs-comment">[a-z]</span>、<span class="hljs-comment">[0-9]</span>、<span class="hljs-comment">[^a]</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>[^xyz]</code> – 匹配除了列出的字符外的所有东西
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-number">1.</span> [^abc]和[^a-c]等价，它们最早匹配<span class="hljs-string">&quot;brisket&quot;</span>中的<span class="hljs-string">&#x27;r&#x27;</span>和<span class="hljs-string">&quot;chop.&quot;</span>中的<span class="hljs-string">&#x27;h&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>^ --行首，$ --行尾</code> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-number">1</span>. 匹配以<span class="hljs-keyword">abc</span>开头的行：<span class="hljs-keyword">echo</span> -<span class="hljs-keyword">e</span> <span class="hljs-string">&quot;abc\nxyz&quot;</span> |<span class="hljs-keyword">grep</span> ^<span class="hljs-keyword">abc</span><br><span class="hljs-number">2</span>. 匹配以xyz结尾的行：<span class="hljs-keyword">echo</span> -<span class="hljs-keyword">e</span> <span class="hljs-string">&quot;abc\nxyz&quot;</span> |<span class="hljs-keyword">grep</span> xyz$<br><span class="hljs-number">3</span>. /^\<span class="hljs-keyword">w</span>+@[<span class="hljs-keyword">a</span>-z0-<span class="hljs-number">9</span>]+\.[<span class="hljs-keyword">a</span>-<span class="hljs-keyword">z</span>]&#123;<span class="hljs-number">2</span>,<span class="hljs-number">4</span>&#125;$/ -- 邮箱验证<br><span class="hljs-number">4</span>. /^\s*|\s*$/ -- 去掉首尾Space<br><span class="hljs-number">5</span>. /[\u4e00-\u9fa5]/ -- 匹配中文 <br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\&lt;</code> – 词首定位符: &lt;love<br />
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl">匹配开始是<span class="hljs-number">123</span>和<span class="hljs-number">1234</span>：echo -e <span class="hljs-string">&quot;1<span class="hljs-subst">\n</span>12<span class="hljs-subst">\n</span>123<span class="hljs-subst">\n</span>1234&quot;</span> |grep &#x27;\&lt;<span class="hljs-number">123</span>&#x27;<br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\&gt;</code> – 词尾定位符: love&gt; <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl">匹配结束是<span class="hljs-number">1234</span>：echo -e <span class="hljs-string">&quot;1<span class="hljs-subst">\n</span>12<span class="hljs-subst">\n</span>123<span class="hljs-subst">\n</span>1234&quot;</span> |grep &#x27;<span class="hljs-number">4</span>\&gt;&#x27;<br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\(\)</code> – 匹配稍后使用的字符标签 \1, \2, \3
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">:% s/172.16.130.1/172.16.130.5/<br>:% s/<span class="hljs-symbol">\(</span>172.16.130.<span class="hljs-symbol">\)</span>1\15/<br>:% s/<span class="hljs-symbol">\(</span>172.<span class="hljs-symbol">\)</span><span class="hljs-symbol">\(</span>16.<span class="hljs-symbol">\)</span><span class="hljs-symbol">\(</span>130.<span class="hljs-symbol">\)</span>1/\1\2\35/<br>:3,9 s/<span class="hljs-symbol">\(</span>.*<span class="hljs-symbol">\)</span>/#\1/ -- 添加注释<br></code></pre></td></tr></table></figure></p></li>
 </ul>
-<h3 id="扩展正则表达式元字符"><a href="#扩展正则表达式元字符" class="headerlink" title="扩展正则表达式元字符"></a>扩展正则表达式元字符</h3><ul>
-<li><p><code>+</code> – {1,}, 匹配一个或多个前导字符</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/a+/</span>匹配<span class="hljs-string">&quot;candy&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaaaaaandy.&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>?</code> – {0,1}, 匹配零个或一个前导字符</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/e?le?/</span>匹配<span class="hljs-string">&quot;angel&quot;</span>中的<span class="hljs-string">&#x27;el&#x27;</span>和<span class="hljs-string">&quot;angle.&quot;</span>中的<span class="hljs-string">&#x27;le&#x27;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>字符x|y</code></p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-number">1.</span> /<span class="hljs-built_in">green</span>|<span class="hljs-built_in">red</span>/匹配<span class="hljs-string">&quot;green apple&quot;</span>中的<span class="hljs-string">&#x27;green&#x27;</span>和<span class="hljs-string">&quot;red apple.&quot;</span>中的<span class="hljs-string">&#x27;red&#x27;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>(expr1) (expr2) \1 \2</code>  – 标签匹配字符</p>
-</li>
-<li><p><code>{n,m}</code> – 字符重复出现m到n次</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/a&#123;1,3&#125;/</span>不匹配<span class="hljs-string">&quot;cndy&quot;</span>中的任何字符，但匹配 <span class="hljs-string">&quot;candy,&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>，<span class="hljs-string">&quot;caandy,&quot;</span> 中的前面两个<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaaaaaandy&quot;</span>中前面的三个<span class="hljs-string">&#x27;a&#x27;</span>，<br><span class="hljs-number">2</span>. 注意：即使<span class="hljs-string">&quot;caaaaaaandy&quot;</span> 中有很多个<span class="hljs-string">&#x27;a&#x27;</span>，但只匹配前面的三个<span class="hljs-string">&#x27;a&#x27;</span>即<span class="hljs-string">&quot;aaa&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>{n,}</code> – 字符重复出现n次以上, 匹配至少n个前面的字符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">1. /a&#123;2,&#125;不匹配<span class="hljs-string">&quot;candy&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>，但匹配<span class="hljs-string">&quot;caandy&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaaaaaandy.&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure></li>
-<li><p><code>{,m}</code> – 至少不限， 至多m次</p>
-</li>
-<li><p><code>{n}</code> – 正好n次,匹配前面的n个字符</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/a&#123;2&#125;/</span>不匹配<span class="hljs-string">&quot;candy,&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>,但匹配<span class="hljs-string">&quot;caandy&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaandy.&quot;</span>中前面的两个<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<hr>
+<h3 id="扩展正则表达式元字符">扩展正则表达式元字符</h3>
 <ul>
-<li><p><code>\D 等价于 [^0-9]、\W 等价于 [^a-z0-9_]、\S</code></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/\D/</span>或<span class="hljs-regexp">/[^0-9]/</span>匹配<span class="hljs-string">&quot;B2 is the suite number.&quot;</span>中的<span class="hljs-string">&#x27;B&#x27;</span><br><span class="hljs-number">2</span>. <span class="hljs-regexp">/\W/</span>或者<span class="hljs-regexp">/[^$A-Za-z0-9_]/</span>匹配<span class="hljs-string">&quot;50%.&quot;</span>中的<span class="hljs-string">&#x27;%&#x27;</span><br><span class="hljs-number">3</span>. \S --匹配除white空格符以外的一个单个的字符，等价于[^ \f\n\r\t\v]<span class="hljs-regexp">/\S/</span>\w*匹配<span class="hljs-string">&quot;foo bar.&quot;</span>中的<span class="hljs-string">&#x27;foo&#x27;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>\d、\d\d、\d+、g</code> – 获取匹配 &#x2F; 替换的项目</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. 匹配一个数字，等价于[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]，/\d/或/[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]/匹配<span class="hljs-string">&quot;B2 is the suite number.&quot;</span>中的&#x27;<span class="hljs-number">2</span>&#x27;<br></code></pre></td></tr></table></figure></li>
-<li><p><code>\b</code> –匹配一个单词的分界线，比如一个空格(不要与[\b]混淆)</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/\bn\w/</span>匹配<span class="hljs-string">&quot;noonday&quot;</span>中的<span class="hljs-string">&#x27;no&#x27;</span>，<span class="hljs-regexp">/\wy\b/</span>匹配<span class="hljs-string">&quot;possibly yesterday.&quot;</span>中的<span class="hljs-string">&#x27;ly&#x27;</span><br></code></pre></td></tr></table></figure></li>
-<li><p><code>\B</code> –匹配一个单词的非分界线 </p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/\w\Bn/</span>匹配<span class="hljs-string">&quot;noonday&quot;</span>中的<span class="hljs-string">&#x27;on&#x27;</span>，<span class="hljs-regexp">/y\B\w/</span>匹配<span class="hljs-string">&quot;possibly yesterday.&quot;</span>中的<span class="hljs-string">&#x27;ye&#x27;</span><br></code></pre></td></tr></table></figure></li>
-<li><p><code>\cX</code> –X是一个控制字符。匹配一个字符串的控制字符</p>
-</li>
-<li><p><code>字符[\b]</code> –匹配一个空格</p>
-</li>
+<li><p><code>+</code> – {1,}, 匹配一个或多个前导字符
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/a+/</span>匹配<span class="hljs-string">&quot;candy&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaaaaaandy.&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>?</code> – {0,1}, 匹配零个或一个前导字符
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/e?le?/</span>匹配<span class="hljs-string">&quot;angel&quot;</span>中的<span class="hljs-string">&#x27;el&#x27;</span>和<span class="hljs-string">&quot;angle.&quot;</span>中的<span class="hljs-string">&#x27;le&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>字符x|y</code> <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-number">1.</span> /<span class="hljs-built_in">green</span>|<span class="hljs-built_in">red</span>/匹配<span class="hljs-string">&quot;green apple&quot;</span>中的<span class="hljs-string">&#x27;green&#x27;</span>和<span class="hljs-string">&quot;red apple.&quot;</span>中的<span class="hljs-string">&#x27;red&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>(expr1) (expr2) \1 \2</code> – 标签匹配字符</p></li>
+<li><p><code>{n,m}</code> – 字符重复出现m到n次 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/a&#123;1,3&#125;/</span>不匹配<span class="hljs-string">&quot;cndy&quot;</span>中的任何字符，但匹配 <span class="hljs-string">&quot;candy,&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>，<span class="hljs-string">&quot;caandy,&quot;</span> 中的前面两个<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaaaaaandy&quot;</span>中前面的三个<span class="hljs-string">&#x27;a&#x27;</span>，<br><span class="hljs-number">2</span>. 注意：即使<span class="hljs-string">&quot;caaaaaaandy&quot;</span> 中有很多个<span class="hljs-string">&#x27;a&#x27;</span>，但只匹配前面的三个<span class="hljs-string">&#x27;a&#x27;</span>即<span class="hljs-string">&quot;aaa&quot;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>{n,}</code> – 字符重复出现n次以上, 匹配至少n个前面的字符
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">1. /a&#123;2,&#125;不匹配<span class="hljs-string">&quot;candy&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>，但匹配<span class="hljs-string">&quot;caandy&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaaaaaandy.&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>{,m}</code> – 至少不限， 至多m次</p></li>
+<li><p><code>{n}</code> – 正好n次,匹配前面的n个字符 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/a&#123;2&#125;/</span>不匹配<span class="hljs-string">&quot;candy,&quot;</span>中的<span class="hljs-string">&#x27;a&#x27;</span>,但匹配<span class="hljs-string">&quot;caandy&quot;</span>中的所有<span class="hljs-string">&#x27;a&#x27;</span>和<span class="hljs-string">&quot;caaandy.&quot;</span>中前面的两个<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure>
+—</p></li>
+<li><p><code>\D 等价于 [^0-9]、\W 等价于 [^a-z0-9_]、\S</code>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/\D/</span>或<span class="hljs-regexp">/[^0-9]/</span>匹配<span class="hljs-string">&quot;B2 is the suite number.&quot;</span>中的<span class="hljs-string">&#x27;B&#x27;</span><br><span class="hljs-number">2</span>. <span class="hljs-regexp">/\W/</span>或者<span class="hljs-regexp">/[^$A-Za-z0-9_]/</span>匹配<span class="hljs-string">&quot;50%.&quot;</span>中的<span class="hljs-string">&#x27;%&#x27;</span><br><span class="hljs-number">3</span>. \S --匹配除white空格符以外的一个单个的字符，等价于[^ \f\n\r\t\v]<span class="hljs-regexp">/\S/</span>\w*匹配<span class="hljs-string">&quot;foo bar.&quot;</span>中的<span class="hljs-string">&#x27;foo&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\d、\d\d、\d+、g</code> – 获取匹配 / 替换的项目
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. 匹配一个数字，等价于[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]，/\d/或/[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]/匹配<span class="hljs-string">&quot;B2 is the suite number.&quot;</span>中的&#x27;<span class="hljs-number">2</span>&#x27;<br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\b</code> –匹配一个单词的分界线，比如一个空格(不要与[混淆)
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/\bn\w/</span>匹配<span class="hljs-string">&quot;noonday&quot;</span>中的<span class="hljs-string">&#x27;no&#x27;</span>，<span class="hljs-regexp">/\wy\b/</span>匹配<span class="hljs-string">&quot;possibly yesterday.&quot;</span>中的<span class="hljs-string">&#x27;ly&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\B</code> –匹配一个单词的非分界线 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. <span class="hljs-regexp">/\w\Bn/</span>匹配<span class="hljs-string">&quot;noonday&quot;</span>中的<span class="hljs-string">&#x27;on&#x27;</span>，<span class="hljs-regexp">/y\B\w/</span>匹配<span class="hljs-string">&quot;possibly yesterday.&quot;</span>中的<span class="hljs-string">&#x27;ye&#x27;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>\cX</code>
+–X是一个控制字符。匹配一个字符串的控制字符</p></li>
+<li><p><code>字符[\b]</code> –匹配一个空格</p></li>
 </ul>
-<h2 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式:"></a>常用正则表达式:</h2><h3 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a>一、校验数字的表达式</h3><p>数字：<code>^[0-9]*$</code><br>n位的数字：<code>^\d{n}$</code><br>至少n位的数字：<code>^\d{n,}$</code><br>m-n位的数字：<code>^\d{m,n}$</code><br>零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code><br>非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(\.[0-9]{1,2})?$</code><br>带1-2位小数的正数或负数：<code>^(\-)?\d+(\.\d{1,2})$</code><br>正数、负数、和小数：<code>^(\-|\+)?\d+(\.\d+)?$</code><br>有两位小数的正实数：<code>^[0-9]+(\.[0-9]{2})?$</code><br>有1~3位小数的正实数：<code>^[0-9]+(\.[0-9]{1,3})?$</code><br>非零的正整数：<code>^[1-9]\d*$ 或 ^([1-9][0-9]*){1,3}$</code> 或 <code>^\+?[1-9][0-9]*$</code><br>非零的负整数：<code>^\-[1-9][]0-9&quot;*$</code> 或 <code>^-[1-9]\d*$</code><br>非负整数：<code>^\d+$</code> 或 <code>^[1-9]\d*|0$</code><br>非正整数：<code>^-[1-9]\d*|0$</code> 或 <code>^((-\d+)|(0+))$</code><br>非负浮点数：<code>^\d+(\.\d+)?$</code> 或 <code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</code><br>非正浮点数：<code>^((-\d+(\.\d+)?)|(0+(\.0+)?))$</code> 或 <code>^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</code><br>正浮点数：<code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</code> 或 <code>^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</code><br>负浮点数：<code>^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</code> 或 <code>^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code><br>浮点数：<code>^(-?\d+)(\.\d+)?$</code> 或 <code>^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</code>  </p>
-<h3 id="二、校验字符的表达式"><a href="#二、校验字符的表达式" class="headerlink" title="二、校验字符的表达式"></a>二、校验字符的表达式</h3><p>汉字：<code>^[\u4e00-\u9fa5]{0,}$</code><br>英文和数字：<code>^[A-Za-z0-9]+$</code> 或 <code>^[A-Za-z0-9]{4,40}$</code><br>长度为3-20的所有字符：<code>^.{3,20}$</code><br>由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code><br>由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code><br>由26个小写英文字母组成的字符串：<code>^[a-z]+$</code><br>由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code><br>由数字、26个英文字母或者下划线组成的字符串：<code>^\w+$</code> 或 <code>^\w{3,20}$</code><br>中文、英文、数字包括下划线：<code>^[\u4E00-\u9FA5A-Za-z0-9_]+$</code><br>中文、英文、数字但不包括下划线等符号：<code>^[\u4E00-\u9FA5A-Za-z0-9]+$</code> 或 <code>^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</code><br>可以输入含有<code>^%&amp;&#39;,;=?$\&quot;</code>等字符：<code>[^%&amp;&#39;,;=?$\x22]+</code><br>禁止输入含有<del>的字符：&#96;[^</del>\x22]+&#96;  </p>
-<h3 id="三、特殊需求表达式"><a href="#三、特殊需求表达式" class="headerlink" title="三、特殊需求表达式"></a>三、特殊需求表达式</h3><p>Email地址：<code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</code><br>域名：<code>[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</code><br>InternetURL：<code>[a-zA-z]+://[^\s]*</code> 或 <code>^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</code><br>手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</code><br>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$</code><br>国内电话号码(0511-4405222、021-87888822)：<code>\d{3}-\d{8}|\d{4}-\d{7}</code><br>电话号码正则表达式（支持手机号码，3-4位区号，7-8位直播号码，1－4位分机号）: <code>((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)</code><br>身份证号(15位、18位数字), 最后一位是校验位, 可能为数字或字符X: <code>(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)</code><br>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code><br>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]\w{5,17}$</code><br>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在 8-10 之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$</code><br>强密码(必须包含大小写字母和数字的组合，可以使用特殊字符，长度在8-10之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code><br>日期格式：<code>^\d{4}-\d{1,2}-\d{1,2}</code><br>一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code><br>一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code><br>钱的输入格式：<br>有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：<code>^[1-9][0-9]*$</code><br>这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：<code>^(0|[1-9][0-9]*)$</code><br>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<code>^(0|-?[1-9][0-9]*)$</code><br>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧。下面我们要加的是说明可能的小数部分：<code>^[0-9]+(.[0-9]+)?$</code><br>必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：<code>^[0-9]+(.[0-9]{2})?$</code><br>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：<code>^[0-9]+(.[0-9]{1,2})?$</code><br>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：<code>^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</code><br>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：<code>^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</code><br>备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里  </p>
-<p>xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$</code><br>中文字符的正则表达式：<code>[\u4e00-\u9fa5]</code><br>双字节字符：<code>[^\x00-\xff]</code> (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))<br>空白行的正则表达式：<code>\n\s*\r</code>(可以用来删除空白行)<br>HTML标记的正则表达式：<code>&lt;(\S*?)[^&gt;]*&gt;.*?|&lt;.*? /&gt;</code> ( 首尾空白字符的正则表达式：^\s*|\s*$或(^\s*)|(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)<br>腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)<br>中国邮政编码：<code>[1-9]\d{5}(?!\d)</code> (中国邮政编码为6位数字)<br>IP地址：<code>((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</code>   </p>
+<h2 id="常用正则表达式">常用正则表达式:</h2>
+<h3 id="一校验数字的表达式">一、校验数字的表达式</h3>
+<p>数字：<code>^[0-9]*$</code><br />
+n位的数字：<code>^\d{n}$</code><br />
+至少n位的数字：<code>^\d{n,}$</code><br />
+m-n位的数字：<code>^\d{m,n}$</code><br />
+零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code><br />
+非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(\.[0-9]{1,2})?$</code><br />
+带1-2位小数的正数或负数：<code>^(\-)?\d+(\.\d{1,2})$</code><br />
+正数、负数、和小数：<code>^(\-|\+)?\d+(\.\d+)?$</code><br />
+有两位小数的正实数：<code>^[0-9]+(\.[0-9]{2})?$</code><br />
+有1~3位小数的正实数：<code>^[0-9]+(\.[0-9]{1,3})?$</code><br />
+非零的正整数：<code>^[1-9]\d*$ 或 ^([1-9][0-9]*){1,3}$</code> 或
+<code>^\+?[1-9][0-9]*$</code><br />
+非零的负整数：<code>^\-[1-9][]0-9"*$</code> 或
+<code>^-[1-9]\d*$</code><br />
+非负整数：<code>^\d+$</code> 或 <code>^[1-9]\d*|0$</code><br />
+非正整数：<code>^-[1-9]\d*|0$</code> 或
+<code>^((-\d+)|(0+))$</code><br />
+非负浮点数：<code>^\d+(\.\d+)?$</code> 或
+<code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</code><br />
+非正浮点数：<code>^((-\d+(\.\d+)?)|(0+(\.0+)?))$</code> 或
+<code>^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</code><br />
+正浮点数：<code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</code> 或
+<code>^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</code><br />
+负浮点数：<code>^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</code> 或
+<code>^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code><br />
+浮点数：<code>^(-?\d+)(\.\d+)?$</code> 或
+<code>^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</code></p>
+<h3 id="二校验字符的表达式">二、校验字符的表达式</h3>
+<p>汉字：<code>^[\u4e00-\u9fa5]{0,}$</code><br />
+英文和数字：<code>^[A-Za-z0-9]+$</code> 或
+<code>^[A-Za-z0-9]{4,40}$</code><br />
+长度为3-20的所有字符：<code>^.{3,20}$</code><br />
+由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code><br />
+由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code><br />
+由26个小写英文字母组成的字符串：<code>^[a-z]+$</code><br />
+由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code><br />
+由数字、26个英文字母或者下划线组成的字符串：<code>^\w+$</code> 或
+<code>^\w{3,20}$</code><br />
+中文、英文、数字包括下划线：<code>^[\u4E00-\u9FA5A-Za-z0-9_]+$</code><br />
+中文、英文、数字但不包括下划线等符号：<code>^[\u4E00-\u9FA5A-Za-z0-9]+$</code>
+或 <code>^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</code><br />
+可以输入含有<code>^%&amp;',;=?$\"</code>等字符：<code>[^%&amp;',;=?$\x22]+</code><br />
+禁止输入含有<sub>的字符：`[^</sub>]+`</p>
+<h3 id="三特殊需求表达式">三、特殊需求表达式</h3>
+<p>Email地址：<code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</code><br />
+域名：<code>[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</code><br />
+InternetURL：<code>[a-zA-z]+://[^\s]*</code> 或
+<code>^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</code><br />
+手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</code><br />
+电话号码(“XXX-XXXXXXX”、“XXXX-XXXXXXXX”、“XXX-XXXXXXX”、“XXX-XXXXXXXX”、“XXXXXXX”和”XXXXXXXX)：<code>^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$</code><br />
+国内电话号码(0511-4405222、021-87888822)：<code>\d{3}-\d{8}|\d{4}-\d{7}</code><br />
+电话号码正则表达式（支持手机号码，3-4位区号，7-8位直播号码，1－4位分机号）:
+<code>((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)</code><br />
+身份证号(15位、18位数字), 最后一位是校验位, 可能为数字或字符X:
+<code>(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)</code><br />
+帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code><br />
+密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]\w{5,17}$</code><br />
+强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在 8-10
+之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$</code><br />
+强密码(必须包含大小写字母和数字的组合，可以使用特殊字符，长度在8-10之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code><br />
+日期格式：<code>^\d{4}-\d{1,2}-\d{1,2}</code><br />
+一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code><br />
+一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code><br />
+钱的输入格式： 有四种钱的表示形式我们可以接受:“10000.00” 和 “10,000.00”,
+和没有 “分” 的 “10000” 和 “10,000”：<code>^[1-9][0-9]*$</code><br />
+这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：<code>^(0|[1-9][0-9]*)$</code><br />
+一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<code>^(0|-?[1-9][0-9]*)$</code><br />
+这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧。下面我们要加的是说明可能的小数部分：<code>^[0-9]+(.[0-9]+)?$</code><br />
+必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和
+“10.2” 是通过的：<code>^[0-9]+(.[0-9]{2})?$</code><br />
+这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：<code>^[0-9]+(.[0-9]{1,2})?$</code><br />
+这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：<code>^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</code><br />
+1到3个数字,后面跟着任意个
+逗号+3个数字,逗号成为可选,而不是必须：<code>^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</code><br />
+备注：这就是最终结果了,别忘了”+“可以用”*“替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</p>
+<p>xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$</code><br />
+中文字符的正则表达式：<code>[\u4e00-\u9fa5]</code><br />
+双字节字符：<code>[^\x00-\xff]</code>
+(包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))
+空白行的正则表达式：<code>\n\s*\r</code>(可以用来删除空白行)<br />
+HTML标记的正则表达式：<code>&lt;(\S*?)[^&gt;]*&gt;.*?|&lt;.*? /&gt;</code>
+( 首尾空白字符的正则表达式：<sup>|$或(</sup>)|($)
+(可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)<br />
+腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)<br />
+中国邮政编码：<code>[1-9]\d{5}(?!\d)</code>
+(中国邮政编码为6位数字)<br />
+IP地址：<code>((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</code></p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>[:space:]<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
                 
               </div>
@@ -709,7 +849,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -890,7 +1030,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

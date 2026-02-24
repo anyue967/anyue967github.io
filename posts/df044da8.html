@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -71,7 +71,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -91,7 +91,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -104,7 +105,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -161,6 +162,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -291,16 +344,20 @@
             
               <div class="markdown-body">
                 
-                <p>2019-11-29-LinuxTools</p>
-<span id="more"></span>
-
-<h2 id="Linux-系统观测工具"><a href="#Linux-系统观测工具" class="headerlink" title="Linux 系统观测工具"></a>Linux 系统观测工具</h2><h2 id="系统负载及性能"><a href="#系统负载及性能" class="headerlink" title="系统负载及性能"></a>系统负载及性能</h2><h3 id="1-uptime"><a href="#1-uptime" class="headerlink" title="1. uptime"></a>1. uptime</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@192.168.1.161:~<span class="hljs-variable">$uptime</span><br>10:30:06 up 10 days, 19:26,  1 user,  load average: 3.05, 2.81, 2.15<br><br>1、当前时间 10:30:06<br>2、系统已运行的时间 10 days, 19:26<br>3、当前前在线用户 1 user<br>4、平均负载：0.54, 0.40, 0.20，最近1分钟、5分钟、15分钟系统的负载<br>5、load average数据是每隔5秒钟检查一次活跃的进程数，然后按特定算法计算出的数值。如果这个数除以逻辑CPU的数量，结果高于5的时候就表明系统在超负荷运转了；<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-dmesg"><a href="#2-dmesg" class="headerlink" title="2. dmesg"></a>2. dmesg</h3><h3 id="3-top"><a href="#3-top" class="headerlink" title="3. top"></a>3. top</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhoug2020/p/6336453.html">top参考</a></li>
+                <p>2019-11-29-LinuxTools <span id="more"></span></p>
+<h2 id="linux-系统观测工具">Linux 系统观测工具</h2>
+<h2 id="系统负载及性能">系统负载及性能</h2>
+<h3 id="uptime">1. uptime</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@192.168.1.161:~<span class="hljs-variable">$uptime</span><br>10:30:06 up 10 days, 19:26,  1 user,  load average: 3.05, 2.81, 2.15<br><br>1、当前时间 10:30:06<br>2、系统已运行的时间 10 days, 19:26<br>3、当前前在线用户 1 user<br>4、平均负载：0.54, 0.40, 0.20，最近1分钟、5分钟、15分钟系统的负载<br>5、load average数据是每隔5秒钟检查一次活跃的进程数，然后按特定算法计算出的数值。如果这个数除以逻辑CPU的数量，结果高于5的时候就表明系统在超负荷运转了；<br></code></pre></td></tr></table></figure>
+<h3 id="dmesg">2. dmesg</h3>
+<h3 id="top">3. top</h3>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/zhoug2020/p/6336453.html">top参考</a></li>
 <li><code>系统运行时间和平均负载</code></li>
 <li><code>Tasks — 任务（进程）</code>，系统现在共有137个进程，其中处于运行中的有1个，136个在休眠（sleep），stoped状态的有0个，zombie状态（僵尸）的有0个</li>
-<li><code>CPU 状态</code><ul>
+<li><code>CPU 状态</code>
+<ul>
 <li>us, user: 运行(未调整优先级的) 用户进程的CPU时间 √</li>
 <li>sy，system: 运行内核进程的CPU时间 √</li>
 <li>ni，niced: 运行已调整优先级的用户进程的CPU时间</li>
@@ -308,16 +365,14 @@
 <li>hi: 处理硬件中断的CPU时间</li>
 <li>si: 处理软件中断的CPU时间</li>
 <li>st：这个虚拟机被hypervisor偷去的CPU时间（译注：如果当前处于一个hypervisor下的vm，实际上hypervisor也是要消耗一部分CPU处理时间的）</li>
-</ul>
-</li>
-<li><code>内存使用</code><ul>
+</ul></li>
+<li><code>内存使用</code>
+<ul>
 <li>第一行是物理内存使用，第二行是虚拟内存使用(交换空间)</li>
 <li>第四行的free + 第四行的buffers + 第五行的cached √</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">top - 10:41:25 up 10 days, 19:37,  1 user,  load average: 0.34, 1.03, 1.56<br>Tasks: 137 total,   1 running, 136 sleeping,   0 stopped,   0 zombie<br>%Cpu(s): 16.6 us,  1.7 sy,  0.0 ni, 81.2 <span class="hljs-built_in">id</span>,  0.3 wa,  0.0 hi,  0.3 si,  0.0 st<br>KiB Mem :  7730168 total,   204536 free,  7324360 used,   201272 buff/cache<br>KiB Swap:  5242876 total,   399728 free,  4843148 used.    81848 avail Mem<br><br>  PID USER PR  NI  VIRT    RES    SHR  S  %CPU %MEM   TIME+   COMMAND<br>21257 xy   20  0   4757972 990552 3384 S  12.0 12.8   3173:53 /opt/xy/java+<br><br>16.6% us — 用户空间占用CPU的百分比；1.7% sy — 内核空间占用CPU的百分比。<br>0.0% ni  — 改变过优先级的进程占用CPU的百分比<br>81.2% <span class="hljs-built_in">id</span> — 空闲CPU百分比<br>0.3% wa — IO等待占用CPU的百分比<br>0.0% hi — 硬中断（Hardware IRQ）占用CPU的百分比<br>0.3% si — 软中断（Software Interrupts）占用CPU的百分比<br></code></pre></td></tr></table></figure>
-
 <table>
 <thead>
 <tr>
@@ -325,7 +380,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>d</td>
 <td>指定刷新时间（s）</td>
 </tr>
@@ -345,96 +401,126 @@
 <td>c</td>
 <td>切换显示命令名称和完整命令行</td>
 </tr>
-</tbody></table>
-<h3 id="4-htop"><a href="#4-htop" class="headerlink" title="4. htop"></a>4. htop</h3><h2 id="CPU使用率"><a href="#CPU使用率" class="headerlink" title="CPU使用率"></a>CPU使用率</h2><h3 id="1-vmstat-Virtual-Meomory-Statistic"><a href="#1-vmstat-Virtual-Meomory-Statistic" class="headerlink" title="1. vmstat(Virtual Meomory Statistic)"></a>1. vmstat(Virtual Meomory Statistic)</h3><blockquote>
-<p>对系统的整体情况进行统计，对系统的整体情况进行统计<br>r经常大于4，id经常少于40，表示<code>cpu的负荷很重</code>; bi，bo长期不等于0，表示<code>内存不足</code>; disk经常不等于0，且在b中的队列大于3，表示<code>io性能不好</code><br><code>-f,--fork</code> 显示从系统启动至今的fork数量<br><code>-s</code> 显示内存相关统计信息及多种系统活动数量<br><code>-d,--disk</code> 查看磁盘的读写 </p>
+</tbody>
+</table>
+<h3 id="htop">4. htop</h3>
+<h2 id="cpu使用率">CPU使用率</h2>
+<h3 id="vmstatvirtual-meomory-statistic">1. vmstat(Virtual Meomory
+Statistic)</h3>
+<blockquote>
+<p>对系统的整体情况进行统计，对系统的整体情况进行统计<br />
+r经常大于4，id经常少于40，表示<code>cpu的负荷很重</code>;
+bi，bo长期不等于0，表示<code>内存不足</code>;
+disk经常不等于0，且在b中的队列大于3，表示<code>io性能不好</code><br />
+<code>-f,--fork</code> 显示从系统启动至今的fork数量<br />
+<code>-s</code> 显示内存相关统计信息及多种系统活动数量<br />
+<code>-d,--disk</code> 查看磁盘的读写</p>
 </blockquote>
 <ul>
-<li>Procs（进程）<ul>
+<li>Procs（进程）
+<ul>
 <li>r: 运行队列中进程数量</li>
 <li>b: 等待IO的进程数量</li>
-</ul>
-</li>
-<li>Memory（内存）<ul>
+</ul></li>
+<li>Memory（内存）
+<ul>
 <li>swpd: 使用虚拟内存大小</li>
 <li>free: 可用内存大小</li>
 <li>buff: 用作缓冲的内存大小</li>
 <li>cache: 用作缓存的内存大小</li>
-</ul>
-</li>
-<li>Swap<ul>
+</ul></li>
+<li>Swap
+<ul>
 <li>si: 每秒从交换区写到内存的大小</li>
 <li>so: 每秒写入交换区的内存大小</li>
-</ul>
-</li>
-<li>IO(现在的Linux版本块的大小为1024bytes）<ul>
-<li>bi: 每秒从块设备接收到的块数，单位：块&#x2F;秒 也就是读块设备</li>
-<li>bo: 每秒发送到块设备的块数，单位：块&#x2F;秒  也就是写块设备</li>
-</ul>
-</li>
-<li>系统<ul>
+</ul></li>
+<li>IO(现在的Linux版本块的大小为1024bytes）
+<ul>
+<li>bi: 每秒从块设备接收到的块数，单位：块/秒 也就是读块设备</li>
+<li>bo: 每秒发送到块设备的块数，单位：块/秒 也就是写块设备</li>
+</ul></li>
+<li>系统
+<ul>
 <li>in: 每秒中断数，包括时钟中断[interrupt]</li>
-<li>cs: 每秒上下文切换数[count&#x2F;second]</li>
-</ul>
-</li>
-<li>CPU(以百分比表示)<ul>
+<li>cs: 每秒上下文切换数[count/second]</li>
+</ul></li>
+<li>CPU(以百分比表示)
+<ul>
 <li>us: 用户进程执行时间(user time)</li>
 <li>sy: 系统进程执行时间(system time)</li>
 <li>id: 空闲时间(包括IO等待时间),中央处理器的空闲时间,以百分比表示</li>
 <li>wa: 等待IO时间</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@192.168.1.161:~<span class="hljs-variable">$vmstat</span> 5 5  <span class="hljs-comment"># 5s内采集5个样本</span><br>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----<br>r  b   swpd   free   buff  cache   si   so    bi    bo   <span class="hljs-keyword">in</span>   cs us sy <span class="hljs-built_in">id</span> wa st<br>4  0 4216792 187800      0 212148   88   40   746    84    9    4 10  2 86  2  0<br><br>root@192.168.1.161:~<span class="hljs-variable">$vmstat</span> -a 2 5  <span class="hljs-comment"># -a,--active</span><br>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----<br>r  b   swpd   free  inact active   si   so    bi    bo   <span class="hljs-keyword">in</span>   cs us sy <span class="hljs-built_in">id</span> wa st<br>1  0 4215656 196520 1385284 5829956   88   40   746    84    9    5 10  2 86  2  0<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-mpstat"><a href="#2-mpstat" class="headerlink" title="2. mpstat"></a>2. mpstat</h3><blockquote>
-<p>主要用于多CPU环境下，它显示各个可用CPU的状态<br>mpstat -P CPU 时间间隔 采集次数  </p>
+<h3 id="mpstat">2. mpstat</h3>
+<blockquote>
+<p>主要用于多CPU环境下，它显示各个可用CPU的状态<br />
+mpstat -P CPU 时间间隔 采集次数</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@192.168.1.161:~<span class="hljs-variable">$mpstat</span> -P ALL<br>Linux 3.10.0-693.el7.x86_64 (centos) 	2019年11月29日 	_x86_64_	(4 CPU)<br><br>12时10分00秒  CPU    %usr   %<span class="hljs-built_in">nice</span>    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle<br>12时10分00秒  all    9.62    0.00    1.44    2.34    0.00    0.35    0.01    0.00    0.00   86.24<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-sar-System-Activity-Reporter"><a href="#3-sar-System-Activity-Reporter" class="headerlink" title="3. sar(System Activity Reporter)"></a>3. sar(System Activity Reporter)</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/11555417/2138903">参考sar</a><br>sar [options][-o file] [t] [n]<br>t为采样间隔，n为采样次数，默认值是1；  </p>
+<h3 id="sarsystem-activity-reporter">3. sar(System Activity
+Reporter)</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/11555417/2138903">参考sar</a><br />
+sar [options][-o file] [t] [n]<br />
+t为采样间隔，n为采样次数，默认值是1；</p>
 </blockquote>
 <ul>
 <li>%nice：显示在用户级别，用于nice操作，所占用 CPU 总时间的百分比</li>
-<li>%steal：管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟 CPU 的百分比。</li>
+<li>%steal：管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟 CPU
+的百分比。</li>
 <li>%idle：显示 CPU 空闲时间占用 CPU 总时间的百分比。</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@192.168.1.161:~<span class="hljs-variable">$sar</span> -u -o <span class="hljs-built_in">test</span> 10 3  <span class="hljs-comment"># 周期 次数</span><br>Linux 3.10.0-693.el7.x86_64 (centos) 	2019年11月29日 	_x86_64_	(4 CPU)<br><br>12时16分46秒     CPU     %user     %<span class="hljs-built_in">nice</span>   %system   %iowait    %steal     %idle<br>12时16分56秒     all     12.16      0.00      1.90      5.22      0.00     80.72<br><br>root@192.168.1.161:~<span class="hljs-variable">$sar</span> -u -f <span class="hljs-built_in">test</span>	<span class="hljs-comment"># 查看  </span><br></code></pre></td></tr></table></figure>
-
-<h3 id="4-pidstat"><a href="#4-pidstat" class="headerlink" title="4. pidstat"></a>4. pidstat</h3><blockquote>
-<p>主要用于监控全部或指定进程占用系统资源的情况，如CPU，内存、设备IO、任务切换、线程等<br>cpu使用情况统计(-u)<br>内存使用情况统计(-r)<br>IO情况统计(-d)  </p>
+<h3 id="pidstat">4. pidstat</h3>
+<blockquote>
+<p>主要用于监控全部或指定进程占用系统资源的情况，如CPU，内存、设备IO、任务切换、线程等<br />
+cpu使用情况统计(-u)<br />
+内存使用情况统计(-r) IO情况统计(-d)</p>
 </blockquote>
-<h3 id="5-dstat"><a href="#5-dstat" class="headerlink" title="5. dstat"></a>5. dstat</h3><blockquote>
-<p>综合了vmstat，iostat，ifstat，netstat<br>dstat [option] [time] [count]<br>常用选项：-l,–load; -m,–memory; -tcp  </p>
+<h3 id="dstat">5. dstat</h3>
+<blockquote>
+<p>综合了vmstat，iostat，ifstat，netstat<br />
+dstat [option] [time] [count]<br />
+常用选项：-l,–load; -m,–memory; -tcp</p>
 </blockquote>
-<h2 id="内存使用率"><a href="#内存使用率" class="headerlink" title="内存使用率"></a>内存使用率</h2><ul>
+<h2 id="内存使用率">内存使用率</h2>
+<ul>
 <li>free -m</li>
 </ul>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><ul>
+<h2 id="进程">进程</h2>
+<ul>
 <li>vmstat 1：查看进程是否阻塞（r）</li>
 <li>pidstat 1：查看每个进程的情况”</li>
 </ul>
-<h2 id="磁盘IO"><a href="#磁盘IO" class="headerlink" title="磁盘IO"></a>磁盘IO</h2><ul>
+<h2 id="磁盘io">磁盘IO</h2>
+<ul>
 <li>iostat -xzm 1</li>
 </ul>
-<h2 id="网络IO"><a href="#网络IO" class="headerlink" title="网络IO"></a>网络IO</h2><ul>
+<h2 id="网络io">网络IO</h2>
+<ul>
 <li>sar -n DEV 1</li>
 <li>sar -n TCP,ETCP 1</li>
 </ul>
-<h3 id="6-磁盘扩容"><a href="#6-磁盘扩容" class="headerlink" title="6. 磁盘扩容"></a>6. 磁盘扩容</h3><ul>
-<li><code>df -h</code>       # 查看分区空间使用情况 <code>-T</code>,显示<strong>文件系统</strong>类型<ul>
+<h3 id="磁盘扩容">6. 磁盘扩容</h3>
+<ul>
+<li><code>df -h</code> # 查看分区空间使用情况
+<code>-T</code>,显示<strong>文件系统</strong>类型
+<ul>
 <li><code>parted -l</code></li>
 <li><code>lsblk -f</code></li>
 <li><code>file -s /dev/sda1</code></li>
+</ul></li>
+<li><code>du -sh *</code> # 查看文件所占用大小</li>
+<li><code>fdisk -l</code> # 查看磁盘</li>
 </ul>
-</li>
-<li><code>du -sh *</code>    # 查看文件所占用大小</li>
-<li><code>fdisk -l</code>    # 查看磁盘</li>
-</ul>
-<h4 id="6-1-新增加的磁盘"><a href="#6-1-新增加的磁盘" class="headerlink" title="6.1 新增加的磁盘"></a>6.1 新增加的磁盘</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# pvs             <span class="hljs-comment"># 查看新增加的盘</span><br>[root@anyue ~]# fdisk /dev/sdb  <span class="hljs-comment"># 建立新分区更改类型为8e</span><br>[root@anyue ~]# mkfs.ext4 /dev/sdb1<br>[root@anyue ~]# pvcreate /dev/sdb1      <span class="hljs-comment"># pvscan</span><br>[root@anyue ~]# vgextend VolGroup /dev/sdb1     <span class="hljs-comment"># 当前需要扩容的LVM的组名，通过lvs查看</span><br>[root@anyue ~]# lvextend -L +20G /dev/mapper/VolGroup-lv_root <br>[root@anyue ~]# resize2fs -p /dev/mapper/VolGroup-lv_root<br></code></pre></td></tr></table></figure>
+<h4 id="新增加的磁盘">6.1 新增加的磁盘</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# pvs             <span class="hljs-comment"># 查看新增加的盘</span><br>[root@anyue ~]# fdisk /dev/sdb  <span class="hljs-comment"># 建立新分区更改类型为8e</span><br>[root@anyue ~]# mkfs.ext4 /dev/sdb1<br>[root@anyue ~]# pvcreate /dev/sdb1      <span class="hljs-comment"># pvscan</span><br>[root@anyue ~]# vgextend VolGroup /dev/sdb1     <span class="hljs-comment"># 当前需要扩容的LVM的组名，通过lvs查看</span><br>[root@anyue ~]# lvextend -L +20G /dev/mapper/VolGroup-lv_root <br>[root@anyue ~]# resize2fs -p /dev/mapper/VolGroup-lv_root<br></code></pre></td></tr></table></figure>
+<h4 id="从其他分区获得空间home-299g">6.2 从其他分区获得空间,/home
+299G</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# umount /home    <span class="hljs-comment"># 提到无法卸载，fuser -m /home</span><br>[root@anyue ~]# e2fsck -f /dev/mapper/VolGroup-lv_home<br>[root@anyue ~]# resize2fs -p /dev/mapper/VolGroup-lv_home 279G<br>[root@anyue ~]# mount /home     <span class="hljs-comment"># 此时可查看 df -h /home</span><br>[root@anyue ~]# lvreduce -L 279G /dev/mapper/VolGroup-lv_home   <span class="hljs-comment"># -L,减小到20G；-l,减小20G；+</span><br>[root@anyue ~]# lvextend -L +20G /dev/mapper/VolGroup-lv_root<br>[root@anyue ~]# resize2fs -p /dev/mapper/VolGroup-lv_root  <br></code></pre></td></tr></table></figure>
 
-<h4 id="6-2-从其他分区获得空间-home-299G"><a href="#6-2-从其他分区获得空间-home-299G" class="headerlink" title="6.2 从其他分区获得空间,&#x2F;home 299G"></a>6.2 从其他分区获得空间,&#x2F;home 299G</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@anyue ~]# umount /home    <span class="hljs-comment"># 提到无法卸载，fuser -m /home</span><br>[root@anyue ~]# e2fsck -f /dev/mapper/VolGroup-lv_home<br>[root@anyue ~]# resize2fs -p /dev/mapper/VolGroup-lv_home 279G<br>[root@anyue ~]# mount /home     <span class="hljs-comment"># 此时可查看 df -h /home</span><br>[root@anyue ~]# lvreduce -L 279G /dev/mapper/VolGroup-lv_home   <span class="hljs-comment"># -L,减小到20G；-l,减小20G；+</span><br>[root@anyue ~]# lvextend -L +20G /dev/mapper/VolGroup-lv_root<br>[root@anyue ~]# resize2fs -p /dev/mapper/VolGroup-lv_root  <br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -638,7 +724,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -819,7 +905,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

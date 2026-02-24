@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -76,7 +76,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -96,7 +96,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -109,7 +110,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -166,6 +167,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -234,7 +287,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          563 字
+          562 字
         
       </span>
     
@@ -296,34 +349,31 @@
             
               <div class="markdown-body">
                 
-                <p>2019-06-10-VIM</p>
-<span id="more"></span>
+                <p>2019-06-10-VIM <span id="more"></span></p>
+<h3 id="vim">Vim</h3>
+<h4 id="移动光标">移动光标：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">h 左  ✔      <br>j 下  ✔  <br>k 上  ✔   <span class="hljs-comment">#9k 向上移动9行   </span><br>l 右  ✔<br></code></pre></td></tr></table></figure>
+<h4 id="命令">命令</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">w 跳至下一个单词词首           <span class="hljs-comment"># 3w  ✔</span><br>b 跳至当前或前一个单词词首      <span class="hljs-comment"># backword  ✔</span><br>e 跳至当前或后一个单词词首      <span class="hljs-comment"># end of word  ✔</span><br>ge: 移动到前一个word的最后一个字符上  <br>W 空白为分界的WORDs为单位进行移动  <br>gg 移动到文件头  ✔<br>G 移动到文件尾  ✔<br><br>0 移动到当前行的第一个字符上   ✔  <br>^ 移动到当前行的第一个非空白字符上<br>$ 移动到当前行行尾             <span class="hljs-comment"># 2$  ✔</span><br>:start_pos,end_pos 指定到第n行  ✔  <br><br>fx 单字符搜索命令                <span class="hljs-comment"># 3fh ✔  </span><br></code></pre></td></tr></table></figure>
+<h4 id="删除">删除</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">x	<span class="hljs-comment">#3x 删除3个字符 ✔</span><br><span class="hljs-built_in">dd</span>  ✔  <br>  :n1,n2d  <br>  dw<br>y yy 复制  <br>p 粘贴到光标后(小写)   <br>P 粘贴到光标前(大写) <br></code></pre></td></tr></table></figure>
+<h4 id="撤销和重做">撤销和重做：</h4>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">u 撤销最后一次删除  ✔   <br>U 一次撤消对一行的全部操  <br>Ctrl+r 反转撤销<br><span class="hljs-bullet">. </span>重复前一次编辑操作<br></code></pre></td></tr></table></figure>
+<h4 id="命令模式">命令模式</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#当前页跳转</span><br>H	<span class="hljs-comment">#页首</span><br>M	<span class="hljs-comment">#页中</span><br>L	<span class="hljs-comment">#页底</span><br>ZZ	<span class="hljs-comment">#保存退出</span><br>ZQ	<span class="hljs-comment">#不保存退出   </span><br></code></pre></td></tr></table></figure>
+<h4 id="扩展命令模式">扩展命令模式</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">:q	:q!<br>:wq	:x<br>r filename	<span class="hljs-comment">#读文件到当前文件</span><br>w filename	<span class="hljs-comment">#当前文件写入另一个文件</span><br>!<span class="hljs-built_in">command</span>	<span class="hljs-comment">#执行命令</span><br>r!<span class="hljs-built_in">command</span>	<span class="hljs-comment">#读入命令的输出</span><br></code></pre></td></tr></table></figure>
+<h4 id="查找替换">查找/替换：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">:/string	<span class="hljs-comment">#搜索一个字符串(向尾部)   </span><br>:?string	<span class="hljs-comment">#(向头部) </span><br>  n	<span class="hljs-comment">#与命令同方向</span><br>  N	<span class="hljs-comment">#与命令反方向</span><br>:1,10s/old/new/g   <br>  :%s@^[^#]@#&amp;@     <span class="hljs-comment">#注释</span><br>  :%s/old/new/g     <span class="hljs-comment">#% 全文, g 全局</span><br>  <span class="hljs-comment">#查找替换中的分隔符/可替换为其他字符</span><br>  :s/xyz/&amp;er/g<br>r	<span class="hljs-comment">#替换光标所在处的字符</span><br></code></pre></td></tr></table></figure>
+<h4 id="多窗口操作">多窗口操作</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">多文件分割:<br>  vim -o|-O FILE1 FILE2...<br>  -o	<span class="hljs-comment">#水平分割</span><br>  -O	<span class="hljs-comment">#垂直分割</span><br>  :next :prev :last :first<br>  Ctrl+w, Arrow	<span class="hljs-comment">#在窗口间切换</span><br>单文件窗口切换:<br>  Ctrl+w,s <span class="hljs-built_in">split</span>	<span class="hljs-comment">#水平分割</span><br>  Ctrl+w,v vertical	<span class="hljs-comment">#垂直分割</span><br>  Ctrl+w,q	<span class="hljs-comment">#取消相邻窗口</span><br>  Ctrl+w,o	<span class="hljs-comment">#取消全部窗口</span><br>  :wqall	<span class="hljs-comment">#退出</span><br></code></pre></td></tr></table></figure>
+<h4 id="vim配置文件.vimrc">VIM配置文件.vimrc</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">	全局: /etc/vimrc<br>	局部: ~/.vimrc<br><span class="hljs-built_in">set</span> nu	<span class="hljs-comment">#显示行号</span><br><span class="hljs-built_in">set</span> ic	<span class="hljs-comment">#忽略字符的大小写</span><br><span class="hljs-built_in">set</span> ai	<span class="hljs-comment">#自动缩进,autoindent</span><br><span class="hljs-built_in">set</span> si	<span class="hljs-comment">#智能缩进,smartindent</span><br><span class="hljs-built_in">set</span> hlsearch	<span class="hljs-comment">#高亮搜索显示</span><br><span class="hljs-built_in">set</span> syntax on 	<span class="hljs-comment">#语法高亮</span><br><span class="hljs-built_in">set</span> list 	<span class="hljs-comment">#显示Tab和换行符</span><br><span class="hljs-built_in">set</span> fileformat=dos	<span class="hljs-comment">#启用win文件格式</span><br><span class="hljs-built_in">set</span> fileformat=unix	<br><span class="hljs-built_in">set</span> ff=dos|unix<br><span class="hljs-built_in">set</span> textwidth=65	<span class="hljs-comment">#设置文本宽度</span><br><span class="hljs-built_in">set</span> wrapmargin=15<br><span class="hljs-built_in">set</span> cursorline	<span class="hljs-comment">#设置光标所在行的标识线</span><br><span class="hljs-built_in">set</span> <span class="hljs-built_in">paste</span> 	<span class="hljs-comment">#复制保留格式</span><br><br>:<span class="hljs-built_in">help</span> <span class="hljs-built_in">command</span><br>vimtutor<br></code></pre></td></tr></table></figure>
+<img src="/posts/104c461b/VIM01.jpg" srcset="/img/loading.gif" lazyload class="" title="[VIM01]">
+<img src="/posts/104c461b/vim%E5%91%BD%E4%BB%A4%E5%B0%8F%E6%8A%84.jpg" srcset="/img/loading.gif" lazyload class="" title="[VIM02]">
+<img src="/posts/104c461b/VIM03.png" srcset="/img/loading.gif" lazyload class="" title="[VIM03]">
 
-<h3 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h3><h4 id="移动光标："><a href="#移动光标：" class="headerlink" title="移动光标："></a>移动光标：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">h 左  ✔      <br>j 下  ✔  <br>k 上  ✔   <span class="hljs-comment">#9k 向上移动9行   </span><br>l 右  ✔<br></code></pre></td></tr></table></figure>
 
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">w 跳至下一个单词词首           <span class="hljs-comment"># 3w  ✔</span><br>b 跳至当前或前一个单词词首      <span class="hljs-comment"># backword  ✔</span><br>e 跳至当前或后一个单词词首      <span class="hljs-comment"># end of word  ✔</span><br>ge: 移动到前一个word的最后一个字符上  <br>W 空白为分界的WORDs为单位进行移动  <br>gg 移动到文件头  ✔<br>G 移动到文件尾  ✔<br><br>0 移动到当前行的第一个字符上   ✔  <br>^ 移动到当前行的第一个非空白字符上<br>$ 移动到当前行行尾             <span class="hljs-comment"># 2$  ✔</span><br>:start_pos,end_pos 指定到第n行  ✔  <br><br>fx 单字符搜索命令                <span class="hljs-comment"># 3fh ✔  </span><br></code></pre></td></tr></table></figure>
-<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">x	<span class="hljs-comment">#3x 删除3个字符 ✔</span><br><span class="hljs-built_in">dd</span>  ✔  <br>  :n1,n2d  <br>  dw<br>y yy 复制  <br>p 粘贴到光标后(小写)   <br>P 粘贴到光标前(大写) <br></code></pre></td></tr></table></figure>
-
-
-<h4 id="撤销和重做："><a href="#撤销和重做：" class="headerlink" title="撤销和重做："></a>撤销和重做：</h4><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">u 撤销最后一次删除  ✔   <br>U 一次撤消对一行的全部操  <br>Ctrl+r 反转撤销<br><span class="hljs-bullet">. </span>重复前一次编辑操作<br></code></pre></td></tr></table></figure>
-
-<h4 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#当前页跳转</span><br>H	<span class="hljs-comment">#页首</span><br>M	<span class="hljs-comment">#页中</span><br>L	<span class="hljs-comment">#页底</span><br>ZZ	<span class="hljs-comment">#保存退出</span><br>ZQ	<span class="hljs-comment">#不保存退出   </span><br></code></pre></td></tr></table></figure>
-
-<h4 id="扩展命令模式"><a href="#扩展命令模式" class="headerlink" title="扩展命令模式"></a>扩展命令模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">:q	:q!<br>:wq	:x<br>r filename	<span class="hljs-comment">#读文件到当前文件</span><br>w filename	<span class="hljs-comment">#当前文件写入另一个文件</span><br>!<span class="hljs-built_in">command</span>	<span class="hljs-comment">#执行命令</span><br>r!<span class="hljs-built_in">command</span>	<span class="hljs-comment">#读入命令的输出</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="查找-替换："><a href="#查找-替换：" class="headerlink" title="查找&#x2F;替换："></a>查找&#x2F;替换：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">:/string	<span class="hljs-comment">#搜索一个字符串(向尾部)   </span><br>:?string	<span class="hljs-comment">#(向头部) </span><br>  n	<span class="hljs-comment">#与命令同方向</span><br>  N	<span class="hljs-comment">#与命令反方向</span><br>:1,10s/old/new/g   <br>  :%s@^[^#]@#&amp;@     <span class="hljs-comment">#注释</span><br>  :%s/old/new/g     <span class="hljs-comment">#% 全文, g 全局</span><br>  <span class="hljs-comment">#查找替换中的分隔符/可替换为其他字符</span><br>  :s/xyz/&amp;er/g<br>r	<span class="hljs-comment">#替换光标所在处的字符</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="多窗口操作"><a href="#多窗口操作" class="headerlink" title="多窗口操作"></a>多窗口操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">多文件分割:<br>  vim -o|-O FILE1 FILE2...<br>  -o	<span class="hljs-comment">#水平分割</span><br>  -O	<span class="hljs-comment">#垂直分割</span><br>  :next :prev :last :first<br>  Ctrl+w, Arrow	<span class="hljs-comment">#在窗口间切换</span><br>单文件窗口切换:<br>  Ctrl+w,s <span class="hljs-built_in">split</span>	<span class="hljs-comment">#水平分割</span><br>  Ctrl+w,v vertical	<span class="hljs-comment">#垂直分割</span><br>  Ctrl+w,q	<span class="hljs-comment">#取消相邻窗口</span><br>  Ctrl+w,o	<span class="hljs-comment">#取消全部窗口</span><br>  :wqall	<span class="hljs-comment">#退出</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="VIM配置文件-vimrc"><a href="#VIM配置文件-vimrc" class="headerlink" title="VIM配置文件.vimrc"></a>VIM配置文件.vimrc</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">	全局: /etc/vimrc<br>	局部: ~/.vimrc<br><span class="hljs-built_in">set</span> nu	<span class="hljs-comment">#显示行号</span><br><span class="hljs-built_in">set</span> ic	<span class="hljs-comment">#忽略字符的大小写</span><br><span class="hljs-built_in">set</span> ai	<span class="hljs-comment">#自动缩进,autoindent</span><br><span class="hljs-built_in">set</span> si	<span class="hljs-comment">#智能缩进,smartindent</span><br><span class="hljs-built_in">set</span> hlsearch	<span class="hljs-comment">#高亮搜索显示</span><br><span class="hljs-built_in">set</span> syntax on 	<span class="hljs-comment">#语法高亮</span><br><span class="hljs-built_in">set</span> list 	<span class="hljs-comment">#显示Tab和换行符</span><br><span class="hljs-built_in">set</span> fileformat=dos	<span class="hljs-comment">#启用win文件格式</span><br><span class="hljs-built_in">set</span> fileformat=unix	<br><span class="hljs-built_in">set</span> ff=dos|unix<br><span class="hljs-built_in">set</span> textwidth=65	<span class="hljs-comment">#设置文本宽度</span><br><span class="hljs-built_in">set</span> wrapmargin=15<br><span class="hljs-built_in">set</span> cursorline	<span class="hljs-comment">#设置光标所在行的标识线</span><br><span class="hljs-built_in">set</span> <span class="hljs-built_in">paste</span> 	<span class="hljs-comment">#复制保留格式</span><br><br>:<span class="hljs-built_in">help</span> <span class="hljs-built_in">command</span><br>vimtutor<br></code></pre></td></tr></table></figure>
-
-<img src="/posts/104c461b/VIM01.jpg" srcset="/img/loading.gif" lazyload class="" title="[VIM01]"> 
-
-<img src="/posts/104c461b/vim%E5%91%BD%E4%BB%A4%E5%B0%8F%E6%8A%84.jpg" srcset="/img/loading.gif" lazyload class="" title="[VIM02]"> 
-
-<img src="/posts/104c461b/VIM03.png" srcset="/img/loading.gif" lazyload class="" title="[VIM03]">  
-
- 
                 
               </div>
             
@@ -529,7 +579,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -710,7 +760,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

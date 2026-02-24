@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -77,7 +77,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -97,7 +97,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -110,7 +111,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -167,6 +168,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -297,38 +350,60 @@
             
               <div class="markdown-body">
                 
-                <p>2019-07-25-K8S</p>
-<span id="more"></span>
-
-<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><h2 id="kubernetes-简介"><a href="#kubernetes-简介" class="headerlink" title="kubernetes 简介:"></a>kubernetes 简介:</h2><blockquote>
-<p><strong>Kubernetes</strong>由Google团队发起并维护的基于Docker的开源容器集群管理系统, 目标是管理跨多个主机的容器, 它不仅支持常见的云平台, 而且支持内部数据中心.<br>核心概念是 <strong>Container Pod</strong>–&gt; 一个 Pod（容器集合）由<code>一组工作于同一物理工作节点的容器构成</code>, 组容器拥有相同的网络命名空间, IP以及存储配额, 也可以根据实际情况对每一个 Pod 进行端口映射.<br>kubernetes 组件构成:</p>
+                <p>2019-07-25-K8S <span id="more"></span></p>
+<h1 id="kubernetes">Kubernetes</h1>
+<h2 id="kubernetes-简介">kubernetes 简介:</h2>
+<blockquote>
+<p><strong>Kubernetes</strong>由Google团队发起并维护的基于Docker的开源容器集群管理系统,
+目标是管理跨多个主机的容器, 它不仅支持常见的云平台,
+而且支持内部数据中心. 核心概念是 <strong>Container Pod</strong>–&gt;
+一个 Pod（容器集合）由<code>一组工作于同一物理工作节点的容器构成</code>,
+组容器拥有相同的网络命名空间, IP以及存储配额, 也可以根据实际情况对每一个
+Pod 进行端口映射. kubernetes 组件构成:</p>
 </blockquote>
 <img src="/posts/9acacb00/k8s.jpg" srcset="/img/loading.gif" lazyload class="" title="[kubernetes组件]">
-
-<h2 id="kubernetes-组件构成"><a href="#kubernetes-组件构成" class="headerlink" title="kubernetes 组件构成:"></a>kubernetes 组件构成:</h2><h3 id="Master组件"><a href="#Master组件" class="headerlink" title="Master组件:"></a>Master组件:</h3><ul>
-<li><code>kube-apiserver</code>: <strong>Kubernetes API</strong>, <strong>集群统一入口</strong>, <strong>各组件协调者</strong>, 以HTTP API提供接口服务, <strong>所有对象资源的增删查改</strong>和监听操都交给APIServer处理后再提交给<strong>Etcd存储</strong>;</li>
-<li><code>kube-scheduler</code>: （调度器）负责对资源进行调度, 分配未分发 Pod绑定到可用的Node节点上, 存储到etcd中;</li>
-<li><code>kube-controller-manager</code>: 负责管理控制器, 一个资源对应一个控制器, CotrolerManager负责管理监控pod运行状态, 根据 etcd中的信息, 调用 node中的kubelet创建Pod;</li>
+<h2 id="kubernetes-组件构成">kubernetes 组件构成:</h2>
+<h3 id="master组件">Master组件:</h3>
+<ul>
+<li><code>kube-apiserver</code>: <strong>Kubernetes API</strong>,
+<strong>集群统一入口</strong>, <strong>各组件协调者</strong>, 以HTTP
+API提供接口服务,
+<strong>所有对象资源的增删查改</strong>和监听操都交给APIServer处理后再提交给<strong>Etcd存储</strong>;</li>
+<li><code>kube-scheduler</code>: （调度器）负责对资源进行调度,
+分配未分发 Pod绑定到可用的Node节点上, 存储到etcd中;</li>
+<li><code>kube-controller-manager</code>: 负责管理控制器,
+一个资源对应一个控制器, CotrolerManager负责管理监控pod运行状态, 根据
+etcd中的信息, 调用 node中的kubelet创建Pod;</li>
 </ul>
-<h3 id="Node组件"><a href="#Node组件" class="headerlink" title="Node组件:"></a>Node组件:</h3><ul>
-<li><code>kubelet</code>: 是 Master在 Node节点上的 Agent, 负责具体的容器生命周期管理, 根据从数据库中获取的信息来管理容器, 并上报 pod运行状态等, 下载secret、获取容器与节点状态, kubelet将每个 Pod装换成一组容器;</li>
+<h3 id="node组件">Node组件:</h3>
+<ul>
+<li><code>kubelet</code>: 是 Master在 Node节点上的 Agent,
+负责具体的容器生命周期管理, 根据从数据库中获取的信息来管理容器, 并上报
+pod运行状态等, 下载secret、获取容器与节点状态, kubelet将每个
+Pod装换成一组容器;</li>
 <li><code>kube-proxy</code>: 在 Node节点实现 Pod网络代理;</li>
 <li><code>docker/rocker/rkt</code>: 运行容器</li>
 </ul>
-<h3 id="第三方服务-master-node"><a href="#第三方服务-master-node" class="headerlink" title="第三方服务(master &amp;&amp; node):"></a>第三方服务(master &amp;&amp; node):</h3><ul>
-<li><code>etcd</code>: 用来保存集群所有状态的 Key&#x2F;Value<code>存储系统</code>, 所有 Kubernetes组件会通过 API Server来跟 Etcd进行沟通从而保存或读取资源状态。如Pod、service等对象信息;</li>
+<h3 id="第三方服务master-node">第三方服务(master &amp;&amp; node):</h3>
+<ul>
+<li><code>etcd</code>: 用来保存集群所有状态的
+Key/Value<code>存储系统</code>, 所有 Kubernetes组件会通过 API Server来跟
+Etcd进行沟通从而保存或读取资源状态。如Pod、service等对象信息;</li>
 </ul>
-<h3 id="kubectl"><a href="#kubectl" class="headerlink" title="kubectl:"></a>kubectl:</h3><blockquote>
+<h3 id="kubectl">kubectl:</h3>
+<blockquote>
 <p>kubectl 是 Kubernetes 自带的客户端, 可以用它来直接操作 Kubernetes</p>
 </blockquote>
 <table>
+
 <thead>
 <tr>
 <th>command</th>
 <th>mean</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>get</td>
 <td>显示一个或多个资源</td>
 </tr>
@@ -412,99 +487,130 @@
 <td>help</td>
 <td>查看关于某个命令的帮助信息</td>
 </tr>
-</tbody></table>
-<h3 id="Kubernetes-CNI网络最强对比：Flannel、Calico、Canal和Weave"><a href="#Kubernetes-CNI网络最强对比：Flannel、Calico、Canal和Weave" class="headerlink" title="Kubernetes CNI网络最强对比：Flannel、Calico、Canal和Weave"></a>Kubernetes CNI网络最强对比：Flannel、Calico、Canal和Weave</h3><ul>
-<li><strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/RancherLabs/article/details/88885539">Kubernetes 网络</a></strong></li>
+</tbody>
+</table>
+<h3 id="kubernetes-cni网络最强对比flannelcalicocanal和weave">Kubernetes
+CNI网络最强对比：Flannel、Calico、Canal和Weave</h3>
+<ul>
+<li><strong><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/RancherLabs/article/details/88885539">Kubernetes
+网络</a></strong></li>
 </ul>
-<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><ul>
-<li><strong><a target="_blank" rel="noopener" href="https://www.kubernetes.org.cn/5462.html">参考文章2</a></strong></li>
+<h2 id="搭建">搭建</h2>
+<ul>
+<li><strong><a
+target="_blank" rel="noopener" href="https://www.kubernetes.org.cn/5462.html">参考文章2</a></strong><br />
+### 社区方案: <code>优点</code>是搭建简单、参考文档细致;
+<code>缺点</code>是太杂乱, 升级不便 ### 官方推荐1:
+<code>Kubeadm</code></li>
+<li><code>优点</code>: 简单、官方推荐、升级方便、支持高可用;
+<code>缺点</code>: 不易维护 ### 官方推荐2: <code>Binary</code></li>
+<li><code>优点</code>: 易于维护、灵活、升级方便; <code>缺点</code>:
+搭建太过复杂, 相关文档太少</li>
 </ul>
-<h3 id="社区方案-优点是搭建简单、参考文档细致-缺点是太杂乱-升级不便"><a href="#社区方案-优点是搭建简单、参考文档细致-缺点是太杂乱-升级不便" class="headerlink" title="社区方案: 优点是搭建简单、参考文档细致; 缺点是太杂乱, 升级不便"></a>社区方案: <code>优点</code>是搭建简单、参考文档细致; <code>缺点</code>是太杂乱, 升级不便</h3><h3 id="官方推荐1-Kubeadm"><a href="#官方推荐1-Kubeadm" class="headerlink" title="官方推荐1: Kubeadm"></a>官方推荐1: <code>Kubeadm</code></h3><ul>
-<li><code>优点</code>: 简单、官方推荐、升级方便、支持高可用; <code>缺点</code>: 不易维护</li>
-</ul>
-<h3 id="官方推荐2-Binary"><a href="#官方推荐2-Binary" class="headerlink" title="官方推荐2: Binary"></a>官方推荐2: <code>Binary</code></h3><ul>
-<li><code>优点</code>: 易于维护、灵活、升级方便; <code>缺点</code>: 搭建太过复杂, 相关文档太少</li>
-</ul>
-<h2 id="Kubeadm"><a href="#Kubeadm" class="headerlink" title="Kubeadm:"></a>Kubeadm:</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备:"></a>环境准备:</h3><h4 id="1-硬件信息"><a href="#1-硬件信息" class="headerlink" title="1.硬件信息:"></a>1.硬件信息:</h4><table>
+<h2 id="kubeadm">Kubeadm:</h2>
+<h3 id="环境准备">环境准备:</h3>
+<h4 id="硬件信息">1.硬件信息:</h4>
+<table>
 <thead>
 <tr>
-<th align="left">系统类型</th>
-<th align="left">IP</th>
-<th align="left">节点</th>
-<th align="left">Hostname</th>
+<th style="text-align: left;">系统类型</th>
+<th style="text-align: left;">IP</th>
+<th style="text-align: left;">节点</th>
+<th style="text-align: left;">Hostname</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">CentOS7.2</td>
-<td align="left">192.168.137.13</td>
-<td align="left">master</td>
-<td align="left">m1</td>
+<tbody>
+<tr>
+<td style="text-align: left;">CentOS7.2</td>
+<td style="text-align: left;">192.168.137.13</td>
+<td style="text-align: left;">master</td>
+<td style="text-align: left;">m1</td>
 </tr>
 <tr>
-<td align="left">CentOS7.2</td>
-<td align="left">192.168.137.14</td>
-<td align="left">master</td>
-<td align="left">m2</td>
+<td style="text-align: left;">CentOS7.2</td>
+<td style="text-align: left;">192.168.137.14</td>
+<td style="text-align: left;">master</td>
+<td style="text-align: left;">m2</td>
 </tr>
 <tr>
-<td align="left">CentOS7.2</td>
-<td align="left">192.168.137.15</td>
-<td align="left">master</td>
-<td align="left">m3</td>
+<td style="text-align: left;">CentOS7.2</td>
+<td style="text-align: left;">192.168.137.15</td>
+<td style="text-align: left;">master</td>
+<td style="text-align: left;">m3</td>
 </tr>
 <tr>
-<td align="left">CentOS7.2</td>
-<td align="left">192.168.137.30</td>
-<td align="left">worker</td>
-<td align="left">n1</td>
+<td style="text-align: left;">CentOS7.2</td>
+<td style="text-align: left;">192.168.137.30</td>
+<td style="text-align: left;">worker</td>
+<td style="text-align: left;">n1</td>
 </tr>
 <tr>
-<td align="left">CentOS7.2</td>
-<td align="left">192.168.137.32</td>
-<td align="left">worker</td>
-<td align="left">n2</td>
+<td style="text-align: left;">CentOS7.2</td>
+<td style="text-align: left;">192.168.137.32</td>
+<td style="text-align: left;">worker</td>
+<td style="text-align: left;">n2</td>
 </tr>
-</tbody></table>
-<img src="/posts/9acacb00/k8s%E5%8D%95master.jpg" srcset="/img/loading.gif" lazyload class="" title="[单-master]">  
+</tbody>
+</table>
+<img src="/posts/9acacb00/k8s%E5%8D%95master.jpg" srcset="/img/loading.gif" lazyload class="" title="[单-master]">
+#### 2.设置主机名<code>hostname</code>,
+每一台配置<code>hosts</code>文件域名解析:
+<div id="kubeadm">
 
-<h4 id="2-设置主机名hostname-每一台配置hosts文件域名解析"><a href="#2-设置主机名hostname-每一台配置hosts文件域名解析" class="headerlink" title="2.设置主机名hostname, 每一台配置hosts文件域名解析:  "></a>2.设置主机名<code>hostname</code>, 每一台配置<code>hosts</code>文件域名解析:  <div id="kubeadm"></div></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt;&gt;/etc/hosts   # 追加</span><br><span class="hljs-string">  192.168.137.13 m1</span><br><span class="hljs-string">  192.168.137.13 m2</span><br><span class="hljs-string">  192.168.137.13 m3</span><br><span class="hljs-string">  192.168.137.30 n1</span><br><span class="hljs-string">  192.168.137.32 n2</span><br><span class="hljs-string">  EOF</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="3-关闭防火墙、SELinux及swap"><a href="#3-关闭防火墙、SELinux及swap" class="headerlink" title="3.关闭防火墙、SELinux及swap:"></a>3.关闭<code>防火墙</code>、<code>SELinux</code>及<code>swap</code>:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop firewalld<br>systmectl <span class="hljs-built_in">disable</span> firewalled<br><br>iptables -F<br>iptables -X &amp;&amp; iptables -F -t nat<br>iptables -X -t nat &amp;&amp; iptables -P FORWARD ACCEPT<br><br>setenforce 0<br>sed -i <span class="hljs-string">&quot;s/^SELINUX=enforcing/SELINUX=disabled/g&quot;</span> /etc/selinux/config<br><br>swapoff -a<br>sed -i <span class="hljs-string">&#x27;s/.*swap.*/#&amp;/&#x27;</span> /etc/fstab <br>sed -i <span class="hljs-string">&#x27;/swap/s/^\(.*\)$/#\1/g&#x27;</span> /etc/fstab<br></code></pre></td></tr></table></figure>
-
-<h4 id="4-配置内核参数，将桥接的IPv4流量传递到iptables的链"><a href="#4-配置内核参数，将桥接的IPv4流量传递到iptables的链" class="headerlink" title="4.配置内核参数，将桥接的IPv4流量传递到iptables的链"></a>4.配置内核参数，将桥接的IPv4流量传递到iptables的链</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt; /etc/sysctl.d/k8s.conf   # 多行输入</span><br><span class="hljs-string">  net.bridge.bridge-nf-call-iptables=1</span><br><span class="hljs-string">  net.bridge.bridge-nf-call-ip6tables=1</span><br><span class="hljs-string">  net.ipv4.ip_forward=1</span><br><span class="hljs-string">  vm.swappiness=0</span><br><span class="hljs-string">  vm.overcommit_memory=1</span><br><span class="hljs-string">  vm.panic_on_oom=0</span><br><span class="hljs-string">  fs.inotify.max_user_watches=89100</span><br><span class="hljs-string">  EOF</span><br><br>sysctl --system<br>sysctl -p /etc/sysctl.d/kubernetws.conf<br></code></pre></td></tr></table></figure>
-
-<h4 id="5-配置国内yum源、Docker源及Kubernets源"><a href="#5-配置国内yum源、Docker源及Kubernets源" class="headerlink" title="5.配置国内yum源、Docker源及Kubernets源:"></a>5.配置国内yum源、Docker源及Kubernets源:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y wget<br><span class="hljs-built_in">mkdir</span> /etc/yum.repos.d/bak &amp;&amp; <span class="hljs-built_in">mv</span> /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak<br>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo<br>wget http://mirrors.cloud.tencent.com/repo/epel-7.repo -O /etc/yum.repos.d/epel.repo <br>yum clean all &amp;&amp; yum makecache<br><br>wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo<br><br><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt; /etc/yum.repo.d/kubernetes.repo</span><br><span class="hljs-string">  [kubernetes]</span><br><span class="hljs-string">  name=Kubernetes</span><br><span class="hljs-string">  baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="hljs-string">  enabled=1</span><br><span class="hljs-string">  gpgcheck=1</span><br><span class="hljs-string">  repo_gpgcheck=1</span><br><span class="hljs-string">  gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="hljs-string">  EOF</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装:"></a>软件安装:</h3><h4 id="6-所有节点安装docker、kuberadm、kubelet及kubectl"><a href="#6-所有节点安装docker、kuberadm、kubelet及kubectl" class="headerlink" title="6.所有节点安装docker、kuberadm、kubelet及kubectl"></a>6.所有节点安装docker、kuberadm、kubelet及kubectl</h4><ul>
+</div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt;&gt;/etc/hosts   # 追加</span><br><span class="hljs-string">  192.168.137.13 m1</span><br><span class="hljs-string">  192.168.137.13 m2</span><br><span class="hljs-string">  192.168.137.13 m3</span><br><span class="hljs-string">  192.168.137.30 n1</span><br><span class="hljs-string">  192.168.137.32 n2</span><br><span class="hljs-string">  EOF</span><br></code></pre></td></tr></table></figure>
+<h4
+id="关闭防火墙selinux及swap">3.关闭<code>防火墙</code>、<code>SELinux</code>及<code>swap</code>:</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop firewalld<br>systmectl <span class="hljs-built_in">disable</span> firewalled<br><br>iptables -F<br>iptables -X &amp;&amp; iptables -F -t nat<br>iptables -X -t nat &amp;&amp; iptables -P FORWARD ACCEPT<br><br>setenforce 0<br>sed -i <span class="hljs-string">&quot;s/^SELINUX=enforcing/SELINUX=disabled/g&quot;</span> /etc/selinux/config<br><br>swapoff -a<br>sed -i <span class="hljs-string">&#x27;s/.*swap.*/#&amp;/&#x27;</span> /etc/fstab <br>sed -i <span class="hljs-string">&#x27;/swap/s/^\(.*\)$/#\1/g&#x27;</span> /etc/fstab<br></code></pre></td></tr></table></figure>
+<h4
+id="配置内核参数将桥接的ipv4流量传递到iptables的链">4.配置内核参数，将桥接的IPv4流量传递到iptables的链</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt; /etc/sysctl.d/k8s.conf   # 多行输入</span><br><span class="hljs-string">  net.bridge.bridge-nf-call-iptables=1</span><br><span class="hljs-string">  net.bridge.bridge-nf-call-ip6tables=1</span><br><span class="hljs-string">  net.ipv4.ip_forward=1</span><br><span class="hljs-string">  vm.swappiness=0</span><br><span class="hljs-string">  vm.overcommit_memory=1</span><br><span class="hljs-string">  vm.panic_on_oom=0</span><br><span class="hljs-string">  fs.inotify.max_user_watches=89100</span><br><span class="hljs-string">  EOF</span><br><br>sysctl --system<br>sysctl -p /etc/sysctl.d/kubernetws.conf<br></code></pre></td></tr></table></figure>
+<h4
+id="配置国内yum源docker源及kubernets源">5.配置国内yum源、Docker源及Kubernets源:</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y wget<br><span class="hljs-built_in">mkdir</span> /etc/yum.repos.d/bak &amp;&amp; <span class="hljs-built_in">mv</span> /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak<br>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo<br>wget http://mirrors.cloud.tencent.com/repo/epel-7.repo -O /etc/yum.repos.d/epel.repo <br>yum clean all &amp;&amp; yum makecache<br><br>wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo<br><br><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt; /etc/yum.repo.d/kubernetes.repo</span><br><span class="hljs-string">  [kubernetes]</span><br><span class="hljs-string">  name=Kubernetes</span><br><span class="hljs-string">  baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="hljs-string">  enabled=1</span><br><span class="hljs-string">  gpgcheck=1</span><br><span class="hljs-string">  repo_gpgcheck=1</span><br><span class="hljs-string">  gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="hljs-string">  EOF</span><br></code></pre></td></tr></table></figure>
+<h3 id="软件安装">软件安装:</h3>
+<h4
+id="所有节点安装dockerkuberadmkubelet及kubectl">6.所有节点安装docker、kuberadm、kubelet及kubectl</h4>
+<ul>
 <li>kubeadm: 部署集群用的命令</li>
-<li>kubelet: 在集群中每台机器上都要运行的组件，负责管理pod、容器的生命周期  </li>
+<li>kubelet:
+在集群中每台机器上都要运行的组件，负责管理pod、容器的生命周期<br />
+</li>
 <li>kubectl: 集群管理工具(可选, 只要在控制集群的节点上安装即可)</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum update <br>yum install -y conntrack ipvsadm ipset jq sysstat curl iptables libseccomp<br><br>yum remove -y docker* container-selinux<br>yum install -y docker-ce-18.06.1.ce-3.el7<br><br><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt; /etc/docker/daemon.json</span><br><span class="hljs-string">  &#123;</span><br><span class="hljs-string">    &quot;graph&quot;: &quot;/docker/data/path&quot;,	# df -h 找空间比较大的, 默认 /var/lib/docker</span><br><span class="hljs-string">    &quot;exec-opts&quot;: [&quot;native.cgroupdrive=systemd&quot;]	// 默认 cgroups</span><br><span class="hljs-string">    &quot;registry-mirrors&quot;: [&quot;https://registry.docker-cn.com&quot;] </span><br><span class="hljs-string">  &#125;</span><br><span class="hljs-string">  EOF</span><br><br>systemctl <span class="hljs-built_in">enable</span> docker &amp;&amp; systemctl start docker<br>docker -version<br>yum list kubeadm --showduplicates | <span class="hljs-built_in">sort</span> -r	  <span class="hljs-comment"># 找到要安装的版本号</span><br>yum install -y kubelet-1.13.3 kubeadm-1.13.3 kubectl-1.13.3<br><br><span class="hljs-comment"># 设置kubelet的cgroupdriver (kubelet的cgroupdriver默认为systemd, 如果上面没有设置docker的exec-opts为systemd, 这里就需要将kubelet的设置为cgroupfs)</span><br>sed -i <span class="hljs-string">&quot;s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g&quot;</span> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf	 <br>systemctl <span class="hljs-built_in">enable</span> kubelet	<span class="hljs-comment"># 设置开机启动暂时不启动</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="部署配置"><a href="#部署配置" class="headerlink" title="部署配置:"></a>部署配置:</h3><h4 id="7-下载参考配置文件"><a href="#7-下载参考配置文件" class="headerlink" title="7.下载参考配置文件"></a>7.下载参考配置文件</h4><ul>
-<li><strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/74a6673ff78b">关于镜像下载问题</a></strong>   </li>
-<li><strong><a target="_blank" rel="noopener" href="https://github.com/HikoQiu/kubeadm-install-k8s">kubeadm-config.yaml配置参考</a></strong>   </li>
-<li><strong><a target="_blank" rel="noopener" href="https://github.com/anjia0532/gcr.io_mirror/tree/master/google-containers">gcr.io_mirror</a></strong></li>
+<h3 id="部署配置">部署配置:</h3>
+<h4 id="下载参考配置文件">7.下载参考配置文件</h4>
+<ul>
+<li><strong><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/74a6673ff78b">关于镜像下载问题</a></strong><br />
+</li>
+<li><strong><a
+target="_blank" rel="noopener" href="https://github.com/HikoQiu/kubeadm-install-k8s">kubeadm-config.yaml配置参考</a></strong><br />
+</li>
+<li><strong><a
+target="_blank" rel="noopener" href="https://github.com/anjia0532/gcr.io_mirror/tree/master/google-containers">gcr.io_mirror</a></strong></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># 下载镜像</span><br>images=(kube-proxy-amd64:v1.13.3 kube-apiserver-amd64:v1.13.3 kube-controller-manager-amd64:v1.13.3 kube-scheduler-amd64:v1.13.3 pause:3.1 etcd-amd64:3.2.18 coredns:1.1.3)<br><span class="hljs-keyword">for</span> imageName <span class="hljs-keyword">in</span> <span class="hljs-variable">$&#123;images[@]&#125;</span><br><span class="hljs-keyword">do</span><br>    docker pull anjia0532/google-containers.<span class="hljs-variable">$imageName</span><br>    docker tag anjia0532/google-containers.<span class="hljs-variable">$imageName</span> k8s.gcr.io/<span class="hljs-variable">$imageName</span><br>    docker rmi anjia0532/google-containers.<span class="hljs-variable">$imageName</span><br><span class="hljs-keyword">done</span><br>./k8s-docker-images.sh<br></code></pre></td></tr></table></figure>
-
-<h4 id="8-部署mater节"><a href="#8-部署mater节" class="headerlink" title="8.部署mater节"></a>8.部署mater节</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubeadm init \<br>  --kubernetes-version=1.13.3 \<br>  <span class="hljs-comment"># 单master: api server地址是master本机IP地址</span><br>  --apiserver-advertise-address=192.168.137.13 \ 	<br>  --image-repository registry.aliyuncs.com/google_containers \<br>  --service-cidr=10.1.0.0/16 \	   <span class="hljs-comment"># 负载均衡虚拟IP</span><br>  --pod-network-cidr=10.244.0.0/16 <br><br>kubeadm <span class="hljs-built_in">join</span> :6443 --token kekvgu.nw1n76h84f4camj6 --discovery-token-ca-cert-hash sha256:4ee74205227c78ca62f2d641635afa4d50e6634acfaa8291f28582c7e3b0e30e<br><br><span class="hljs-built_in">ls</span> /etc/kubernetes/pki	 <span class="hljs-comment"># 证书路径</span><br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-variable">$HOME</span>/.kube<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="hljs-variable">$HOME</span>/.kube/config<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> $(<span class="hljs-built_in">id</span> -u):$(<span class="hljs-built_in">id</span> -g) <span class="hljs-variable">$HOME</span>/.kube/config<br>  kubectl get node<br>  NAME		STATUS		ROLES		AGE		VERSION<br>  m1		NotReady	master		5m46s	v1.13.3	<br></code></pre></td></tr></table></figure>
-
-<h4 id="9-部署POD网络-部署Flanne-网络插件"><a href="#9-部署POD网络-部署Flanne-网络插件" class="headerlink" title="9.部署POD网络, 部署Flanne 网络插件"></a>9.部署POD网络, 部署Flanne 网络插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml<br>kubectl get pods -n kube-ststem<br></code></pre></td></tr></table></figure>
-
-<h4 id="10-加入Kubernetes-Node-即向集群添加新节点"><a href="#10-加入Kubernetes-Node-即向集群添加新节点" class="headerlink" title="10.加入Kubernetes Node, 即向集群添加新节点"></a>10.加入Kubernetes Node, 即向集群添加新节点</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vim">kubeadm <span class="hljs-keyword">join</span> --token <span class="hljs-symbol">&lt;master-ip&gt;</span>:<span class="hljs-symbol">&lt;master-port&gt;</span> --discovery-token-<span class="hljs-keyword">ca</span>-cert-hash <span class="hljs-built_in">sha256</span>:code<br># 在所有 node节点 上执行如下命令:<br>kubeadm <span class="hljs-keyword">join</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">137.13</span>:<span class="hljs-number">6443</span> --token kekvgu.nw1n76h84f4camj6 --discovery-token-<span class="hljs-keyword">ca</span>-cert-hash <span class="hljs-built_in">sha256</span>:<span class="hljs-number">4</span>ee74205227c78ca62f2d641635afa4d50e6634acfaa8291f28582c7e3b0e30e<br><br># master 查看node 状态<br>  kubectl <span class="hljs-built_in">get</span> node<br>  NAME		STATUS		ROLES		AGE		VERSION<br>  m1		Ready		master		<span class="hljs-number">15</span><span class="hljs-keyword">m</span>		v1.<span class="hljs-number">13.3</span>	<br>  n1		Ready		<span class="hljs-symbol">&lt;none&gt;</span>		<span class="hljs-number">4</span>s		v1.<span class="hljs-number">13.3</span><br>  n2		Ready		<span class="hljs-symbol">&lt;none&gt;</span>		<span class="hljs-number">88</span>s		v1.<span class="hljs-number">13.3</span>	<br><br>kubectl <span class="hljs-built_in">get</span> pods -n kube-<span class="hljs-built_in">system</span><br>kubectl <span class="hljs-keyword">delete</span> pods kube-flannel-<span class="hljs-keyword">ds</span>-amd64-<span class="hljs-number">6</span>jf7t -n kube-<span class="hljs-built_in">system</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="11-创建Pod以验证集群是否正常"><a href="#11-创建Pod以验证集群是否正常" class="headerlink" title="11.创建Pod以验证集群是否正常"></a>11.创建Pod以验证集群是否正常</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubectl create deployment nginx --image=nginx<br>kubectl get pods<br>  NAME					READY	STATUS				RESTARTS	AGE<br>  nginx-5c7588df-fhhb9	0/1		ContainerCreating	0			28s<br>  kubectl expose deployment nginx --port=80 --<span class="hljs-built_in">type</span>=NodePort<br>	<br>  kubectl get pods,svc -o wide	<span class="hljs-comment"># 查看详细信息  </span><br><span class="hljs-comment"># 测试: 192.168.137.30:80</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="12-部署Dashboard-master节点"><a href="#12-部署Dashboard-master节点" class="headerlink" title="12.部署Dashboard(master节点)"></a>12.部署Dashboard(master节点)</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-string">wget</span> <span class="hljs-string">https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml</span><br><br><span class="hljs-comment"># vim 手动修改yaml文件Dashboard 的获取地址</span><br><span class="hljs-attr">spec:</span><br>  <span class="hljs-attr">containers:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">kubernetes-dashboard</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">loveone/kubernetes-dashboard-amd64:v1.10.1</span><br>	<br>  <span class="hljs-attr">spec:</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">port:</span> <span class="hljs-number">443</span><br>         <span class="hljs-attr">targetPort:</span> <span class="hljs-number">8443</span><br>         <span class="hljs-comment"># nodePort: 30001	定义外部访问端口</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">NodePort</span><br><br><span class="hljs-string">docker</span> <span class="hljs-string">pull</span> <span class="hljs-string">loveone/kubernetes-dashboard-amd64:v1.10.1</span> <span class="hljs-comment"># 也可以先下载镜像</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">apply</span> <span class="hljs-string">-f</span> <span class="hljs-string">kubernetes-dashboard.yaml</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">create</span> <span class="hljs-string">-f</span> <span class="hljs-string">kubernetes-dashboard.yaml</span><br><br><span class="hljs-comment"># 查看服务状态</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">deployment</span> <span class="hljs-string">kubernetes-dashboard</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span> <span class="hljs-string">-o</span> <span class="hljs-string">wide</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">services</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods,svc</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span><br>  <span class="hljs-string">NAME</span>							<span class="hljs-string">TYPE</span>		<span class="hljs-string">CLUSTER_IP</span>	<span class="hljs-string">EXTERNAL_IP</span>	<span class="hljs-string">PORT(S)</span>			<span class="hljs-string">AGE</span><br>  <span class="hljs-string">service/kube-dns</span>				<span class="hljs-string">ClusterIP</span>	<span class="hljs-number">10.1</span><span class="hljs-number">.0</span><span class="hljs-number">.10</span>	<span class="hljs-string">&lt;none&gt;</span>		<span class="hljs-number">53</span><span class="hljs-string">/UDP,53/TCP</span>	<span class="hljs-string">27m</span><br>  <span class="hljs-string">service/kubernetes-dashboard</span>	<span class="hljs-string">NodePort</span>	<span class="hljs-number">10.1</span><span class="hljs-number">.225</span><span class="hljs-number">.37</span>	<span class="hljs-string">&lt;none&gt;</span>		<span class="hljs-number">443</span><span class="hljs-string">:32569/TCP</span>	<span class="hljs-string">53s</span><br><br><span class="hljs-string">nestat</span> <span class="hljs-string">-anltp</span> <span class="hljs-string">|grep</span> <span class="hljs-number">8443</span><br><span class="hljs-comment"># 测试: https://192.168.137.13:32569</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="13-登录认证"><a href="#13-登录认证" class="headerlink" title="13.登录认证"></a>13.登录认证</h4><img src="/posts/9acacb00/dashboard.jpg" srcset="/img/loading.gif" lazyload class="" title="[dashboard认证界面]">
+<h4 id="部署mater节">8.部署mater节</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubeadm init \<br>  --kubernetes-version=1.13.3 \<br>  <span class="hljs-comment"># 单master: api server地址是master本机IP地址</span><br>  --apiserver-advertise-address=192.168.137.13 \ 	<br>  --image-repository registry.aliyuncs.com/google_containers \<br>  --service-cidr=10.1.0.0/16 \	   <span class="hljs-comment"># 负载均衡虚拟IP</span><br>  --pod-network-cidr=10.244.0.0/16 <br><br>kubeadm <span class="hljs-built_in">join</span> :6443 --token kekvgu.nw1n76h84f4camj6 --discovery-token-ca-cert-hash sha256:4ee74205227c78ca62f2d641635afa4d50e6634acfaa8291f28582c7e3b0e30e<br><br><span class="hljs-built_in">ls</span> /etc/kubernetes/pki	 <span class="hljs-comment"># 证书路径</span><br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-variable">$HOME</span>/.kube<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="hljs-variable">$HOME</span>/.kube/config<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> $(<span class="hljs-built_in">id</span> -u):$(<span class="hljs-built_in">id</span> -g) <span class="hljs-variable">$HOME</span>/.kube/config<br>  kubectl get node<br>  NAME		STATUS		ROLES		AGE		VERSION<br>  m1		NotReady	master		5m46s	v1.13.3	<br></code></pre></td></tr></table></figure>
+<h4 id="部署pod网络-部署flanne-网络插件">9.部署POD网络, 部署Flanne
+网络插件</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml<br>kubectl get pods -n kube-ststem<br></code></pre></td></tr></table></figure>
+<h4 id="加入kubernetes-node-即向集群添加新节点">10.加入Kubernetes Node,
+即向集群添加新节点</h4>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vim">kubeadm <span class="hljs-keyword">join</span> --token <span class="hljs-symbol">&lt;master-ip&gt;</span>:<span class="hljs-symbol">&lt;master-port&gt;</span> --discovery-token-<span class="hljs-keyword">ca</span>-cert-hash <span class="hljs-built_in">sha256</span>:code<br># 在所有 node节点 上执行如下命令:<br>kubeadm <span class="hljs-keyword">join</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">137.13</span>:<span class="hljs-number">6443</span> --token kekvgu.nw1n76h84f4camj6 --discovery-token-<span class="hljs-keyword">ca</span>-cert-hash <span class="hljs-built_in">sha256</span>:<span class="hljs-number">4</span>ee74205227c78ca62f2d641635afa4d50e6634acfaa8291f28582c7e3b0e30e<br><br># master 查看node 状态<br>  kubectl <span class="hljs-built_in">get</span> node<br>  NAME		STATUS		ROLES		AGE		VERSION<br>  m1		Ready		master		<span class="hljs-number">15</span><span class="hljs-keyword">m</span>		v1.<span class="hljs-number">13.3</span>	<br>  n1		Ready		<span class="hljs-symbol">&lt;none&gt;</span>		<span class="hljs-number">4</span>s		v1.<span class="hljs-number">13.3</span><br>  n2		Ready		<span class="hljs-symbol">&lt;none&gt;</span>		<span class="hljs-number">88</span>s		v1.<span class="hljs-number">13.3</span>	<br><br>kubectl <span class="hljs-built_in">get</span> pods -n kube-<span class="hljs-built_in">system</span><br>kubectl <span class="hljs-keyword">delete</span> pods kube-flannel-<span class="hljs-keyword">ds</span>-amd64-<span class="hljs-number">6</span>jf7t -n kube-<span class="hljs-built_in">system</span><br></code></pre></td></tr></table></figure>
+<h4 id="创建pod以验证集群是否正常">11.创建Pod以验证集群是否正常</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubectl create deployment nginx --image=nginx<br>kubectl get pods<br>  NAME					READY	STATUS				RESTARTS	AGE<br>  nginx-5c7588df-fhhb9	0/1		ContainerCreating	0			28s<br>  kubectl expose deployment nginx --port=80 --<span class="hljs-built_in">type</span>=NodePort<br>	<br>  kubectl get pods,svc -o wide	<span class="hljs-comment"># 查看详细信息  </span><br><span class="hljs-comment"># 测试: 192.168.137.30:80</span><br></code></pre></td></tr></table></figure>
+<h4 id="部署dashboardmaster节点">12.部署Dashboard(master节点)</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-string">wget</span> <span class="hljs-string">https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml</span><br><br><span class="hljs-comment"># vim 手动修改yaml文件Dashboard 的获取地址</span><br><span class="hljs-attr">spec:</span><br>  <span class="hljs-attr">containers:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">kubernetes-dashboard</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">loveone/kubernetes-dashboard-amd64:v1.10.1</span><br>	<br>  <span class="hljs-attr">spec:</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">port:</span> <span class="hljs-number">443</span><br>         <span class="hljs-attr">targetPort:</span> <span class="hljs-number">8443</span><br>         <span class="hljs-comment"># nodePort: 30001	定义外部访问端口</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">NodePort</span><br><br><span class="hljs-string">docker</span> <span class="hljs-string">pull</span> <span class="hljs-string">loveone/kubernetes-dashboard-amd64:v1.10.1</span> <span class="hljs-comment"># 也可以先下载镜像</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">apply</span> <span class="hljs-string">-f</span> <span class="hljs-string">kubernetes-dashboard.yaml</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">create</span> <span class="hljs-string">-f</span> <span class="hljs-string">kubernetes-dashboard.yaml</span><br><br><span class="hljs-comment"># 查看服务状态</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">deployment</span> <span class="hljs-string">kubernetes-dashboard</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span> <span class="hljs-string">-o</span> <span class="hljs-string">wide</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">services</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span><br><span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods,svc</span> <span class="hljs-string">-n</span> <span class="hljs-string">kube-system</span><br>  <span class="hljs-string">NAME</span>							<span class="hljs-string">TYPE</span>		<span class="hljs-string">CLUSTER_IP</span>	<span class="hljs-string">EXTERNAL_IP</span>	<span class="hljs-string">PORT(S)</span>			<span class="hljs-string">AGE</span><br>  <span class="hljs-string">service/kube-dns</span>				<span class="hljs-string">ClusterIP</span>	<span class="hljs-number">10.1</span><span class="hljs-number">.0</span><span class="hljs-number">.10</span>	<span class="hljs-string">&lt;none&gt;</span>		<span class="hljs-number">53</span><span class="hljs-string">/UDP,53/TCP</span>	<span class="hljs-string">27m</span><br>  <span class="hljs-string">service/kubernetes-dashboard</span>	<span class="hljs-string">NodePort</span>	<span class="hljs-number">10.1</span><span class="hljs-number">.225</span><span class="hljs-number">.37</span>	<span class="hljs-string">&lt;none&gt;</span>		<span class="hljs-number">443</span><span class="hljs-string">:32569/TCP</span>	<span class="hljs-string">53s</span><br><br><span class="hljs-string">nestat</span> <span class="hljs-string">-anltp</span> <span class="hljs-string">|grep</span> <span class="hljs-number">8443</span><br><span class="hljs-comment"># 测试: https://192.168.137.13:32569</span><br></code></pre></td></tr></table></figure>
+<h4 id="登录认证">13.登录认证</h4>
+<img src="/posts/9acacb00/dashboard.jpg" srcset="/img/loading.gif" lazyload class="" title="[dashboard认证界面]">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看访问Dashboard的认证令牌</span><br>kubectl create serviceaccount dashboard-admin -n kube-system<br>kubectl create clusterrolebinding  dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin<br><br>kubectl get secret -n kube-system<br>  NAME						TYPE													DATA	AGE<br>  dashboard-admin-token-w6rtn	kuberbetes.io/service-account-token	default-token-82hvk	3		60s<br>kubectl describe secrets dashboard-admin-token-w6rtn -n kube-system<br>kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk <span class="hljs-string">&#x27;/dashboard-admin/&#123;print $1&#125;&#x27;</span>)<br></code></pre></td></tr></table></figure>
-
 <img src="/posts/9acacb00/dashboard-%E9%A1%B5%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload class="" title="[dashboard页面]">
+<h2 id="二进制部署">二进制部署:</h2>
 
-<h2 id="二进制部署"><a href="#二进制部署" class="headerlink" title="二进制部署:"></a>二进制部署:</h2>
                 
               </div>
             
@@ -710,7 +816,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -891,7 +997,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

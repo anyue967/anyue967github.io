@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -77,7 +77,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -97,7 +97,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -110,7 +111,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -167,6 +168,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -297,36 +350,49 @@
             
               <div class="markdown-body">
                 
-                <p>2019-09-09-ANT</p>
-<span id="more"></span>
-
-<h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25532384">参考文章</a><br>进程是<code>资源分配</code>的最小单位，线程是<code>CPU调度</code>的最小单位； </p>
+                <p>2019-09-09-ANT <span id="more"></span></p>
+<h2 id="进程与线程">进程与线程</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25532384">参考文章</a><br />
+进程是<code>资源分配</code>的最小单位，线程是<code>CPU调度</code>的最小单位；</p>
 </blockquote>
-<h3 id="二者关系"><a href="#二者关系" class="headerlink" title="二者关系"></a>二者关系</h3><blockquote>
-<p>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程（通常说的主线程）;<br>资源分配给进程，<code>同一进程的所有线程共享该进程的所有资源</code>;<br>线程在执行过程中，需要协作同步。不同进程的线程间要利用<code>消息通信</code>的办法实现同步;<br>处理任务分给线程，即真正在处理任务上运行的是线程;<br>线程是指进程内的一个执行单元，也是进程内的可调度实体; </p>
+<h3 id="二者关系">二者关系</h3>
+<blockquote>
+<p>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程（通常说的主线程）;<br />
+资源分配给进程，<code>同一进程的所有线程共享该进程的所有资源</code>;<br />
+线程在执行过程中，需要协作同步。不同进程的线程间要利用<code>消息通信</code>的办法实现同步;<br />
+处理任务分给线程，即真正在处理任务上运行的是线程;<br />
+线程是指进程内的一个执行单元，也是进程内的可调度实体;</p>
 </blockquote>
-<img src="/posts/c9dd20a7/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" srcset="/img/loading.gif" lazyload class="" title="[进程与线程]">  
-
-<img src="/posts/c9dd20a7/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B01.png" srcset="/img/loading.gif" lazyload class="" title="[进程与线程01]">  
-
-<h2 id="同步-异步-阻塞-非阻塞"><a href="#同步-异步-阻塞-非阻塞" class="headerlink" title="同步&#x2F;异步 &amp;&amp; 阻塞&#x2F;非阻塞"></a>同步&#x2F;异步 &amp;&amp; 阻塞&#x2F;非阻塞</h2><h3 id="同步-异步（被调用者）"><a href="#同步-异步（被调用者）" class="headerlink" title="同步&#x2F;异步（被调用者）"></a>同步&#x2F;异步（被调用者）</h3><ul>
+<img src="/posts/c9dd20a7/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" srcset="/img/loading.gif" lazyload class="" title="[进程与线程]">
+<img src="/posts/c9dd20a7/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B01.png" srcset="/img/loading.gif" lazyload class="" title="[进程与线程01]">
+<h2 id="同步异步-阻塞非阻塞">同步/异步 &amp;&amp; 阻塞/非阻塞</h2>
+<h3 id="同步异步被调用者">同步/异步（被调用者）</h3>
+<ul>
 <li><code>描述网络通信模式，适用于请求-响应模型</code></li>
 <li>同步：发送方发送请求后，需要等待接收响应，否则将一直等待</li>
 <li>异步：发送方发送请求后，不需要等待响应，可以继续发送下一个请求，或者主动挂起线程并释放CPU</li>
 </ul>
-<h3 id="阻塞-非阻塞（调用者-应用程序）"><a href="#阻塞-非阻塞（调用者-应用程序）" class="headerlink" title="阻塞&#x2F;非阻塞（调用者-应用程序）"></a>阻塞&#x2F;非阻塞（调用者-应用程序）</h3><ul>
-<li><code>描述进程的函数调用方式</code>  </li>
+<h3 id="阻塞非阻塞调用者-应用程序">阻塞/非阻塞（调用者-应用程序）</h3>
+<ul>
+<li><code>描述进程的函数调用方式</code><br />
+</li>
 <li>阻塞：IO 调用会一直阻塞，直至结果返回才能继续执行</li>
-<li>非阻塞：IO 调用会立即返回，不需要等待结果，并可以执行下一个 I&#x2F;O 调用</li>
+<li>非阻塞：IO 调用会立即返回，不需要等待结果，并可以执行下一个 I/O
+调用</li>
 </ul>
 
-
-<h2 id="IO多路复用的三种模型-Select，Poll，Epoll"><a href="#IO多路复用的三种模型-Select，Poll，Epoll" class="headerlink" title="IO多路复用的三种模型:Select，Poll，Epoll"></a>IO多路复用的三种模型:Select，Poll，Epoll</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/javalyy/p/8882066.html">参考文章</a>  </li>
-<li>IO有<code>内存IO</code>、<code>网络IO</code>和<code>磁盘IO</code>三种，通常说的IO指的是后两者; 以文件IO为例,一个IO读过程是文件数据从<code>磁盘→内核缓冲区→用户内存</code>的过程。同步与异步的区别主要在于数据从内<code>核缓冲区→用户内存</code>这个过程需不需要用户进程等待，即实际的IO读写是否阻塞请求进程。(网络IO把磁盘换做网卡即可)</li>
+<h2
+id="io多路复用的三种模型selectpollepoll">IO多路复用的三种模型:Select，Poll，Epoll</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/javalyy/p/8882066.html">参考文章</a><br />
+</li>
+<li>IO有<code>内存IO</code>、<code>网络IO</code>和<code>磁盘IO</code>三种，通常说的IO指的是后两者;
+以文件IO为例,一个IO读过程是文件数据从<code>磁盘→内核缓冲区→用户内存</code>的过程。同步与异步的区别主要在于数据从内<code>核缓冲区→用户内存</code>这个过程需不需要用户进程等待，即实际的IO读写是否阻塞请求进程。(网络IO把磁盘换做网卡即可)</li>
 </ul>
 <table>
+
 <thead>
 <tr>
 <th>项目</th>
@@ -335,7 +401,8 @@
 <th>epoll</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>操作方式</td>
 <td>遍历</td>
 <td>遍历</td>
@@ -355,7 +422,7 @@
 </tr>
 <tr>
 <td>最大连接数</td>
-<td>1024(x86)&#x2F;2048(x64)</td>
+<td>1024(x86)/2048(x64)</td>
 <td>无上限</td>
 <td>无上限</td>
 </tr>
@@ -365,51 +432,82 @@
 <td>同select</td>
 <td>拷贝进内核保存</td>
 </tr>
-</tbody></table>
-<h2 id="apache、nginx与tomcat区别"><a href="#apache、nginx与tomcat区别" class="headerlink" title="apache、nginx与tomcat区别"></a>apache、nginx与tomcat区别</h2><blockquote>
-<p>Apache和nginx应该叫做<code>HTTP Server</code>，而tomcat是一个<code>Application Server</code>，JSP&#x2F;Servlet容器应用的容器;<br>Apache HTTP Server和Nginx都能够将某一个<code>静态资源</code>的内容通过HTTP协议返回到客户端，但是这个文本文件的内容是固定的——也就是说无论何时、任何人访问它得到的内容都是完全相同的; Tomcat能够<code>动态的生成资源</code>并返回到客户端; </p>
+</tbody>
+</table>
+<h2 id="apachenginx与tomcat区别">apache、nginx与tomcat区别</h2>
+<blockquote>
+<p>Apache和nginx应该叫做<code>HTTP Server</code>，而tomcat是一个<code>Application Server</code>，JSP/Servlet容器应用的容器;
+Apache HTTP
+Server和Nginx都能够将某一个<code>静态资源</code>的内容通过HTTP协议返回到客户端，但是这个文本文件的内容是固定的——也就是说无论何时、任何人访问它得到的内容都是完全相同的;
+Tomcat能够<code>动态的生成资源</code>并返回到客户端;</p>
 </blockquote>
-<h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><h3 id="官方网站"><a href="#官方网站" class="headerlink" title="官方网站"></a><a target="_blank" rel="noopener" href="http://httpd.apache.org/">官方网站</a></h3><img src="/posts/c9dd20a7/httpd_logo.png" srcset="/img/loading.gif" lazyload class="" title="[https_logo]">   
-
-<h3 id="原理浅析"><a href="#原理浅析" class="headerlink" title="原理浅析"></a>原理浅析</h3><ul>
+<h2 id="apache">apache</h2>
+<h3 id="官方网站"><a target="_blank" rel="noopener" href="http://httpd.apache.org/">官方网站</a></h3>
+<img src="/posts/c9dd20a7/httpd_logo.png" srcset="/img/loading.gif" lazyload class="" title="[https_logo]">
+<h3 id="原理浅析">原理浅析</h3>
+<ul>
 <li>Apache基于<code>多进程的HTTP服务器</code>，它需要对每个用户请求创建一个子进程进行响应，并发的请求量大就会需要非常多的进程，从而占用极多的cpu资源和内存;</li>
-<li>Apache是基于<code>模块化</code>设计的，<code>MPM</code>（Multi -Processing Modules，多重处理模块）是Apache的核心组件之一，Apache通过MPM来使用操作系统的资源，对进程和线程池进行管理;</li>
-<li>MPM有三种工作方式：<ul>
-<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/docs/2.4/mod/prefork.html">Prefork MPM</a></li>
-<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/docs/2.4/mod/worker.html">Worker MPM</a></li>
-<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/docs/2.4/mod/event.html">Event MPM</a></li>
+<li>Apache是基于<code>模块化</code>设计的，<code>MPM</code>（Multi
+-Processing
+Modules，多重处理模块）是Apache的核心组件之一，Apache通过MPM来使用操作系统的资源，对进程和线程池进行管理;</li>
+<li>MPM有三种工作方式：
+<ul>
+<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/docs/2.4/mod/prefork.html">Prefork
+MPM</a></li>
+<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/docs/2.4/mod/worker.html">Worker
+MPM</a></li>
+<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/docs/2.4/mod/event.html">Event
+MPM</a></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="prefork-模式-预派生子进程"><a href="#prefork-模式-预派生子进程" class="headerlink" title="prefork 模式(预派生子进程)"></a>prefork 模式(预派生子进程)</h4><ul>
+<h4 id="prefork-模式预派生子进程">prefork 模式(预派生子进程)</h4>
+<ul>
 <li><code>prefork</code>是一个<code>非线程型的、预派生的MPM</code>，使用多个进程彼此独立，且<code>每个进程只有一个线程</code>，每个进程在某个确定的时间只单独处理一个连接，<code>效率高</code>，但<code>内存使用比较大</code>。</li>
 <li>优点：适合于没有线程安全库，需要避免线程兼容性问题的系统。它是要求将每个请求相互独立的情况下最好的MPM，这样若一个请求出现问题就不会影响到其他请求。</li>
 <li>缺点：一个进程相对占用更多的系统资源，消耗更多的内存。而且，它并不擅长处理高并发请求，在这种场景下，它会将请求放进队列中，一直等到有可用进程，请求才会被处理。</li>
 </ul>
-<h4 id="worker-模式"><a href="#worker-模式" class="headerlink" title="worker 模式"></a>worker 模式</h4><ul>
-<li><code>worker</code>基于多进程, 但是使用了<code>多进程和多线程</code>的混合模式，worker模式也同样会先预派生一些子进程，然后<code>每个子进程创建一些线程</code>，同时包括一个监听线程，每个请求过来会被分配到一个线程来服务。</li>
+<h4 id="worker-模式">worker 模式</h4>
+<ul>
+<li><code>worker</code>基于多进程,
+但是使用了<code>多进程和多线程</code>的混合模式，worker模式也同样会先预派生一些子进程，然后<code>每个子进程创建一些线程</code>，同时包括一个监听线程，每个请求过来会被分配到一个线程来服务。</li>
 <li>优点：线程比起进程会更轻量，因为<code>线程是通过共享父进程的内存空间</code>，因此，内存的占用会减少一些，在高并发，高流量的场景下会比prefork有更多可用的线程，表现会更优秀一些；</li>
 <li>缺点：如果一个线程出现了问题也会导致同一进程下的线程出现问题，如果是多个线程出现问题，也只是影响Apache的一部分，而不是全部。由于用到多进程多线程，需要考虑到线程的安全了，在使用keep-alive长连接的时候，某个线程会一直被占用，即使中间没有请求，需要等待到超时才会被释放（该问题在prefork模式下也存在）。</li>
 </ul>
-<h4 id="event-模式"><a href="#event-模式" class="headerlink" title="event 模式"></a>event 模式</h4><ul>
+<h4 id="event-模式">event 模式</h4>
+<ul>
 <li>Apache最新的工作模式，它和worker模式很像</li>
 <li>优点：不同的是在于它解决了<code>keep-alive长连接</code>的时候占用线程资源被浪费的问题（HTTP的Keepalive方式能减少TCP连接数量和网络负载），在event工作模式中，会有一些专门的线程用来管理这些keep-alive类型的线程，当有真实请求过来的时候，将请求传递给服务器的线程，执行完毕后，又允许它释放。这增强了在高并发场景下的请求处理；</li>
 </ul>
-<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/strick/p/9336948.html">参考文章</a></h3><h3 id="官方网站-1"><a href="#官方网站-1" class="headerlink" title="官方网站"></a><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/">官方网站</a></h3><h3 id="原理浅析-1"><a href="#原理浅析-1" class="headerlink" title="原理浅析"></a>原理浅析</h3><h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><blockquote>
+<h2 id="nginx">nginx</h2>
+<h3 id="参考文章"><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/strick/p/9336948.html">参考文章</a></h3>
+<h3 id="官方网站-1"><a
+target="_blank" rel="noopener" href="http://nginx.org/en/docs/">官方网站</a></h3>
+<h3 id="原理浅析-1">原理浅析</h3>
+<h4 id="组成">组成</h4>
+<blockquote>
 <p>Nginx由一个<code>master进程和多个worker进程</code>组成，主进程接收客户端请求，再转交给工作进程处理，从而很好地利用多核心CPU的计算能力。</p>
 </blockquote>
-<img src="/posts/c9dd20a7/nginx.png" srcset="/img/loading.gif" lazyload class="" title="[nginx_logo]">   
-
-<h4 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-comment"># ./configure --prefix=/srv/nginx \</span><br>  --<span class="hljs-keyword">with</span>-file-aio <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_auth_request_module <span class="hljs-string">\</span>  <br>  --<span class="hljs-keyword">with</span>-http_ssl_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_v2_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_realip_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_addition_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_xslt_module=dynamic <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_geoip_module=dynamic <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_sub_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_dav_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_flv_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_mp4_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_gunzip_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_gzip_static_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_random_index_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_secure_link_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_degradation_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_slice_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_stub_status_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_perl_module=dynamic <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-pcre <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-pcre-jit <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-stream=dynamic <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-stream_ssl_module <span class="hljs-string">\</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">sed</span> -i <span class="hljs-string">&#x27;/^[[:space:]]*#/d&#x27;</span> nginx.conf <br>  user nginx;<br>  <span class="hljs-attribute">worker_process</span> auto; <br>  <span class="hljs-attribute">error_log</span> /var/log/nginx/<span class="hljs-literal">error</span>.log;<br>  <span class="hljs-attribute">pid</span> /run/nginx.pid;<br>  <span class="hljs-attribute">include</span> /usr/share/nginx/modules/<span class="hljs-regexp">*.conf</span>;<br><br>  <span class="hljs-section">event</span> &#123;<br>      <span class="hljs-attribute">worker_connections</span> <span class="hljs-number">1024</span>;<br>  &#125;<br>  <span class="hljs-section">http</span> &#123;<br>      <span class="hljs-attribute">include</span>         mime.types;<br>      <span class="hljs-attribute">default_type</span>    application/octet-stream;<br><br>      <span class="hljs-attribute">sendfile</span>         <span class="hljs-literal">on</span>;<br>      <span class="hljs-attribute">keepalived</span>       <span class="hljs-number">65</span>;<br>      <br>      <span class="hljs-attribute">include</span> /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;<br>      <span class="hljs-attribute">include</span> /etc/nginx/conf.d/vhosts/<span class="hljs-regexp">*.conf</span>;    <span class="hljs-comment"># </span><br><br>      <span class="hljs-section">server</span> &#123;<br>          <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>          <span class="hljs-attribute">server_name</span>  localhost;<br><br>          <span class="hljs-section">location</span> / &#123;                <span class="hljs-comment"># localhost:80/ </span><br>              <span class="hljs-attribute">root</span>     html;          <span class="hljs-comment"># 路径</span><br>              <span class="hljs-attribute">index</span>    index.html index.htm;<br>          &#125;<br>          <br>          <span class="hljs-section">location</span> /demo &#123;        <span class="hljs-comment"># localhost:80/demo/</span><br>              <span class="hljs-attribute">root</span> /opt/test;     <span class="hljs-comment"># 实际访问 /opt/test/demo</span><br>              <span class="hljs-attribute">alias</span> /opt/test;    <span class="hljs-comment"># 实际访问 /opt/test</span><br>          &#125;<br><br>          <span class="hljs-attribute">error_page</span>   <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span>  /50x.html;<br>          <span class="hljs-section">location</span> = /50x.html &#123;<br>              <span class="hljs-attribute">root</span> html;<br>          &#125;<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="CGI、FastCGI、PHP-FPM"><a href="#CGI、FastCGI、PHP-FPM" class="headerlink" title="CGI、FastCGI、PHP-FPM"></a>CGI、FastCGI、PHP-FPM</h3><ul>
-<li>CGI（Common Interface，公共网关接口）是<strong>Web服务器与外部程序之间</strong>的接口标准，用于<code>两种不同程序之间的信息传递</code>。CGI规范允许Web服务器根据浏览器请求调用CGI程序，并将其输出结果通过响应发送给浏览器，从而使Web服务器支持处理复杂的网站业务需求;</li>
+<img src="/posts/c9dd20a7/nginx.png" srcset="/img/loading.gif" lazyload class="" title="[nginx_logo]">
+<h4 id="编译安装">编译安装</h4>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-comment"># ./configure --prefix=/srv/nginx \</span><br>  --<span class="hljs-keyword">with</span>-file-aio <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_auth_request_module <span class="hljs-string">\</span>  <br>  --<span class="hljs-keyword">with</span>-http_ssl_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_v2_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_realip_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_addition_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_xslt_module=dynamic <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_geoip_module=dynamic <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_sub_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_dav_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_flv_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_mp4_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_gunzip_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_gzip_static_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_random_index_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_secure_link_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_degradation_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_slice_module <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-http_stub_status_module <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-http_perl_module=dynamic <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-pcre <span class="hljs-string">\</span><br>  --<span class="hljs-keyword">with</span>-pcre-jit <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-stream=dynamic <span class="hljs-string">\</span> <br>  --<span class="hljs-keyword">with</span>-stream_ssl_module <span class="hljs-string">\</span><br></code></pre></td></tr></table></figure>
+<h4 id="配置">配置</h4>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">sed</span> -i <span class="hljs-string">&#x27;/^[[:space:]]*#/d&#x27;</span> nginx.conf <br>  user nginx;<br>  <span class="hljs-attribute">worker_process</span> auto; <br>  <span class="hljs-attribute">error_log</span> /var/log/nginx/<span class="hljs-literal">error</span>.log;<br>  <span class="hljs-attribute">pid</span> /run/nginx.pid;<br>  <span class="hljs-attribute">include</span> /usr/share/nginx/modules/<span class="hljs-regexp">*.conf</span>;<br><br>  <span class="hljs-section">event</span> &#123;<br>      <span class="hljs-attribute">worker_connections</span> <span class="hljs-number">1024</span>;<br>  &#125;<br>  <span class="hljs-section">http</span> &#123;<br>      <span class="hljs-attribute">include</span>         mime.types;<br>      <span class="hljs-attribute">default_type</span>    application/octet-stream;<br><br>      <span class="hljs-attribute">sendfile</span>         <span class="hljs-literal">on</span>;<br>      <span class="hljs-attribute">keepalived</span>       <span class="hljs-number">65</span>;<br>      <br>      <span class="hljs-attribute">include</span> /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;<br>      <span class="hljs-attribute">include</span> /etc/nginx/conf.d/vhosts/<span class="hljs-regexp">*.conf</span>;    <span class="hljs-comment"># </span><br><br>      <span class="hljs-section">server</span> &#123;<br>          <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>          <span class="hljs-attribute">server_name</span>  localhost;<br><br>          <span class="hljs-section">location</span> / &#123;                <span class="hljs-comment"># localhost:80/ </span><br>              <span class="hljs-attribute">root</span>     html;          <span class="hljs-comment"># 路径</span><br>              <span class="hljs-attribute">index</span>    index.html index.htm;<br>          &#125;<br>          <br>          <span class="hljs-section">location</span> /demo &#123;        <span class="hljs-comment"># localhost:80/demo/</span><br>              <span class="hljs-attribute">root</span> /opt/test;     <span class="hljs-comment"># 实际访问 /opt/test/demo</span><br>              <span class="hljs-attribute">alias</span> /opt/test;    <span class="hljs-comment"># 实际访问 /opt/test</span><br>          &#125;<br><br>          <span class="hljs-attribute">error_page</span>   <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span>  /50x.html;<br>          <span class="hljs-section">location</span> = /50x.html &#123;<br>              <span class="hljs-attribute">root</span> html;<br>          &#125;<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="cgifastcgiphp-fpm">CGI、FastCGI、PHP-FPM</h3>
+<ul>
+<li>CGI（Common
+Interface，公共网关接口）是<strong>Web服务器与外部程序之间</strong>的接口标准，用于<code>两种不同程序之间的信息传递</code>。CGI规范允许Web服务器根据浏览器请求调用CGI程序，并将其输出结果通过响应发送给浏览器，从而使Web服务器支持处理复杂的网站业务需求;</li>
 <li><code>FastCGI</code>主要用于解决CGI性能上的缺陷。传统CGI方式是每当客户端请求CGI时，Web服务器就通过操作系统创建一个新的CGI进程，一个CGI进程完成一个请求处理后就退出，下次请求再创建一个新CGI进程。由于这种方式需要不断为每个请求创建进程，因此在网站并发量很大时显得非常低效。FastCGI优化了这种工作方式，它由一个<code>常驻的CGI进程管理器</code>，通过管理<code>一个进程池</code>来处理Web服务器的请求，由此提高了性能;</li>
-<li>PHP提供的<code>PHP-FPM</code>（FastCGI Process Manager）就是一个<code>FastCGI进程管理器</code>，其可执行文件位于PHP安装的目录中;</li>
+<li>PHP提供的<code>PHP-FPM</code>（FastCGI Process
+Manager）就是一个<code>FastCGI进程管理器</code>，其可执行文件位于PHP安装的目录中;</li>
 </ul>
-<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><h3 id="参考文章-1"><a href="#参考文章-1" class="headerlink" title="参考文章"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hggen/p/6264475.html">参考文章</a></h3><h3 id="官方网站-2"><a href="#官方网站-2" class="headerlink" title="官方网站"></a><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">官方网站</a></h3><img src="/posts/c9dd20a7/tomcat.png" srcset="/img/loading.gif" lazyload class="" title="[tomcat_logo]">  
+<h2 id="tomcat">tomcat</h2>
+<h3 id="参考文章-1"><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/hggen/p/6264475.html">参考文章</a></h3>
+<h3 id="官方网站-2"><a
+target="_blank" rel="noopener" href="http://tomcat.apache.org/">官方网站</a></h3>
+<img src="/posts/c9dd20a7/tomcat.png" srcset="/img/loading.gif" lazyload class="" title="[tomcat_logo]">
+
                 
               </div>
             
@@ -627,7 +725,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -808,7 +906,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

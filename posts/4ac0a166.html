@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -79,7 +79,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -99,7 +99,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -112,7 +113,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -169,6 +170,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -248,7 +301,7 @@
         
         
         
-          80 分钟
+          79 分钟
         
       </span>
     
@@ -299,77 +352,84 @@
             
               <div class="markdown-body">
                 
-                <p>2019-06-11-Linux基础命令</p>
-<span id="more"></span>
-
-<p>199 238 106</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录 "></a>目录 <a id="back"></a></h2><ul>
-<li><a href="#mbr" target="_self">首扇区知识</a></li>
-<li><a href="#rpm" target="_self">RPM</a></li>
-<li><a href="#yum" target="_self">Yum</a></li>
-<li><a href="#chkconfig" target="_self">启动模式</a></li>
-<li><a href="#service" target="_self">管理服务</a></li>
-<li><a href="#date" target="_self">日期命令</a></li>
-<li><a href="#pidof" target="_self">查看进程IDpidof</a></li>
-<li><a href="#kill" target="_self">杀死进程IDkill</a></li>
-<li><a href="#killall" target="_self">杀死进程服务killall</a></li>
-<li><a href="#tar" target="_self">打包压缩与搜索命令</a></li>
-<li><a href="#director" target="_self">重定向操作</a></li>
-<li><a href="#yumku" target="_self">配置yum库</a></li>
-<li><a href="#shell" target="_self">Shell脚本</a></li>
-<li><a href="#crontab" target="_self">crontab</a></li>
-</ul>
-<h2 id="分区方案："><a href="#分区方案：" class="headerlink" title="分区方案："></a>分区方案：</h2><h3 id="背景知识："><a href="#背景知识：" class="headerlink" title="背景知识："></a>背景知识：</h3><h4 id="硬盘建立分区"><a href="#硬盘建立分区" class="headerlink" title="硬盘建立分区"></a>硬盘建立分区</h4><ul>
-<li>主分区-&gt; 扩展分区-&gt; 逻辑分区-&gt; 激活主分区-&gt; 格式化所有分区；</li>
+                <p>2019-06-11-Linux基础命令 <span id="more"></span></p>
+<p>199 238 106 ## 目录 <a id="back"></a> *
+<a href="#mbr" target="_self">首扇区知识</a> *
+<a href="#rpm" target="_self">RPM</a> *
+<a href="#yum" target="_self">Yum</a> *
+<a href="#chkconfig" target="_self">启动模式</a> *
+<a href="#service" target="_self">管理服务</a> *
+<a href="#date" target="_self">日期命令</a> *
+<a href="#pidof" target="_self">查看进程IDpidof</a> *
+<a href="#kill" target="_self">杀死进程IDkill</a> *
+<a href="#killall" target="_self">杀死进程服务killall</a> *
+<a href="#tar" target="_self">打包压缩与搜索命令</a> *
+<a href="#director" target="_self">重定向操作</a> *
+<a href="#yumku" target="_self">配置yum库</a> *
+<a href="#shell" target="_self">Shell脚本</a> *
+<a href="#crontab" target="_self">crontab</a></p>
+<h2 id="分区方案">分区方案：</h2>
+<h3 id="背景知识">背景知识：</h3>
+<h4 id="硬盘建立分区">硬盘建立分区</h4>
+<ul>
+<li>主分区-&gt; 扩展分区-&gt; 逻辑分区-&gt; 激活主分区-&gt;
+格式化所有分区；</li>
 <li>虚拟机的三种网络模式：<strong>桥接网络</strong>，<strong>NAT网络地址转换(VMnet8)</strong>，<strong>仅主机模式(VMnet1)</strong>；其中，主机模式仅仅与物理主机通信，不能访问外网，而其它两种可以通过物理主机进行外网的访问。</li>
 </ul>
-<h4 id="主引导记录-MBR-Master-Boot-Record"><a href="#主引导记录-MBR-Master-Boot-Record" class="headerlink" title="主引导记录 MBR (Master Boot Record): "></a>主引导记录 MBR (Master Boot Record): <a id="mbr"></a></h4><ul>
+<h4 id="主引导记录-mbr-master-boot-record">主引导记录 MBR (Master Boot
+Record): <a id="mbr"></a></h4>
+<ul>
 <li>硬盘由大量扇区构成，以首扇区最重要，<strong>硬盘0号(首)扇区共512B</strong>，<strong>结束符占2B</strong>，<strong>主引导记录占446B</strong>，所以<strong>分区表就只有64B</strong>，分区表记录一个分区信息需要16B，所以做多记录4个分区信息；</li>
-<li>为了解决分区不够的问题，可将其中的分区信息指向另外一个分区，称为<strong>扩展分区(扩展分区0扇区)</strong>，在扩展分区里划分逻辑分区，<strong>一块硬盘只能有一个扩展分区，1&#x2F;2&#x2F;3&#x2F;4号只能给主分区，5&#x2F;6开始为逻辑分区</strong>;</li>
+<li>为了解决分区不够的问题，可将其中的分区信息指向另外一个分区，称为<strong>扩展分区(扩展分区0扇区)</strong>，在扩展分区里划分逻辑分区，<strong>一块硬盘只能有一个扩展分区，1/2/3/4号只能给主分区，5/6开始为逻辑分区</strong>;</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/sda of=MBR bs=1 count=64 skip=446 &amp;&amp; hexdump -C /dev/sda -n 512 <span class="hljs-comment"># 备份分区表:以字节为单位 </span><br><span class="hljs-comment"># 测试: </span><br><span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/dev/sda bs=1 count=64 seek=446 &amp;&amp; <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=MBR of=/dev/sda bs=1 count=64 seek=446 &amp;&amp; <span class="hljs-built_in">sync</span>  <br></code></pre></td></tr></table></figure>
-
-<img src="/posts/4ac0a166/%E9%A6%96%E6%89%87%E5%8C%BA%E5%9B%BE%E7%A4%BA.png" srcset="/img/loading.gif" lazyload class="" title="[首扇区图示]">       
-<img src="/posts/4ac0a166/%E9%80%BB%E8%BE%91%E5%88%86%E5%8C%BA.png" srcset="/img/loading.gif" lazyload class="" title="[分区图示]"> 
-
-<h4 id="Linux-下的分区方案"><a href="#Linux-下的分区方案" class="headerlink" title="Linux 下的分区方案"></a>Linux 下的分区方案</h4><table>
+<img src="/posts/4ac0a166/%E9%A6%96%E6%89%87%E5%8C%BA%E5%9B%BE%E7%A4%BA.png" srcset="/img/loading.gif" lazyload class="" title="[首扇区图示]">
+<img src="/posts/4ac0a166/%E9%80%BB%E8%BE%91%E5%88%86%E5%8C%BA.png" srcset="/img/loading.gif" lazyload class="" title="[分区图示]">
+<h4 id="linux-下的分区方案">Linux 下的分区方案</h4>
+<table>
 <thead>
 <tr>
 <th>分区</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>&#x2F;</td>
+<tbody>
+<tr>
+<td>/</td>
 <td>用于存放系统，划为主分区 ✔</td>
 </tr>
 <tr>
-<td>&#x2F;boot</td>
+<td>/boot</td>
 <td>引导分区，划为主分区，大概200M即可； ✔</td>
 </tr>
 <tr>
-<td>&#x2F;swap</td>
+<td>/swap</td>
 <td>充当虚拟内存，划为逻辑分区，大致为电脑内存； ✔</td>
 </tr>
 <tr>
-<td>&#x2F;home</td>
+<td>/home</td>
 <td>划为逻辑分区，用于存放用户文件； ✔</td>
 </tr>
 <tr>
-<td>&#x2F;tmp</td>
+<td>/tmp</td>
 <td>存放临时文件，可有可无，划为逻辑分区；</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <img src="/posts/4ac0a166/%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88.png" srcset="/img/loading.gif" lazyload class="" title="[分区方案]">
+<h4
+id="rpm红帽软件包管理器-相当于windows-的控制面板的软件管理">RPM:(红帽软件包管理器)
+相当于windows 的控制面板的软件管理 <a id="rpm"></a></h4>
+<table>
 
-<h4 id="RPM-红帽软件包管理器-相当于windows-的控制面板的软件管理"><a href="#RPM-红帽软件包管理器-相当于windows-的控制面板的软件管理" class="headerlink" title="RPM:(红帽软件包管理器) 相当于windows 的控制面板的软件管理 "></a>RPM:(红帽软件包管理器) 相当于windows 的控制面板的软件管理 <a id="rpm"></a></h4><table>
 <thead>
 <tr>
 <th>RPM -选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>rpm -ivh filename.rpm</td>
 <td>-v:verbose -h:进度 安装软件✔, -i,–info</td>
 </tr>
@@ -409,34 +469,44 @@
 <td>rpm -V filename</td>
 <td>验证</td>
 </tr>
-</tbody></table>
-<h4 id="程序包来源"><a href="#程序包来源" class="headerlink" title="程序包来源"></a>程序包来源</h4><ul>
+</tbody>
+</table>
+<h4 id="程序包来源">程序包来源</h4>
+<ul>
 <li>Fedora-EPEL: Extra PAckages for Enterprise Linux</li>
 <li>Rpmforge: RHEL推荐</li>
-<li><a target="_blank" rel="noopener" href="http://pkgs.org/">http://pkgs.org</a> <a target="_blank" rel="noopener" href="http://rpmfind.net/">http://rpmfind.net</a> <a target="_blank" rel="noopener" href="http://rpm.pbone.net/">http://rpm.pbone.net</a> <a target="_blank" rel="noopener" href="https://sourceforge.net/">https://sourceforge.net</a>  </li>
+<li>http://pkgs.org http://rpmfind.net http://rpm.pbone.net
+https://sourceforge.net<br />
+</li>
 <li><code>rpm2cpio tree</code></li>
-<li><code>rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6</code> # 导入密钥</li>
-<li><code>rpm2cpio Package.rpm |cpio -idv .文件绝对路径</code>  # RPM包文件提取   </li>
+<li><code>rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6</code> #
+导入密钥</li>
+<li><code>rpm2cpio Package.rpm |cpio -idv .文件绝对路径</code> #
+RPM包文件提取<br />
+</li>
 <li><code>patch -pnumber &lt;文件</code></li>
 </ul>
-<h4 id="Yum软件仓库-解决包的依赖性"><a href="#Yum软件仓库-解决包的依赖性" class="headerlink" title="Yum软件仓库(解决包的依赖性): "></a>Yum软件仓库(解决包的依赖性): <a id="yum"></a></h4><table>
+<h4 id="yum软件仓库解决包的依赖性">Yum软件仓库(解决包的依赖性):
+<a id="yum"></a></h4>
+<table>
 <thead>
 <tr>
 <th>yum 选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>yum repolist all</td>
-<td>列出软件仓库  ✔</td>
+<td>列出软件仓库 ✔</td>
 </tr>
 <tr>
-<td>yum list all&#x2F;installed</td>
-<td>列出仓库所有软件&#x2F;已安装的 ✔</td>
+<td>yum list all/installed</td>
+<td>列出仓库所有软件/已安装的 ✔</td>
 </tr>
 <tr>
 <td>yum info 包名称</td>
-<td>查看包信息  ✔</td>
+<td>查看包信息 ✔</td>
 </tr>
 <tr>
 <td>yum history</td>
@@ -452,11 +522,11 @@
 </tr>
 <tr>
 <td>yum reinstall 包名称</td>
-<td>卸载包  ✔</td>
+<td>卸载包 ✔</td>
 </tr>
 <tr>
 <td>yum update 包名称</td>
-<td>升级包  ✔</td>
+<td>升级包 ✔</td>
 </tr>
 <tr>
 <td>yum remove 包名称</td>
@@ -468,7 +538,7 @@
 </tr>
 <tr>
 <td>yum check-update</td>
-<td>检查可更新的包  ✔</td>
+<td>检查可更新的包 ✔</td>
 </tr>
 <tr>
 <td>yum grouplist</td>
@@ -494,39 +564,37 @@
 <td>yum provides rz</td>
 <td>查找命令rz的提供者</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">BIOS-&gt; Boot Loader-&gt; 内核-&gt; 内核初始化-&gt; 启动初始化进程(systemd) ✔<br><span class="hljs-built_in">command</span> [options] [arguments]  <span class="hljs-comment"># 命令 选项 参数</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="启用多用户"><a href="#启用多用户" class="headerlink" title="启用多用户   "></a>启用多用户   <a id="chkconfig"></a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">ln</span> -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target <span class="hljs-comment"># 无图形模式 </span><br>[root@xy ~]# <span class="hljs-built_in">ln</span> -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target <span class="hljs-comment"># 图形模式</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="3-管理服务"><a href="#3-管理服务" class="headerlink" title="3. 管理服务  "></a>3. 管理服务  <a id="service"></a></h3><h4 id="3-1-RPM-包安装"><a href="#3-1-RPM-包安装" class="headerlink" title="3.1 RPM 包安装"></a>3.1 RPM 包安装</h4><ul>
-<li><p>独立服务:</p>
+<h4 id="启用多用户">启用多用户 <a id="chkconfig"></a></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">ln</span> -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target <span class="hljs-comment"># 无图形模式 </span><br>[root@xy ~]# <span class="hljs-built_in">ln</span> -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target <span class="hljs-comment"># 图形模式</span><br></code></pre></td></tr></table></figure>
+<h3 id="管理服务">3. 管理服务 <a id="service"></a></h3>
+<h4 id="rpm-包安装">3.1 RPM 包安装</h4>
 <ul>
-<li><p>服务启动:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/rc.d/init.d/httpd start<br>service httpd start<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>服务自启动:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig --levle 2345 httpd on |off<br>vim /etc/rc.d/rc.local     <span class="hljs-comment"># 添加: /etc/rc.d/init.d/httpd start</span><br>ntsysv<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>基于xinetd 的非独立服务:</p>
+<li>独立服务:
 <ul>
-<li><p>服务启动:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/xinetd/telnet    <span class="hljs-comment"># disable = no, 重启xinetd</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>服务自启动:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig httpd on|off<br>ntsysv<br></code></pre></td></tr></table></figure></li>
+<li><p>服务启动: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/rc.d/init.d/httpd start<br>service httpd start<br></code></pre></td></tr></table></figure></p></li>
+<li><p>服务自启动: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig --levle 2345 httpd on |off<br>vim /etc/rc.d/rc.local     <span class="hljs-comment"># 添加: /etc/rc.d/init.d/httpd start</span><br>ntsysv<br></code></pre></td></tr></table></figure></p></li>
+</ul></li>
+<li>基于xinetd 的非独立服务:
+<ul>
+<li><p>服务启动: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/xinetd/telnet    <span class="hljs-comment"># disable = no, 重启xinetd</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>服务自启动: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig httpd on|off<br>ntsysv<br></code></pre></td></tr></table></figure></p></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="3-2-源码安装"><a href="#3-2-源码安装" class="headerlink" title="3.2 源码安装"></a>3.2 源码安装</h4><blockquote>
-<p>service 命令其实只是在<code>/etc/init.d/</code>目录中寻找是否有服务<strong>启动脚本</strong>, 通过源码安装的服务, 需要要把<strong>启动脚本</strong>软连接到此目录; <code>ln -s /usr/local/apache2/bin/apachectl /etc/init.d/httpd</code>  </p>
+<h4 id="源码安装">3.2 源码安装</h4>
+<blockquote>
+<p>service
+命令其实只是在<code>/etc/init.d/</code>目录中寻找是否有服务<strong>启动脚本</strong>,
+通过源码安装的服务, 需要要把<strong>启动脚本</strong>软连接到此目录;
+<code>ln -s /usr/local/apache2/bin/apachectl /etc/init.d/httpd</code></p>
 </blockquote>
 <blockquote>
-<p>chkconfig 需要修改<code>/etc/init.d/httpd </code>, <code>chkconfig --add apachectl</code></p>
+<p>chkconfig 需要修改<code>/etc/init.d/httpd</code>,
+<code>chkconfig --add apachectl</code></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># chkconfig: 35 86 76 </span><br><span class="hljs-comment"># 指定httpd在3和5级别能被chkconfig命令管理, 启动顺序Start 86, 关闭顺序Kill 76</span><br><span class="hljs-comment"># (顺序自定, 和系统不冲突)</span><br><span class="hljs-comment"># description: source package apache</span><br></code></pre></td></tr></table></figure>
-
 <table>
 <thead>
 <tr>
@@ -534,7 +602,8 @@
 <th>systemctl</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>service foo start</td>
 <td>systemctl start foo.service</td>
 </tr>
@@ -558,15 +627,18 @@
 <td>—</td>
 <td>journalctl -xe</td>
 </tr>
-</tbody></table>
-<h3 id="4-设置服务开机启动、不启动"><a href="#4-设置服务开机启动、不启动" class="headerlink" title="4. 设置服务开机启动、不启动"></a>4. 设置服务开机启动、不启动</h3><table>
+</tbody>
+</table>
+<h3 id="设置服务开机启动不启动">4. 设置服务开机启动、不启动</h3>
+<table>
 <thead>
 <tr>
 <th>System V init</th>
 <th>systemctl</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>chkconfig foo on</td>
 <td>systemctl enable foo.service</td>
 </tr>
@@ -576,44 +648,47 @@
 </tr>
 <tr>
 <td>chkconfig foo list</td>
-<td>systemctl list-unit-files –type&#x3D;service</td>
+<td>systemctl list-unit-files –type=service</td>
 </tr>
 <tr>
 <td>–level默认级别2345</td>
 <td>—</td>
 </tr>
-</tbody></table>
-<h3 id="5-重置密码操作"><a href="#5-重置密码操作" class="headerlink" title="5. 重置密码操作"></a>5. 重置密码操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/redhat-release  　　<span class="hljs-comment"># 查看redhat-realease version</span><br>  linux16 追加 rd.break ctrl+x运行  <br>mount -o remount, rw /sysroot  <br><span class="hljs-built_in">chroot</span> /sysroot <br>passwd<br><span class="hljs-built_in">touch</span> /.autorelable <br><span class="hljs-built_in">exit</span> <br>reboot<br></code></pre></td></tr></table></figure>
-
-<h3 id="6-解决piix4-smbus-0000-00-007-3-Host-SMBus-controller-not-enabled"><a href="#6-解决piix4-smbus-0000-00-007-3-Host-SMBus-controller-not-enabled" class="headerlink" title="6. 解决piix4_smbus 0000:00:007:3:Host SMBus controller not enabled!"></a>6. 解决piix4_smbus 0000:00:007:3:Host SMBus controller not enabled!</h3><ul>
-<li><p>modprobe</p>
+</tbody>
+</table>
+<h3 id="重置密码操作">5. 重置密码操作</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/redhat-release  　　<span class="hljs-comment"># 查看redhat-realease version</span><br>  linux16 追加 rd.break ctrl+x运行  <br>mount -o remount, rw /sysroot  <br><span class="hljs-built_in">chroot</span> /sysroot <br>passwd<br><span class="hljs-built_in">touch</span> /.autorelable <br><span class="hljs-built_in">exit</span> <br>reboot<br></code></pre></td></tr></table></figure>
+<h3 id="解决piix4_smbus-0000000073host-smbus-controller-not-enabled">6.
+解决piix4_smbus 0000:00:007:3:Host SMBus controller not enabled!</h3>
 <ul>
-<li>modprobe MOD_NAME: 装载模块  </li>
-<li>modprobe -r MOD_NAME: 卸载模块  </li>
+<li>modprobe
+<ul>
+<li>modprobe MOD_NAME: 装载模块<br />
+</li>
+<li>modprobe -r MOD_NAME: 卸载模块<br />
+</li>
 <li>modinfo MOD_NAME: 查看模块具体信息</li>
-</ul>
-</li>
-<li><p>insmod &#x2F;PATH&#x2F;TO&#x2F;MODULE_FILE: 装载模块</p>
-</li>
-<li><p>rmmod MOD_NAME</p>
-</li>
-<li><p>depmod &#x2F;PATH&#x2F;TO&#x2F;MODULE_FILE</p>
-</li>
+</ul></li>
+<li>insmod /PATH/TO/MODULE_FILE: 装载模块</li>
+<li>rmmod MOD_NAME</li>
+<li>depmod /PATH/TO/MODULE_FILE</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy Desktop]# lsmod |grep i2c　　 <span class="hljs-comment"># lsmod 查看模块  </span><br>  i2c_piix4              22106  0   <br>  i2c_core               40325  2 drm,i2c_piix4  <br>[root@xy Desktop]# vim /etc/modprobe.d/blacklist.conf    <br>  blacklist i2c-piix4 　　　　 <span class="hljs-comment"># 加黑名单  </span><br>reboot<br></code></pre></td></tr></table></figure>
-
-<h3 id="7-常用系统工作命令"><a href="#7-常用系统工作命令" class="headerlink" title="7. 常用系统工作命令"></a>7. 常用系统工作命令</h3><h4 id="7-1-man"><a href="#7-1-man" class="headerlink" title="7.1 man"></a>7.1 man</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# whatis motd    <br>[root@xy ~]# man 5 motd　　<span class="hljs-comment"># 帮助 n N ?   </span><br>[root@xy ~]# man -w issue  <br></code></pre></td></tr></table></figure>
-
-<h4 id="7-2-echo-字符串-变量"><a href="#7-2-echo-字符串-变量" class="headerlink" title="7.2 echo  　　# 字符串 &#x2F; $变量"></a>7.2 echo  　　# 字符串 &#x2F; $变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">echo</span> xy<br>  xy  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span> <br>  /bin/bash<br></code></pre></td></tr></table></figure>
-
-<h4 id="7-3-date"><a href="#7-3-date" class="headerlink" title="7.3 date  "></a>7.3 date  <a id="date"></a></h4><table>
+<h3 id="常用系统工作命令">7. 常用系统工作命令</h3>
+<h4 id="man">7.1 man</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# whatis motd    <br>[root@xy ~]# man 5 motd　　<span class="hljs-comment"># 帮助 n N ?   </span><br>[root@xy ~]# man -w issue  <br></code></pre></td></tr></table></figure>
+<h4 id="echo-字符串-变量">7.2 echo 　　# 字符串 / $变量</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">echo</span> xy<br>  xy  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span> <br>  /bin/bash<br></code></pre></td></tr></table></figure>
+<h4 id="date">7.3 date <a id="date"></a></h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>%t</td>
 <td>跳格</td>
 </tr>
@@ -638,22 +713,24 @@
 <td>Year-Month-Day</td>
 </tr>
 <tr>
-<td>hwclock -w &#x2F; -s</td>
-<td>以软件&#x2F;硬件时间为基准, 覆盖硬件&#x2F;软件时间</td>
+<td>hwclock -w / -s</td>
+<td>以软件/硬件时间为基准, 覆盖硬件/软件时间</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">date</span><br>  Thu Jul  5 22:44:59 EDT 2018  <br>[root@xy ~]# <span class="hljs-built_in">date</span> <span class="hljs-string">&quot;+%Y-%M-%m-%d %H:%M:%S&quot;</span>  <br>  2018-45-07-05 22:45:56  <br>[root@xy ~]# <span class="hljs-built_in">date</span> -s <span class="hljs-string">&quot;20180706 10:49:00&quot;</span>   --<span class="hljs-built_in">set</span>=STRING  <br>  Fri Jul  6 10:49:00 EDT 2018  <br>[root@xy ~]# <span class="hljs-built_in">touch</span> `<span class="hljs-built_in">date</span> +%F`.<span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="CentOS-6-x-7-x"><a href="#CentOS-6-x-7-x" class="headerlink" title="CentOS 6.x  &#x2F; 7.x"></a>CentOS 6.x  &#x2F; 7.x</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ntpd -p  <span class="hljs-comment"># 时间同步  </span><br>[root@xy ~]# /etc/sysconfig/clock  <span class="hljs-comment"># 修改时区  </span><br>[root@xy ~]# /etc/sysconfig/il8n  <span class="hljs-comment"># 修改语言 </span><br>---<br>[root@xy ~]# chronyc <span class="hljs-built_in">source</span>  <span class="hljs-comment"># 时间同步  </span><br>[root@xy ~]# timedatectl set-timezone Asia/Shanghai  <span class="hljs-comment"># 修改时区  </span><br>[root@xy ~]# localectl set-locale LANG=zh_UTF-8  <span class="hljs-comment"># 修改语言</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="7-4-wget"><a href="#7-4-wget" class="headerlink" title="7.4 wget"></a>7.4 wget</h4><table>
+<h5 id="centos-6.x-7.x">CentOS 6.x / 7.x</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ntpd -p  <span class="hljs-comment"># 时间同步  </span><br>[root@xy ~]# /etc/sysconfig/clock  <span class="hljs-comment"># 修改时区  </span><br>[root@xy ~]# /etc/sysconfig/il8n  <span class="hljs-comment"># 修改语言 </span><br>---<br>[root@xy ~]# chronyc <span class="hljs-built_in">source</span>  <span class="hljs-comment"># 时间同步  </span><br>[root@xy ~]# timedatectl set-timezone Asia/Shanghai  <span class="hljs-comment"># 修改时区  </span><br>[root@xy ~]# localectl set-locale LANG=zh_UTF-8  <span class="hljs-comment"># 修改语言</span><br></code></pre></td></tr></table></figure>
+<h4 id="wget">7.4 wget</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-b</td>
 <td>后台下载</td>
 </tr>
@@ -685,17 +762,19 @@
 <td>-k</td>
 <td>make links in downloaded HTML point to local files</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# wget -r -p http://www.linuxprobe.com  <br>[root@xy ~]# wget -r -p -np -k http://www.linuxprobe.com<br></code></pre></td></tr></table></figure>
-
-<h4 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h4><table>
+<h4 id="curl">curl</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-i, –include</td>
 <td>响应头部信息,连同body</td>
 </tr>
@@ -713,17 +792,20 @@
 </tr>
 <tr>
 <td>-u</td>
-<td>携带用户名&#x2F;密码</td>
+<td>携带用户名/密码</td>
 </tr>
-</tbody></table>
-<h4 id="7-5-ps-pstree-p"><a href="#7-5-ps-pstree-p" class="headerlink" title="7.5 ps(pstree -p)"></a>7.5 ps(pstree -p)</h4><table>
+</tbody>
+</table>
+<h4 id="pspstree--p">7.5 ps(pstree -p)</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-a</td>
 <td>显示所有终端下执行的进程sysV</td>
 </tr>
@@ -743,49 +825,59 @@
 <td>-f</td>
 <td>额外显示UID PPID(父进程ID) C与STIME栏位</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ps -aux  <br>USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND  <br>root          1  0.8  0.3  53784  7716 ?        Ss   10:37   0:09 /usr/lib/  systetemd    <br>root          2  0.0  0.0      0     0 ?        S    10:37   0:00 [kthreadd]  <span class="hljs-comment"># 内核线程    </span><br>root          3  0.0  0.0      0     0 ?        S    10:37   0:00 [ksoftirqd/0]       <br>root       3041  0.0  0.0 125440  1436 pts/0    R+   10:55   0:00 ps -aux   <br>.......省略部分信息........ <br><br>5种常见进程状态:R(运行) S(中断) D(不可中断) Z(僵死) T(停止)<br><br>[root@xy ~]# mpstat -P ALL; sar -P ALL <span class="hljs-comment"># 查看多核CPU</span><br>[root@xy ~]# top     <span class="hljs-comment"># 动态显示进程活动  </span><br>  top - 11:00:06 up 23 min,  2 <span class="hljs-built_in">users</span>,  load average: 0.96, 0.59, 0.53   <span class="hljs-comment"># 1min 5min 15min    </span><br>  Tasks: 486 total,   1 running, 485 sleeping,   0 stopped,   0 zombie<br>  %Cpu(s): 21.9 us, 11.8 sy,  0.0 ni, 66.3 <span class="hljs-built_in">id</span>,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st<br>  KiB Mem:   2035648 total,  1280152 used,   755496 free,     1084 buffers<br>  KiB Swap:  2113532 total,        0 used,  2113532 free.   342864 cached Mem<br>.......省略部分信息........  <br></code></pre></td></tr></table></figure>
-
-<h4 id="7-7-pidof"><a href="#7-7-pidof" class="headerlink" title="7.7 pidof 　　　  "></a>7.7 pidof 　　　  <a id="pidof"></a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# pidof sshd　　　<span class="hljs-comment"># 查询PID值 ，pidof 服务名称 </span><br>1552<br></code></pre></td></tr></table></figure>
-
-<h4 id="7-8-kill-l"><a href="#7-8-kill-l" class="headerlink" title="7.8 kill -l  "></a>7.8 kill -l  <a id="kill"></a></h4><ul>
+<h4 id="pidof">7.7 pidof 　　　 <a id="pidof"></a></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# pidof sshd　　　<span class="hljs-comment"># 查询PID值 ，pidof 服务名称 </span><br>1552<br></code></pre></td></tr></table></figure>
+<h4 id="kill--l">7.8 kill -l <a id="kill"></a></h4>
+<ul>
 <li>进程间通信(IPC)：<code>共享内存；信号；Semaphore</code>；</li>
-<li>信号：   <ul>
-<li><code>1  SIGHUB</code>  (进程不用重启，可以重读配置文件并生效)  </li>
-<li><code>2  SIGINT</code>  (Ctrl+c 中断)  </li>
-<li><code>9  SIGKILL</code> (杀死进程)  </li>
-<li><code>15 SIGTERM</code> (终止进程，默认)</li>
-</ul>
+<li>信号：
+<ul>
+<li><code>1  SIGHUB</code> (进程不用重启，可以重读配置文件并生效)<br />
 </li>
+<li><code>2  SIGINT</code> (Ctrl+c 中断)<br />
+</li>
+<li><code>9  SIGKILL</code> (杀死进程)<br />
+</li>
+<li><code>15 SIGTERM</code> (终止进程，默认)</li>
+</ul></li>
 </ul>
-<h4 id="7-9-killall"><a href="#7-9-killall" class="headerlink" title="7.9 killall   "></a>7.9 killall   <a id="killall"></a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# pidof httpd  <span class="hljs-comment"># pid open file  </span><br>13581 13580 13579 13578 13577 13576 <br>[root@xy ~]# killall httpd    	　<span class="hljs-comment"># killall 服务名称  </span><br>[root@xy ~]# pidof httpd<br>[root@xy ~]# <span class="hljs-built_in">kill</span> PID	　　        <span class="hljs-comment"># kill PID号 </span><br></code></pre></td></tr></table></figure>
-
-<h3 id="8-系统状态检测命令"><a href="#8-系统状态检测命令" class="headerlink" title="8. 系统状态检测命令"></a>8. 系统状态检测命令</h3><h4 id="8-1-ifconfig-ip"><a href="#8-1-ifconfig-ip" class="headerlink" title="8.1 ifconfig(ip)"></a>8.1 ifconfig(ip)</h4><blockquote>
-<p>RedHat&#x2F;CentOS: &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts<br>Debian&#x2F;Ubuntu: &#x2F;etc&#x2F;network&#x2F;interfaces    </p>
+<h4 id="killall">7.9 killall <a id="killall"></a></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# pidof httpd  <span class="hljs-comment"># pid open file  </span><br>13581 13580 13579 13578 13577 13576 <br>[root@xy ~]# killall httpd    	　<span class="hljs-comment"># killall 服务名称  </span><br>[root@xy ~]# pidof httpd<br>[root@xy ~]# <span class="hljs-built_in">kill</span> PID	　　        <span class="hljs-comment"># kill PID号 </span><br></code></pre></td></tr></table></figure>
+<h3 id="系统状态检测命令">8. 系统状态检测命令</h3>
+<h4 id="ifconfigip">8.1 ifconfig(ip)</h4>
+<blockquote>
+<p>RedHat/CentOS: /etc/sysconfig/network-scripts<br />
+Debian/Ubuntu: /etc/network/interfaces</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;1&quot;</span>&gt; <span class="hljs-built_in">cat</span> /proc/sys/net/ipv4/ip_forward  <span class="hljs-comment">#临时开启路由转发  </span><br>/etc/sysctl.conf  <span class="hljs-comment">#net.ipv4.ip_forward = 0  #永久修改  sysctl -p</span><br>[root@xy ~]# ifconfig  <br>eno16777736: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br>        ether 00:0c:29:11:26:05  txqueuelen 1000  (Ethernet)  <br>        RX packets 496  bytes 46407 (45.3 KiB)  <br>        RX errors 0  dropped 0  overruns 0  frame 0  <br>        TX packets 0  bytes 0 (0.0 B)  <br>        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0  <br><br>lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536  <br>        inet 127.0.0.1  netmask 255.0.0.0  <br>        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;  <br>        loop  txqueuelen 0  (Local Loopback)  <br>        RX packets 770  bytes 62348 (60.8 KiB)  <br>        RX errors 0  dropped 0  overruns 0  frame 0  <br>        TX packets 770  bytes 62348 (60.8 KiB)   <br>        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0    <br>[root@xy ~]# ifconfig eno16777736 IP       <span class="hljs-comment"># 临时测试更改IP  </span><br>[root@xy ~]# yum install quagga -y    <br>[root@xy ~]# ifconfig eth0:1 192.168.10.131 netmask 255.255.255.0 up  <span class="hljs-comment"># eth0:1 虚拟网络接口</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="8-2-uname"><a href="#8-2-uname" class="headerlink" title="8.2 uname"></a>8.2 uname</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">uname</span> -a 　　　<span class="hljs-comment"># 查看系统内核与版本信息    </span><br>  Linux xy.com 3.10.0-123.el7.x86_64 <span class="hljs-comment">#1 SMP Mon May 5 11:16:57 EDT 2014 x86_64 x86_64 x86_64 GNU/Linux  </span><br>[root@xy ~]# <span class="hljs-built_in">cat</span> /etc/redhat-release   　　　 <span class="hljs-comment"># 系统版本详细信息文件路径  </span><br>  Red Hat Enterprise Linux Server release 7.0 (Maipo)<br></code></pre></td></tr></table></figure>
-
-<h4 id="8-3-uptime"><a href="#8-3-uptime" class="headerlink" title="8.3 uptime"></a>8.3 uptime</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">uptime</span>　　　<span class="hljs-comment"># 5min	 10min	15min	系统负载状况 </span><br>  11:08:55 up 31 min,  2 <span class="hljs-built_in">users</span>,  load average: 0.48, 0.42, 0.46    <br></code></pre></td></tr></table></figure>
-
-<h4 id="8-4-free"><a href="#8-4-free" class="headerlink" title="8.4. free"></a>8.4. free</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# free -h       　　　<span class="hljs-comment"># 内存使用情况    </span><br>             total       used       free     shared    buffers     cached  <br>Mem:          1.9G       1.2G       732M       9.8M       1.1M       335M  <br>-/+ buffers/cache:       919M       1.0G  <br>Swap:         2.0G         0B       2.0G  <br></code></pre></td></tr></table></figure>
-
-<h4 id="8-5-who"><a href="#8-5-who" class="headerlink" title="8.5 who"></a>8.5 who</h4><blockquote>
-<p>-r 显示当前运行级别<br>console pty(物理终端) tty(虚拟终端) ttyS(串行终端) pts(伪终端)   </p>
+<h4 id="uname">8.2 uname</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">uname</span> -a 　　　<span class="hljs-comment"># 查看系统内核与版本信息    </span><br>  Linux xy.com 3.10.0-123.el7.x86_64 <span class="hljs-comment">#1 SMP Mon May 5 11:16:57 EDT 2014 x86_64 x86_64 x86_64 GNU/Linux  </span><br>[root@xy ~]# <span class="hljs-built_in">cat</span> /etc/redhat-release   　　　 <span class="hljs-comment"># 系统版本详细信息文件路径  </span><br>  Red Hat Enterprise Linux Server release 7.0 (Maipo)<br></code></pre></td></tr></table></figure>
+<h4 id="uptime">8.3 uptime</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">uptime</span>　　　<span class="hljs-comment"># 5min	 10min	15min	系统负载状况 </span><br>  11:08:55 up 31 min,  2 <span class="hljs-built_in">users</span>,  load average: 0.48, 0.42, 0.46    <br></code></pre></td></tr></table></figure>
+<h4 id="free">8.4. free</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# free -h       　　　<span class="hljs-comment"># 内存使用情况    </span><br>             total       used       free     shared    buffers     cached  <br>Mem:          1.9G       1.2G       732M       9.8M       1.1M       335M  <br>-/+ buffers/cache:       919M       1.0G  <br>Swap:         2.0G         0B       2.0G  <br></code></pre></td></tr></table></figure>
+<h4 id="who">8.5 who</h4>
+<blockquote>
+<p>-r 显示当前运行级别<br />
+console pty(物理终端) tty(虚拟终端) ttyS(串行终端) pts(伪终端)<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">who</span>      　　　　　<span class="hljs-comment"># 当前登录主机用户信息</span><br>xy       :0           2018-07-05 22:38 (:0)  <br>xy       pts/0        2018-07-06 11:06 (:0)  <br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">who</span>      　　　　　<span class="hljs-comment"># 当前登录主机用户信息</span><br>xy       :0           2018-07-05 22:38 (:0)  <br>xy       pts/0        2018-07-06 11:06 (:0)  <br></code></pre></td></tr></table></figure>
-
-<h4 id="8-6-last-显示用户登录历史及系统重启历史"><a href="#8-6-last-显示用户登录历史及系统重启历史" class="headerlink" title="8.6 last: 显示用户登录历史及系统重启历史"></a>8.6 last: 显示用户登录历史及系统重启历史</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# last     　　　　 <span class="hljs-comment"># /var/log/wtmp    </span><br>xy       pts/0        :0               Fri Jul  6 11:06   still logged <span class="hljs-keyword">in</span>     <br>xy       pts/0        :0               Thu Jul  5 22:41 - 11:06  (12:24)      <br>xy       :0           :0               Thu Jul  5 22:38   still logged <span class="hljs-keyword">in</span>        <br>reboot   system boot  3.10.0-123.el7.x Fri Jul  6 06:37 - 11:11  (04:33)  <br>.......省略部分信息........   <br><br>lastb -n      <span class="hljs-comment"># /var/log/btmp   # 显示错误的登录尝试信息  </span><br>lastlog -u username           <span class="hljs-comment"># 显示每一个用户最近登录信息    </span><br></code></pre></td></tr></table></figure>
-
-<h4 id="8-7-history"><a href="#8-7-history" class="headerlink" title="8.7 history"></a>8.7 history</h4><table>
+<h4 id="last-显示用户登录历史及系统重启历史">8.6 last:
+显示用户登录历史及系统重启历史</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# last     　　　　 <span class="hljs-comment"># /var/log/wtmp    </span><br>xy       pts/0        :0               Fri Jul  6 11:06   still logged <span class="hljs-keyword">in</span>     <br>xy       pts/0        :0               Thu Jul  5 22:41 - 11:06  (12:24)      <br>xy       :0           :0               Thu Jul  5 22:38   still logged <span class="hljs-keyword">in</span>        <br>reboot   system boot  3.10.0-123.el7.x Fri Jul  6 06:37 - 11:11  (04:33)  <br>.......省略部分信息........   <br><br>lastb -n      <span class="hljs-comment"># /var/log/btmp   # 显示错误的登录尝试信息  </span><br>lastlog -u username           <span class="hljs-comment"># 显示每一个用户最近登录信息    </span><br></code></pre></td></tr></table></figure>
+<h4 id="history">8.7 history</h4>
+<table>
 <thead>
 <tr>
 <th>调用</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>!!</td>
 <td>重复执行上一条</td>
 </tr>
@@ -801,23 +893,26 @@
 <td>!string</td>
 <td>重复执行最后一条以该字串开头的</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">history</span>      　　　      <span class="hljs-comment"># 命令使用历史     </span><br>[root@xy ~]# <span class="hljs-built_in">history</span> -c   		   　　 <span class="hljs-comment"># clean    </span><br>[root@xy ~]# <span class="hljs-built_in">cat</span> ~/.bash_history  <br>  lsmod|grep i2c  <br>  vim /etc/modprobe.d/blacklist.conf      <br>  reboot  <br>  lsmod|grep i2c  <br>.......省略部分信息........  <br></code></pre></td></tr></table></figure>
-
-<h4 id="8-8-sosreport"><a href="#8-8-sosreport" class="headerlink" title="8.8 sosreport"></a>8.8 sosreport</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# sosreport    <br>    sosreport (version 3.0)    <br>    This <span class="hljs-built_in">command</span> will collect diagnostic and configuration information from  <br>    this Red Hat Enterprise Linux system and installed applications.  <br>    Your sosreport has been generated and saved <span class="hljs-keyword">in</span>:  <br>      /var/tmp/sosreport-xy.com-20180706113138.tar.xz<br></code></pre></td></tr></table></figure>
-
-<h3 id="9-工作目录切换命令"><a href="#9-工作目录切换命令" class="headerlink" title="9. 工作目录切换命令"></a>9. 工作目录切换命令</h3><h4 id="9-1-pwd"><a href="#9-1-pwd" class="headerlink" title="9.1 pwd"></a>9.1 pwd</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">pwd</span>          　　<span class="hljs-comment"># 当前所处工作目录  </span><br>/root<br></code></pre></td></tr></table></figure>
-
-<h4 id="9-2-cd"><a href="#9-2-cd" class="headerlink" title="9.2 cd"></a>9.2 cd</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cd</span> /etc  <br>[root@xy etc]# <span class="hljs-built_in">cd</span> -       　　<span class="hljs-comment"># cd - 返回到上一次所处目录  </span><br>/root  <br>[root@xy ~]# <span class="hljs-built_in">cd</span> /etc  <br>[root@xy etc]# <span class="hljs-built_in">cd</span> ~       　　<span class="hljs-comment"># 进入当前用户的home目录  </span><br>[root@xy ~]# <span class="hljs-built_in">cd</span> ..      　　  <span class="hljs-comment"># cd .. 进入上级目录 </span><br>[root@xy /]# <span class="hljs-built_in">cd</span> /etc  <br></code></pre></td></tr></table></figure>
-
-<h4 id="9-3-ls"><a href="#9-3-ls" class="headerlink" title="9.3 ls"></a>9.3 ls</h4><table>
+<h4 id="sosreport">8.8 sosreport</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# sosreport    <br>    sosreport (version 3.0)    <br>    This <span class="hljs-built_in">command</span> will collect diagnostic and configuration information from  <br>    this Red Hat Enterprise Linux system and installed applications.  <br>    Your sosreport has been generated and saved <span class="hljs-keyword">in</span>:  <br>      /var/tmp/sosreport-xy.com-20180706113138.tar.xz<br></code></pre></td></tr></table></figure>
+<h3 id="工作目录切换命令">9. 工作目录切换命令</h3>
+<h4 id="pwd">9.1 pwd</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">pwd</span>          　　<span class="hljs-comment"># 当前所处工作目录  </span><br>/root<br></code></pre></td></tr></table></figure>
+<h4 id="cd">9.2 cd</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cd</span> /etc  <br>[root@xy etc]# <span class="hljs-built_in">cd</span> -       　　<span class="hljs-comment"># cd - 返回到上一次所处目录  </span><br>/root  <br>[root@xy ~]# <span class="hljs-built_in">cd</span> /etc  <br>[root@xy etc]# <span class="hljs-built_in">cd</span> ~       　　<span class="hljs-comment"># 进入当前用户的home目录  </span><br>[root@xy ~]# <span class="hljs-built_in">cd</span> ..      　　  <span class="hljs-comment"># cd .. 进入上级目录 </span><br>[root@xy /]# <span class="hljs-built_in">cd</span> /etc  <br></code></pre></td></tr></table></figure>
+<h4 id="ls">9.3 ls</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-a</td>
 <td>全部文件(包括隐藏文件)</td>
 </tr>
@@ -837,17 +932,20 @@
 <td>-Z</td>
 <td>查看安全上下文</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">ls</span> -al   <br>total 64  <br>dr-xr-x---. 14 root root 4096 Jul  6 11:06 .   <br>-rw-------.  1 root root  378 Jul  6 11:06 .bash_history  <br><br>[root@xy ~]# <span class="hljs-built_in">ls</span> -ld /etc   <br>drwxr-xr-x. 132 root root 8192 Jul  6 06:37 /etc<br></code></pre></td></tr></table></figure>
-
-<h3 id="10-文本编辑命令"><a href="#10-文本编辑命令" class="headerlink" title="10. 文本编辑命令"></a>10. 文本编辑命令</h3><h4 id="10-1-cat"><a href="#10-1-cat" class="headerlink" title="10.1 cat"></a>10.1 cat</h4><table>
+<h3 id="文本编辑命令">10. 文本编辑命令</h3>
+<h4 id="cat">10.1 cat</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-n</td>
 <td>显示行号</td>
 </tr>
@@ -855,19 +953,21 @@
 <td>-E</td>
 <td>显示所有符号</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cat</span> -n initial-setup-ks.cfg     　　<span class="hljs-comment"># 短篇文本查看 Number  </span><br>  1  <span class="hljs-comment">#version=RHEL7  </span><br>  2  <span class="hljs-comment"># X Window System configuration information  </span><br>  3  xconfig  --startxonboot  <br></code></pre></td></tr></table></figure>
-
-<h4 id="10-2-more"><a href="#10-2-more" class="headerlink" title="10.2 more"></a>10.2 more</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# more initial-setup-ks.cfg	<span class="hljs-comment">#长篇文本查看 翻滚 空格键  </span><br>  1  <span class="hljs-comment">#version=RHEL7  </span><br>  2  <span class="hljs-comment"># X Window System configuration information  </span><br>  3  xconfig  --startxonboot   <br></code></pre></td></tr></table></figure>
-
-<h4 id="10-3-head"><a href="#10-3-head" class="headerlink" title="10.3 head"></a>10.3 head</h4><table>
+<h4 id="more">10.2 more</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# more initial-setup-ks.cfg	<span class="hljs-comment">#长篇文本查看 翻滚 空格键  </span><br>  1  <span class="hljs-comment">#version=RHEL7  </span><br>  2  <span class="hljs-comment"># X Window System configuration information  </span><br>  3  xconfig  --startxonboot   <br></code></pre></td></tr></table></figure>
+<h4 id="head">10.3 head</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-n</td>
 <td>显示文本前n行</td>
 </tr>
@@ -879,17 +979,19 @@
 <td>-2</td>
 <td>指定查看前2行</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">head</span> -n 5 initial-setup-ks.cfg       <br>  1  <span class="hljs-comment">#version=RHEL7  </span><br>  2  <span class="hljs-comment"># X Window System configuration information</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="10-4-tail-默认后10行"><a href="#10-4-tail-默认后10行" class="headerlink" title="10.4 tail(默认后10行)"></a>10.4 tail(默认后10行)</h4><table>
+<h4 id="tail默认后10行">10.4 tail(默认后10行)</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-c</td>
 <td>指定获取后n字符数</td>
 </tr>
@@ -905,19 +1007,22 @@
 <td>-F</td>
 <td>同-f, 删除跟踪后会提醒</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">tail</span> -n 5 initial-setup-ks.cfg	  <span class="hljs-comment"># tail -n 查看后10行  </span><br>  @guest-agents  <br>  @guest-desktop-agents     <br><br>[root@xy ~]# <span class="hljs-built_in">tail</span> -f /var/log/messages			　<span class="hljs-comment"># tail -f 动态显示log信息 </span><br>  Jul  6 11:51:43 xy dbus[1068]: [system] Activating via systemd: service   name=<span class="hljs-string">&#x27;net.reactivated.Fprint&#x27;</span> unit=<span class="hljs-string">&#x27;fprintd.service&#x27;</span>  <br>  Jul  6 11:51:43 xy systemd: Starting Fingerprint Authentication Daemon...<br></code></pre></td></tr></table></figure>
-
-<h4 id="10-3-diff"><a href="#10-3-diff" class="headerlink" title="10.3 diff"></a>10.3 diff</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy diff]# <span class="hljs-built_in">cat</span> diff_A.txt  <br>  Welcom to RedHat 7  <br>  RedHat certified  <br>  Free Linux Lessons  <br>  Professional guidance  <br>  Linux Course  <br>[root@xy diff]# <span class="hljs-built_in">cat</span> diff_B.txt  <br>  Welcom tooo RedHat7  <br><br>  RedHat certified  <br>  Free Linux LessonS  <br>  //////////...../////////  <br>  Professional guidance  <br>  Linux Course  <br>[root@xy diff]# diff --brief diff_A.txt diff_B.txt         　　<span class="hljs-comment"># 比较文本差异  </span><br>  Files diff_A.txt and diff_B.txt differ  <br>[root@xy diff]# diff -c -Naur diff_A.txt diff_B.txt &gt;patch.txt  <br>  *** diff_A.txt	2018-07-06 12:06:35.889958037 -0400  <br>  --- diff_B.txt	2018-07-06 12:10:58.818955667 -0400  <br>  ***************  <br>  *** 1,5 ***  <br>  ! Welcom to RedHat 7  <br>    RedHat certified  <br>  ! Free Linux Lessons  <br>    Professional guidance  <br>    Linux Course  <br>  --- 1,8 ----  <br>  ! Welcom tooo RedHat7  <br>  !   <br>  !   <br>    RedHat certified  <br>  ! Free Linux LessonS  <br>  ! //////////...../////////  <br>    Professional guidance  <br>    Linux Course<br></code></pre></td></tr></table></figure>
-
-<h4 id="10-4-wc-统计指定文本的行数-字数-字节数-word-count"><a href="#10-4-wc-统计指定文本的行数-字数-字节数-word-count" class="headerlink" title="10.4 wc   统计指定文本的行数, 字数, 字节数 word count"></a>10.4 wc   <strong>统计指定文本的行数, 字数, 字节数 word count</strong></h4><table>
+<h4 id="diff">10.3 diff</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy diff]# <span class="hljs-built_in">cat</span> diff_A.txt  <br>  Welcom to RedHat 7  <br>  RedHat certified  <br>  Free Linux Lessons  <br>  Professional guidance  <br>  Linux Course  <br>[root@xy diff]# <span class="hljs-built_in">cat</span> diff_B.txt  <br>  Welcom tooo RedHat7  <br><br>  RedHat certified  <br>  Free Linux LessonS  <br>  //////////...../////////  <br>  Professional guidance  <br>  Linux Course  <br>[root@xy diff]# diff --brief diff_A.txt diff_B.txt         　　<span class="hljs-comment"># 比较文本差异  </span><br>  Files diff_A.txt and diff_B.txt differ  <br>[root@xy diff]# diff -c -Naur diff_A.txt diff_B.txt &gt;patch.txt  <br>  *** diff_A.txt	2018-07-06 12:06:35.889958037 -0400  <br>  --- diff_B.txt	2018-07-06 12:10:58.818955667 -0400  <br>  ***************  <br>  *** 1,5 ***  <br>  ! Welcom to RedHat 7  <br>    RedHat certified  <br>  ! Free Linux Lessons  <br>    Professional guidance  <br>    Linux Course  <br>  --- 1,8 ----  <br>  ! Welcom tooo RedHat7  <br>  !   <br>  !   <br>    RedHat certified  <br>  ! Free Linux LessonS  <br>  ! //////////...../////////  <br>    Professional guidance  <br>    Linux Course<br></code></pre></td></tr></table></figure>
+<h4 id="wc-统计指定文本的行数-字数-字节数-word-count">10.4 wc
+<strong>统计指定文本的行数, 字数, 字节数 word count</strong></h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-l</td>
 <td>只显示行数line</td>
 </tr>
@@ -937,19 +1042,22 @@
 <td>-L</td>
 <td>最长的行包含字符数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">wc</span> -l /etc/passwd <br>  38 /etc/passwd  <br>[root@xy ~]# <span class="hljs-built_in">wc</span> -w /etc/passwd  <br>  66 /etc/passwd  <br>[root@xy ~]# <span class="hljs-built_in">wc</span> -c /etc/passwd<br>  1902 /etc/passwd<br></code></pre></td></tr></table></figure>
-
-<h4 id="10-5-stat"><a href="#10-5-stat" class="headerlink" title="10.5 stat"></a>10.5 stat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">stat</span> anaconda-ks.cfg 	　　<span class="hljs-comment"># 查看文件具体存储信息与时间  </span><br>    File: ‘anaconda-ks.cfg’  <br>    Size: 1071      	Blocks: 8          IO Block: 4096   regular file  <br>  Device: fd00h/64768d	Inode: 68521005    Links: 1  <br>  Access: (0600/-rw-------)  Uid: (    0/    root)   Gid: (    0/    root)  <br>  Context: system_u:object_r:admin_home_t:s0  <br>  Access: 2018-07-06 14:25:45.099882788 -0400  <span class="hljs-comment"># atime</span><br>  Modify: 2018-07-06 05:36:00.000000000 -0400  <span class="hljs-comment"># mtime</span><br>  Change: 2018-07-06 12:21:08.983950168 -0400  <span class="hljs-comment"># ctime</span><br>  Birth: -<br></code></pre></td></tr></table></figure>
-
-<h4 id="10-6-cut-提取列-字符串-不识别空格"><a href="#10-6-cut-提取列-字符串-不识别空格" class="headerlink" title="10.6 cut 提取列 字符串,不识别空格"></a>10.6 cut 提取列 字符串,不识别空格</h4><table>
+<h4 id="stat">10.5 stat</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">stat</span> anaconda-ks.cfg 	　　<span class="hljs-comment"># 查看文件具体存储信息与时间  </span><br>    File: ‘anaconda-ks.cfg’  <br>    Size: 1071      	Blocks: 8          IO Block: 4096   regular file  <br>  Device: fd00h/64768d	Inode: 68521005    Links: 1  <br>  Access: (0600/-rw-------)  Uid: (    0/    root)   Gid: (    0/    root)  <br>  Context: system_u:object_r:admin_home_t:s0  <br>  Access: 2018-07-06 14:25:45.099882788 -0400  <span class="hljs-comment"># atime</span><br>  Modify: 2018-07-06 05:36:00.000000000 -0400  <span class="hljs-comment"># mtime</span><br>  Change: 2018-07-06 12:21:08.983950168 -0400  <span class="hljs-comment"># ctime</span><br>  Birth: -<br></code></pre></td></tr></table></figure>
+<h4 id="cut-提取列-字符串不识别空格">10.6 cut 提取列
+字符串,不识别空格</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-d</td>
 <td>分隔符,默认为Tab</td>
 </tr>
@@ -961,17 +1069,19 @@
 <td>-c</td>
 <td>按字符提取</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">head</span> -n 2 /etc/passwd<br>  root:x:0:0:root:/root:/bin/bash <br>  bin:x:1:1:bin:/bin:/sbin/nologin  <br>[root@xy ~]# <span class="hljs-built_in">cut</span> -d: -f1 /etc/passwd  <span class="hljs-comment"># 按列提取文本字符</span><br>  root   <br>  ...    <br>  sshd  <br>  xy<br></code></pre></td></tr></table></figure>
-
-<h4 id="10-7-tr-替换文本字符串"><a href="#10-7-tr-替换文本字符串" class="headerlink" title="10.7 tr　替换文本字符串"></a>10.7 tr　<strong>替换文本字符串</strong></h4><table>
+<h4 id="tr-替换文本字符串">10.7 tr　<strong>替换文本字符串</strong></h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-s</td>
 <td>将重复出现字符串压缩为一个字符串替换</td>
 </tr>
@@ -983,17 +1093,19 @@
 <td>-c</td>
 <td>反选</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cat</span> anaconda-ks.cfg | <span class="hljs-built_in">tr</span> [a-z] [A-Z]  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;xt.,l 1 jr#!$mn2 c*/fe3 uz4&#x27;</span> |<span class="hljs-built_in">tr</span> -dc [0-9]  <span class="hljs-comment"># -d 删除 -c 取反  </span><br>[root@xy ~]# ifconfig eno16777736 |<span class="hljs-built_in">head</span> -n2 |<span class="hljs-built_in">tail</span> -n1 |<span class="hljs-built_in">tr</span> -dc <span class="hljs-string">&#x27;[0-9]. &#x27;</span> |<span class="hljs-built_in">tr</span> -s <span class="hljs-string">&#x27; &#x27;</span>|<span class="hljs-built_in">cut</span> -d<span class="hljs-string">&quot; &quot;</span> -f2 <br>  192.168.137.10<br></code></pre></td></tr></table></figure>
-
-<h4 id="sort-取列排序"><a href="#sort-取列排序" class="headerlink" title="sort(取列排序)"></a>sort(取列排序)</h4><table>
+<h4 id="sort取列排序">sort(取列排序)</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-n</td>
 <td>按数字排序</td>
 </tr>
@@ -1006,7 +1118,7 @@
 <td>分隔符</td>
 </tr>
 <tr>
-<td>-k,--key&#x3D;POSL</td>
+<td>-k,--key=POSL</td>
 <td>指定某列进行排序(默认字符)</td>
 </tr>
 <tr>
@@ -1017,17 +1129,19 @@
 <td>-f</td>
 <td>忽略大小写</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">df</span> |grep sd | <span class="hljs-built_in">tr</span> -s <span class="hljs-string">&quot; &quot;</span> <span class="hljs-string">&quot;%&quot;</span> |<span class="hljs-built_in">cut</span> -d% -f5 |<span class="hljs-built_in">sort</span> -nr |<span class="hljs-built_in">head</span> -n1<br></code></pre></td></tr></table></figure>
-
-<h4 id="uniq-相邻相同的字符"><a href="#uniq-相邻相同的字符" class="headerlink" title="uniq(相邻相同的字符)"></a>uniq(相邻相同的字符)</h4><table>
+<h4 id="uniq相邻相同的字符">uniq(相邻相同的字符)</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-c,–count</td>
 <td>统计每行重复出现次数</td>
 </tr>
@@ -1039,17 +1153,20 @@
 <td>-u,–unique</td>
 <td>显示不曾重复的行(并)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cut</span> -d<span class="hljs-string">&quot; &quot;</span> -f1 /var/log/httpd/access_log |<span class="hljs-built_in">sort</span> |<span class="hljs-built_in">uniq</span> -c |<span class="hljs-built_in">sort</span> -nr <span class="hljs-comment"># 统计客户端访问IP次数  </span><br>[root@xy ~]# <span class="hljs-built_in">cat</span> f1 f2 | <span class="hljs-built_in">sort</span> |<span class="hljs-built_in">uniq</span> -d <span class="hljs-comment"># 交集  </span><br>[root@xy ~]# grep -f f1 f2             <span class="hljs-comment"># 交集  </span><br><br>[root@xy ~]# <span class="hljs-built_in">cat</span> f1 f2| <span class="hljs-built_in">sort</span> |<span class="hljs-built_in">uniq</span> -u  <span class="hljs-comment"># 不同</span><br>[root@xy ~]# <span class="hljs-built_in">cat</span> f1 f2 |<span class="hljs-built_in">sort</span> -u        <span class="hljs-comment"># 并集</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="11-文件目录管理命令"><a href="#11-文件目录管理命令" class="headerlink" title="11. 文件目录管理命令"></a>11. 文件目录管理命令</h3><h4 id="11-1-touch"><a href="#11-1-touch" class="headerlink" title="11.1 touch"></a>11.1 touch</h4><table>
+<h3 id="文件目录管理命令">11. 文件目录管理命令</h3>
+<h4 id="touch">11.1 touch</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-a</td>
 <td>仅仅修改读取时间atime</td>
 </tr>
@@ -1061,21 +1178,24 @@
 <td>-d</td>
 <td>都修改</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">ls</span> -l anaconda-ks.cfg  <br>  -rw-------. 1 root root 1024 Jul  6 05:36 anaconda-ks.cfg  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Visit the LinuxProbe.com to learn linux skills&quot;</span> &gt;&gt;anaconda-ks  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l anaconda-ks.cfg <br>  -rw-------. 1 root root 1071 Jul  6 12:18 anaconda-ks.cfg  <br>[root@xy ~]# <span class="hljs-built_in">touch</span> -d <span class="hljs-string">&quot;2018-07-06 05:36&quot;</span> anaconda-ks.cfg   <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l anaconda-ks.cfg   <br>  -rw-------. 1 root root 1071 Jul  6 05:36 anaconda-ks.cfg<br></code></pre></td></tr></table></figure>
+<h4 id="mkdir">11.2 mkdir</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cd</span> /tmp <br>[root@xy tmp]# <span class="hljs-built_in">mkdir</span> diff  <br>[root@xy tmp]# <span class="hljs-built_in">cd</span> diff    <br>[root@xy diff]# <span class="hljs-built_in">mkdir</span> -p a/b/c/d/e 　　　 <span class="hljs-comment"># 递归创建目录  </span><br>[root@xy ~] <span class="hljs-built_in">mkdir</span> <span class="hljs-built_in">mkdir</span> -p base/&#123;<span class="hljs-built_in">cd</span>,fd&#125;  <span class="hljs-comment"># 创建多个同级目录   </span><br>[root@xy diff]# <span class="hljs-built_in">cd</span> a  <br>[root@xy a]# <br>[root@xy ~]# <span class="hljs-built_in">touch</span> install.log  <br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  install.log           Pictures  Templates  <br>[root@anyue <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">mkdir</span> -pv /testdir/dir1/&#123;x,y&#125;/&#123;a,b&#125;<br>  /testdir/<br>  └── dir1<br>      ├── x<br>      │   ├── a<br>      │   └── b<br>      └── y<br>          ├── a<br>          └── b<br>[root@anyue <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">mkdir</span> -pv ./testdir/dir2/&#123;x/&#123;a,b&#125;,y&#125;<br>  ./testdir/dir2/<br>  ├── x<br>  │   ├── a<br>  │   └── b<br>  └── y<br>[root@anyue <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">mkdir</span> -pv ./testdir/dir&#123;3,4,5/dir&#123;6,7&#125;&#125;<br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir3’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir4’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir5’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir5/dir6’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir5/dir7’  <br>[root@anyue <span class="hljs-built_in">test</span>]# tree ./testdir/ <br>    <br>    ./testdir/<br>    ├── dir3<br>    ├── dir4<br>    └── dir5<br>        ├── dir6<br>        └── dir7<br></code></pre></td></tr></table></figure>
+<h4 id="cp--a--r--v">11.3 cp (-a -r -v)</h4>
+<table>
 
-<h4 id="11-2-mkdir"><a href="#11-2-mkdir" class="headerlink" title="11.2 mkdir"></a>11.2 mkdir</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cd</span> /tmp <br>[root@xy tmp]# <span class="hljs-built_in">mkdir</span> diff  <br>[root@xy tmp]# <span class="hljs-built_in">cd</span> diff    <br>[root@xy diff]# <span class="hljs-built_in">mkdir</span> -p a/b/c/d/e 　　　 <span class="hljs-comment"># 递归创建目录  </span><br>[root@xy ~] <span class="hljs-built_in">mkdir</span> <span class="hljs-built_in">mkdir</span> -p base/&#123;<span class="hljs-built_in">cd</span>,fd&#125;  <span class="hljs-comment"># 创建多个同级目录   </span><br>[root@xy diff]# <span class="hljs-built_in">cd</span> a  <br>[root@xy a]# <br>[root@xy ~]# <span class="hljs-built_in">touch</span> install.log  <br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  install.log           Pictures  Templates  <br>[root@anyue <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">mkdir</span> -pv /testdir/dir1/&#123;x,y&#125;/&#123;a,b&#125;<br>  /testdir/<br>  └── dir1<br>      ├── x<br>      │   ├── a<br>      │   └── b<br>      └── y<br>          ├── a<br>          └── b<br>[root@anyue <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">mkdir</span> -pv ./testdir/dir2/&#123;x/&#123;a,b&#125;,y&#125;<br>  ./testdir/dir2/<br>  ├── x<br>  │   ├── a<br>  │   └── b<br>  └── y<br>[root@anyue <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">mkdir</span> -pv ./testdir/dir&#123;3,4,5/dir&#123;6,7&#125;&#125;<br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir3’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir4’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir5’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir5/dir6’  <br>  <span class="hljs-built_in">mkdir</span>: created directory ‘./testdir/dir5/dir7’  <br>[root@anyue <span class="hljs-built_in">test</span>]# tree ./testdir/ <br>    <br>    ./testdir/<br>    ├── dir3<br>    ├── dir4<br>    └── dir5<br>        ├── dir6<br>        └── dir7<br></code></pre></td></tr></table></figure>
-
-<h4 id="11-3-cp-a-r-v"><a href="#11-3-cp-a-r-v" class="headerlink" title="11.3 cp  (-a -r -v)"></a>11.3 cp  (-a -r -v)</h4><table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-a</td>
-<td>复制目录时使用,保留链接&#x2F;文件属性&#x2F;并复制目录下的所有内容,等于dpR参数组合</td>
+<td>复制目录时使用,保留链接/文件属性/并复制目录下的所有内容,等于dpR参数组合</td>
 </tr>
 <tr>
 <td>-r</td>
@@ -1085,21 +1205,24 @@
 <td>-v</td>
 <td>显示过程</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cp</span> -a install.log x.log  <br>[root@xy ~]# <span class="hljs-built_in">ls</span><br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  install.log           Pictures  Templates  x.log<br></code></pre></td></tr></table></figure>
-
-<h4 id="11-4-mv"><a href="#11-4-mv" class="headerlink" title="11.4 mv"></a>11.4 mv</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mv</span> install.log linux.log <br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  linux.log            Pictures  Templates  <br></code></pre></td></tr></table></figure>
-
-<h4 id="11-5-rm"><a href="#11-5-rm" class="headerlink" title="11.5 rm"></a>11.5 rm</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">rm</span> linux.log<br>  <span class="hljs-built_in">rm</span>: remove regular empty file ‘diff’? y  <br>[root@xy ~]# <span class="hljs-built_in">rm</span> -f linux.log              <span class="hljs-comment"># -f,强制删除文件或目录</span><br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  Pictures              Templates  <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> diff  <br>[root@xy ~]# <span class="hljs-built_in">cd</span> diff  <br>[root@xy diff]# <span class="hljs-built_in">cd</span> -<br>  /root  <br>[root@xy ~]# <span class="hljs-built_in">rm</span> -rf diff  <span class="hljs-comment"># -r,递归处理，将指定目录下的所有文件与子目录一并处理</span><br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  Templates  <br>  Desktop          Downloads  Music                 Public    Video<br></code></pre></td></tr></table></figure>
-
-<h4 id="11-6-dd-按照指定大小和个数的数据块复制文件或转换文件"><a href="#11-6-dd-按照指定大小和个数的数据块复制文件或转换文件" class="headerlink" title="11.6 dd   按照指定大小和个数的数据块复制文件或转换文件"></a>11.6 dd   按照指定大小和个数的数据块复制文件或转换文件</h4><table>
+<h4 id="mv">11.4 mv</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">mv</span> install.log linux.log <br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  linux.log            Pictures  Templates  <br></code></pre></td></tr></table></figure>
+<h4 id="rm">11.5 rm</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">rm</span> linux.log<br>  <span class="hljs-built_in">rm</span>: remove regular empty file ‘diff’? y  <br>[root@xy ~]# <span class="hljs-built_in">rm</span> -f linux.log              <span class="hljs-comment"># -f,强制删除文件或目录</span><br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public     Videos  <br>  Desktop          Downloads  Pictures              Templates  <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> diff  <br>[root@xy ~]# <span class="hljs-built_in">cd</span> diff  <br>[root@xy diff]# <span class="hljs-built_in">cd</span> -<br>  /root  <br>[root@xy ~]# <span class="hljs-built_in">rm</span> -rf diff  <span class="hljs-comment"># -r,递归处理，将指定目录下的所有文件与子目录一并处理</span><br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  Templates  <br>  Desktop          Downloads  Music                 Public    Video<br></code></pre></td></tr></table></figure>
+<h4 id="dd-按照指定大小和个数的数据块复制文件或转换文件">11.6 dd
+按照指定大小和个数的数据块复制文件或转换文件</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>if</td>
 <td>输入文件名称</td>
 </tr>
@@ -1115,12 +1238,15 @@
 <td>count</td>
 <td>设置复制块的个数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=10_file bs=10M count=1<br>[root@xy ~]# <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/cdrom of=RHEL-server-7.0-x86_64.iso  <br>[root@xy ~]# file anaconda-ks.cfg  <br>  anaconda-ks.cfg: ASCII text<br></code></pre></td></tr></table></figure>
-
-<h4 id="11-7-file"><a href="#11-7-file" class="headerlink" title="11.7 file"></a>11.7 file</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# file /dev/sda  <br>  /dev/sda: block special <br></code></pre></td></tr></table></figure>
-
-<h3 id="12-打包压缩与搜索命令"><a href="#12-打包压缩与搜索命令" class="headerlink" title="12. 打包压缩与搜索命令  "></a>12. 打包压缩与搜索命令  <a id="tar"></a></h3><h4 id="12-1-tar"><a href="#12-1-tar" class="headerlink" title="12.1 tar"></a>12.1 tar</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lhm166/articles/6604852.html">tar相关命令参考1</a></p>
+<h4 id="file">11.7 file</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# file /dev/sda  <br>  /dev/sda: block special <br></code></pre></td></tr></table></figure>
+<h3 id="打包压缩与搜索命令">12. 打包压缩与搜索命令 <a id="tar"></a></h3>
+<h4 id="tar">12.1 tar</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/lhm166/articles/6604852.html">tar相关命令参考1</a></p>
 <table>
 <thead>
 <tr>
@@ -1128,7 +1254,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-c</td>
 <td>创建压缩文档</td>
 </tr>
@@ -1142,11 +1269,11 @@
 </tr>
 <tr>
 <td>-z</td>
-<td>用Gzip压缩&#x2F;解压, *.tar.gz</td>
+<td>用Gzip压缩/解压, *.tar.gz</td>
 </tr>
 <tr>
 <td>-j</td>
-<td>用bzip2压缩&#x2F;解压, *.tar.bz2</td>
+<td>用bzip2压缩/解压, *.tar.bz2</td>
 </tr>
 <tr>
 <td>-J</td>
@@ -1154,7 +1281,7 @@
 </tr>
 <tr>
 <td>-v</td>
-<td>显示压缩&#x2F;解压过程</td>
+<td>显示压缩/解压过程</td>
 </tr>
 <tr>
 <td>-f</td>
@@ -1172,17 +1299,20 @@
 <td>-C</td>
 <td>指定目录</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy tmp]# tar -czvf diff.tar.gz /diff     <br>  diff/  <br>  diff/diff_A.txt  <br>  diff/diff_B.txt  <br>  diff/diff_B.txt~  <br>  diff/diff.tar.gz  <br>[root@xy diff]# tar -xzvf diff.tar.gz -C /diff    <span class="hljs-comment"># 指定解压目录 -C   </span><br>[root@xy diff]# tar -g /data/backup/snapshot -czvf /data/backup/2017.tar.gz *  <span class="hljs-comment"># -g 增量备份  </span><br>[root@xy diff]# tar -g /data/backup/snapshot -czvf /data/backup/2017-1.tar.gz *<br></code></pre></td></tr></table></figure>
-
-<h4 id="12-2-grep-提取行-字符串搜索常用"><a href="#12-2-grep-提取行-字符串搜索常用" class="headerlink" title="12.2 grep   # 提取行  字符串搜索常用"></a>12.2 grep   # 提取行  字符串搜索常用</h4><table>
+<h4 id="grep-提取行-字符串搜索常用">12.2 grep # 提取行
+字符串搜索常用</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-n</td>
 <td>显示行号</td>
 </tr>
@@ -1202,11 +1332,11 @@
 <td>-E</td>
 <td>支持扩展正则</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# grep -n /sbin/nologin /etc/passwd<br>  1:bin:x:1:1:bin:/bin:/sbin/nologin  <br>  2:daemon:x:2:2:daemon:/sbin:/sbin/nologin  <br>  3:adm:x:3:4:adm:/var/adm:/sbin/nologin<br></code></pre></td></tr></table></figure>
-
-<h4 id="12-3-find-文件搜索-实用"><a href="#12-3-find-文件搜索-实用" class="headerlink" title="12.3 find   # 文件搜索 实用"></a>12.3 find   # 文件搜索 实用</h4><img src="/posts/4ac0a166/find.jpg" srcset="/img/loading.gif" lazyload class="" title="[find时间轴]">
-
+<h4 id="find-文件搜索-实用">12.3 find # 文件搜索 实用</h4>
+<img src="/posts/4ac0a166/find.jpg" srcset="/img/loading.gif" lazyload class="" title="[find时间轴]">
 <table>
 <thead>
 <tr>
@@ -1214,7 +1344,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-name</td>
 <td>匹配名称</td>
 </tr>
@@ -1239,58 +1370,68 @@
 <td>匹配访问文件的时间</td>
 </tr>
 <tr>
-<td>-nouser  -nogroup</td>
-<td>匹配没有所有者&#x2F;所有组</td>
+<td>-nouser -nogroup</td>
+<td>匹配没有所有者/所有组</td>
 </tr>
 <tr>
 <td>-inum n</td>
 <td>匹配节点编号</td>
 </tr>
 <tr>
-<td>-maxdepth &#x2F; -mindepth level</td>
+<td>-maxdepth / -mindepth level</td>
 <td>定义搜索深度</td>
 </tr>
 <tr>
 <td>-exec 后续命令 {} dst ;</td>
 <td>后可跟进 执行的命令</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# find /etc/ -name <span class="hljs-string">&quot;host*&quot;</span> -<span class="hljs-built_in">print</span><br>  /etc/avahi/hosts  <br>  /etc/host.conf  <br>  /etc/hosts  <br>  /etc/hosts.allow  <br>  /etc/hosts.deny  <br>  /etc/selinux/targeted/modules/active/modules/hostname.pp  <br>  /etc/hostname  <br>[root@xy ~]# find / -perm -4000 -<span class="hljs-built_in">print</span>    <span class="hljs-comment"># -perm 匹配权限     </span><br>  /usr/bin/fusermount  <br>  /usr/bin/su  <br>  /usr/bin/chage  <br>  /usr/bin/gpasswd  <br>  /usr/bin/newgrp  <br>[root@xy ~]# find /tmp \(-not -user root -a -not -name <span class="hljs-string">&#x27;f*&#x27;</span>\) -<span class="hljs-built_in">ls</span> <span class="hljs-comment"># 属主非root且不以f开头的文件  </span><br>[root@xy ~]# find /etc \(-path <span class="hljs-string">&quot;/etc/sane.d&quot;</span> -o -path <span class="hljs-string">&quot;/etc/fonts&quot;</span>\) -a -prune -o -name <span class="hljs-string">&quot;*.conf&quot;</span>   <span class="hljs-comment"># 查找etc下除了/etc/sane.d /etc/fonts 目录的所有.conf后缀的文件  </span><br><br>[root@xy ~]# find / -user xy -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">cp</span> -a &#123;&#125; /root/findresults/ \;    <br>[root@xy ~]# find linux-4.18.13/ -name <span class="hljs-string">&quot;*.c&quot;</span> -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">cat</span> &#123;&#125; \; |grep -v <span class="hljs-string">&quot;^$&quot;</span> |<span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure>
-
-<h3 id="13-重定向操作符"><a href="#13-重定向操作符" class="headerlink" title="13. 重定向操作符 "></a>13. 重定向操作符 <a id="director"></a></h3><blockquote>
-<p><code>标准输入重定向</code>（STDIN, 文件描述符为 0）<br><code>标准输出重定向</code>（STDOUT, 文件描述符为 1）<br><code>错误输出重定向</code>（STDERR, 文件描述符为 2）   </p>
+<h3 id="重定向操作符">13. 重定向操作符 <a id="director"></a></h3>
+<blockquote>
+<p><code>标准输入重定向</code>（STDIN, 文件描述符为 0）<br />
+<code>标准输出重定向</code>（STDOUT, 文件描述符为 1）<br />
+<code>错误输出重定向</code>（STDERR, 文件描述符为 2）</p>
 </blockquote>
 <ul>
-<li><p>输入重定向 O-I  </p>
+<li>输入重定向 O-I
 <ul>
-<li>命令 &lt;  文件              </li>
-<li>命令 &lt;&lt; 分界符        <strong>遇见分界符为止</strong>  </li>
-<li>命令 &lt; 文件1 &gt; 文件2  <strong>将文件1作为命令的标准输入并将标准输出到文件2</strong></li>
-</ul>
+<li>命令 &lt; 文件<br />
 </li>
-<li><p>输出重定向 I-O</p>
+<li>命令 &lt;&lt; 分界符 <strong>遇见分界符为止</strong><br />
+</li>
+<li>命令 &lt; 文件1 &gt; 文件2
+<strong>将文件1作为命令的标准输入并将标准输出到文件2</strong></li>
+</ul></li>
+<li>输出重定向 I-O
 <ul>
-<li>命令 &gt;   文件         <strong>清空原有文件</strong>  </li>
-<li>命令 2&gt;  文件         </li>
-<li>命令 &gt;&gt;  文件         <strong>追加到原有文件内容的后面</strong>  </li>
+<li>命令 &gt; 文件 <strong>清空原有文件</strong><br />
+</li>
+<li>命令 2&gt; 文件<br />
+</li>
+<li>命令 &gt;&gt; 文件 <strong>追加到原有文件内容的后面</strong><br />
+</li>
 <li>命令 2&gt;&gt; 文件</li>
-<li>命令 &gt;&gt;  文件 2&gt;&amp;1    <strong>将标准输出与错误输出共同写到文件</strong>     </li>
-<li>命令 &amp;&gt;&gt; 文件</li>
-</ul>
+<li>命令 &gt;&gt; 文件 2&gt;&amp;1
+<strong>将标准输出与错误输出共同写到文件</strong><br />
 </li>
+<li>命令 &amp;&gt;&gt; 文件</li>
+</ul></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# man bash &gt; readme.txt  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Welcome to Linuxprobe.Com&quot;</span> &gt; readme.txt  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Quality linux learning materials&quot;</span> &gt;&gt; readme.txt   <br>[root@xy ~]# <span class="hljs-built_in">cat</span> readme.txt<br>  Welcome to anyue967.Com  <br>  Quality linux learning materials <br> <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l xxxxxxx &gt; readme.txt <br>  <span class="hljs-built_in">ls</span>: cannot access xxxxxxx: No such file or directory  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l  xxxxxxx 2&gt; readme.txt <span class="hljs-comment">#2的用法      </span><br>[root@xy ~]# <span class="hljs-built_in">cat</span> readme.txt<br>  <span class="hljs-built_in">ls</span>: cannot access xxxxxxx: No such file or directory  <br>[root@xy ~]# <span class="hljs-built_in">wc</span> -l &lt; readme.txt  <br>  1      <br>[root@xy ~]# <span class="hljs-built_in">cat</span> readme.txt | <span class="hljs-built_in">wc</span> -l    <br>  1<br><br><span class="hljs-built_in">cat</span> &gt;&gt;README.txt &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">...</span><br><span class="hljs-string">EOF</span> <br><br><span class="hljs-built_in">ls</span> /data /noexist 2&gt;/root/out.log 1&gt;&amp;2<br><span class="hljs-built_in">ls</span> /data/ /noexist &gt;/root/out.log 2&gt;&amp;1<br><span class="hljs-built_in">ls</span> /data/ /noexist &amp;&gt;/root/out.log<br><span class="hljs-comment">#小测试</span><br>    A.cmd &amp;&gt;/dev/null<br>    B.cmd &gt;/dev/null 2&gt;&amp;1<br>    C.cmd 2&gt;&amp;1 &gt;/dev/null  ✔ <span class="hljs-comment">#屏幕显示错误信息,标准输出至/dev/null</span><br>    D.cmd 2&gt;/dev/null 1&gt;&amp;2<br></code></pre></td></tr></table></figure>
-
-<h3 id="14-管道符"><a href="#14-管道符" class="headerlink" title="14. 管道符 |"></a>14. 管道符 |</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# grep <span class="hljs-string">&quot;/sbin/nologin&quot;</span> /etc/passwd |<span class="hljs-built_in">wc</span> -l  <br>  33  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l /etc/ |more<br>  total 1396  <br>  drwxr-xr-x.  3 root root       97 Jul  6 05:01 abrt  <br>  -rw-r--r--.  1 root root       16 Jul  6 05:33 adjtime  <br>  -rw-r--r--.  1 root root     1518 Jun  7  2013 aliases  <br>  .......省略部分输出内容.......  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;19937100xy&quot;</span> |passwd --stdin root  	  <br>  Changing password <span class="hljs-keyword">for</span> user root.  <br>  passwd: all authentication tokens updated successfully.  <br>[root@xy ~]# <span class="hljs-built_in">who</span> |<span class="hljs-built_in">tee</span> -a /test/who.log  <span class="hljs-comment"># tee 命令</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="15-命令行的通配符"><a href="#15-命令行的通配符" class="headerlink" title="15. 命令行的通配符  *  []  ?"></a>15. 命令行的通配符  *  []  ?</h3><table>
+<h3 id="管道符">14. 管道符 |</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# grep <span class="hljs-string">&quot;/sbin/nologin&quot;</span> /etc/passwd |<span class="hljs-built_in">wc</span> -l  <br>  33  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l /etc/ |more<br>  total 1396  <br>  drwxr-xr-x.  3 root root       97 Jul  6 05:01 abrt  <br>  -rw-r--r--.  1 root root       16 Jul  6 05:33 adjtime  <br>  -rw-r--r--.  1 root root     1518 Jun  7  2013 aliases  <br>  .......省略部分输出内容.......  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;19937100xy&quot;</span> |passwd --stdin root  	  <br>  Changing password <span class="hljs-keyword">for</span> user root.  <br>  passwd: all authentication tokens updated successfully.  <br>[root@xy ~]# <span class="hljs-built_in">who</span> |<span class="hljs-built_in">tee</span> -a /test/who.log  <span class="hljs-comment"># tee 命令</span><br></code></pre></td></tr></table></figure>
+<h3 id="命令行的通配符">15. 命令行的通配符 * [] ?</h3>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>*</td>
 <td>任意长度的任意字符</td>
 </tr>
@@ -1306,22 +1447,24 @@
 <td>[abc]</td>
 <td>匹配a、b、c三个字符中个任意一个</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">touch</span> &#123;a..z&#125;.txt <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l /dev/sda*  <br>  brw-rw----. 1 root disk 8, 0 Jul  6  2018 /dev/sda  <br>  brw-rw----. 1 root disk 8, 1 Jul  6  2018 /dev/sda1  <br>  brw-rw----. 1 root disk 8, 2 Jul  6  2018 /dev/sda2  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l /dev/sda?  <br>  brw-rw----. 1 root disk 8, 1 Jul  6  2018 /dev/sda1  <br>  brw-rw----. 1 root disk 8, 2 Jul  6  2018 /dev/sda2  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -l /dev/sda[0-9]  <br>  brw-rw----. 1 root disk 8, 1 Jul  6  2018 /dev/sda1  <br>  brw-rw----. 1 root disk 8, 2 Jul  6  2018 /dev/sda2<br></code></pre></td></tr></table></figure>
-
-<h3 id="16-常用的转义字符"><a href="#16-常用的转义字符" class="headerlink" title="16. 常用的转义字符"></a>16. 常用的转义字符</h3><table>
+<h3 id="常用的转义字符">16. 常用的转义字符</h3>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>\</td>
 <td>使反斜杠后的一个变量变为单纯的字符串</td>
 </tr>
 <tr>
-<td>‘’</td>
+<td>’’</td>
 <td>转义其中所有的变量为单纯的字符串</td>
 </tr>
 <tr>
@@ -1329,20 +1472,22 @@
 <td>保留其中的变量属性,不进行转义处理</td>
 </tr>
 <tr>
-<td>&#96;&#96;</td>
+<td>``</td>
 <td>命令执行后并返回结果</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# PRICE=5<br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Price is <span class="hljs-variable">$PRICE</span>&quot;</span>        　　<span class="hljs-comment"># $ 取变量的值</span><br>  Price is 5  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Price is $<span class="hljs-variable">$PRICE</span>&quot;</span>  <br>  Price is 7982PRICE  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Price is \$<span class="hljs-variable">$PRICE</span>&quot;</span> <br>  Price is <span class="hljs-variable">$5</span>  <br>[root@xy ~]# <span class="hljs-built_in">echo</span> `<span class="hljs-built_in">uname</span> -a` 　　              <span class="hljs-comment"># 执行命令返回结果</span><br>  Linux xy.com 3.10.0-123.el7.x86_64 <span class="hljs-comment">#1 SMP Mon May 5 11:16:57 EDT 2014 x86_64 x86_64 x86_64 GNU/Linux</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="17-重要的环境变量"><a href="#17-重要的环境变量" class="headerlink" title="17. 重要的环境变量"></a>17. 重要的环境变量</h3><table>
+<h3 id="重要的环境变量">17. 重要的环境变量</h3>
+<table>
 <thead>
 <tr>
 <th>系统变量</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>HOME</td>
 <td>—</td>
 </tr>
@@ -1382,25 +1527,28 @@
 <td>EDITOR</td>
 <td>—</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">touch</span> xy.txt<br>[root@xy ~]# <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  readme.txt  Videos  <br>  Desktop          Downloads  Music                 Public    Templates   xy.txt  <br>[root@xy ~]# <span class="hljs-built_in">rm</span> xy.txt  <br>  <span class="hljs-built_in">rm</span>: remove regular empty file ‘xy.txt’?  y  <br>[root@xy ~]# <span class="hljs-built_in">alias</span> <span class="hljs-built_in">rm</span>          　　<span class="hljs-comment">#alias 的用法  </span><br>  <span class="hljs-built_in">alias</span> <span class="hljs-built_in">rm</span>=<span class="hljs-string">&#x27;rm -i&#x27;</span>                 <span class="hljs-comment">#inter  </span><br>[root@xy ~]# <span class="hljs-built_in">unalias</span> <span class="hljs-built_in">rm</span>          　<span class="hljs-comment">#unalias 的用法  </span><br>[root@xy ~]# <span class="hljs-built_in">rm</span> xy.txt<br>[root@xy ~]# <span class="hljs-built_in">alias</span> <span class="hljs-built_in">rm</span>=<span class="hljs-string">&#x27;mv -t /data&#x27;</span>   <span class="hljs-comment">#-t -target-directory</span><br><br><span class="hljs-comment"># export # 变量名, 提升变量为全局变量   </span><br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">type</span> -a <span class="hljs-literal">true</span>   <span class="hljs-comment">#type 命令名称 内部还是外部   </span><br>  <span class="hljs-literal">true</span> is a shell <span class="hljs-built_in">builtin</span>  <br>  <span class="hljs-literal">true</span> is /bin/true  <br>  <span class="hljs-literal">true</span> is /usr/bin/true  <br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">type</span> <span class="hljs-literal">true</span>  <br>  <span class="hljs-literal">true</span> is a shell <span class="hljs-built_in">builtin</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">env</span>			   <span class="hljs-comment">#env  查看所有的环境变量  </span><br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span>  <br>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin   <br>[root@xy ~]# PATH=<span class="hljs-variable">$PATH</span>:/root/bin      <span class="hljs-comment">#增加PATH   </span><br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span><br>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:　<span class="hljs-comment"># /root/bin</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="19-配置主机名"><a href="#19-配置主机名" class="headerlink" title="19. 配置主机名"></a>19. 配置主机名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/hostname  <br>  xy.com  <br>[root@xy ~]# hostname<br>  xy.com<br></code></pre></td></tr></table></figure>
-
-<h3 id="20-配置网卡信息"><a href="#20-配置网卡信息" class="headerlink" title="20. 配置网卡信息"></a>20. 配置网卡信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cd</span> /etc/sysconfig/network-scripts/  <br>[root@xy network-scripts]# <span class="hljs-built_in">ls</span> <br>  ifcfg-eno16777736  　ifdown-ppp      　ifup-eth     ifup-sit    <br>  ifcfg-lo             ifdown-routes    ifup-ippp    ifup-Team  <br>  ifdown               ifdown-sit       ifup-ipv6    ifup-TeamPort  <br>  ifdown-bnep          ifdown-Team      ifup-isdn    ifup-tunnel   <br>[root@xy network-scripts]# vim  ifcfg-eno16777736  　<span class="hljs-comment"># RHEL5，6 ifcfg-eth  </span><br>  TYPE=Ethernet  <br>  BOOTPROTO=static  <br>  NAME=eno16777736  <br>  ONBOOT=<span class="hljs-built_in">yes</span>  <br>  HWADDR=00:0C:29:11:26:05  <br>  IPADDR0=192.168.37.10  <br>  PREFIX0=24  <br>  GATEWAY0=192.168.37.1  <br>  DNS1=192.168.37.1  <br>[root@xy network-scripts]# systemctl restart network <br>[root@xy network-scripts]# ping 192.168.37.10 <br>[root@xy ~]# dmesg |grep -i eno	<span class="hljs-comment"># 查看网卡模块  </span><br>[root@xy ~]# modprobe -r e1000	<span class="hljs-comment"># 卸载网卡模块  </span><br>[root@xy ~]# modprobe e1000	<span class="hljs-comment"># 装载网卡模块</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="21-配置Yum软件仓库"><a href="#21-配置Yum软件仓库" class="headerlink" title="21. 配置Yum软件仓库  "></a>21. 配置Yum软件仓库  <a id="yumku"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ]# vim /etc/yum.repos.d/rhel7.repo <span class="hljs-comment"># 创建本地yum源 </span><br>  [rhel-media]  <br>  name=xy  <br>  baseurl=file:///media/cdrom	file:ftp://		file:http://	file:///  <br>  enabled=1   　<span class="hljs-comment"># 启用         </span><br>  gpgcheck=1  <br>  gpgkey=file:///media/cdrom/RPM-GPG-KEY-redhat-release  <br><br>[root@xy yum.repos.d]# <span class="hljs-built_in">mkdir</span> -p /media/cdrom  <br>[root@xy yum.repos.d]# mount /dev/cdrom /media/cdrom   　<span class="hljs-comment"># mount 设备 挂载目录 </span><br>  mount: /dev/sr0 is write-protected,mounting read-only  <br><br>[root@xy yum.repos.d]# vim /etc/fstab   <br>  /dev/cdrom /media/cdrom iso9660 default 0 0   <span class="hljs-comment"># fstab 文件写法</span><br>[root@xy yum.repos.d]# yum install httpd  		　<span class="hljs-comment"># 测试  </span><br>  Dependencies Resolved  <br>  ........省略部分信息........  <br>  Install  1 Package (+4 Dependent packages)  <br>  ........省略部分信息........  <br>  Is this ok [y/d/N]: y          <br>  ........省略部分信息........ <br>  Complete!<br></code></pre></td></tr></table></figure>
-
-<h3 id="22-编写简单的shell脚本"><a href="#22-编写简单的shell脚本" class="headerlink" title="22. 编写简单的shell脚本	"></a>22. 编写简单的shell脚本	<a id="shell"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 执行成功返回值：0，否则返回值为非 0 数字</span><br>[root@xy <span class="hljs-built_in">test</span>]# vim example.sh    <span class="hljs-comment"># bash -n file.sh 检测语法错误</span><br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-comment">#For Example BY xy.com  </span><br>  <span class="hljs-built_in">pwd</span>  <br>  <span class="hljs-built_in">ls</span> -al  <br>[root@xy <span class="hljs-built_in">test</span>]# bash example.sh  <br>  /root/test  <br>  total 8  <br>  drwxr-xr-x.  2 root root   23 Jul  7 18:29 .  <br>  dr-xr-x---. 15 root root 4096 Jul  7 18:29 ..  <br>  -rw-r--r--.  1 root root   46 Jul  7 18:29 example.sh  <br>[root@xy ShellExample]# ./example01.sh<br>  -bash: ./example01.sh: Permission denied  <br>[root@xy ShellExample]# <span class="hljs-built_in">chmod</span> u+x example01.sh<br></code></pre></td></tr></table></figure>
-
-<h3 id="23-接收用户的参数"><a href="#23-接收用户的参数" class="headerlink" title="23. 接收用户的参数"></a>23. 接收用户的参数</h3><table>
+<h3 id="配置主机名">19. 配置主机名</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/hostname  <br>  xy.com  <br>[root@xy ~]# hostname<br>  xy.com<br></code></pre></td></tr></table></figure>
+<h3 id="配置网卡信息">20. 配置网卡信息</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">cd</span> /etc/sysconfig/network-scripts/  <br>[root@xy network-scripts]# <span class="hljs-built_in">ls</span> <br>  ifcfg-eno16777736  　ifdown-ppp      　ifup-eth     ifup-sit    <br>  ifcfg-lo             ifdown-routes    ifup-ippp    ifup-Team  <br>  ifdown               ifdown-sit       ifup-ipv6    ifup-TeamPort  <br>  ifdown-bnep          ifdown-Team      ifup-isdn    ifup-tunnel   <br>[root@xy network-scripts]# vim  ifcfg-eno16777736  　<span class="hljs-comment"># RHEL5，6 ifcfg-eth  </span><br>  TYPE=Ethernet  <br>  BOOTPROTO=static  <br>  NAME=eno16777736  <br>  ONBOOT=<span class="hljs-built_in">yes</span>  <br>  HWADDR=00:0C:29:11:26:05  <br>  IPADDR0=192.168.37.10  <br>  PREFIX0=24  <br>  GATEWAY0=192.168.37.1  <br>  DNS1=192.168.37.1  <br>[root@xy network-scripts]# systemctl restart network <br>[root@xy network-scripts]# ping 192.168.37.10 <br>[root@xy ~]# dmesg |grep -i eno	<span class="hljs-comment"># 查看网卡模块  </span><br>[root@xy ~]# modprobe -r e1000	<span class="hljs-comment"># 卸载网卡模块  </span><br>[root@xy ~]# modprobe e1000	<span class="hljs-comment"># 装载网卡模块</span><br></code></pre></td></tr></table></figure>
+<h3 id="配置yum软件仓库">21. 配置Yum软件仓库 <a id="yumku"></a></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ]# vim /etc/yum.repos.d/rhel7.repo <span class="hljs-comment"># 创建本地yum源 </span><br>  [rhel-media]  <br>  name=xy  <br>  baseurl=file:///media/cdrom	file:ftp://		file:http://	file:///  <br>  enabled=1   　<span class="hljs-comment"># 启用         </span><br>  gpgcheck=1  <br>  gpgkey=file:///media/cdrom/RPM-GPG-KEY-redhat-release  <br><br>[root@xy yum.repos.d]# <span class="hljs-built_in">mkdir</span> -p /media/cdrom  <br>[root@xy yum.repos.d]# mount /dev/cdrom /media/cdrom   　<span class="hljs-comment"># mount 设备 挂载目录 </span><br>  mount: /dev/sr0 is write-protected,mounting read-only  <br><br>[root@xy yum.repos.d]# vim /etc/fstab   <br>  /dev/cdrom /media/cdrom iso9660 default 0 0   <span class="hljs-comment"># fstab 文件写法</span><br>[root@xy yum.repos.d]# yum install httpd  		　<span class="hljs-comment"># 测试  </span><br>  Dependencies Resolved  <br>  ........省略部分信息........  <br>  Install  1 Package (+4 Dependent packages)  <br>  ........省略部分信息........  <br>  Is this ok [y/d/N]: y          <br>  ........省略部分信息........ <br>  Complete!<br></code></pre></td></tr></table></figure>
+<h3 id="编写简单的shell脚本">22. 编写简单的shell脚本
+<a id="shell"></a></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 执行成功返回值：0，否则返回值为非 0 数字</span><br>[root@xy <span class="hljs-built_in">test</span>]# vim example.sh    <span class="hljs-comment"># bash -n file.sh 检测语法错误</span><br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-comment">#For Example BY xy.com  </span><br>  <span class="hljs-built_in">pwd</span>  <br>  <span class="hljs-built_in">ls</span> -al  <br>[root@xy <span class="hljs-built_in">test</span>]# bash example.sh  <br>  /root/test  <br>  total 8  <br>  drwxr-xr-x.  2 root root   23 Jul  7 18:29 .  <br>  dr-xr-x---. 15 root root 4096 Jul  7 18:29 ..  <br>  -rw-r--r--.  1 root root   46 Jul  7 18:29 example.sh  <br>[root@xy ShellExample]# ./example01.sh<br>  -bash: ./example01.sh: Permission denied  <br>[root@xy ShellExample]# <span class="hljs-built_in">chmod</span> u+x example01.sh<br></code></pre></td></tr></table></figure>
+<h3 id="接收用户的参数">23. 接收用户的参数</h3>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$0</td>
 <td>对应当前Shell脚本名称</td>
 </tr>
@@ -1417,20 +1565,23 @@
 <td>对应显示上一次命令的执行返回值</td>
 </tr>
 <tr>
-<td>$1 &#x2F;$2 &#x2F;$3</td>
+<td>$1 /$2 /$3</td>
 <td>对应第N个位置的参数值</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# vim example02.sh <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;当前脚本名称为<span class="hljs-variable">$0</span>&quot;</span>		<span class="hljs-comment"># $0 当前Shell脚本名称 </span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;总共有<span class="hljs-variable">$#</span>个参数,分别是$*.&quot;</span>	<span class="hljs-comment"># $# 参数个数	</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第一个参数为<span class="hljs-variable">$1</span>,第五个参数为<span class="hljs-variable">$5</span>.&quot;</span>	<span class="hljs-comment"># $ 所以位置的参数值  </span><br>[root@xy <span class="hljs-built_in">test</span>]# sh example02.sh one two three four five six  <br>  当前脚本名称为example02.sh  <br>  总共有6个参数,分别是one two three four five six.<br>  第一个参数为one,第五个参数为five.<br></code></pre></td></tr></table></figure>
-
-<h3 id="24-判断用户的参数"><a href="#24-判断用户的参数" class="headerlink" title="24. 判断用户的参数"></a>24. 判断用户的参数</h3><h4 id="24-1-文件"><a href="#24-1-文件" class="headerlink" title="24.1 文件"></a>24.1 文件</h4><table>
+<h3 id="判断用户的参数">24. 判断用户的参数</h3>
+<h4 id="文件">24.1 文件</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-d</td>
 <td>测试文件是否为目录类型</td>
 </tr>
@@ -1458,17 +1609,19 @@
 <td>$?</td>
 <td>显示上一次命令的执行返回值</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# [ -d /etc/fstab ]	<span class="hljs-comment"># 测试文件是否为目录类型</span><br>[root@xy ~]# <span class="hljs-built_in">echo</span> $?<br>  1        				<br>[root@xy ~]# [ -f /etc/fstab ]	<span class="hljs-comment"># 判断是否为一般文件    </span><br>[root@xy ~]# <span class="hljs-built_in">echo</span> $?   <br>  0        <br>[root@xy ~]# [ -e /dev/cdrom ] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Exist&quot;</span>	<span class="hljs-comment"># 当前面执行成功则执行后面，整个表达式返回值 为 0 </span><br>  Exist    <br>[root@xy ~]# su - xy    <br>[xy@xy ~]$ [ <span class="hljs-variable">$USER</span> = root ] || <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;user&quot;</span>	<span class="hljs-comment"># 当前执行失败则执行后面  </span><br>user  <br>[xy@xy ~]$ <span class="hljs-built_in">exit</span> <br>  <span class="hljs-built_in">logout</span>  <br>[root@xy ~]# [ ! <span class="hljs-variable">$USER</span> = root ] || <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;administrator&quot;</span><br>  administrator<br></code></pre></td></tr></table></figure>
-
-<h4 id="24-2-数字"><a href="#24-2-数字" class="headerlink" title="24.2 数字"></a>24.2 数字</h4><table>
+<h4 id="数字">24.2 数字</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-eq</td>
 <td>是否相等</td>
 </tr>
@@ -1486,62 +1639,70 @@
 </tr>
 <tr>
 <td>-le</td>
-<td>是否等于&#x2F;小于</td>
+<td>是否等于/小于</td>
 </tr>
 <tr>
 <td>-ge</td>
-<td>是否等于&#x2F;大于</td>
+<td>是否等于/大于</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# [ 10 -gt 10 ]    <br>[root@xy ~]# <span class="hljs-built_in">echo</span> $? <br>  1     <br>[root@xy ~]# [ 10 -eq 10 ]    <br>[root@xy ~]# <span class="hljs-built_in">echo</span> $? <br>  0    <br>[root@xy ~]# free -m  <br>             total       used       free     shared    buffers     cached  <br>Mem:          1987       1197        789          9          0        280  <br>-/+ buffers/cache:        916       1071  <br>Swap:         2063          0       2063  <br>[root@xy ~]# free -m | grep Mem:  <br>Mem:          1987       1198        789          9          0        280  <br>[root@xy ~]# free -m |grep Mem: |awk <span class="hljs-string">&#x27;&#123;print $4&#125;&#x27;</span>  <br>789  <br>[root@xy ~]# FreeMem=`free -m |grep Mem: |awk <span class="hljs-string">&#x27;&#123;print $4&#125;&#x27;</span>`<br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-variable">$FreeMem</span>  <br>789  <br>[root@xy ~]# [ <span class="hljs-variable">$FreeMem</span> -lt 1024 ] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Insufficient Memory&quot;</span>  <br>Insufficient Memory<br></code></pre></td></tr></table></figure>
-
-<h4 id="24-3-字符串"><a href="#24-3-字符串" class="headerlink" title="24.3 字符串"></a>24.3 字符串</h4><table>
+<h4 id="字符串">24.3 字符串</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>&#x3D;</td>
+<tbody>
+<tr>
+<td>=</td>
 <td><strong>比较字符串内容是否相同</strong></td>
 </tr>
 <tr>
-<td>!&#x3D;</td>
+<td>!=</td>
 <td><strong>比较字符串内容是否不同</strong></td>
 </tr>
 <tr>
 <td>-z</td>
 <td><strong>判断字符串内容是否为空</strong></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# [ -z <span class="hljs-variable">$String</span> ] <br>[root@xy ~]# <span class="hljs-built_in">echo</span> $?<br>  0    <br>[root@xy ~]# <span class="hljs-built_in">echo</span> <span class="hljs-variable">$LANG</span> <br>  en_US.UTF-8  <br>[root@xy ~]# [ <span class="hljs-variable">$LANG</span> != <span class="hljs-string">&quot;en.US&quot;</span> ] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Not en.US&quot;</span> <br>  Not en.US<br></code></pre></td></tr></table></figure>
-
-<h3 id="25-流程控制语句"><a href="#25-流程控制语句" class="headerlink" title="25. 流程控制语句"></a>25. 流程控制语句</h3><h4 id="25-1-if条件测试语句"><a href="#25-1-if条件测试语句" class="headerlink" title="25.1 if条件测试语句"></a>25.1 if条件测试语句</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# vim mkcdrom.sh  <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  DIR=<span class="hljs-string">&quot;/media/cdrom&quot;</span>  <br>  <span class="hljs-keyword">if</span> [ ! -e <span class="hljs-variable">$DIR</span> ]; <span class="hljs-keyword">then</span>  <br>   <span class="hljs-built_in">mkdir</span> -p <span class="hljs-variable">$DIR</span>  <br>  <span class="hljs-keyword">fi</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash mkcdrom.sh   <br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">ls</span> -d /media/cdrom/ <br>  /media/cdrom/  <br>[root@xy <span class="hljs-built_in">test</span>]# vim chkhost.sh <br>[root@xy <span class="hljs-built_in">test</span>]# bash mkcdrom.sh<br>---<br><br>[root@xy <span class="hljs-built_in">test</span>]# vim chkhost.sh<br>  <span class="hljs-comment">#!/bin/bash  </span><br>  ping -c 3 -i 0.2 -W 3 <span class="hljs-variable">$1</span> &amp;&gt; /dev/null   <span class="hljs-comment"># /dev/null 没有回收功能的垃圾箱  </span><br>  <span class="hljs-keyword">if</span> [ $? -eq 0 ]<br>  <span class="hljs-keyword">then</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Host <span class="hljs-variable">$1</span> is On-line.&quot;</span>  <br>  <span class="hljs-keyword">else</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Host <span class="hljs-variable">$1</span> is Off-line.&quot;</span>  <br>  <span class="hljs-keyword">fi</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash chkhost.sh 192.168.37.10  <br>  Host 192.168.37.10 is On-line.  <br>[root@xy <span class="hljs-built_in">test</span>]# bash chkhost.sh 192.168.37.20  <br>  Host 192.168.37.20 is Off-line. <br>---<br><br>[root@xy <span class="hljs-built_in">test</span>]# vim chkscore.sh<br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter your score (0-100):&quot;</span> GRADE  <br>  <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$GRADE</span> -ge 85 ] &amp;&amp; [ <span class="hljs-variable">$GRADE</span> -le 100 ]; <span class="hljs-keyword">then</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$GRADE</span> is Excellent&quot;</span>  <br>  <span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$GRADE</span> -ge 70 ] &amp;&amp; [ <span class="hljs-variable">$GRADE</span> -le 84 ]; <span class="hljs-keyword">then</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$GRADE</span> is Pass&quot;</span>  <br>  <span class="hljs-keyword">else</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$GRADE</span> is Fail&quot;</span>  <br>  <span class="hljs-keyword">fi</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash chkscore.sh  <br>  Enter your score (0-100): 88  <br>  88 is Excellent<br></code></pre></td></tr></table></figure>
-
-<h4 id="26-2-for条件循环语句-for-变量名-in-取值列表-do-命令序列-done"><a href="#26-2-for条件循环语句-for-变量名-in-取值列表-do-命令序列-done" class="headerlink" title="26.2 for条件循环语句(for 变量名 in 取值列表 do 命令序列 done)"></a>26.2 for条件循环语句(for 变量名 in 取值列表 do 命令序列 done)</h4><p><strong>说明:&#x2F;dev&#x2F;null 是一个被称作Linux黑洞的文件,把输出信息重定向到这个文件等同于删除数据(类似于没有回收功能的垃圾箱),可以让用户的屏幕窗口保持清洁.</strong>  </p>
+<h3 id="流程控制语句">25. 流程控制语句</h3>
+<h4 id="if条件测试语句">25.1 if条件测试语句</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# vim mkcdrom.sh  <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  DIR=<span class="hljs-string">&quot;/media/cdrom&quot;</span>  <br>  <span class="hljs-keyword">if</span> [ ! -e <span class="hljs-variable">$DIR</span> ]; <span class="hljs-keyword">then</span>  <br>   <span class="hljs-built_in">mkdir</span> -p <span class="hljs-variable">$DIR</span>  <br>  <span class="hljs-keyword">fi</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash mkcdrom.sh   <br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">ls</span> -d /media/cdrom/ <br>  /media/cdrom/  <br>[root@xy <span class="hljs-built_in">test</span>]# vim chkhost.sh <br>[root@xy <span class="hljs-built_in">test</span>]# bash mkcdrom.sh<br>---<br><br>[root@xy <span class="hljs-built_in">test</span>]# vim chkhost.sh<br>  <span class="hljs-comment">#!/bin/bash  </span><br>  ping -c 3 -i 0.2 -W 3 <span class="hljs-variable">$1</span> &amp;&gt; /dev/null   <span class="hljs-comment"># /dev/null 没有回收功能的垃圾箱  </span><br>  <span class="hljs-keyword">if</span> [ $? -eq 0 ]<br>  <span class="hljs-keyword">then</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Host <span class="hljs-variable">$1</span> is On-line.&quot;</span>  <br>  <span class="hljs-keyword">else</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Host <span class="hljs-variable">$1</span> is Off-line.&quot;</span>  <br>  <span class="hljs-keyword">fi</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash chkhost.sh 192.168.37.10  <br>  Host 192.168.37.10 is On-line.  <br>[root@xy <span class="hljs-built_in">test</span>]# bash chkhost.sh 192.168.37.20  <br>  Host 192.168.37.20 is Off-line. <br>---<br><br>[root@xy <span class="hljs-built_in">test</span>]# vim chkscore.sh<br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter your score (0-100):&quot;</span> GRADE  <br>  <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$GRADE</span> -ge 85 ] &amp;&amp; [ <span class="hljs-variable">$GRADE</span> -le 100 ]; <span class="hljs-keyword">then</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$GRADE</span> is Excellent&quot;</span>  <br>  <span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$GRADE</span> -ge 70 ] &amp;&amp; [ <span class="hljs-variable">$GRADE</span> -le 84 ]; <span class="hljs-keyword">then</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$GRADE</span> is Pass&quot;</span>  <br>  <span class="hljs-keyword">else</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$GRADE</span> is Fail&quot;</span>  <br>  <span class="hljs-keyword">fi</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash chkscore.sh  <br>  Enter your score (0-100): 88  <br>  88 is Excellent<br></code></pre></td></tr></table></figure>
+<h4 id="for条件循环语句for-变量名-in-取值列表-do-命令序列-done">26.2
+for条件循环语句(for 变量名 in 取值列表 do 命令序列 done)</h4>
+<p><strong>说明:/dev/null
+是一个被称作Linux黑洞的文件,把输出信息重定向到这个文件等同于删除数据(类似于没有回收功能的垃圾箱),可以让用户的屏幕窗口保持清洁.</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# vim users.txt  <br>  andy  <br>  barry  <br>  carll  <br>  duck  <br>[root@xy <span class="hljs-built_in">test</span>]# vim usersadd.sh <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter The Users Password:&quot;</span> PASSWD	<span class="hljs-comment">#read 读取用户输入信息  </span><br>  <span class="hljs-keyword">for</span> UNAME <span class="hljs-keyword">in</span> `<span class="hljs-built_in">cat</span> users.txt`					<span class="hljs-comment">#$(cat users.txt)</span><br>  <span class="hljs-keyword">do</span>  <br>    <span class="hljs-built_in">id</span> <span class="hljs-variable">$UNAME</span> &amp;&gt; /dev/null                      <span class="hljs-comment">#id 用户名</span><br>    <span class="hljs-keyword">if</span> [ $? -eq 0 ]; <span class="hljs-keyword">then</span>  <br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Already exists&quot;</span>  <br>    <span class="hljs-keyword">else</span>  <br>        useradd <span class="hljs-variable">$UNAME</span> &amp;&gt; /dev/null   <br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$PASSWD</span>&quot;</span> | passwd --stdin <span class="hljs-variable">$UNAME</span> &amp;&gt; /dev/null  <br>    <span class="hljs-keyword">if</span> [ $? -eq 0 ]; <span class="hljs-keyword">then</span>  <br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$UNAME</span> , Create success&quot;</span>  <br>    <span class="hljs-keyword">else</span>  <br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$UNAME</span> , Create failure&quot;</span>  <br>    <span class="hljs-keyword">fi</span>  <br>    <span class="hljs-keyword">fi</span>  <br>  <span class="hljs-keyword">done</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash usersadd.sh  <br>  Enter The Users Password: 19937100xy  <br>  andy ,Create success  <br>  barry ,Create success  <br>  carl ,Create success  <br>  duck ,Create success  <br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">tail</span> -6 /etc/passwd <br>  andy:x:1001:1001::/home/andy:/bin/bash  <br>  barry:x:1002:1002::/home/barry:/bin/bash  <br>  carl:x:1003:1003::/home/carl:/bin/bash  <br>  duck:x:1004:1004::/home/duck:/bin/bash<br>---<br><br>[root@xy <span class="hljs-built_in">test</span>]# vim ipadds.txt  <br>  192.168.37.10  <br>  192.168.37.11  <br>  192.168.37.12  <br>[root@xy <span class="hljs-built_in">test</span>]# vim CheckHosts.sh <br>  <span class="hljs-comment">#!/bin/bash	HLIST=$(cat ~/ipadds.txt)  </span><br>  <span class="hljs-keyword">for</span> IP <span class="hljs-keyword">in</span> `<span class="hljs-built_in">cat</span> ipadds.txt`		<span class="hljs-comment"># for IP in $HLIST </span><br>  <span class="hljs-keyword">do</span><br>      ping -c 3 -i 0.2 -W 3 <span class="hljs-variable">$IP</span> &amp;&gt; /dev/null  		<br>      <span class="hljs-keyword">if</span> [ $? -eq 0 ] ; <span class="hljs-keyword">then</span><br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Host <span class="hljs-variable">$IP</span> is On-line.&quot;</span>   <br>      <span class="hljs-keyword">else</span>   <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Host <span class="hljs-variable">$IP</span> is Off-line.&quot;</span>  <br>      <span class="hljs-keyword">fi</span>  <br>  <span class="hljs-keyword">done</span>  <br>[root@xy <span class="hljs-built_in">test</span>]# bash CheckHosts.sh   <br>  Host 192.168.37.10 is On-line.  <br>  Host 192.168.37.11 is Off-line.  <br>  Host 192.168.37.12 is Off-line.<br></code></pre></td></tr></table></figure>
-
-<h4 id="26-3-while条件循环语句-while-条件测试操作-do-命令序列-done"><a href="#26-3-while条件循环语句-while-条件测试操作-do-命令序列-done" class="headerlink" title="26.3 while条件循环语句(while 条件测试操作 do 命令序列 done)"></a>26.3 while条件循环语句(while 条件测试操作 do 命令序列 done)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# vim Guess.sh  <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  PRICE=$(<span class="hljs-built_in">expr</span> <span class="hljs-variable">$RANDOM</span> % 1000)  <br>  TIMES=0  <br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;商品的实际价格在0-999之间,猜猜看是多少?&quot;</span>  <br>  <span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>  <br>  <span class="hljs-keyword">do</span>  <br>      <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入您猜测的价格:&quot;</span> INT  <br>      <span class="hljs-built_in">let</span> TIMES++  <br>      <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$INT</span> -eq <span class="hljs-variable">$PRICE</span> ] ; <span class="hljs-keyword">then</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;恭喜您答对了,实际价格是 <span class="hljs-variable">$PRICE</span>&quot;</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您总共猜测了 <span class="hljs-variable">$TIMES</span> 次&quot;</span>  <br>          <span class="hljs-built_in">exit</span> 0  <br>      <span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$INT</span> -gt <span class="hljs-variable">$PRICE</span> ] ; <span class="hljs-keyword">then</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;太高了!&quot;</span>  <br>      <span class="hljs-keyword">else</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;太低了!&quot;</span>  <br>      <span class="hljs-keyword">fi</span>  <br>  <span class="hljs-keyword">done</span>  <br></code></pre></td></tr></table></figure>
-
-<h4 id="26-4-case条件测试语句"><a href="#26-4-case条件测试语句" class="headerlink" title="26.4 case条件测试语句"></a>26.4 case条件测试语句</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ShellExample]# vim checkkeys.sh <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入一个字符，并按Enter键确认：&quot;</span> KEY  <br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$KEY</span>&quot;</span> <span class="hljs-keyword">in</span>  <br>  [a-z] | [A-Z])  <br>      <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您输入的是<span class="hljs-variable">$KEY</span>字母。&quot;</span>  <br>      ;;  <br>  [0-9])  <br>      <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您输入的是<span class="hljs-variable">$KEY</span>数字。&quot;</span>  <br>      ;;  <br>  *)  <br>      <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您输入的是空格、功能健或其他控制字符。&quot;</span> <br>      ;; <br>  <span class="hljs-keyword">esac</span>  <br>[root@xy ShellExample]# bash checkkeys.sh  <br>  请输入一个字符，并按Enter键确认：4  <br>  您输入的是4数字。<br></code></pre></td></tr></table></figure>
-
-<h4 id="27-计划任务服务程序-一次性、长期性计划任务"><a href="#27-计划任务服务程序-一次性、长期性计划任务" class="headerlink" title="27. 计划任务服务程序 (一次性、长期性计划任务)	"></a>27. 计划任务服务程序 (一次性、长期性计划任务)	<a id="corntab"></a></h4><img src="/posts/4ac0a166/crontab.png" srcset="/img/loading.gif" lazyload class="" title="[crontab]">
-
+<h4 id="while条件循环语句while-条件测试操作-do-命令序列-done">26.3
+while条件循环语句(while 条件测试操作 do 命令序列 done)</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# vim Guess.sh  <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  PRICE=$(<span class="hljs-built_in">expr</span> <span class="hljs-variable">$RANDOM</span> % 1000)  <br>  TIMES=0  <br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;商品的实际价格在0-999之间,猜猜看是多少?&quot;</span>  <br>  <span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>  <br>  <span class="hljs-keyword">do</span>  <br>      <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入您猜测的价格:&quot;</span> INT  <br>      <span class="hljs-built_in">let</span> TIMES++  <br>      <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$INT</span> -eq <span class="hljs-variable">$PRICE</span> ] ; <span class="hljs-keyword">then</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;恭喜您答对了,实际价格是 <span class="hljs-variable">$PRICE</span>&quot;</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您总共猜测了 <span class="hljs-variable">$TIMES</span> 次&quot;</span>  <br>          <span class="hljs-built_in">exit</span> 0  <br>      <span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$INT</span> -gt <span class="hljs-variable">$PRICE</span> ] ; <span class="hljs-keyword">then</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;太高了!&quot;</span>  <br>      <span class="hljs-keyword">else</span>  <br>          <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;太低了!&quot;</span>  <br>      <span class="hljs-keyword">fi</span>  <br>  <span class="hljs-keyword">done</span>  <br></code></pre></td></tr></table></figure>
+<h4 id="case条件测试语句">26.4 case条件测试语句</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ShellExample]# vim checkkeys.sh <br>  <span class="hljs-comment">#!/bin/bash  </span><br>  <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入一个字符，并按Enter键确认：&quot;</span> KEY  <br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$KEY</span>&quot;</span> <span class="hljs-keyword">in</span>  <br>  [a-z] | [A-Z])  <br>      <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您输入的是<span class="hljs-variable">$KEY</span>字母。&quot;</span>  <br>      ;;  <br>  [0-9])  <br>      <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您输入的是<span class="hljs-variable">$KEY</span>数字。&quot;</span>  <br>      ;;  <br>  *)  <br>      <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;您输入的是空格、功能健或其他控制字符。&quot;</span> <br>      ;; <br>  <span class="hljs-keyword">esac</span>  <br>[root@xy ShellExample]# bash checkkeys.sh  <br>  请输入一个字符，并按Enter键确认：4  <br>  您输入的是4数字。<br></code></pre></td></tr></table></figure>
+<h4 id="计划任务服务程序-一次性长期性计划任务">27. 计划任务服务程序
+(一次性、长期性计划任务) <a id="corntab"></a></h4>
+<img src="/posts/4ac0a166/crontab.png" srcset="/img/loading.gif" lazyload class="" title="[crontab]">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">1 <span class="hljs-comment"># Example of job definition:  </span><br>2 <span class="hljs-comment"># .---------------- minute (0 - 59)  </span><br>3 <span class="hljs-comment"># |  .------------- hour (0 - 23)  </span><br>4 <span class="hljs-comment"># |  |  .---------- day of month (1 - 31)  </span><br>5 <span class="hljs-comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...  </span><br>6 <span class="hljs-comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR   sun,mon,tue,wed,thu,fri,sat  </span><br>7 <span class="hljs-comment"># |  |  |  |  |</span><br>8 <span class="hljs-comment"># *  *  *  *  * user-name command to be executed </span><br></code></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# at 23:30  <br>  at &gt; systemctl restart httpd	<span class="hljs-comment">#echo &quot;systemctl restart httpd&quot; |at 23:30 </span><br>  at &gt; 此处按下Ctrl+d 组合键来结束编写任务计划  <br>  job 3 at Mon Apr 27 23:30:00 2017 <br>[root@xy ~]# at -l                 <span class="hljs-comment">#查看一次性计划任务   </span><br>  3 Mon Apr 27 23:30:00 2017 a root<br>[root@xy ~]# at -d 3               <span class="hljs-comment"># 同 atrm</span><br>---<br><br>[root@xy ~]# crontab -e   <br>[root@xy ~]# crontab -l     　<span class="hljs-comment"># crontab - l 查看  crontab -r 删除</span><br>  00 3 * * * <span class="hljs-built_in">cp</span> /var/log/alternatives.log /home/shiyanlou/tmp/$(<span class="hljs-built_in">date</span> +%F)   <br>  25  3  *  * 1,3,5 /usr/bin/tar -czvf backup.tar.gz /home/wwwroot  <br>  分  时 日 月 周    任务     <span class="hljs-comment"># 没有设置的用*占位，表示每  </span><br><br><span class="hljs-comment"># 注:分字段必须有, 每分钟用* 或者 */1表示; 日、周不能同时有,否则会冲突 </span><br><br>[root@xy ~]# whereis <span class="hljs-built_in">rm</span>       　<span class="hljs-comment"># whereis 命令 查询命令所在路径</span><br>  <span class="hljs-built_in">rm</span>: /usr/bin/rm /usr/share/man/man1/rm.1.gz /usr/share/man/man1p/rm.1p.gz  <br>[root@xy ~]# crontab -e  <br>  crontab: installing new crontab  <br>[root@xy ~]# crontab -l  <br>  25 3 * * 1,3,5 /usr/bin/tar -czvf backup-tar.gz /home/wwwroot  <br>  0 1 * * 1-5 /usr/bin/rm -rf /tmp/*<br></code></pre></td></tr></table></figure>
-
-<h3 id="28-用户身份"><a href="#28-用户身份" class="headerlink" title="28. 用户身份"></a>28. 用户身份</h3><h4 id="相关文件"><a href="#相关文件" class="headerlink" title="相关文件:"></a>相关文件:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/passwd <br>用户名  :密码标识位   :UID  :GID  :组名   :家目录  :shell     <br><br>/etc/shadow            <br>用户名 :MD5paswd :密码修改时间(19700101) :两次修改密码时间间隔 :密码有效期 :密码到期前的警告天数  :密码过期后的宽限天数  :密码失效时间 <br><br>/etc/group  /etc/gshadow /etc/skel<br>  root:x:0:<br>  组名:密码:GID:附加组  <br></code></pre></td></tr></table></figure>
-
-<h4 id="28-1-useradd"><a href="#28-1-useradd" class="headerlink" title="28.1 useradd:"></a>28.1 useradd:</h4><table>
+<h3 id="用户身份">28. 用户身份</h3>
+<h4 id="相关文件">相关文件:</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/passwd <br>用户名  :密码标识位   :UID  :GID  :组名   :家目录  :shell     <br><br>/etc/shadow            <br>用户名 :MD5paswd :密码修改时间(19700101) :两次修改密码时间间隔 :密码有效期 :密码到期前的警告天数  :密码过期后的宽限天数  :密码失效时间 <br><br>/etc/group  /etc/gshadow /etc/skel<br>  root:x:0:<br>  组名:密码:GID:附加组  <br></code></pre></td></tr></table></figure>
+<h4 id="useradd">28.1 useradd:</h4>
+<table>
 <thead>
 <tr>
 <th>参数</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-u</td>
 <td><strong>指定该用户默认UID</strong></td>
 </tr>
@@ -1555,7 +1716,7 @@
 </tr>
 <tr>
 <td>-d</td>
-<td><strong>指定用户家目录(默认&#x2F;home&#x2F;username)</strong></td>
+<td><strong>指定用户家目录(默认/home/username)</strong></td>
 </tr>
 <tr>
 <td>-s</td>
@@ -1581,7 +1742,8 @@
 <td>-e,expire_date</td>
 <td>账户到期时间(YYYY-MM-DD)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
@@ -1589,7 +1751,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>id</td>
 <td>-u -g -G -n</td>
 </tr>
@@ -1605,19 +1768,22 @@
 <td>chfn</td>
 <td>修改注释信息</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# getent shadow xy   <span class="hljs-comment"># getent passwd xy  </span><br>[root@xy ~]# useradd -d /home/xy -u 8888 -s /sbin/nologin xy    <br>[root@xy ~]# <span class="hljs-built_in">id</span> xy         <br>uid=8888(xy) gid=8888(xy) <span class="hljs-built_in">groups</span>=8888(xy)<br></code></pre></td></tr></table></figure>
+<h4 id="passwd">28.2 passwd</h4>
+<table>
 
-<h4 id="28-2-passwd"><a href="#28-2-passwd" class="headerlink" title="28.2 passwd"></a>28.2 passwd</h4><table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>--stdin 允许标准输入改密码</td>
-<td>&#96;echo “NewPassWord”</td>
+<td><code>echo "NewPassWord" | passwd --stdin Username</code></td>
 </tr>
 <tr>
 <td>-l</td>
@@ -1659,7 +1825,8 @@
 <td>-S</td>
 <td>显示用户密码相关描述</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
@@ -1667,7 +1834,8 @@
 <th>修改用户密码策略</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-d</td>
 <td>最近一次修改时间</td>
 </tr>
@@ -1691,17 +1859,19 @@
 <td>-w</td>
 <td>警告时间</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# passwd xy <br>  Changing password <span class="hljs-keyword">for</span> user xy.  <br>  New password:   <br>  Retype new password:  <br>  asswd: all authentication tokens updated successfully.   <br>[root@xy ~]# passwd -l xy <br>  Locking password <span class="hljs-keyword">for</span> user xy.  <br>  passwd: Success  <br>[root@xy ~]# passwd -u xy<br>  Unlocking password <span class="hljs-keyword">for</span> user xy.  <br>  passwd: Success  <br>[root@xy ~]# passwd -S xy   <span class="hljs-comment"># -S --ststus</span><br>  xy PS 2018-07-06 0 99999 7 -1 (Password <span class="hljs-built_in">set</span>, SHA512 crypt.)  <br>[root@xy ~]# passwd -n 7 -x 60 -w 10 -i 30 xy  <span class="hljs-comment"># 7天内不能更改密码，60天后必须改密，过期前10天通知，过期后30天禁用该用户  </span><br>[root@xy ~]# groupadd ronny               <span class="hljs-comment"># groupadd -g ID    groupdel    </span><br>[root@xy ~]# gpasswd -a / -d user group   <span class="hljs-comment"># 把用户从组中加入/删除</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="28-3-userdel"><a href="#28-3-userdel" class="headerlink" title="28.3 userdel"></a>28.3 userdel</h4><table>
+<h4 id="userdel">28.3 userdel</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-f</td>
 <td>强制删除用户</td>
 </tr>
@@ -1709,17 +1879,19 @@
 <td>-r</td>
 <td>同时删除用户及家目录</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">id</span> xy  <br>  uid=8888(xy) gid=1000(xy) <span class="hljs-built_in">groups</span>=1000(xy),0(root)  <br>[root@xy ~]# userdel -r xy  <br>[root@xy ~]# <span class="hljs-built_in">id</span> xy<br>  <span class="hljs-built_in">id</span>: xy: no user  <br></code></pre></td></tr></table></figure>
-
-<h4 id="28-4-usermod"><a href="#28-4-usermod" class="headerlink" title="28.4 usermod"></a>28.4 usermod</h4><table>
+<h4 id="usermod">28.4 usermod</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-u</td>
 <td><strong>修改用户UID</strong></td>
 </tr>
@@ -1759,19 +1931,21 @@
 <td>-U,–Unlock</td>
 <td><strong>解锁用户,允许登陆系统</strong></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# usermod -aG root xy  <span class="hljs-comment"># 用户xy追加附加组root  </span><br>[root@xy ~]# <span class="hljs-built_in">id</span> xy  <br>  uid=1000(xy) gid=1000(xy) <span class="hljs-built_in">groups</span>=1000(xy),0(root)<br>[root@xy ~]# usermod -u 8888 xy  <br>[root@xy ~]# <span class="hljs-built_in">id</span> xy<br>  uid=8888(xy) gid=1000(xy) <span class="hljs-built_in">groups</span>=1000(xy),0(root)<br>[root@xy ~]# gpasswd -a xy root<br>[root@xy ~]# gpasswd -d xy root<br></code></pre></td></tr></table></figure>
-
-<h4 id="28-5-chmod"><a href="#28-5-chmod" class="headerlink" title="28.5 chmod"></a>28.5 chmod</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">who</span>: u g o a<br>opt: + - =<br>per: r=4 w=2 x=1	<span class="hljs-comment">#r,可浏览文件列表; w,可创建删除文件; x,访问目录的内容;</span><br><br><span class="hljs-comment">#umask </span><br>	<span class="hljs-built_in">umask</span>: 0002 (掩码)<br>	目录: 777=<span class="hljs-built_in">umask</span>+default<br>	文件: 666=<span class="hljs-built_in">umask</span>+default<br>	当文件权限通过666-<span class="hljs-built_in">umask</span>计算后,某位有奇数,则将其权限+1;<br><span class="hljs-comment">#特殊权限</span><br>	SUID: 作用于二进制程序,执行此文件,临时具有所有者的权限, /bin/passwd<br>		<span class="hljs-built_in">chmod</span> u+s		<span class="hljs-comment">#s=4</span><br>	SGID: 作用于二进制程序,执行此文件,临时具有所属组的权限, /bin/passwd<br>		  作用于目录上,创建的新文件,文件的所属组继承目录的所属组<br>	Sticky: 作用与目录,只能删除此目录中自己文件, /tmp	<span class="hljs-comment">#s=2</span><br>		<span class="hljs-built_in">chmod</span> o+t		<span class="hljs-comment">#t=1</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="29-netstat-atlnp"><a href="#29-netstat-atlnp" class="headerlink" title="29. netstat(-atlnp)"></a>29. netstat(-atlnp)</h3><table>
+<h4 id="chmod">28.5 chmod</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">who</span>: u g o a<br>opt: + - =<br>per: r=4 w=2 x=1	<span class="hljs-comment">#r,可浏览文件列表; w,可创建删除文件; x,访问目录的内容;</span><br><br><span class="hljs-comment">#umask </span><br>	<span class="hljs-built_in">umask</span>: 0002 (掩码)<br>	目录: 777=<span class="hljs-built_in">umask</span>+default<br>	文件: 666=<span class="hljs-built_in">umask</span>+default<br>	当文件权限通过666-<span class="hljs-built_in">umask</span>计算后,某位有奇数,则将其权限+1;<br><span class="hljs-comment">#特殊权限</span><br>	SUID: 作用于二进制程序,执行此文件,临时具有所有者的权限, /bin/passwd<br>		<span class="hljs-built_in">chmod</span> u+s		<span class="hljs-comment">#s=4</span><br>	SGID: 作用于二进制程序,执行此文件,临时具有所属组的权限, /bin/passwd<br>		  作用于目录上,创建的新文件,文件的所属组继承目录的所属组<br>	Sticky: 作用与目录,只能删除此目录中自己文件, /tmp	<span class="hljs-comment">#s=2</span><br>		<span class="hljs-built_in">chmod</span> o+t		<span class="hljs-comment">#t=1</span><br></code></pre></td></tr></table></figure>
+<h3 id="netstat-atlnp">29. netstat(-atlnp)</h3>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-t, --tcp</td>
 <td>指明显示TCP端口</td>
 </tr>
@@ -1799,15 +1973,19 @@
 <td>-n, --numeric</td>
 <td>不解析服务的名称</td>
 </tr>
-</tbody></table>
-<h3 id="30-ss-antlp"><a href="#30-ss-antlp" class="headerlink" title="30. ss(-antlp)"></a>30. ss(-antlp)</h3><table>
+</tbody>
+</table>
+<h3 id="ss-antlp">30. ss(-antlp)</h3>
+<table>
+
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-t, --tcp</td>
 <td>显示 TCP 协议的 sockets</td>
 </tr>
@@ -1835,17 +2013,20 @@
 <td>-r, --resolve</td>
 <td>把 IP 解释为域名，把端口号解释为协议名称</td>
 </tr>
-</tbody></table>
-<h3 id="31-lsof-list-open-files"><a href="#31-lsof-list-open-files" class="headerlink" title="31. lsof: list open files"></a>31. lsof: list open files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">lsof -i:8022 <br>lsof -i tcp     <br></code></pre></td></tr></table></figure>
-
-<h3 id="32-文件归属与权限"><a href="#32-文件归属与权限" class="headerlink" title="32. 文件归属与权限"></a>32. 文件归属与权限</h3><table>
+</tbody>
+</table>
+<h3 id="lsof-list-open-files">31. lsof: list open files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">lsof -i:8022 <br>lsof -i tcp     <br></code></pre></td></tr></table></figure>
+<h3 id="文件归属与权限">32. 文件归属与权限</h3>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-</td>
 <td>普通文件</td>
 </tr>
@@ -1881,32 +2062,36 @@
 <td>x</td>
 <td>(执行)-1</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# <span class="hljs-built_in">ls</span> -l initial-setup-ks.cfg<br>  drwxr-xr-x. 2 anyue anyue  6 Jul 27 14:59 Videos<br>  | 文件类型 | 7 | 5 | 5 | 属主 | 属组 | 大小 | 修改时间 | 文件名 |<br></code></pre></td></tr></table></figure>
-
-<p><strong>SUID是一种对<code>二进制程序</code>进行设置的特殊权限, 可以让二进制程序的执行者临时拥有属主的权限(仅对拥有执行权限的二进制程序有效), 相应进程的属主是程序文件自身的属主, 而不是调用者</strong>  </p>
+<p><strong>SUID是一种对<code>二进制程序</code>进行设置的特殊权限,
+可以让二进制程序的执行者临时拥有属主的权限(仅对拥有执行权限的二进制程序有效),
+相应进程的属主是程序文件自身的属主, 而不是调用者</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ll /bin/cat  <br>  -rwxr-xr-x  1 root root 23260 Jan 30 2014 /bin/cat  <br>[root@xy ~]# <span class="hljs-built_in">chmod</span> u+s /bin/cat  <span class="hljs-comment"># chmod u-s FILE</span><br>  -rwxsr-xr-x  1 root root 23260 Jan 30 2014 /bin/cat  <br><br>[anyue@xy ~]# <span class="hljs-built_in">cat</span> /etc/shadow  <span class="hljs-comment"># 可以查看shadow  </span><br></code></pre></td></tr></table></figure>
-
-<p><strong>SGID:让执行者临时拥有属组的权限(对拥有执行权限的二进制程序进行设置)在<code>某个目录</code>中创建的文件自动集成该目录的用户组(只可以对目录进行设置)</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# useradd hadoop; useradd hbase;    <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> /tmp/project <br>[root@xy ~]# groupadd deve; <span class="hljs-built_in">chown</span> -R :deve /tmp/project/  <br>[root@xy ~]# usermod -aG  deve hadoop; usermod -aG  deve habase  <br>[hadoop@xy project]# <span class="hljs-built_in">ls</span> -ld       <br>  drwxr-xr-x 2 root deve 4096 Jan 8 18:55 .  <span class="hljs-comment"># hadoop 无写权限</span><br>[root@xy tmp]# <span class="hljs-built_in">chmod</span> g+w /tmp/project  <span class="hljs-comment"># 添加写权限  </span><br>[hadoop@xy project]# <span class="hljs-built_in">ls</span> -l  <br>  -rw-rw-r-- 1 hadoop hadoop 0 Jan 8 18:58 a.hadoop    <br>  -rw-rw-r-- 1 habase habse 0 Jan 8 18:58 a.habase    <br>[root@xy ~]# <span class="hljs-built_in">chmod</span> g+s /tmp/project  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -ld /tmp/project        <br>  drwxrwsr-x 2 root deve 4096 Jan 8 18:59 /tmp/project   <br>[hadoop@xy project]# <span class="hljs-built_in">touch</span> b.hadoop  <br>  -rw-rw-r-- 1 hadoop deve 0 Jan 8 19:00 b.hadoop   <br><br><span class="hljs-built_in">chmod</span> 权限 文件或目录名称  u g o + - = rwx       <br><span class="hljs-built_in">chown</span> 所有者:所属组 文件或目录名称   --reference=/path/file modFile,...<br></code></pre></td></tr></table></figure>
-
-<p><strong>SBIT(Sticky Bit):特殊权限位可确保用户只能删除自己的文件,而不能删除其它用户的文件.即当<code>对某个目录设置</code>了SBIT粘滞位权限后,那么该目录中的文件就只能被其所有者执行删除操作了</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]$ <span class="hljs-built_in">chmod</span> o+t /tmp/project  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -ld /tmp/project <br>  drwxrwsr-t 2 root deve 4096 Jan 8  19:05 /tmp/project  <br>[root@xy ~]$ <span class="hljs-built_in">chmod</span> 3755 /tmp/project  <span class="hljs-comment"># SUID SGUID Sticky(000-111)</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="33-文件的隐藏属性"><a href="#33-文件的隐藏属性" class="headerlink" title="33. 文件的隐藏属性"></a>33. 文件的隐藏属性</h3><h4 id="33-1-chattr-参数-参数"><a href="#33-1-chattr-参数-参数" class="headerlink" title="33.1 chattr(+参数 -参数)"></a>33.1 chattr(+参数 -参数)</h4><ul>
-<li>i: 不能删除、改名、更改  </li>
+<p><strong>SGID:让执行者临时拥有属组的权限(对拥有执行权限的二进制程序进行设置)在<code>某个目录</code>中创建的文件自动集成该目录的用户组(只可以对目录进行设置)</strong><br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# useradd hadoop; useradd hbase;    <br>[root@xy ~]# <span class="hljs-built_in">mkdir</span> /tmp/project <br>[root@xy ~]# groupadd deve; <span class="hljs-built_in">chown</span> -R :deve /tmp/project/  <br>[root@xy ~]# usermod -aG  deve hadoop; usermod -aG  deve habase  <br>[hadoop@xy project]# <span class="hljs-built_in">ls</span> -ld       <br>  drwxr-xr-x 2 root deve 4096 Jan 8 18:55 .  <span class="hljs-comment"># hadoop 无写权限</span><br>[root@xy tmp]# <span class="hljs-built_in">chmod</span> g+w /tmp/project  <span class="hljs-comment"># 添加写权限  </span><br>[hadoop@xy project]# <span class="hljs-built_in">ls</span> -l  <br>  -rw-rw-r-- 1 hadoop hadoop 0 Jan 8 18:58 a.hadoop    <br>  -rw-rw-r-- 1 habase habse 0 Jan 8 18:58 a.habase    <br>[root@xy ~]# <span class="hljs-built_in">chmod</span> g+s /tmp/project  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -ld /tmp/project        <br>  drwxrwsr-x 2 root deve 4096 Jan 8 18:59 /tmp/project   <br>[hadoop@xy project]# <span class="hljs-built_in">touch</span> b.hadoop  <br>  -rw-rw-r-- 1 hadoop deve 0 Jan 8 19:00 b.hadoop   <br><br><span class="hljs-built_in">chmod</span> 权限 文件或目录名称  u g o + - = rwx       <br><span class="hljs-built_in">chown</span> 所有者:所属组 文件或目录名称   --reference=/path/file modFile,...<br></code></pre></td></tr></table></figure></p>
+<p><strong>SBIT(Sticky
+Bit):特殊权限位可确保用户只能删除自己的文件,而不能删除其它用户的文件.即当<code>对某个目录设置</code>了SBIT粘滞位权限后,那么该目录中的文件就只能被其所有者执行删除操作了</strong><br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]$ <span class="hljs-built_in">chmod</span> o+t /tmp/project  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> -ld /tmp/project <br>  drwxrwsr-t 2 root deve 4096 Jan 8  19:05 /tmp/project  <br>[root@xy ~]$ <span class="hljs-built_in">chmod</span> 3755 /tmp/project  <span class="hljs-comment"># SUID SGUID Sticky(000-111)</span><br></code></pre></td></tr></table></figure></p>
+<h3 id="文件的隐藏属性">33. 文件的隐藏属性</h3>
+<h4 id="chattr参数--参数">33.1 chattr(+参数 -参数)</h4>
+<ul>
+<li>i: 不能删除、改名、更改<br />
+</li>
 <li>a: 只能追加内容</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy <span class="hljs-built_in">test</span>]# chattr +a linuxprobe   <span class="hljs-comment"># Append Only </span><br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">rm</span> linuxprobe   <br>  <span class="hljs-built_in">rm</span>: remove regular file ‘linuxprobe’? y  <br>  <span class="hljs-built_in">rm</span>: cannot remove ‘linuxprobe’: Operation not permitted  <br>[root@xy <span class="hljs-built_in">test</span>]# chattr -a linuxprobe   <br>[root@xy <span class="hljs-built_in">test</span>]# <span class="hljs-built_in">rm</span> linuxprobe<br>  <span class="hljs-built_in">rm</span>: remove regular file ‘linuxprobe’? y  <br>[root@xy <span class="hljs-built_in">test</span>]# lsattr linuxprobe   <span class="hljs-comment"># 隐藏权限  </span><br>[root@xy <span class="hljs-built_in">test</span>]# -----a--------- linuxprobe  <br></code></pre></td></tr></table></figure>
-
-<h4 id="33-2-文件访问控制表-ACL"><a href="#33-2-文件访问控制表-ACL" class="headerlink" title="33.2 文件访问控制表(ACL)"></a>33.2 文件访问控制表(ACL)</h4><table>
+<h4 id="文件访问控制表acl">33.2 文件访问控制表(ACL)</h4>
+<table>
 <thead>
 <tr>
 <th>选项</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-m</td>
 <td>设定权限</td>
 </tr>
@@ -1918,31 +2103,45 @@
 <td>-b, –remove all</td>
 <td>移除所有</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash">[xy@xy ~]$ <span class="hljs-built_in">cd</span> /root  <br>  -bash: <span class="hljs-built_in">cd</span>: /root: Permission denied  <br>[xy@xy root]$ <span class="hljs-built_in">exit</span>  <br>[root@xy ~]# setfacl -Rm u:xy:rwx /root  <br>[root@xy ~]# su -xy  <br>  Last login: Sat Mar 21 21:45:04 CST 2018 on pts/1  <br>[xy@xy ~]$ <span class="hljs-built_in">cd</span> /root  <br>[xy@xy root]$ <span class="hljs-built_in">ls</span>  <br>  anaconda-ks.cfg Downloads Pictures Public  <br>[xy@xy ~]# <span class="hljs-built_in">cat</span> anaconda-ks.cfg  <br>[xy@xy ~]# <span class="hljs-built_in">exit</span>  <br>[root@xy ~]# <span class="hljs-built_in">ls</span> ld /root  <br>  dr-xrwx---+ 14 root root 4096 May 4 2018 /root  <br>[root@xy ~]# setfacl -x u:xy /root <br>[root@xy ~]# getfacl /root        <span class="hljs-comment"># getfacl 显示ACL信息  </span><br>  getfacl: Removing leading <span class="hljs-string">&#x27;/&#x27;</span> from absolute path names   <br>  1 <span class="hljs-comment"># file: root  </span><br>  2 <span class="hljs-comment"># owner: root  </span><br>  3 <span class="hljs-comment"># group: root  </span><br>  user::r-x  <br>  user:xy:rwx  <br>  group::r-x  <br>  mask::rwx  <br>  other::---<br><br>[root@xy ~]# whereis ps  <span class="hljs-comment"># 搜索命令所在位置及帮助文档</span><br>  ps: /usr/bin/ps /usr/share/man/man1/ps.1.gz /usr/share/man/man1p/ps.1p.gz<br></code></pre></td></tr></table></figure>
-
-<h3 id="补充小知识："><a href="#补充小知识：" class="headerlink" title="补充小知识："></a>补充小知识：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">locate     <span class="hljs-comment"># 文件名搜索   </span><br>	快捷的在`locatedb`中搜索文件名, 因为是在本地数据库中搜索`/var/lib/mlocate`, 所以速度很快, 但数据库更新为1天, 所以使用`updatedb`更新数据库;   <br><span class="hljs-built_in">whoami</span>     <span class="hljs-comment"># 当前登陆用户  </span><br>whatis <span class="hljs-built_in">ls</span>  <span class="hljs-comment"># 查看命令作用</span><br><span class="hljs-built_in">which</span> <span class="hljs-built_in">ls</span>   <span class="hljs-comment"># 查看命令所在位置及别名 whereis 更详细</span><br></code></pre></td></tr></table></figure>
-
-<p>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wlzjdm/p/8687745.html">Rhel-7-yum源配置-1</a><br>:link:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36119192/article/details/82222175">Rhel-7-yum源配置-2</a><br>:link:<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013605322/article/details/79726564">Rhel-7-yum源配置-3</a><br>:link:<a target="_blank" rel="noopener" href="https://blog.csdn.net/tantexian/article/details/38895449">RHEL-7-yum优先级设置-1</a><br>:link:<a target="_blank" rel="noopener" href="https://blog.csdn.net/conling_/article/details/70399694">RHEL-7-yum优先级设置-2</a> </p>
-<p>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sench/p/8933638.html">umask 命令参考</a>    </p>
-<blockquote>
-<p><strong>文件的默认权限</strong>为 <code>666</code>, 创建目录的默认权限 <code>777</code>, 而umask值则表明了需要从默认权限中去掉哪些权限来成为最终的默认权限值, 文件默认不能具有执行权限，如果算的结果中右执行权限，则将其权限加1;  </p>
-<p>权限 &#x3D; 默认权限 - umask  </p>
-</blockquote>
+<h3 id="补充小知识">补充小知识：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">locate     <span class="hljs-comment"># 文件名搜索   </span><br>	快捷的在`locatedb`中搜索文件名, 因为是在本地数据库中搜索`/var/lib/mlocate`, 所以速度很快, 但数据库更新为1天, 所以使用`updatedb`更新数据库;   <br><span class="hljs-built_in">whoami</span>     <span class="hljs-comment"># 当前登陆用户  </span><br>whatis <span class="hljs-built_in">ls</span>  <span class="hljs-comment"># 查看命令作用</span><br><span class="hljs-built_in">which</span> <span class="hljs-built_in">ls</span>   <span class="hljs-comment"># 查看命令所在位置及别名 whereis 更详细</span><br></code></pre></td></tr></table></figure>
+<p>:link:<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/wlzjdm/p/8687745.html">Rhel-7-yum源配置-1</a><br />
+:link:<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36119192/article/details/82222175">Rhel-7-yum源配置-2</a><br />
+:link:<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u013605322/article/details/79726564">Rhel-7-yum源配置-3</a><br />
+:link:<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/tantexian/article/details/38895449">RHEL-7-yum优先级设置-1</a><br />
+:link:<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/conling_/article/details/70399694">RHEL-7-yum优先级设置-2</a></p>
+<p>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sench/p/8933638.html">umask
+命令参考</a><br />
+&gt; <strong>文件的默认权限</strong>为 <code>666</code>,
+创建目录的默认权限 <code>777</code>,
+而umask值则表明了需要从默认权限中去掉哪些权限来成为最终的默认权限值,
+文件默认不能具有执行权限，如果算的结果中右执行权限，则将其权限加1;<br />
+&gt; &gt; 权限 = 默认权限 - umask</p>
 <img src="/posts/4ac0a166/umask.jpg" srcset="/img/loading.gif" lazyload class="" title="[umask]">
-
-<h4 id="文件系统命令补充："><a href="#文件系统命令补充：" class="headerlink" title="文件系统命令补充："></a>文件系统命令补充：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">dumpe2fs -h /dev/sd*	<span class="hljs-comment">#查看分区概览信息</span><br>fdisk -l	<span class="hljs-comment">#显示磁盘信息</span><br>fdisk -t	<span class="hljs-comment">#更改分区系统的ID</span><br>fsck -y /dev/sdb1	<span class="hljs-comment">#文件系统修复命令</span><br><br>partx -a /dev/DEVICE   partx -d --nr number /dev/device	<span class="hljs-comment">#CentOS6</span><br>partprobe /dev/DEVICE	<span class="hljs-comment">#CentOS5,7</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="相关解压压缩命令"><a href="#相关解压压缩命令" class="headerlink" title="相关解压压缩命令"></a>相关解压压缩命令</h4><h4 id="link-参考2"><a href="#link-参考2" class="headerlink" title=":link:参考2"></a>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/machangwei-8/p/9572227.html">参考2</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash">1、gzip gunzip:<br>	gzip /PATH/SOMEFILE		<span class="hljs-comment">#压缩后会删除源文件(不支持目录压缩) </span><br>    	-d 解压缩<br>    	-# 1-9(压缩率)<br>    gunzip  /PATH/SOMEFILE.gz <span class="hljs-comment">#解压后会删除源文件  </span><br>    zcat /PATH/SOMEFILE.gz    <span class="hljs-comment">#不解压查看文本文件内容</span><br><br>2、bzip2 bunzip2<br>	bzip2 /PATH/SOMEFILE<br>		-d 解压缩<br>        -k 保留源文件<br>        -# 1-9(压缩率)<br>    bunzip2 /PATH/SOMEFILE.bz2<br>    bzcat /PATH/SOMEFILE.bz2     <span class="hljs-comment">#不解压查看文本文件内容</span><br><br>3、xz unxz <br>	xz /PATH/SOMEFILE<br>		-d 解压缩<br>        -k 保留源文件<br>        -# 1-9(压缩率)<br>    unxz /PATH/SOMEFILE.xz<br>    xzcat /PATH/SOMEFILE.xz<br>4、zip unzip:  <br>	zip FILENAME.zip FILE1 FILE2 ...    <br>	unzip tmp.zip    <span class="hljs-comment">#指定解压目录</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="bash快捷键"><a href="#bash快捷键" class="headerlink" title="bash快捷键"></a>bash快捷键</h4><table>
+<h4 id="文件系统命令补充">文件系统命令补充：</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">dumpe2fs -h /dev/sd*	<span class="hljs-comment">#查看分区概览信息</span><br>fdisk -l	<span class="hljs-comment">#显示磁盘信息</span><br>fdisk -t	<span class="hljs-comment">#更改分区系统的ID</span><br>fsck -y /dev/sdb1	<span class="hljs-comment">#文件系统修复命令</span><br><br>partx -a /dev/DEVICE   partx -d --nr number /dev/device	<span class="hljs-comment">#CentOS6</span><br>partprobe /dev/DEVICE	<span class="hljs-comment">#CentOS5,7</span><br></code></pre></td></tr></table></figure>
+<h4 id="相关解压压缩命令">相关解压压缩命令</h4>
+<h4 id="link参考2">:link:<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/machangwei-8/p/9572227.html">参考2</a></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash">1、gzip gunzip:<br>	gzip /PATH/SOMEFILE		<span class="hljs-comment">#压缩后会删除源文件(不支持目录压缩) </span><br>    	-d 解压缩<br>    	-# 1-9(压缩率)<br>    gunzip  /PATH/SOMEFILE.gz <span class="hljs-comment">#解压后会删除源文件  </span><br>    zcat /PATH/SOMEFILE.gz    <span class="hljs-comment">#不解压查看文本文件内容</span><br><br>2、bzip2 bunzip2<br>	bzip2 /PATH/SOMEFILE<br>		-d 解压缩<br>        -k 保留源文件<br>        -# 1-9(压缩率)<br>    bunzip2 /PATH/SOMEFILE.bz2<br>    bzcat /PATH/SOMEFILE.bz2     <span class="hljs-comment">#不解压查看文本文件内容</span><br><br>3、xz unxz <br>	xz /PATH/SOMEFILE<br>		-d 解压缩<br>        -k 保留源文件<br>        -# 1-9(压缩率)<br>    unxz /PATH/SOMEFILE.xz<br>    xzcat /PATH/SOMEFILE.xz<br>4、zip unzip:  <br>	zip FILENAME.zip FILE1 FILE2 ...    <br>	unzip tmp.zip    <span class="hljs-comment">#指定解压目录</span><br></code></pre></td></tr></table></figure>
+<h4 id="bash快捷键">bash快捷键</h4>
+<table>
 <thead>
 <tr>
 <th>快捷键</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Tab</td>
 <td>命令补全</td>
 </tr>
@@ -1960,30 +2159,35 @@
 </tr>
 <tr>
 <td>Ctrl+U</td>
-<td>删除&#x2F;剪切</td>
+<td>删除/剪切</td>
 </tr>
 <tr>
 <td>Ctrl+Y</td>
 <td>粘贴</td>
 </tr>
-</tbody></table>
-<h5 id="查询文件的第几行-第几行命令"><a href="#查询文件的第几行-第几行命令" class="headerlink" title="查询文件的第几行-第几行命令"></a>查询文件的第几行-第几行命令</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> file.txt |<span class="hljs-built_in">tail</span> -n +10 |<span class="hljs-built_in">head</span> -n20   <span class="hljs-comment"># 从10行开始, 显示20行, 10~29</span><br>sed -n <span class="hljs-string">&#x27;5,10p&#x27;</span> file.txt<br></code></pre></td></tr></table></figure>
-
-<h5 id="命令提示符颜色更改"><a href="#命令提示符颜色更改" class="headerlink" title="命令提示符颜色更改"></a>命令提示符颜色更改</h5><p>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/menlsh/archive/2012/08/27/2659101.html">PS1参考博文</a></p>
-<p>:link:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wt645631686/p/6868694.html">Shell脚本的颜色样式及属性控制</a>  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$PS1</span><br>vim /etc/profile.d/color.sh<br>PS1=<span class="hljs-string">&quot;\[\033[1;5;41;33m\][\u@\h\W\t\!]\\$\[\033[0m\]&quot;</span><br>\u 当前用户  \H 主机名  \h 主机名简称  \w 当前工作目录<br><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[字体格式;背景色;前景色m字符串\e[0m&quot;</span>  <span class="hljs-comment"># \e[0m 关闭所有属性</span><br></code></pre></td></tr></table></figure>
-
+</tbody>
+</table>
+<h5 id="查询文件的第几行-第几行命令">查询文件的第几行-第几行命令</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> file.txt |<span class="hljs-built_in">tail</span> -n +10 |<span class="hljs-built_in">head</span> -n20   <span class="hljs-comment"># 从10行开始, 显示20行, 10~29</span><br>sed -n <span class="hljs-string">&#x27;5,10p&#x27;</span> file.txt<br></code></pre></td></tr></table></figure>
+<h5 id="命令提示符颜色更改">命令提示符颜色更改</h5>
+<p>:link:<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/menlsh/archive/2012/08/27/2659101.html">PS1参考博文</a></p>
+<p>:link:<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/wt645631686/p/6868694.html">Shell脚本的颜色样式及属性控制</a><br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$PS1</span><br>vim /etc/profile.d/color.sh<br>PS1=<span class="hljs-string">&quot;\[\033[1;5;41;33m\][\u@\h\W\t\!]\\$\[\033[0m\]&quot;</span><br>\u 当前用户  \H 主机名  \h 主机名简称  \w 当前工作目录<br><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[字体格式;背景色;前景色m字符串\e[0m&quot;</span>  <span class="hljs-comment"># \e[0m 关闭所有属性</span><br></code></pre></td></tr></table></figure></p>
 <img src="/posts/4ac0a166/colorBash.jpg" srcset="/img/loading.gif" lazyload class="" title="[PS1]">
+<h5 id="总结1位数表示字体显示格式">总结：1位数表示字体显示格式</h5>
+<table>
 
-<h5 id="总结：1位数表示字体显示格式"><a href="#总结：1位数表示字体显示格式" class="headerlink" title="总结：1位数表示字体显示格式"></a>总结：1位数表示字体显示格式</h5><table>
 <thead>
 <tr>
 <th>背景色(4)</th>
-<th>字体色&#x2F;前景色(3)</th>
+<th>字体色/前景色(3)</th>
 <th>结束其他功能</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>40 黑色</td>
 <td>30m 黑色</td>
 <td>\033[0m 关闭所有属性</td>
@@ -2023,18 +2227,17 @@
 <td>37m 灰色</td>
 <td>—</td>
 </tr>
-</tbody></table>
-<h5 id="visudo-man-5-sudoers"><a href="#visudo-man-5-sudoers" class="headerlink" title="visudo (man 5 sudoers)"></a>visudo (man 5 sudoers)</h5><ul>
-<li>用户名&#x2F;%组名  被管理主机地址&#x3D;(可使用的身份)   授权命令(绝对路径)</li>
+</tbody>
+</table>
+<h5 id="visudo-man-5-sudoers">visudo (man 5 sudoers)</h5>
+<ul>
+<li>用户名/%组名 被管理主机地址=(可使用的身份) 授权命令(绝对路径)</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">root    ALL=(ALL)    ALL<br>hadoop  ALL=(root)   NOPASSWD: /usr/sbin/useradd, PASSWD: /usr/sbin/usermod<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>alias:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">User_Alias USERADMIN = hadoop, %hadoop, %useradmin<br>Cmnd_Alias USERADMINCMND = /usr/sbin/useradd, /usr/sbin/usermod, /usr/bin/passwd [a-zA-Z]*, ! /usr/bin/passwd root<br>USERADMIN  ALL=(root) NOPASSWD: USERADMINCMND<br></code></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li><p>ldd(列出文件依赖库文件)  </p>
-<h3 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="#back">返回目录</a></h3></li>
+<li><p>alias: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">User_Alias USERADMIN = hadoop, %hadoop, %useradmin<br>Cmnd_Alias USERADMINCMND = /usr/sbin/useradd, /usr/sbin/usermod, /usr/bin/passwd [a-zA-Z]*, ! /usr/bin/passwd root<br>USERADMIN  ALL=(root) NOPASSWD: USERADMINCMND<br></code></pre></td></tr></table></figure></p></li>
+<li><p>ldd(列出文件依赖库文件)</p>
+<h3 id="返回目录"><a href="#back">返回目录</a></h3></li>
 </ul>
 
                 
@@ -2240,7 +2443,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -2421,7 +2624,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 

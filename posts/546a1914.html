@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/icon.jpg">
+  <link rel="icon" href="/img/bg/icon.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -71,7 +71,7 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/macpanel.css">
 
 
 
@@ -91,7 +91,8 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="旅行" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -104,7 +105,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>旅行</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -161,6 +162,58 @@
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-bookmark"></i>
+                <span>收藏</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/bookmark/" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>导航</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery/" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>图库</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/video/" target="_self">
+                    <i class="iconfont icon-snapchat-fill"></i>
+                    <span>影视</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -291,194 +344,192 @@
             
               <div class="markdown-body">
                 
-                <p>2019-11-20-SPL</p>
-<span id="more"></span>
-
-<h2 id="堆-栈-队列"><a href="#堆-栈-队列" class="headerlink" title="堆 栈 队列"></a>堆 栈 队列</h2><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guoxiaoyan/p/8664150.html">参考1</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hedeyong/p/7841548.html">参考2</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jinbang/p/8658708.html">参考3</a></p>
-</li>
+                <p>2019-11-20-SPL <span id="more"></span></p>
+<h2 id="堆-栈-队列">堆 栈 队列</h2>
+<h3 id="参考">参考</h3>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/guoxiaoyan/p/8664150.html">参考1</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/hedeyong/p/7841548.html">参考2</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/jinbang/p/8658708.html">参考3</a></p></li>
 <li><p>堆：</p>
 <ul>
 <li>堆是在<code>程序运行</code>时，而不是在程序编译时，申请某个大小的内存空间。即动态分配内存，对其访问和对一般内存的访问没有区别。</li>
-<li>堆是应用程序在运行的时候请求操作系统<code>分配给自己内存</code>，一般是申请&#x2F;给予的过程。</li>
+<li>堆是应用程序在运行的时候请求操作系统<code>分配给自己内存</code>，一般是申请/给予的过程。</li>
 <li>堆是指程序运行时申请的动态内存，而栈只是指一种使用堆的方法(即先进后出)。</li>
-</ul>
-</li>
-<li><p>堆区：由程序员分配释放，若程序员不释放，程序结束时可能有OS回收（引用类型值）。</p>
-</li>
+</ul></li>
+<li><p>堆区：由程序员分配释放，若程序员不释放，程序结束时可能有OS回收（引用类型值）。</p></li>
 <li><p>栈：</p>
 <ul>
 <li>一种运算受限的线性表。其限制是仅允许在表的一端进行插入和删除运算。这一端被称为栈顶，相对地，把另一端称为栈底。</li>
 <li>栈就是一个桶，后放进去的先拿出来，它下面本来有的东西要等它出来之后才能出来（<code>先进后出</code>）。</li>
 <li>栈(Stack)是操作系统在建立某个进程时或者线程（在支持多线程的操作系统中是线程）为这个线程建立的存储区域。</li>
-</ul>
-</li>
-<li><p>栈区：由<code>编辑器自动分配释放</code>，存放函数的<code>参数值，局部变量</code>的值等（基本类型值）。</p>
-</li>
+</ul></li>
+<li><p>栈区：由<code>编辑器自动分配释放</code>，存放函数的<code>参数值，局部变量</code>的值等（基本类型值）。</p></li>
 <li><p>队列：</p>
 <ul>
 <li>队列是一种特殊的线性表，特殊之处在于它只允许在表的<code>前端（front）进行删除操作</code>，而在<code>表的后端（rear）进行插入操作</code>，和栈一样，队列是一种操作受限制的线性表。进行删除操作的端称为队头，进行插入操作的端称为队尾。</li>
 <li>队列中没有元素时，称为空队列。</li>
 <li>建立顺序队列结构必须为其静态分配或动态申请一片连续的存储空间，并设置两个指针进行管理。一个是队头指针front，它指向队头元素；另一个是队尾指针rear，它指向下一个入队元素的存储位置。</li>
-<li>队列采用的FIFO(first in first out)，新元素（等待进入队列的元素）总是被插入到链表的尾部，而读取的时候总是从链表的头部开始读取。每次读取一个元素，释放一个元素。所谓的动态创建，动态释放。因而也不存在溢出等问题。由于链表由结构体间接而成，遍历也方便。（先进先出）</li>
-</ul>
-</li>
+<li>队列采用的FIFO(first in first
+out)，新元素（等待进入队列的元素）总是被插入到链表的尾部，而读取的时候总是从链表的头部开始读取。每次读取一个元素，释放一个元素。所谓的动态创建，动态释放。因而也不存在溢出等问题。由于链表由结构体间接而成，遍历也方便。（先进先出）</li>
+</ul></li>
 <li><p>堆栈的特性：</p>
 <ul>
-<li>堆本身就是栈，最后一个放入堆栈中的物体总是被最先拿出来， 这个特性通常称为后进先出(LIFO)队列。 </li>
-<li>堆栈中定义了一些操作，两个最重要的是PUSH和POP。 PUSH操作在堆栈的顶部加入一 个元素。POP操作相反，在堆栈顶部移去一个元素，并将堆栈的大小减一。</li>
+<li>堆本身就是栈，最后一个放入堆栈中的物体总是被最先拿出来，
+这个特性通常称为后进先出(LIFO)队列。</li>
+<li>堆栈中定义了一些操作，两个最重要的是PUSH和POP。
+PUSH操作在堆栈的顶部加入一
+个元素。POP操作相反，在堆栈顶部移去一个元素，并将堆栈的大小减一。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><ul>
+<h3 id="链表">链表</h3>
+<ul>
 <li>链表中每一个元素都是一个对象，每个对象称为一个<code>节点</code>，包含有<code>数据域key和指向下一个节点的指针next</code>。通过各个节点之间的相互连接，最终串联成一个链表。</li>
 </ul>
-<h2 id="关于SPL"><a href="#关于SPL" class="headerlink" title="关于SPL"></a>关于SPL</h2><h3 id="SPL-Search-Process-Language-搜索处理语言"><a href="#SPL-Search-Process-Language-搜索处理语言" class="headerlink" title="SPL:Search Process Language(搜索处理语言)"></a>SPL:Search Process Language(搜索处理语言)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">AND</span> <span class="hljs-keyword">OR</span> () <span class="hljs-keyword">NOT</span> <br>通配符：<span class="hljs-string">&#x27;* ? []&#x27;</span><br>field:[x <span class="hljs-keyword">TO</span> y]<br><br>cat <span class="hljs-operator">/</span>var<span class="hljs-operator">/</span>log<span class="hljs-operator">/</span>messages <span class="hljs-operator">|</span>grep Error <span class="hljs-operator">|</span>awk <span class="hljs-string">&#x27;&#123;print substr($3,1,5)&#125;&#x27;</span> <span class="hljs-operator">|</span>sort <span class="hljs-operator">|</span>uniq <span class="hljs-operator">-</span>c <span class="hljs-operator">|</span>sort <span class="hljs-operator">-</span>nr <span class="hljs-operator">|</span>head <span class="hljs-number">10</span> <br>source:&quot;/var/log/messages&quot; Error <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> sapn<span class="hljs-operator">=</span><span class="hljs-number">1</span>m <span class="hljs-keyword">as</span> ts <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> ts <span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;count()&#x27;</span> <span class="hljs-operator">|</span>limit <span class="hljs-number">10</span> <br></code></pre></td></tr></table></figure>
-
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="stats"><a href="#stats" class="headerlink" title="stats"></a>stats</h4><blockquote>
-<p>提供统计信息，可以选择按照<code>字段分组</code>(单值统计)   </p>
+<h2 id="关于spl">关于SPL</h2>
+<h3 id="splsearch-process-language搜索处理语言">SPL:Search Process
+Language(搜索处理语言)</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">AND</span> <span class="hljs-keyword">OR</span> () <span class="hljs-keyword">NOT</span> <br>通配符：<span class="hljs-string">&#x27;* ? []&#x27;</span><br>field:[x <span class="hljs-keyword">TO</span> y]<br><br>cat <span class="hljs-operator">/</span>var<span class="hljs-operator">/</span>log<span class="hljs-operator">/</span>messages <span class="hljs-operator">|</span>grep Error <span class="hljs-operator">|</span>awk <span class="hljs-string">&#x27;&#123;print substr($3,1,5)&#125;&#x27;</span> <span class="hljs-operator">|</span>sort <span class="hljs-operator">|</span>uniq <span class="hljs-operator">-</span>c <span class="hljs-operator">|</span>sort <span class="hljs-operator">-</span>nr <span class="hljs-operator">|</span>head <span class="hljs-number">10</span> <br>source:&quot;/var/log/messages&quot; Error <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> sapn<span class="hljs-operator">=</span><span class="hljs-number">1</span>m <span class="hljs-keyword">as</span> ts <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> ts <span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;count()&#x27;</span> <span class="hljs-operator">|</span>limit <span class="hljs-number">10</span> <br></code></pre></td></tr></table></figure>
+<h3 id="常用命令">常用命令</h3>
+<h4 id="stats">stats</h4>
+<blockquote>
+<p>提供统计信息，可以选择按照<code>字段分组</code>(单值统计)<br />
+* count() – 返回字段出现次数，统计事件数 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 统计ip和stats的组合的事件数量<br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> apache.clientip,apache.status<br></code></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li><p>count() – 返回字段出现次数，统计事件数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 统计ip和stats的组合的事件数量<br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> apache.clientip,apache.status<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>avg() – 返回字段平均值</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 统计平均值<br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <span class="hljs-keyword">as</span> avg_resp_len <span class="hljs-keyword">by</span> apache.request_path <br><span class="hljs-operator">|</span>rename avg_resp_len <span class="hljs-keyword">as</span> &quot;平均响应长度&quot;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>sum()</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 统计日志量<br><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>stats <span class="hljs-built_in">sum</span>(raw_message_length) <span class="hljs-keyword">as</span> byte <br><span class="hljs-operator">|</span>eval Mb<span class="hljs-operator">=</span>byte<span class="hljs-operator">/</span><span class="hljs-number">1024</span><span class="hljs-operator">/</span><span class="hljs-number">1024</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>max()</p>
-</li>
-<li><p>min()</p>
-</li>
-<li><p>dc() – 返回字段唯一个数，去重，<code>dedup field</code></p>
-</li>
+<li><p>avg() – 返回字段平均值 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 统计平均值<br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <span class="hljs-keyword">as</span> avg_resp_len <span class="hljs-keyword">by</span> apache.request_path <br><span class="hljs-operator">|</span>rename avg_resp_len <span class="hljs-keyword">as</span> &quot;平均响应长度&quot;<br></code></pre></td></tr></table></figure></p></li>
+<li><p>sum() <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 统计日志量<br><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>stats <span class="hljs-built_in">sum</span>(raw_message_length) <span class="hljs-keyword">as</span> byte <br><span class="hljs-operator">|</span>eval Mb<span class="hljs-operator">=</span>byte<span class="hljs-operator">/</span><span class="hljs-number">1024</span><span class="hljs-operator">/</span><span class="hljs-number">1024</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>max()</p></li>
+<li><p>min()</p></li>
+<li><p>dc() – 返回字段唯一个数，去重，<code>dedup field</code></p></li>
 </ul>
-<h4 id="bucket"><a href="#bucket" class="headerlink" title="bucket"></a>bucket</h4><blockquote>
-<p>将字段连续的值放到离散的数据桶中，可用于后续的stats等命令分组字段中  </p>
+<h4 id="bucket">bucket</h4>
+<blockquote>
+<p>将字段连续的值放到离散的数据桶中，可用于后续的stats等命令分组字段中<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/*每1小时跨度内每个hostname的apache.resp_len平均值*/</span><br>logtype:apache <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <span class="hljs-keyword">by</span> hostname,ts <br><span class="hljs-operator">|</span>eval ts_human<span class="hljs-operator">=</span>foramtdate(ts)<br><span class="hljs-comment">/******/</span><br><span class="hljs-comment">/*返回apache.status为100-200，200-400，400以上的apache.status事件数*/</span><br>logtype:apache <br><span class="hljs-operator">|</span>bucket apache.status ranges<span class="hljs-operator">=</span>((<span class="hljs-number">100</span>,<span class="hljs-number">200</span>),(<span class="hljs-number">200</span>,<span class="hljs-number">400</span>),(<span class="hljs-number">400</span>,)) <span class="hljs-keyword">as</span> rs <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(apache.status) <span class="hljs-keyword">by</span> rs<br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-comment">/*每1小时跨度内每个hostname的apache.resp_len平均值*/</span><br>logtype:apache <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <span class="hljs-keyword">by</span> hostname,ts <br><span class="hljs-operator">|</span>eval ts_human<span class="hljs-operator">=</span>foramtdate(ts)<br><span class="hljs-comment">/******/</span><br><span class="hljs-comment">/*返回apache.status为100-200，200-400，400以上的apache.status事件数*/</span><br>logtype:apache <br><span class="hljs-operator">|</span>bucket apache.status ranges<span class="hljs-operator">=</span>((<span class="hljs-number">100</span>,<span class="hljs-number">200</span>),(<span class="hljs-number">200</span>,<span class="hljs-number">400</span>),(<span class="hljs-number">400</span>,)) <span class="hljs-keyword">as</span> rs <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(apache.status) <span class="hljs-keyword">by</span> rs<br></code></pre></td></tr></table></figure>
-
-<h4 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h4><blockquote>
-<p>重命名指定字段，支持对多字段同时进行重命名用<code>,</code>分开，支持通配符  </p>
+<h4 id="rename">rename</h4>
+<blockquote>
+<p>重命名指定字段，支持对多字段同时进行重命名用<code>,</code>分开，支持通配符<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>rename apache.clientip <span class="hljs-keyword">as</span> &quot;ip地址&quot;<br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>rename apache.clientip <span class="hljs-keyword">as</span> &quot;ip地址&quot;<br></code></pre></td></tr></table></figure>
-
-<h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><blockquote>
-<p>计算表达式并将生成值放到新的字段中，存在将覆盖<br>常用函数：todouble()、formatdate(timestamp,”HH:mm”)  </p>
+<h4 id="eval">eval</h4>
+<blockquote>
+<p>计算表达式并将生成值放到新的字段中，存在将覆盖<br />
+常用函数：todouble()、formatdate(timestamp,“HH:mm”)<br />
+* 根据响应时间获取short,middle,long三个分类值 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>eval length<span class="hljs-operator">=</span><span class="hljs-keyword">case</span>(apache.resp_len<span class="hljs-operator">&lt;</span><span class="hljs-number">1500</span>,&quot;short&quot;,apache.resp_len<span class="hljs-operator">&gt;</span><span class="hljs-number">2000</span>,&quot;long&quot;,<span class="hljs-keyword">default</span>,&quot;middle&quot;) <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(<span class="hljs-keyword">desc</span>) <span class="hljs-keyword">by</span> <span class="hljs-keyword">desc</span><br><span class="hljs-comment">/********************************/</span><br><br>logtype:apache <br><span class="hljs-operator">|</span>eval <span class="hljs-keyword">desc</span><span class="hljs-operator">=</span>if(apache.status<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">20</span>,&quot;OK&quot;,&quot;Error&quot;) <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(<span class="hljs-keyword">desc</span>) <span class="hljs-keyword">by</span> <span class="hljs-keyword">desc</span><br><span class="hljs-comment">/********************************/</span><br>logtype apache <br><span class="hljs-operator">|</span>eval <span class="hljs-type">int</span> status<span class="hljs-operator">=</span>tolong(apache.status)<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="fileds">fileds</h4>
+<blockquote>
+<p>保留搜索结果中的字段，支持通配<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> appname,hostname <br><span class="hljs-operator">|</span>fields appname,hostname<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="table">table</h4>
+<blockquote>
+<p>将查询结果以表格形式展示，并对字段进行筛选，若不包含空行显示，支持通配符<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span><span class="hljs-keyword">table</span> apache.status,apache.method<br><span class="hljs-comment">/*****/</span>  <br>appname:nginx <span class="hljs-keyword">AND</span> nginx.request_time:<span class="hljs-operator">*</span> <br><span class="hljs-operator">|</span>eval new_reuqest_time<span class="hljs-operator">=</span>todouble(nginx.request_time) <br><span class="hljs-operator">|</span><span class="hljs-keyword">table</span> nginx.client_ip.geo.ip,nginx.client_ip.geo.isp,nginx.client_ip.gep.province<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="makeresults">makeresults</h4>
+<blockquote>
+<p>构造指定的结果<br />
+* 产生一条结果并生成新的app字段，用于后续map命令 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span> makeresults count<span class="hljs-operator">=</span><span class="hljs-number">1</span> <br><span class="hljs-operator">|</span>eval app<span class="hljs-operator">=</span>&quot;zookeeper&quot; <br><span class="hljs-operator">|</span>map &quot;* appname:$app$&quot;<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="where">where</h4>
+<blockquote>
+<p>使用表达式对结果进行过滤<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <span class="hljs-keyword">AND</span> apache.geo.city:&quot;深圳市&quot; <br><span class="hljs-operator">|</span>stats dc(apache.clientip) <span class="hljs-keyword">as</span> dc_count <span class="hljs-keyword">by</span> apache.request_path <br><span class="hljs-operator">|</span><span class="hljs-keyword">where</span> dc_count<span class="hljs-operator">&gt;</span><span class="hljs-number">40</span> <span class="hljs-operator">&amp;&amp;</span> dc_count<span class="hljs-operator">&lt;</span><span class="hljs-number">100</span><br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="top">top</h4>
+<blockquote>
+<p>获取字段出现次数前N的值集合<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>top <span class="hljs-number">5</span> nginx.client_ip.geo.province<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="limit">limit</h4>
+<blockquote>
+<p>返回前n个结果<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <span class="hljs-operator">|</span>limit <span class="hljs-number">2</span><br><span class="hljs-comment">/*******/</span><br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> apache.clientip <br><span class="hljs-operator">|</span>limit <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="sort">sort</h4>
+<blockquote>
+<p>按照指定字段对搜索结果排序，+升序，-降序<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> <span class="hljs-operator">+</span><span class="hljs-type">timestamp</span><br><span class="hljs-comment">/********/</span><br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(apache.clientip) <span class="hljs-keyword">as</span> ip_count <span class="hljs-keyword">by</span> appname <br><span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> <span class="hljs-operator">-</span>ip_count<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="join">join</h4>
+<blockquote>
+<p>对父管道结果和子管道结果进行类似SQL的join，关联分析<br />
+type=left/inner (取左/取并)<br />
+* 统计昨天每个小时每个IP的事件数占当前这个小时总数的百分比
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> ip_count <span class="hljs-keyword">by</span> apache.clientip,ts <br><span class="hljs-operator">|</span><span class="hljs-keyword">join</span> type<span class="hljs-operator">=</span><span class="hljs-keyword">left</span> ts [[ <br>  logtype:apache <br>  <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> hour_count <span class="hljs-keyword">by</span> ts<br>  ]] <br><span class="hljs-operator">|</span>eval ippercent<span class="hljs-operator">=</span><span class="hljs-number">100</span><span class="hljs-operator">*</span>ip_count<span class="hljs-operator">/</span>hour_count<br></code></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li>根据响应时间获取short,middle,long三个分类值<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>eval length<span class="hljs-operator">=</span><span class="hljs-keyword">case</span>(apache.resp_len<span class="hljs-operator">&lt;</span><span class="hljs-number">1500</span>,&quot;short&quot;,apache.resp_len<span class="hljs-operator">&gt;</span><span class="hljs-number">2000</span>,&quot;long&quot;,<span class="hljs-keyword">default</span>,&quot;middle&quot;) <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(<span class="hljs-keyword">desc</span>) <span class="hljs-keyword">by</span> <span class="hljs-keyword">desc</span><br><span class="hljs-comment">/********************************/</span><br><br>logtype:apache <br><span class="hljs-operator">|</span>eval <span class="hljs-keyword">desc</span><span class="hljs-operator">=</span>if(apache.status<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">20</span>,&quot;OK&quot;,&quot;Error&quot;) <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(<span class="hljs-keyword">desc</span>) <span class="hljs-keyword">by</span> <span class="hljs-keyword">desc</span><br><span class="hljs-comment">/********************************/</span><br>logtype apache <br><span class="hljs-operator">|</span>eval <span class="hljs-type">int</span> status<span class="hljs-operator">=</span>tolong(apache.status)<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="fileds"><a href="#fileds" class="headerlink" title="fileds"></a>fileds</h4><blockquote>
-<p>保留搜索结果中的字段，支持通配  </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> appname,hostname <br><span class="hljs-operator">|</span>fields appname,hostname<br></code></pre></td></tr></table></figure>
-
-<h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><blockquote>
-<p>将查询结果以表格形式展示，并对字段进行筛选，若不包含空行显示，支持通配符  </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span><span class="hljs-keyword">table</span> apache.status,apache.method<br><span class="hljs-comment">/*****/</span>  <br>appname:nginx <span class="hljs-keyword">AND</span> nginx.request_time:<span class="hljs-operator">*</span> <br><span class="hljs-operator">|</span>eval new_reuqest_time<span class="hljs-operator">=</span>todouble(nginx.request_time) <br><span class="hljs-operator">|</span><span class="hljs-keyword">table</span> nginx.client_ip.geo.ip,nginx.client_ip.geo.isp,nginx.client_ip.gep.province<br></code></pre></td></tr></table></figure>
-
-<h4 id="makeresults"><a href="#makeresults" class="headerlink" title="makeresults"></a>makeresults</h4><blockquote>
-<p>构造指定的结果  </p>
-</blockquote>
-<ul>
-<li>产生一条结果并生成新的app字段，用于后续map命令 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span> makeresults count<span class="hljs-operator">=</span><span class="hljs-number">1</span> <br><span class="hljs-operator">|</span>eval app<span class="hljs-operator">=</span>&quot;zookeeper&quot; <br><span class="hljs-operator">|</span>map &quot;* appname:$app$&quot;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><blockquote>
-<p>使用表达式对结果进行过滤  </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <span class="hljs-keyword">AND</span> apache.geo.city:&quot;深圳市&quot; <br><span class="hljs-operator">|</span>stats dc(apache.clientip) <span class="hljs-keyword">as</span> dc_count <span class="hljs-keyword">by</span> apache.request_path <br><span class="hljs-operator">|</span><span class="hljs-keyword">where</span> dc_count<span class="hljs-operator">&gt;</span><span class="hljs-number">40</span> <span class="hljs-operator">&amp;&amp;</span> dc_count<span class="hljs-operator">&lt;</span><span class="hljs-number">100</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="top"><a href="#top" class="headerlink" title="top"></a>top</h4><blockquote>
-<p>获取字段出现次数前N的值集合  </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>top <span class="hljs-number">5</span> nginx.client_ip.geo.province<br></code></pre></td></tr></table></figure>
-
-<h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h4><blockquote>
-<p>返回前n个结果  </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <span class="hljs-operator">|</span>limit <span class="hljs-number">2</span><br><span class="hljs-comment">/*******/</span><br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> apache.clientip <br><span class="hljs-operator">|</span>limit <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><blockquote>
-<p>按照指定字段对搜索结果排序，+升序，-降序  </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> <span class="hljs-operator">+</span><span class="hljs-type">timestamp</span><br><span class="hljs-comment">/********/</span><br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(apache.clientip) <span class="hljs-keyword">as</span> ip_count <span class="hljs-keyword">by</span> appname <br><span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> <span class="hljs-operator">-</span>ip_count<br></code></pre></td></tr></table></figure>
-
-<h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4><blockquote>
-<p>对父管道结果和子管道结果进行类似SQL的join，关联分析<br>type&#x3D;left&#x2F;inner   (取左&#x2F;取并)  </p>
-</blockquote>
-<ul>
-<li><p>统计昨天每个小时每个IP的事件数占当前这个小时总数的百分比</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> ip_count <span class="hljs-keyword">by</span> apache.clientip,ts <br><span class="hljs-operator">|</span><span class="hljs-keyword">join</span> type<span class="hljs-operator">=</span><span class="hljs-keyword">left</span> ts [[ <br>  logtype:apache <br>  <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> hour_count <span class="hljs-keyword">by</span> ts<br>  ]] <br><span class="hljs-operator">|</span>eval ippercent<span class="hljs-operator">=</span><span class="hljs-number">100</span><span class="hljs-operator">*</span>ip_count<span class="hljs-operator">/</span>hour_count<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>按照运营商ISP统计总数，status：400-499数量及占比，status：500-599数量及占比，请求长度大于1000数量及占比，形成一张统计表</p>
+<li>按照运营商ISP统计总数，status：400-499数量及占比，status：500-599数量及占比，请求长度大于1000数量及占比，形成一张统计表
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> count_all <span class="hljs-keyword">by</span> apache.geo.isp <br><span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> count_all <br><span class="hljs-operator">|</span>limit <span class="hljs-number">5</span><br><span class="hljs-comment">/**************/</span><br>logtype:apache <span class="hljs-keyword">AND</span> apache.status:[<span class="hljs-number">400</span> <span class="hljs-keyword">TO</span> <span class="hljs-number">499</span>] <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> count_400 <span class="hljs-keyword">by</span> apache.geo.isp<br><span class="hljs-comment">/**************/</span><br>logtype:apache <span class="hljs-keyword">AND</span> apache.status:[<span class="hljs-number">500</span> <span class="hljs-keyword">TO</span> <span class="hljs-number">599</span>] <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> count_500 <span class="hljs-keyword">by</span> apache.geo.isp<br><span class="hljs-comment">/**************/</span><br>logtype:apache <span class="hljs-keyword">AND</span> apache.resp_len<span class="hljs-operator">&gt;</span><span class="hljs-number">1000</span> <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> len_1000 <span class="hljs-keyword">by</span> apache.geo.isp<br><span class="hljs-comment">/**************/</span><br>logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> count_all <span class="hljs-keyword">by</span> apache.geo.isp <br><span class="hljs-operator">|</span>sort <span class="hljs-keyword">by</span> count_all <br><span class="hljs-operator">|</span>limit <span class="hljs-number">5</span> <br><span class="hljs-operator">|</span><span class="hljs-keyword">join</span> type<span class="hljs-operator">=</span><span class="hljs-keyword">left</span> apache.geo.isp [[ <br>  logtype:apache <span class="hljs-keyword">AND</span> apache.status:[<span class="hljs-number">400</span> <span class="hljs-keyword">TO</span> <span class="hljs-number">499</span>] <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> count_400 <span class="hljs-keyword">by</span> apache.geo.isp<br>  ]]  <br><span class="hljs-operator">|</span><span class="hljs-keyword">join</span> type<span class="hljs-operator">=</span><span class="hljs-keyword">left</span> apache.geo.isp [[ <br>  logtype:apache <span class="hljs-keyword">AND</span> apache.status:[<span class="hljs-number">500</span> <span class="hljs-keyword">TO</span> <span class="hljs-number">599</span>] <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> count_500 <span class="hljs-keyword">by</span> apache.geo.isp<br>  ]] <br><span class="hljs-operator">|</span><span class="hljs-keyword">join</span> type<span class="hljs-operator">=</span><span class="hljs-keyword">left</span> apache.geo.isp [[<br>  logtype:apache <span class="hljs-keyword">AND</span> apache.resp_len<span class="hljs-operator">&gt;</span><span class="hljs-number">1000</span> <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(logtype) <span class="hljs-keyword">as</span> len_1000 <span class="hljs-keyword">by</span> apache.geo.isp<br>  ]]<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="append"><a href="#append" class="headerlink" title="append"></a>append</h4><blockquote>
-<p>将子管道结果附加在主管道结果之后，可以将不同类型数据进行关联分析，子查询 </p>
+<h4 id="append">append</h4>
+<blockquote>
+<p>将子管道结果附加在主管道结果之后，可以将不同类型数据进行关联分析，子查询
+*
+主管道统计大前天的平均响应值，append命令中子管道统计昨天的平均值，其结果合并在一张表中<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs SQL">starttime<span class="hljs-operator">=</span>&quot;-3d/d&quot; endtime<span class="hljs-operator">=</span>&quot;-2d/d&quot; <span class="hljs-operator">*</span> <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <br><span class="hljs-operator">|</span>eval <span class="hljs-keyword">day</span><span class="hljs-operator">=</span>&quot;the day before yesterday&quot; <br><span class="hljs-operator">|</span>append [[<br>  starttime<span class="hljs-operator">=</span>&quot;-1d/d&quot; endtime<span class="hljs-operator">=</span>&quot;now/d&quot; <span class="hljs-operator">*</span> <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <br>  <span class="hljs-operator">|</span>eval <span class="hljs-keyword">day</span><span class="hljs-operator">=</span>&quot;yesterday&quot;<br>  ]]<br><span class="hljs-comment">/**************/</span><br>starttime<span class="hljs-operator">=</span>&quot;-1d/d endtime=now/d&quot; <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>eval <span class="hljs-type">time</span><span class="hljs-operator">=</span>formatdate(ts,&quot;HH&quot;) <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> _count <span class="hljs-keyword">by</span> <span class="hljs-type">time</span> <br><span class="hljs-operator">|</span>eval <span class="hljs-keyword">group</span><span class="hljs-operator">=</span>&quot;yesterday&quot; <br><span class="hljs-operator">|</span>append [[<br>  starttime<span class="hljs-operator">=</span>&quot;now/d endtime=now&quot; <br>  <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br>  <span class="hljs-operator">|</span>eval <span class="hljs-type">time</span><span class="hljs-operator">=</span>formatdate(ts,&quot;HH&quot;) <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> _count <span class="hljs-keyword">by</span> <span class="hljs-type">time</span> <br>  <span class="hljs-operator">|</span>eval <span class="hljs-keyword">group</span><span class="hljs-operator">=</span>&quot;today&quot;<br>  ]]<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="autoregress">autoregress</h4>
+<blockquote>
+<p>一般用作行与行之间的值计算，计算指标数据，如环比， *
+按小时统计事件数，并计算出当前小时和上个小时的事件变化率
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> count_ <span class="hljs-keyword">by</span> ts <br><span class="hljs-operator">|</span>autoregress count_ <span class="hljs-keyword">as</span> last_count p<span class="hljs-operator">=</span><span class="hljs-number">1</span> <br><span class="hljs-operator">|</span>eval a<span class="hljs-operator">=</span>(last_count<span class="hljs-operator">-</span>count_) <span class="hljs-operator">/</span> count_ <br><span class="hljs-operator">|</span>eval change_rate<span class="hljs-operator">=</span>format(&quot;%.3f%%&quot;,(last_count <span class="hljs-operator">-</span> count_)<span class="hljs-operator">*</span><span class="hljs-number">100</span> <span class="hljs-operator">/</span> count_)<br><span class="hljs-comment">/**************/</span><br>starttime<span class="hljs-operator">=</span>&quot;-2h/h&quot; endtime<span class="hljs-operator">=</span>&quot;now/h&quot; <span class="hljs-operator">*</span> <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">10</span>m <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> count_app <span class="hljs-keyword">by</span> ts \<br><span class="hljs-operator">|</span>eval <span class="hljs-type">time</span><span class="hljs-operator">=</span>formatdate(ts) <br><span class="hljs-operator">|</span>autoregress count_app p<span class="hljs-operator">=</span><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="lookup">lookup</h4>
+<blockquote>
+<p>外部导入生成新字段 * csv
+文件字段host,user,department将搜索结果的hostname字段与csv文件的host进行关联
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> hostname <br><span class="hljs-operator">|</span>lookup <span class="hljs-keyword">user</span>,department <span class="hljs-operator">/</span>data<span class="hljs-operator">/</span>rizhiyi<span class="hljs-operator">/</span>share<span class="hljs-operator">/</span>host_user.csv <span class="hljs-keyword">on</span> hostname<span class="hljs-operator">=</span>host<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="map">map</h4>
+<blockquote>
+<p>引用上次搜索结果 *
+列出日志数最多的三种logtype他们各自最大的日志文本长度 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> logtype <br><span class="hljs-operator">|</span>limit <span class="hljs-number">3</span> <br><span class="hljs-operator">|</span>rename logtype <span class="hljs-keyword">as</span> type <br><span class="hljs-operator">|</span>map &quot;logtype:$type$ <br>|stats max(raw_message_length)&quot;<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="parse">parse</h4>
+<blockquote>
+<p>搜索时抽取字段<br />
+* 从原文中抽取IP地址，得到新的字段ip_addr分组并计算appname的个数
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>parse &quot;(?&lt;ip_addr&gt;\d+\.\d+\.\d+\.\d+)&quot; <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(appname) <span class="hljs-keyword">by</span> ip_addr<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="parsedate">parsedate</h4>
+<blockquote>
+<p>时间处理<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">|</span>makeresults count<span class="hljs-operator">=</span><span class="hljs-number">1</span> <br><span class="hljs-operator">|</span>eval pd<span class="hljs-operator">=</span>parsedate(&quot;28/04/2019:12:01:01&quot;,&quot;dd/MM/yyyy:HH:mm:ss&quot;) <br><span class="hljs-operator">|</span>eval fd<span class="hljs-operator">=</span>formatdate(bd,&quot;yyyy/dd/MM HH:mm:ss&quot;)<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="esma智能运维">esma智能运维</h4>
+<blockquote>
+<p>对某一个字段的未来值进行预测<br />
+* 统计过去一年的每天平均延迟，推测接下来一个月网络延迟<br />
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">* |bucket timestamp <span class="hljs-attribute">span</span>=1d as ts <br>|stats avg(network.latency) as latency by ts <br>|esma latency <span class="hljs-attribute">timefield</span>=ts <span class="hljs-attribute">period</span>=7 <span class="hljs-attribute">futurecount</span>=30<br></code></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li>主管道统计大前天的平均响应值，append命令中子管道统计昨天的平均值，其结果合并在一张表中   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs SQL">starttime<span class="hljs-operator">=</span>&quot;-3d/d&quot; endtime<span class="hljs-operator">=</span>&quot;-2d/d&quot; <span class="hljs-operator">*</span> <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <br><span class="hljs-operator">|</span>eval <span class="hljs-keyword">day</span><span class="hljs-operator">=</span>&quot;the day before yesterday&quot; <br><span class="hljs-operator">|</span>append [[<br>  starttime<span class="hljs-operator">=</span>&quot;-1d/d&quot; endtime<span class="hljs-operator">=</span>&quot;now/d&quot; <span class="hljs-operator">*</span> <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(apache.resp_len) <br>  <span class="hljs-operator">|</span>eval <span class="hljs-keyword">day</span><span class="hljs-operator">=</span>&quot;yesterday&quot;<br>  ]]<br><span class="hljs-comment">/**************/</span><br>starttime<span class="hljs-operator">=</span>&quot;-1d/d endtime=now/d&quot; <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>eval <span class="hljs-type">time</span><span class="hljs-operator">=</span>formatdate(ts,&quot;HH&quot;) <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> _count <span class="hljs-keyword">by</span> <span class="hljs-type">time</span> <br><span class="hljs-operator">|</span>eval <span class="hljs-keyword">group</span><span class="hljs-operator">=</span>&quot;yesterday&quot; <br><span class="hljs-operator">|</span>append [[<br>  starttime<span class="hljs-operator">=</span>&quot;now/d endtime=now&quot; <br>  <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br>  <span class="hljs-operator">|</span>eval <span class="hljs-type">time</span><span class="hljs-operator">=</span>formatdate(ts,&quot;HH&quot;) <br>  <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> _count <span class="hljs-keyword">by</span> <span class="hljs-type">time</span> <br>  <span class="hljs-operator">|</span>eval <span class="hljs-keyword">group</span><span class="hljs-operator">=</span>&quot;today&quot;<br>  ]]<br></code></pre></td></tr></table></figure></li>
+<li>主机内存使用预测 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL">appname:top_info_system_stats <span class="hljs-keyword">AND</span> ip:<span class="hljs-number">192.168</span><span class="hljs-number">.10</span><span class="hljs-number">.1</span> <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">10</span>m <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(json.Mem.used_percent) <span class="hljs-keyword">as</span> mem_use <span class="hljs-keyword">by</span> ts <br><span class="hljs-operator">|</span>esma mem_use timefield<span class="hljs-operator">=</span>ts<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="autoregress"><a href="#autoregress" class="headerlink" title="autoregress"></a>autoregress</h4><blockquote>
-<p>一般用作行与行之间的值计算，计算指标数据，如环比， </p>
+<h4 id="movingavg">movingavg</h4>
+<blockquote>
+<p>计算移动平均值<br />
+*
+以分钟为单位统计apache返回apache_len长度的和，以10为窗口计算移动平均值，得到每分钟的响应长度和平滑后的值<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>m <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">sum</span>(apache.resp_len) <span class="hljs-keyword">as</span> sum_len <span class="hljs-keyword">by</span> ts <br><span class="hljs-operator">|</span>movingavg sum_len,<span class="hljs-number">10</span> <span class="hljs-keyword">as</span> moving_avg_resp_len<br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<ul>
-<li>按小时统计事件数，并计算出当前小时和上个小时的事件变化率<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>h <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> count_ <span class="hljs-keyword">by</span> ts <br><span class="hljs-operator">|</span>autoregress count_ <span class="hljs-keyword">as</span> last_count p<span class="hljs-operator">=</span><span class="hljs-number">1</span> <br><span class="hljs-operator">|</span>eval a<span class="hljs-operator">=</span>(last_count<span class="hljs-operator">-</span>count_) <span class="hljs-operator">/</span> count_ <br><span class="hljs-operator">|</span>eval change_rate<span class="hljs-operator">=</span>format(&quot;%.3f%%&quot;,(last_count <span class="hljs-operator">-</span> count_)<span class="hljs-operator">*</span><span class="hljs-number">100</span> <span class="hljs-operator">/</span> count_)<br><span class="hljs-comment">/**************/</span><br>starttime<span class="hljs-operator">=</span>&quot;-2h/h&quot; endtime<span class="hljs-operator">=</span>&quot;now/h&quot; <span class="hljs-operator">*</span> <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">10</span>m <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> count_app <span class="hljs-keyword">by</span> ts \<br><span class="hljs-operator">|</span>eval <span class="hljs-type">time</span><span class="hljs-operator">=</span>formatdate(ts) <br><span class="hljs-operator">|</span>autoregress count_app p<span class="hljs-operator">=</span><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="lookup"><a href="#lookup" class="headerlink" title="lookup"></a>lookup</h4><blockquote>
-<p>外部导入生成新字段</p>
+<h4 id="rollingavg">rollingavg</h4>
+<blockquote>
+<p>计算移动标准差 *
+以时间分组算出apache返回的reponse长度的和，以10为窗口计算rolling的标准差，观察resp_len的波动情况
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">sum</span>(apache.resp_len) <span class="hljs-keyword">as</span> sum_resp_len <span class="hljs-keyword">by</span> <span class="hljs-type">timestamp</span> <br><span class="hljs-operator">|</span>rollingstd sum_resp_len,<span class="hljs-number">10</span> <span class="hljs-keyword">as</span> resp_len_rolling_std<br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<ul>
-<li>csv 文件字段host,user,department将搜索结果的hostname字段与csv文件的host进行关联<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> hostname <br><span class="hljs-operator">|</span>lookup <span class="hljs-keyword">user</span>,department <span class="hljs-operator">/</span>data<span class="hljs-operator">/</span>rizhiyi<span class="hljs-operator">/</span>share<span class="hljs-operator">/</span>host_user.csv <span class="hljs-keyword">on</span> hostname<span class="hljs-operator">=</span>host<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><blockquote>
-<p>引用上次搜索结果</p>
+<h4 id="transpose">transpose</h4>
+<blockquote>
+<p>将查询的表格数据进行行列转换<br />
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> cnt <span class="hljs-keyword">by</span> apache.method,apache.status <br><span class="hljs-operator">|</span>transpose <span class="hljs-type">row</span><span class="hljs-operator">=</span>apache.method <span class="hljs-keyword">column</span><span class="hljs-operator">=</span>apache.status valuefield<span class="hljs-operator">=</span>cnt<br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<ul>
-<li>列出日志数最多的三种logtype他们各自最大的日志文本长度<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">by</span> logtype <br><span class="hljs-operator">|</span>limit <span class="hljs-number">3</span> <br><span class="hljs-operator">|</span>rename logtype <span class="hljs-keyword">as</span> type <br><span class="hljs-operator">|</span>map &quot;logtype:$type$ <br>|stats max(raw_message_length)&quot;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h4><blockquote>
-<p>搜索时抽取字段  </p>
-</blockquote>
-<ul>
-<li>从原文中抽取IP地址，得到新的字段ip_addr分组并计算appname的个数<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>parse &quot;(?&lt;ip_addr&gt;\d+\.\d+\.\d+\.\d+)&quot; <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>(appname) <span class="hljs-keyword">by</span> ip_addr<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="parsedate"><a href="#parsedate" class="headerlink" title="parsedate"></a>parsedate</h4><blockquote>
-<p>时间处理  </p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">|</span>makeresults count<span class="hljs-operator">=</span><span class="hljs-number">1</span> <br><span class="hljs-operator">|</span>eval pd<span class="hljs-operator">=</span>parsedate(&quot;28/04/2019:12:01:01&quot;,&quot;dd/MM/yyyy:HH:mm:ss&quot;) <br><span class="hljs-operator">|</span>eval fd<span class="hljs-operator">=</span>formatdate(bd,&quot;yyyy/dd/MM HH:mm:ss&quot;)<br></code></pre></td></tr></table></figure></blockquote>
-<h4 id="esma智能运维"><a href="#esma智能运维" class="headerlink" title="esma智能运维"></a>esma智能运维</h4><blockquote>
-<p>对某一个字段的未来值进行预测  </p>
-</blockquote>
-<ul>
-<li><p>统计过去一年的每天平均延迟，推测接下来一个月网络延迟  </p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">* |bucket timestamp <span class="hljs-attribute">span</span>=1d as ts <br>|stats avg(network.latency) as latency by ts <br>|esma latency <span class="hljs-attribute">timefield</span>=ts <span class="hljs-attribute">period</span>=7 <span class="hljs-attribute">futurecount</span>=30<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>主机内存使用预测</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL">appname:top_info_system_stats <span class="hljs-keyword">AND</span> ip:<span class="hljs-number">192.168</span><span class="hljs-number">.10</span><span class="hljs-number">.1</span> <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">10</span>m <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">avg</span>(json.Mem.used_percent) <span class="hljs-keyword">as</span> mem_use <span class="hljs-keyword">by</span> ts <br><span class="hljs-operator">|</span>esma mem_use timefield<span class="hljs-operator">=</span>ts<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="movingavg"><a href="#movingavg" class="headerlink" title="movingavg"></a>movingavg</h4><blockquote>
-<p>计算移动平均值  </p>
-</blockquote>
-<ul>
-<li>以分钟为单位统计apache返回apache_len长度的和，以10为窗口计算移动平均值，得到每分钟的响应长度和平滑后的值  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>bucket <span class="hljs-type">timestamp</span> span<span class="hljs-operator">=</span><span class="hljs-number">1</span>m <span class="hljs-keyword">as</span> ts <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">sum</span>(apache.resp_len) <span class="hljs-keyword">as</span> sum_len <span class="hljs-keyword">by</span> ts <br><span class="hljs-operator">|</span>movingavg sum_len,<span class="hljs-number">10</span> <span class="hljs-keyword">as</span> moving_avg_resp_len<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="rollingavg"><a href="#rollingavg" class="headerlink" title="rollingavg"></a>rollingavg</h4><blockquote>
-<p>计算移动标准差 </p>
-</blockquote>
-<ul>
-<li>以时间分组算出apache返回的reponse长度的和，以10为窗口计算rolling的标准差，观察resp_len的波动情况 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL">logtype:apache <br><span class="hljs-operator">|</span>stats <span class="hljs-built_in">sum</span>(apache.resp_len) <span class="hljs-keyword">as</span> sum_resp_len <span class="hljs-keyword">by</span> <span class="hljs-type">timestamp</span> <br><span class="hljs-operator">|</span>rollingstd sum_resp_len,<span class="hljs-number">10</span> <span class="hljs-keyword">as</span> resp_len_rolling_std<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="transpose"><a href="#transpose" class="headerlink" title="transpose"></a>transpose</h4><blockquote>
-<p>将查询的表格数据进行行列转换  </p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-operator">*</span> <span class="hljs-operator">|</span>stats <span class="hljs-built_in">count</span>() <span class="hljs-keyword">as</span> cnt <span class="hljs-keyword">by</span> apache.method,apache.status <br><span class="hljs-operator">|</span>transpose <span class="hljs-type">row</span><span class="hljs-operator">=</span>apache.method <span class="hljs-keyword">column</span><span class="hljs-operator">=</span>apache.status valuefield<span class="hljs-operator">=</span>cnt<br></code></pre></td></tr></table></figure></blockquote>
 
                 
               </div>
@@ -683,7 +734,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a href="https://blog.kevinchu.top/atom.xml" target="_blank" rel="nofollow noopener"><i class="iconfont icon-rss"></i>RSS</a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -864,7 +915,8 @@
 
 
   
-<script src="/js/custom.js"></script>
+<script src="/js/starts.js"></script>
+<script src="/js/typing-effect.js"></script>
 
 
 
