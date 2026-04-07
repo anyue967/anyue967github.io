@@ -43,8 +43,8 @@ $ root: F:\Design\nvm
 $ path: F:\Design\nodejs
 $ arch: 64 
 $ proxy: none 
-$ node_mirror: https://npm.taobao.org/mirrors/node/
-$ npm_mirror: https://npm.taobao.org/mirrors/npm/
+$ node_mirror: https://npmmirror.com/mirrors/node/
+$ npm_mirror: https://npmmirror.com/mirrors/npm/
 ```
 
 + 配置用npm下载包时全局安装的包路径
@@ -55,11 +55,10 @@ $ %NPM_HOME%=F:\Design\nvm\npm
 
 + 配置国内仓库  
 ```
-$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+$ npm install -g cnpm --registry=https://registry.npmmirror.com
 ```
-
-:link:[淘宝Node镜像](https://npm.taobao.org/mirrors/node/)  
-:link:[淘宝Npm镜像](https://npm.taobao.org/mirrors/npm/)  
+  
+:link：[淘宝Npm镜像](https://registry.npmmirror.com/)  
 
 ### nvm 命令  
 | 命令                              | 说明                                                         |
