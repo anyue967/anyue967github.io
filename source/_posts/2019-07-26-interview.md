@@ -6,6 +6,8 @@ tags:
 categories: 'Devops, linux'
 abbrlink: 794381c6
 date: 2019-07-26 10:49:34
+index_img: /img/bg/002.jpg
+banner_img: /img/bg/006.jpg
 ---
 
 2019-07-26-Review
@@ -19,6 +21,7 @@ date: 2019-07-26 10:49:34
 * initrd：Linux初始RAM磁盘（initrd）是在系统引导过程中挂载的一个临时根文件系统；
   
 + init进程是系统所有进程的起点
+  
     |  类型   |  名称   |                         位置                          |
     | :------ | :------ | :---------------------------------------------------- |
     | SysV    | init    | CentOS5之前: /etc/inittab                             |
@@ -102,7 +105,7 @@ seq 10 |awk -v ORS=" " '{print $0}'
 + g.浏览器根据IP信息，获取页面；
 
 ### iptables是否支持time时间控制用户行为，请写出步骤
-支持，需要增加相关支持的内核补丁，并且要重新编译内核。或者使用crontab配合iptables，首先：`vi /deny.bat` 输入`/sbin/iptables -A OUTPUT -p tcp -s 192.168.1.0/24 --dport 80 -j DROP`保存退出，打开crontab-e `00 21＊　＊　＊ /bin/sh /deny.bat`  
+支持，需要增加相关支持的内核补丁，并且要重新编译内核。或者使用crontab配合iptables，首先：`vi /deny.bat` 输入`/sbin/iptables -A OUTPUT -p tcp -s 192.168.1.0/24 --dport 80 -j DROP`保存退出，打开crontab-e `00 21 * * * /bin/sh /deny.bat`  
 
 ### 源码编译apache, 要求安装目录为/usr/local/apache, 需有压缩模块, rewrtie, worker模式, 并说明apache的worker MPM中,为什么ServerLimit要放到配置段最前面?
 ```bash
@@ -140,7 +143,7 @@ cat /proc/net/bonding/bond0
 ```
 
 ### linux中的/proc文件系统有什么用？
-- /proc 文件系统是一个虚拟文件系统, 它只存在内存当中, 而不占用外存空间, Linux 内核提供了一种通过 /proc 文件系统, 在运行时访问内核内部数据结构, 改变内核设置的机制.
+- /proc 文件系统是一个虚拟文件系统, <span style="color:rgb(255, 0, 255);">它只存在内存当中, 而不占用外存空间</span>, Linux 内核提供了一种通过 /proc 文件系统, 在运行时访问内核内部数据结构, 改变内核设置的机制.
   ```bash
   查看proc信息: ls /proc/
   查看内核信息: ls /proc/sys

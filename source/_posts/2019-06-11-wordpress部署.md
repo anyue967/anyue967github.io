@@ -8,9 +8,22 @@ tags:
 categories: 'Devops, linux'
 abbrlink: 137599dc
 date: 2019-06-11 17:20:46
+index_img: /img/bg/010.jpg
 ---
 2019-06-11-WordPress
 <!--more-->
+
+- [redhat系统](#redhat系统)
+- [软件版本:](#软件版本)
+- [安装依赖:](#安装依赖)
+  - [1. 部署软件:](#1-部署软件)
+    - [1.1 RPM安装Mysql:](#11-rpm安装mysql)
+    - [1.2 二进制安装Mysql:](#12-二进制安装mysql)
+    - [1.3 源码编译安装Mysql:](#13-源码编译安装mysql)
+    - [1.4 安装Apache:](#14-安装apache)
+    - [1.5 安装PHP7(http://pecl.php.net):](#15-安装php7httppeclphpnet)
+  - [2. 测试:](#2-测试)
+
 
 ## redhat系统
 ## 软件版本:

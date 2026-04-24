@@ -3,9 +3,12 @@ title: Linux Tools
 copyright: true
 tags:
   - Linux
+  - 系统观测工具
 categories: Linux
 abbrlink: df044da8
 date: 2019-11-29 15:19:44
+index_img: /img/bg/003.jpg
+banner_img: /img/bg/007.jpg
 ---
 2019-11-29-LinuxTools
 <!-- more -->

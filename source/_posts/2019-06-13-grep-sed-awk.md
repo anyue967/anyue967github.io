@@ -3,12 +3,27 @@ title: 关于grep、sed和awk的基础用法
 tags:
   - Linux
   - shell
-categories: Linux
+  - devops
+categories: Programming
 abbrlink: a796df41
 date: 2019-06-13 21:23:48
+index_img: /img/bg/004.jpg
 ---
 2019-06-13-grep/sed/awk
 <!-- more -->
+
+- [Linux报“ '/usr/bin' is not included in the PATH environment variable ”的解决方法:](#linux报-usrbin-is-not-included-in-the-path-environment-variable-的解决方法)
+- [find(文件目录的查找)](#find文件目录的查找)
+- [grep(文本搜索工具,行)](#grep文本搜索工具行)
+  - [示例:](#示例)
+- [sed(处理行,一次读取一行内容)](#sed处理行一次读取一行内容)
+  - [示例:](#示例-1)
+- [awk (先读取行, 再提取列)](#awk-先读取行-再提取列)
+- [Usage:](#usage)
+  - [示例:](#示例-2)
+- [Nginx 日志分析:](#nginx-日志分析)
+- [琐碎知识点:](#琐碎知识点)
+
 
 #### Linux报“ '/usr/bin' is not included in the PATH environment variable ”的解决方法:
 ```bash
@@ -20,7 +35,7 @@ date: 2019-06-13 21:23:48
 > +n(n天以前), -n(n天以内)   
 
 | 选项                    | 说明                   |
-|-------------------------|------------------------|
+| ----------------------- | ---------------------- |
 | -name                   | 根据文件名匹配         |
 | -iname                  | 忽略大小写             |
 | -regex pattern          | 基于正则进行文件名匹配 |
@@ -54,7 +69,7 @@ find /data -not \( -user user1 -a -not -type d \)
   ```
 
 | 选项           | 说明                   |
-|----------------|----------------------|
+| -------------- | ---------------------- |
 | `--color=auto` | 对匹配到的文本着色显示 |
 | -v             | 反选                   |
 | -i             | 忽略大小写             |
@@ -111,16 +126,16 @@ seq 1 10 |grep 5 -B 3  # 2 3 4 5
 > 还有一个空间叫**保持空间, 又称暂存空间**, 可以暂时存放一些处理的数据,但不能直接输出, 只能放到模式空间输出；这两个空间其实就是在内存中初始化的一个内存区域, 存放正在处理的数据和临时存放的数据；   
 > 默认工作模式输出模式空间内容  
 
-| 选项          | 说明                                     |
-|---------------|----------------------------------------|
-| -n            | 只输出命令匹配的内容(不显示模式空间内容) |
-| -r, --reg     | 开启支持扩展正则                         |
-| -i            | sed的修改结果直接应用于文件              |
-| -e            | 多个命令组合 或者用`;`分割               |
-| -f 脚本文件名 | 从sed脚本读入sed操作                     |
+| 选项                                            | 说明                                     |
+| ----------------------------------------------- | ---------------------------------------- |
+| <span style="color:rgb(255, 0, 255);">-n</span> | 只输出命令匹配的内容(不显示模式空间内容) |
+| -r, --reg                                       | 开启支持扩展正则                         |
+| <span style="color:rgb(255, 0, 255);">-i</span> | sed的修改结果直接应用于文件              |
+| -e                                              | 多个命令组合 或者用`;`分割               |
+| -f 脚本文件名                                   | 从sed脚本读入sed操作                     |
 
 | 动作(定位)            | 说明                            |
-|-----------------------|-------------------------------|
+| --------------------- | ------------------------------- |
 | x,y                   | x~y之间的行                     |
 | x,+N                  | 从x行开始向后的N的行            |
 | x,y!                  | 查询不包括x和y行之间的行        |
@@ -130,7 +145,7 @@ seq 1 10 |grep 5 -B 3  # 2 3 4 5
 | x,/pattern/           | 从与x行~与pattern匹配行之间的行 |
 
 | 动作(编辑命令)    | 说明                                     |
-|-------------------|----------------------------------------|
+| ----------------- | ---------------------------------------- |
 | p                 | 打印,输出指定行                          |
 | d                 | 删除指定行                               |
 | a \string         | 在指定行后追加                           |
@@ -168,7 +183,20 @@ sed '1,3d' test.txt                   # 删除1-3行
 # 默认只替换每行中第一次被模式匹配的字串，g-全局替换，i-忽略大小写， 
 tail /etc/services |sed 's/blp5/test/'  # 替换blp5字符串为test s/old/new/g
 tail /etc/services |sed '1,4s#blp5#test#'
+
 sed -i '/SELINUX/s/enforceing/disabled/g' /etc/selinux/config  
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of these three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected. 
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+
 sed 's/l..e/&r/g'
 sed 's#\(l..e\)#\1r#g'  
 sed 's#l\(..e\)#L\1#g'    # like love
@@ -209,19 +237,19 @@ seq 6 |sed -n '/3/,/6/'p      # 3 4 5 6
     awk -F ":" '{ if($3<500) { print $1,"系统用户" } else{ print $1,"普通用户" }}' /etc/passwd
     ```
 
-| 变量名               | 描述                                                 |
-|----------------------|------------------------------------------------------|
+| 变量名               | 描述                                                  |
+| -------------------- | ----------------------------------------------------- |
 | FS, Field Separator  | 输入字段(列)分隔符，默认是空格或制表符  BEGIN{FS=":"} |
 | OFS                  | 输出字段(列)分隔符，默认是空格                        |
 | RS, Record Separator | 输入记录(行)分隔符，默认是换行符\n                    |
 | ORS                  | 输出记录(行分隔符，默认是换行符\n                     |
-| --                   | --                                                   |
+| --                   | --                                                    |
 | NF, Number Field     | 统计当前记录中字段(列)个数，列号                      |
 | NR, Number Record    | 行号，当前处理的文本行的行号                          |
 | FNR                  | 同NR，各文件分别计数的行号                            |
-| $0                   | 当前读入整行数据                                     |
+| $0                   | 当前读入整行数据                                      |
 | $n                   | 当前读入行的第n个字段，第n列                          |
-| FILENAME             | 显示文件名                                           |
+| FILENAME             | 显示文件名                                            |
 
 ##### 示例:
 + FS OFS(输入输出字段分割符)
@@ -344,7 +372,7 @@ awk '{print $1}' access.log |sort |uniq -c |sort -nr |head -n20
 + 15.早上9-12总请求量
 ```bash
 sed -n "/2019:09:00"/,/2019:12:00/"p access.log
-`awk '/2019:09:00/,/2019:12:00' access.log |wc -l
+awk '/2019:09:00/,/2019:12:00' access.log |wc -l
 ```
 
 + 16.状态码404、502、503、500、499等错误信息页面，打错误出现次数大于20的IP地址
@@ -370,7 +398,7 @@ awk '{if($NF>5) print $NF, $7, $1}' access.log |sort -nr |more
 
 #### 琐碎知识点:  
 | 项目 | 说明                                          |
-|------|---------------------------------------------|
+| ---- | --------------------------------------------- |
 | $0   | 脚本自身名字                                  |
 | $?   | 返回上条命令是否执行成功, 0执行成功, 非零失败 |
 | S#   | 参数总数                                      |

@@ -5,9 +5,26 @@ tags:
 categories: CRH
 abbrlink: c442673f
 date: 2019-06-08 09:53:34
+index_img: /img/bg/010.jpg
 ---
 2019-06-08-搭建博客
 <!-- more -->
+
+- [基础搭建](#基础搭建)
+  - [创建一个仓库，用于存放个人博客文件](#创建一个仓库用于存放个人博客文件)
+- [Hexo 的搭建](#hexo-的搭建)
+  - [安装 Node.js](#安装-nodejs)
+      - [Linux/类Linux下利用nvm安装Node比较好，https://github.com/nvm-sh/nvm](#linux类linux下利用nvm安装node比较好httpsgithubcomnvm-shnvm)
+      - [Windows下nvm安装配置，https://github.com/coreybutler/nvm-windows](#windows下nvm安装配置httpsgithubcomcoreybutlernvm-windows)
+  - [nvm 命令](#nvm-命令)
+  - [安装 Hexo](#安装-hexo)
+  - [配置优化Hexo(命令都是在博客主目录执行)](#配置优化hexo命令都是在博客主目录执行)
+    - [配置\_config.yml](#配置_configyml)
+    - [安装`hexo-deployer-git`扩展](#安装hexo-deployer-git扩展)
+    - [添加插件](#添加插件)
+- [npm (Nodejs Package Manager)相关命令](#npm-nodejs-package-manager相关命令)
+- [nrm 的安装和使用](#nrm-的安装和使用)
+
 
 ## 基础搭建
 ### 创建一个仓库，用于存放个人博客文件

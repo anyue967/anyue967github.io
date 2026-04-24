@@ -2,11 +2,13 @@
 title: Zookeeper和Kafka
 copyright: true
 tags:
-  - Devops
-  - linux
-categories: Linux
+  - Zookeeper
+  - Kafka 
+categories: 中间件
 abbrlink: e1f23b16
 date: 2019-11-08 22:58:30
+index_img: /img/bg/002.jpg
+banner_img: /img/bg/004.jpg
 ---
 2019-11-08-Zookeeper&Kafka
 <!--more-->
