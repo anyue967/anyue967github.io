@@ -691,11 +691,11 @@
     
     <tags>
       
-      <tag>dockerfile</tag>
-      
       <tag>docker</tag>
       
       <tag>k8s</tag>
+      
+      <tag>dockerfile</tag>
       
     </tags>
     
