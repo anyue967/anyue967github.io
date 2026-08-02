@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://anyue967.github.io/img/bg/005.jpg">
 <meta property="article:published_time" content="2019-06-15T10:11:22.000Z">
-<meta property="article:modified_time" content="2026-06-03T08:38:25.417Z">
+<meta property="article:modified_time" content="2026-08-02T17:32:42.027Z">
 <meta property="article:author" content="anyu967">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="github">
@@ -285,7 +285,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          2.5k 字
         
       </span>
     
@@ -296,7 +296,7 @@
         
         
         
-          20 分钟
+          22 分钟
         
       </span>
     
@@ -390,6 +390,10 @@ mode 100644</strong></a></li>
 <li><a href="#8-svn">8. SVN</a></li>
 <li><a href="#9-关于push后文件夹显示灰色">9.
 <strong>关于push后文件夹显示灰色</strong></a></li>
+<li><a href="#9-gitignore-停止追踪">9. .gitignore 停止追踪</a></li>
+<li><a href="#10-git-下载指定文件夹的方法">10. git
+下载指定文件夹的方法</a></li>
+<li><a href="#11-如何提交pr">11. 如何提交PR</a></li>
 </ul></li>
 </ul>
 <h3 id="前言">前言</h3>
@@ -530,6 +534,12 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/southday/p/10010876
 <li>删除clone后文件的<code>.git</code>,<code>.gitignore</code>,然后重新add-commit-push</li>
 <li><code>git rm -r --cached FILENAME</code></li>
 </ul>
+<h4 id="gitignore-停止追踪">9. .gitignore 停止追踪</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 让 Git 从索引里移除，但保留本地文件</span><br>git <span class="hljs-built_in">rm</span> --cached _config.yml<br><br><span class="hljs-comment"># 提交这个变更</span><br>git commit -m <span class="hljs-string">&quot;Stop tracking config files&quot;</span><br><br><span class="hljs-comment"># 推送</span><br>git push origin hexo<br></code></pre></td></tr></table></figure>
+<h4 id="git-下载指定文件夹的方法">10. git 下载指定文件夹的方法</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 先克隆完整仓库</span><br>git <span class="hljs-built_in">clone</span> -n &lt;repo_url&gt;<br><span class="hljs-comment"># 2. 进入仓库目录</span><br><span class="hljs-built_in">cd</span> &lt;repo_name&gt;<br><span class="hljs-comment"># 3. 开启稀疏检出</span><br>git config core.sparsecheckout <span class="hljs-literal">true</span><br><span class="hljs-comment"># 4. 选择要检出的文件夹</span><br><span class="hljs-comment"># 例如：检出 hexo 分支的 source 文件夹</span><br>git checkout -f master<br>git sparse-checkout <span class="hljs-built_in">set</span> <span class="hljs-built_in">source</span>/<br></code></pre></td></tr></table></figure>
+<h4 id="如何提交pr">11. 如何提交PR</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. Fork 仓库</span><br>git <span class="hljs-built_in">clone</span> &lt;forked_repo_url&gt;<br><span class="hljs-comment"># 2. 配置远程上游仓库</span><br>git remote add upstream &lt;upstream_repo_url&gt;<br>git remote -v<br><span class="hljs-comment"># 3. 保持Fork同步</span><br>git fetch upstream<br>git checkout main<br>git merge upstream/master<br><span class="hljs-comment"># 4. 创建一个新分支</span><br>git checkout -b my-feature-branch<br>git add .<br>git commit -m <span class="hljs-string">&quot;Your commit message&quot;</span><br>git push origin YOUR_BRANCH_NAME<br><span class="hljs-comment"># 5. 创建Pull Request</span><br><span class="hljs-comment">## 在GitHub上，前往你Fork的仓库页面，并点击“New pull request”。选择你的分支和原始仓库的main分支作为比较。填写PR的标题和描述，清晰地说明你的改动和原因。</span><br><span class="hljs-comment"># 6. 等待审核和合并</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
