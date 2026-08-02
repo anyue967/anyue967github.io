@@ -748,9 +748,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>Jenkins</tag>
+      
+      <tag>Linux</tag>
       
       <tag>CI</tag>
       
@@ -779,9 +779,9 @@
     
     <tags>
       
-      <tag>dockerfile</tag>
-      
       <tag>docker</tag>
+      
+      <tag>dockerfile</tag>
       
       <tag>k8s</tag>
       
@@ -1161,9 +1161,9 @@
     
     <tags>
       
-      <tag>vim</tag>
-      
       <tag>linux</tag>
+      
+      <tag>vim</tag>
       
     </tags>
     
