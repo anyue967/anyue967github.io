@@ -3,12 +3,13 @@ title: Terraform介绍及使用
 mathjax: false
 math: true
 mermaid: true
-date: 2026-06-06 20:43:54
 tags: terraform
 categories: 云原生
 description: Terraform 是一个用于基础设施即代码（IaC）的工具，它允许用户定义和管理云资源的配置和状态。
 index_img: /img/bg/010.jpg
 banner_img: /img/bg/007.jpg
+abbrlink: 496ea514
+date: 2026-06-06 20:43:54
 ---
 2026-06-06-Terraform-terraform介绍及使用
 <!-- more -->
