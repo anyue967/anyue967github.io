@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://anyue967.github.io/img/bg/007.jpg">
 <meta property="article:published_time" content="2019-06-11T01:10:30.000Z">
-<meta property="article:modified_time" content="2026-04-15T07:14:30.127Z">
+<meta property="article:modified_time" content="2026-08-18T18:10:32.124Z">
 <meta property="article:author" content="anyu967">
 <meta property="article:tag" content="Devops">
 <meta property="article:tag" content="linux">
@@ -285,7 +285,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          8.8k 字
         
       </span>
     
@@ -296,7 +296,7 @@
         
         
         
-          71 分钟
+          74 分钟
         
       </span>
     
@@ -622,15 +622,7 @@
 <h3 id="创建链接文件ln">11. 创建链接文件ln</h3>
 <p>:link:<a
 target="_blank" rel="noopener" href="https://www.cnblogs.com/ricklz/p/9378755.html">cnblog参考</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy /]# <span class="hljs-built_in">ln</span> -s ../usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="hljs-comment">#相对目录建立, 找相对于链接的根目录</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>硬链接与软链接的区别:<br />
-&gt; ln src dst &gt; 1、不能跨分区； &gt; 2、删除源文件不影响链接文件；
-&gt; 3、inode号不变，指向同一个文件； &gt; 4、链接数增加； &gt;
-##软链接： &gt; ln -s src dst &gt; 1、可以跨分区； &gt;
-2、删除源文件影响链接文件； &gt; 3、inode号不相同； &gt; 4、链接数不变；
-&gt; ln -s ../boot/grub2/grub.cfg /etc/grub2.cfg</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#相对目录建立, 找相对于链接的根目录</span><br>[root@xy /]# <span class="hljs-built_in">ln</span> -sfn /usr/share/nginx/html/pma /usr/share/zabbix/pma<br><br><span class="hljs-comment"># 路径末尾不要加 /：如果软链接指向的是目录，不要在命令末尾加斜杠，否则会误删目标目录本身；后面没有 /，系统认为这是一个符号链接文件，只删除快捷方式</span><br><span class="hljs-comment"># 防止误删，unlink 永远不会误伤源目录</span><br>[root@xy /]# <span class="hljs-built_in">unlink</span> /usr/share/zabbix/pma<br>[root@xy /]# <span class="hljs-built_in">rm</span> /usr/share/zabbix/pma <span class="hljs-comment"># 删除软链接</span><br><br><br><span class="hljs-comment"># 创建软链接</span><br><span class="hljs-built_in">ln</span> -s /original/file /path/to/link<br><br><span class="hljs-comment"># 查看软链接</span><br><span class="hljs-built_in">ls</span> -l /path/to/link<br><br><span class="hljs-comment"># 删除软链接</span><br><span class="hljs-built_in">rm</span> /path/to/link<br><br>&gt; 硬链接与软链接的区别:  <br>&gt; &gt; <span class="hljs-built_in">ln</span> src dst<br>&gt; &gt; 	1、不能跨分区；<br>&gt; &gt; 	2、删除源文件不影响链接文件；<br>&gt; &gt; 	3、inode号不变，指向同一个文件；<br>&gt; &gt; 	4、链接数增加；<br>&gt; &gt; 软链接：<br>&gt; &gt; <span class="hljs-built_in">ln</span> -s src dst<br>&gt; &gt; 	1、可以跨分区；<br>&gt; &gt; 	2、删除源文件影响链接文件；<br>&gt; &gt; 	3、inode号不相同；<br>&gt; &gt; 	4、链接数不变；<br>&gt; &gt; <span class="hljs-built_in">ln</span> -s ../boot/grub2/grub.cfg /etc/grub2.cfg<br><br></code></pre></td></tr></table></figure>
 <h3 id="raid与lvm磁盘阵列技术">12. RAID与LVM磁盘阵列技术
 <a id="raid"></a></h3>
 <ul>
@@ -1294,9 +1286,10 @@ mode6:平衡负载模式,平时两块网卡同时工作,自动备援,无须交�
 </table>
 <p><strong>安全密钥验证</strong><br />
 <em>客户端主机生成“密钥对”(非对称加密)</em><br />
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ssh-keygen -t rsa -b 2048  <span class="hljs-comment"># 用此命令的 留下 私钥</span><br>  Generating public/private rsa key pair. <br>  Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/root/.ssh/id_rsa):　回车或设置密钥存储路径<br>  Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase): 　直接按回车或设置密钥密码  <br>  Enter same passphrase again: 再次按回车或设置密钥密码<br>  Your identification has been saved <span class="hljs-keyword">in</span> /root/.ssh/id_rsa.  <br>  Your public key has been saved <span class="hljs-keyword">in</span> /root/.ssh/id_rsa.pub.  <br>  The key fingerprint is:  <br>  81:e1:46:ce:a2:1a:a2:45:e2:5e:46:05:9f:ce:c1:12 root@xy.com  <br>  The key<span class="hljs-string">&#x27;s randomart image is:  </span><br><span class="hljs-string">  ....</span><br></code></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置SSH免密登录，原理是基于密钥对的非对称加密技术，客户端主机生成的公钥验证登陆服务器主机的密钥对，服务器主机验证通过后，客户端主机的公钥会被添加到服务器主机的`authorized_keys`文件中，后续客户端主机登陆服务器主机时，只需要输入私钥密码即可登陆服务器主机。SSH免密登录可以通过生成密钥对并将公钥传输到目标主机实现，从而无需每次输入密码即可远程登录。</span><br><br>[root@xy ~]# ssh-keygen -t rsa -b 2048  <span class="hljs-comment"># 用此命令的 留下 私钥</span><br>  Generating public/private rsa key pair. <br>  Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/root/.ssh/id_rsa):　回车或设置密钥存储路径<br>  Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase): 　直接按回车或设置密钥密码  <br>  Enter same passphrase again: 再次按回车或设置密钥密码 <span class="hljs-comment"># 可以使用sshpass命令自动输入密码</span><br>  Your identification has been saved <span class="hljs-keyword">in</span> /root/.ssh/id_rsa.  <br>  Your public key has been saved <span class="hljs-keyword">in</span> /root/.ssh/id_rsa.pub.  <br>  The key fingerprint is:  <br>  81:e1:46:ce:a2:1a:a2:45:e2:5e:46:05:9f:ce:c1:12 root@xy.com  <br>  The key<span class="hljs-string">&#x27;s randomart image is:  </span><br><span class="hljs-string">  ....</span><br></code></pre></td></tr></table></figure></p>
 <ul>
-<li><p>客户端主机生成的<code>公钥</code>传送至远程主机上<br />
+<li><p>客户端主机生成的<span
+style="color:red;">公钥</span>传送至远程主机上<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# ssh-copy-id 192.168.37.10  <span class="hljs-comment"># ssh-copy-ip 只能拷贝公钥</span><br>  Number of key(s) added: 1  <br>  Now try logging into the machine, with:   <span class="hljs-string">&quot;ssh &#x27;192.168.37.10&#x27;&quot;</span>  <br>  and check to make sure that only the key(s) you wanted were added.  <br></code></pre></td></tr></table></figure></p></li>
 <li><p>对服务器进行设置只允许密钥验证<br />
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@xy ~]# vim /etc/ssh/sshd_config  <br>PasswordAuthentication no<br></code></pre></td></tr></table></figure></p></li>
